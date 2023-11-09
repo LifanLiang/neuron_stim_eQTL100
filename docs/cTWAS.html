@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,21 +418,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -523,13 +520,13 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong28e7b44">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongee193fe">
 <span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Repository version:</strong> 28e7b44
+aria-hidden="true"></span> <strong>Repository version:</strong> ee193fe
 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong28e7b44"
+<div id="strongRepositoryversionstrongee193fe"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +535,7 @@ and connecting the code version to the results is critical for
 reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 28e7b44.
+The results in this page were generated with repository version ee193fe.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -555,32 +552,7 @@ were generated:
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    data/.DS_Store
-
-Untracked files:
-    Untracked:  analysis/cTWAS.Rmd
-    Untracked:  analysis/locus_plot.R
-    Untracked:  analysis/single_cTWAS.Rmd
-    Untracked:  data/GABA_gene_PIP.txt
-    Untracked:  data/GABA_rerun_gene_PIP.txt
-    Untracked:  data/SCZ_enriched_GO_sets.csv
-    Untracked:  data/cellgroup_GABA_params.rds
-    Untracked:  data/cellgroup_nmglut_params.rds
-    Untracked:  data/cellgroup_npglut_params.rds
-    Untracked:  data/multigroup_GABA_params.rds
-    Untracked:  data/multigroup_nmglut_params.rds
-    Untracked:  data/multigroup_npglut_params.rds
-    Untracked:  data/nmglut_gene_PIP.txt
-    Untracked:  data/nmglut_rerun_gene_PIP.txt
-    Untracked:  data/npglut_gene_PIP.txt
-    Untracked:  data/npglut_rerun_gene_PIP.txt
-    Untracked:  data/rstudio-export.zip
-    Untracked:  data/single_dynamic/
-    Untracked:  data/single_group_ctwas/
-    Untracked:  data/static_GABA_gene_pip.txt
-
-Unstaged changes:
-    Modified:   analysis/_site.yml
-    Modified:   analysis/index.Rmd
+    Ignored:    data/single_group_ctwas/.DS_Store
 
 </code></pre>
 <p>
@@ -595,10 +567,73 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/cTWAS.Rmd</code>) and HTML
+(<code>docs/cTWAS.html</code>) files. If you’ve configured a remote Git
+repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
+in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -690,8 +725,119 @@ points.</p>
 <h3>cTWAS parameter estimates for nmglut</h3>
 <p><img src="assets/nmglut.png" alt="nmglut multigroup" />
 <img src="figure/cTWAS.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="ctwas-parameter-estimates-for-npglut" class="section level3">
 <h3>cTWAS parameter estimates for npglut</h3>
@@ -1857,6 +2003,43 @@ condition.</p>
 <div id="correlation-of-pip-across-cell-types" class="section level3">
 <h3>Correlation of PIP across cell types</h3>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-9-1.png" width="1728" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="overlap-of-egenes-across-celltypes" class="section level3">
 <h3>Overlap of eGenes across celltypes</h3>
@@ -1879,10 +2062,84 @@ venn.diagram(list(GABA.pip1$genename, nmglut.pip1$genename, npglut.pip1$genename
 glut cells are dynamic. For GABA, more than half top genes are
 dynamic.</p>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="comparison-with-single-group-ctwas" class="section level3">
 <h3>Comparison with single group cTWAS</h3>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="enrichment-analysis" class="section level3">
 <h3>Enrichment analysis</h3>
@@ -1904,6 +2161,43 @@ OxEnrichr ... Connection is Live!</code></pre>
   Querying GO_Biological_Process_2015... Done.
 Parsing results... Done.</code></pre>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
+Past versions of unnamed-chunk-13-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-13-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="nmglut-top-genes-enrichment-in-go-biological-process"
 class="section level4">
@@ -1914,6 +2208,43 @@ class="section level4">
   Querying GO_Biological_Process_2015... Done.
 Parsing results... Done.</code></pre>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="npglut-top-genes-enrichment-in-go-biological-process"
 class="section level4">
@@ -1924,6 +2255,43 @@ class="section level4">
   Querying GO_Biological_Process_2015... Done.
 Parsing results... Done.</code></pre>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+ee193fe
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="genomic-locus-plot" class="section level4">
 <h4>Genomic locus plot</h4>
