@@ -343,7 +343,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/LifanLiang/neuron_stimulation_100line_eQTL">
+  <a href="https://github.com/LifanLiang/neuron_stim_eQTL100">
     <span class="fab fa-github"></span>
      
     Source code
@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +418,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,13 +523,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongee193fe">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee4f33d55e40c2142b57d2ccd041d3e299484f8f9targetblanke4f33d5a">
 <span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Repository version:</strong> ee193fe
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e4f33d55e40c2142b57d2ccd041d3e299484f8f9" target="_blank">e4f33d5</a>
 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongee193fe"
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee4f33d55e40c2142b57d2ccd041d3e299484f8f9targetblanke4f33d5a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -535,7 +540,8 @@ and connecting the code version to the results is critical for
 reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version ee193fe.
+The results in this page were generated with repository version
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e4f33d55e40c2142b57d2ccd041d3e299484f8f9" target="_blank">e4f33d5</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -553,6 +559,9 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Unstaged changes:
+    Modified:   analysis/cTWAS.Rmd
 
 </code></pre>
 <p>
@@ -599,10 +608,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cf0d8df0c4013bbe3ed414e035f6805e85e476aa/docs/cTWAS.html" target="_blank">cf0d8df</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-11-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/analysis/cTWAS.Rmd" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -619,7 +645,7 @@ wflow_publish(c("analysis", "data", "docs"))
 html
 </td>
 <td>
-ee193fe
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ee193fe130edb0a02a90add90d21f60d0557f934/docs/cTWAS.html" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -749,7 +775,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-2-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -787,7 +813,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-3-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -825,7 +851,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-4-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2027,7 +2053,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-9-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2043,16 +2069,11 @@ Lifan Liang
 </div>
 <div id="overlap-of-egenes-across-celltypes" class="section level3">
 <h3>Overlap of eGenes across celltypes</h3>
-<pre class="r"><code>library(VennDiagram)</code></pre>
 <pre><code>Loading required package: grid</code></pre>
 <pre><code>Loading required package: futile.logger</code></pre>
-<pre class="r"><code>library(RColorBrewer)
-myCol &lt;- brewer.pal(3, &quot;Pastel2&quot;)
-
-venn.diagram(list(GABA.pip1$genename, nmglut.pip1$genename, npglut.pip1$genename), filename = &quot;docs/assets/venn_egenes.png&quot;, category.names = c(&quot;GABA&quot;,&quot;nmglut&quot;,&quot;npglut&quot;), output=T, fill=myCol, lty=&quot;blank&quot;, lwd=2, cat.fontface = &quot;bold&quot;, fontface=&quot;bold&quot;, cex =2, cat.cex = 2, cat.fontfamily = &quot;sans&quot;, fontfamily=&quot;sans&quot;)</code></pre>
 <pre><code>[1] 1</code></pre>
 <div class="figure">
-<img src="docs/assets/venn_egenes.png" alt="" />
+<img src="assets/venn_egenes.svg" alt="" />
 <p class="caption">Overlap of top genes</p>
 </div>
 </div>
@@ -2086,7 +2107,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-11-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2127,7 +2148,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-12-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2185,7 +2206,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-13-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2232,7 +2253,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-14-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2279,7 +2300,7 @@ Date
 <tbody>
 <tr>
 <td>
-ee193fe
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-15-1.png" target="_blank">ee193fe</a>
 </td>
 <td>
 Lifan Liang
@@ -2298,12 +2319,12 @@ Lifan Liang
 <p>We selected GPR137 and NGEF as an example of cTWAS results. Triangle
 shape dictates the gene we focused on.</p>
 <div class="figure">
-<img src="docs/assets/multigroup_locus_plot_GPR137.png" alt="" />
-<p class="caption">GPR137 locus</p>
+<img src="assets/multigroup_locus_plot_GPR137.png" alt="" />
+<p class="caption">Specific GPR137 effects in GABA stimulation</p>
 </div>
 <div class="figure">
-<img src="docs/assets/multigroup_locus_plot_NGEF.png" alt="" />
-<p class="caption">NGEF locus</p>
+<img src="assets/multigroup_locus_plot_NGEF.png" alt="" />
+<p class="caption">Specific NGEF effects in Glut cells stimulation</p>
 </div>
 <br>
 <p>

@@ -132,15 +132,15 @@ text(1.0,1.1,paste0("corr: ", sprintf("%.3f",cor(all$PIP_sum.y, all$PIP_sum, use
 
 ### Overlap of eGenes across celltypes
 
-```{r}
+```{r, echo=F}
 library(VennDiagram)
 library(RColorBrewer)
 myCol <- brewer.pal(3, "Pastel2")
 
-venn.diagram(list(GABA.pip1$genename, nmglut.pip1$genename, npglut.pip1$genename), filename = "docs/assets/venn_egenes.png", category.names = c("GABA","nmglut","npglut"), output=T, fill=myCol, lty="blank", lwd=2, cat.fontface = "bold", fontface="bold", cex =2, cat.cex = 2, cat.fontfamily = "sans", fontfamily="sans")
+venn.diagram(list(GABA.pip1$genename, nmglut.pip1$genename, npglut.pip1$genename), filename = "docs/assets/venn_egenes.svg", category.names = c("GABA","nmglut","npglut"), output=T, fill=myCol, lty="blank", lwd=2, cat.fontface = "bold", fontface="bold", cex =2, cat.cex = 2, cat.fontfamily = "sans", fontfamily="sans")
 ```
 
-![Overlap of top genes](docs/assets/venn_egenes.png)
+![Overlap of top genes](assets/venn_egenes.svg)
 
 ### Dynamic eGenes
 
@@ -227,8 +227,8 @@ if (websiteLive) {
 
 We selected GPR137 and NGEF as an example of cTWAS results. Triangle shape dictates the gene we focused on.
 
-![GPR137 locus](docs/assets/multigroup_locus_plot_GPR137.png)
+![Specific GPR137 effects in GABA stimulation](assets/multigroup_locus_plot_GPR137.png)
 
 
-![NGEF locus](docs/assets/multigroup_locus_plot_NGEF.png)
+![Specific NGEF effects in Glut cells stimulation](assets/multigroup_locus_plot_NGEF.png)
 
