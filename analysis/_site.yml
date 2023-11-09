@@ -12,7 +12,7 @@ navbar:
   right:
   - icon: fab fa-github
     text: Source code
-    href: https://github.com/LifanLiang/neuron_stimulation_100line_eQTL
+    href: https://github.com/LifanLiang/neuron_stim_eQTL100
 output:
   workflowr::wflow_html:
     toc: yes
