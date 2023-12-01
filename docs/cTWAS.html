@@ -370,7 +370,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -381,8 +381,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -391,13 +391,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-11-27
+<strong>Last updated:</strong> 2023-12-01
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -420,21 +420,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -525,15 +522,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree775e28ec9823c7f9c7594f4e87ccf2ad5a0feefdtargetblank775e28ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree668c7b246be05219745f78e5e68e7dd839aebda1targetblank668c7b2a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/775e28ec9823c7f9c7594f4e87ccf2ad5a0feefd" target="_blank">775e28e</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/668c7b246be05219745f78e5e68e7dd839aebda1" target="_blank">668c7b2</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree775e28ec9823c7f9c7594f4e87ccf2ad5a0feefdtargetblank775e28ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree668c7b246be05219745f78e5e68e7dd839aebda1targetblank668c7b2a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -543,7 +540,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/775e28ec9823c7f9c7594f4e87ccf2ad5a0feefd" target="_blank">775e28e</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/668c7b246be05219745f78e5e68e7dd839aebda1" target="_blank">668c7b2</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -562,9 +559,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
-
-Unstaged changes:
-    Modified:   analysis/cTWAS.Rmd
 
 </code></pre>
 <p>
@@ -609,6 +603,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/668c7b246be05219745f78e5e68e7dd839aebda1/analysis/cTWAS.Rmd" target="_blank">668c7b2</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-01
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/668c7b246be05219745f78e5e68e7dd839aebda1/docs/cTWAS.html" target="_blank">668c7b2</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-01
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -3696,8 +3724,8 @@ Lifan Liang
 </div>
 </div>
 </div>
-<div id="overlap-of-egenes-across-celltypes" class="section level3">
-<h3>Overlap of eGenes across celltypes</h3>
+<div id="overlap-of-top-genes-across-celltypes" class="section level3">
+<h3>Overlap of top genes across celltypes</h3>
 <pre><code>Loading required package: dplyr</code></pre>
 <pre><code>
 Attaching package: &#39;dplyr&#39;</code></pre>
@@ -3712,6 +3740,43 @@ Attaching package: &#39;dplyr&#39;</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 <pre><code>Loading required package: grid</code></pre>
 <p><img src="figure/cTWAS.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/668c7b246be05219745f78e5e68e7dd839aebda1/docs/figure/cTWAS.Rmd/unnamed-chunk-10-1.png" target="_blank">668c7b2</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="dynamic-egenes" class="section level3">
 <h3>Dynamic eGenes</h3>
@@ -3798,12 +3863,22 @@ Lifan Liang
 </div>
 </div>
 </div>
+<div id="top-gene-summary-by-locus" class="section level3">
+<h3>Top gene summary by locus</h3>
+<pre class="r"><code>library(data.table)</code></pre>
+<pre><code>
+Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:dplyr&#39;:
+
+    between, first, last</code></pre>
+<pre class="r"><code>gwas &lt;- fread(&quot;../Documents/neuron_stim/SCZ_GWAS/gwas_significant.csv&quot;)</code></pre>
+</div>
 <div id="enrichment-analysis" class="section level3">
 <h3>Enrichment analysis</h3>
 <div id="gaba-top-genes-enrichment-in-go-biological-process"
 class="section level4">
 <h4>GABA top genes enrichment in GO biological process</h4>
-<p>gene set enrichment analysis for each cell type and then a union</p>
+<p>gene set enrichment analysis for each cell type and then a union.</p>
 <pre><code>Welcome to enrichR
 Checking connection ... </code></pre>
 <pre><code>Enrichr ... Connection is Live!
@@ -3812,53 +3887,6 @@ WormEnrichr ... Connection is Live!
 YeastEnrichr ... Connection is Live!
 FishEnrichr ... Connection is Live!
 OxEnrichr ... Connection is Live!</code></pre>
-<pre><code>Uploading data to Enrichr... Done.
-  Querying GO_Molecular_Function_2015... Done.
-  Querying GO_Cellular_Component_2015... Done.
-  Querying GO_Biological_Process_2015... Done.
-Parsing results... Done.</code></pre>
-<p><img src="figure/cTWAS.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
-Past versions of unnamed-chunk-13-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-13-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/docs/figure/cTWAS.Rmd/unnamed-chunk-13-1.png" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="nmglut-top-genes-enrichment-in-go-biological-process"
-class="section level4">
-<h4>nmglut top genes enrichment in GO biological process</h4>
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Molecular_Function_2015... Done.
   Querying GO_Cellular_Component_2015... Done.
@@ -3903,9 +3931,9 @@ Lifan Liang
 </div>
 </div>
 </div>
-<div id="npglut-top-genes-enrichment-in-go-biological-process"
+<div id="nmglut-top-genes-enrichment-in-go-biological-process"
 class="section level4">
-<h4>npglut top genes enrichment in GO biological process</h4>
+<h4>nmglut top genes enrichment in GO biological process</h4>
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Molecular_Function_2015... Done.
   Querying GO_Cellular_Component_2015... Done.
@@ -3950,6 +3978,4545 @@ Lifan Liang
 </div>
 </div>
 </div>
+<div id="npglut-top-genes-enrichment-in-go-biological-process"
+class="section level4">
+<h4>npglut top genes enrichment in GO biological process</h4>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Molecular_Function_2015... Done.
+  Querying GO_Cellular_Component_2015... Done.
+  Querying GO_Biological_Process_2015... Done.
+Parsing results... Done.</code></pre>
+<p><img src="figure/cTWAS.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div
+id="comparing-top-genes-across-cell-types-nominated-in-the-same-locus"
+class="section level4">
+<h4>Comparing top genes across cell types nominated in the same
+locus</h4>
+<p>This table shows how different cell types may nominate different
+genes in the same locus.</p>
+<p>Only NPIPB2 and HLA-DMA has been norminated by all the three cell
+types.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
+<table>
+<caption>
+Dynamic genes by locus
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GWAS.sig
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GABA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+npglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+nmglut
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1_9
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FBXO44
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+LRFN2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_8
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FBXO44
+</td>
+<td style="text-align:left;">
+DISP3
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_19
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+RCC1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_76
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PYGO2
+</td>
+<td style="text-align:left;">
+THBS3
+</td>
+<td style="text-align:left;">
+KCNN3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_104
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+RBBP5
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_23
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+CEBPZ
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_35
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CHAC2
+</td>
+<td style="text-align:left;">
+CHAC2
+</td>
+<td style="text-align:left;">
+ACYP2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_47
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+ZNF638
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_57
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+ANKRD39
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_1
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CHL1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_14
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+EFHB
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+ZNF852
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_35
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+RBM6
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ZMYND10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_103
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+SERPINI1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+SERPINI1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_114
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRA2B
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4_26
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PCDH7
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_90
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+MFAP3
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_27
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+HLA-DMA
+</td>
+<td style="text-align:left;">
+HLA-DMA
+</td>
+<td style="text-align:left;">
+HLA-DMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_32
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+LRFN2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_72
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+SCML4
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_54
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+CROT
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_62
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+LRCH4
+</td>
+<td style="text-align:left;">
+GIGYF1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8_15
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+LONRF1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_20
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PLAA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_47
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FAM120AOS
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_55
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CTNNAL1
+</td>
+<td style="text-align:left;">
+ABITRAM
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_66
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TBC1D13
+</td>
+<td style="text-align:left;">
+CRAT
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_49
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+LRMDA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_50
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+KCNMA1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_79
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+INSYN2A
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+ARL14EP
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_28
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+ATG13
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_35
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+NUDT22
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_36
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+GPR137,NUDT22
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+DCP1B
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DCP1B
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_66
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+GLTP
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_73
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CCDC60
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_74
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CCDC60
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_62
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+RASA3
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_33
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PCNX1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15_19
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+GALK2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16_4
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+CDIP1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16_12
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+NPIPB2
+</td>
+<td style="text-align:left;">
+NPIPB2
+</td>
+<td style="text-align:left;">
+NPIPB2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16_24
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TMEM219
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16_30
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+NLRC5
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17_22
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+GGNBP2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17_28
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+ATP5MC1
+</td>
+<td style="text-align:left;">
+ATP5MC1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_34
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PPFIA3
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CPT1C
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20_15
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+XRN2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_16
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+SYNGR1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+MCHR1,NDUFA6
+</td>
+<td style="text-align:left;">
+NAGA,SMDT1
+</td>
+<td style="text-align:left;">
+CYP2D6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_18
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+NDUFA6
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+CDPF1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_136
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TIGD1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_45
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+AUTS2
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TMX1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_23
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+GCH1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_105
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CD46
+</td>
+<td style="text-align:left;">
+CD46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_48
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ALMS1
+</td>
+<td style="text-align:left;">
+SMYD5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_104
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+SLC25A12
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_105
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+OLA1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_116
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DNAH7,HECW2
+</td>
+<td style="text-align:left;">
+DNAH7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_137
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NGEF,TIGD1
+</td>
+<td style="text-align:left;">
+NGEF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_24
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CRTAP
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_25
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CRTAP
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_120
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+PCYT1A
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_26
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CSNK2B
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_33
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DNPH1
+</td>
+<td style="text-align:left;">
+DNPH1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_35
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TDRD6
+</td>
+<td style="text-align:left;">
+TDRD6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_46
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+AUTS2
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8_74
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+EMC2
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_75
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+MPHOSPH9
+</td>
+<td style="text-align:left;">
+RFLNA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_4
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TNFRSF19
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_60
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ARHGEF7
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_9
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+PPP2R3C
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_20
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TMX1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_24
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+GCH1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15_14
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+BMF
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15_21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ARPP19
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15_37
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CHRNA3
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_2
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+APC2,MOB3A
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+MOB3A
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_10
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ZNF823
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_15
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+MAU2
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20_31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+MOCS3
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21_14
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ITSN1
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21_15
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ITSN1
+</td>
+<td style="text-align:left;">
+ATP5PO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_24
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ZBED4
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_7
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+KDM4C
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_71
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TSPAN2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_85
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ANKRD45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_86
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+TNR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+FOXN2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_76
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+KALRN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_77
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+KALRN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_79
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+EEFSEC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_82
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CXXC5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_108
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ADAMTS2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_18
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+KIAA0319
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8_49
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CYP7B1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_8
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+KDM4C
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9_27
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+GLIPR2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_76
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ATE1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_29
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+C1QTNF4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+SPATS2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_17
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CCDC122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16_1
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+METRN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17_19
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+C17orf75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17_46
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+OXLD1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="dynamic-egenes-for-acroo-all-celltypes" class="section level4">
+<h4>Dynamic eGenes for acroo all celltypes</h4>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
+<table>
+<caption>
+Dynamic genes by locus
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+tag
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X0hr_GABA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X6hr_GABA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X1hr_GABA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X0hr_nmglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X1hr_nmglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X6hr_nmglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X0hr_npglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X1hr_npglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+X6hr_npglut
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+FBXO44
+</td>
+<td style="text-align:left;">
+1_9,1_8
+</td>
+<td style="text-align:left;">
+0.01326
+</td>
+<td style="text-align:left;">
+0.85853
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LRFN2
+</td>
+<td style="text-align:left;">
+6_31,6_32
+</td>
+<td style="text-align:left;">
+0.01655
+</td>
+<td style="text-align:left;">
+0.02895
+</td>
+<td style="text-align:left;">
+0.83804
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RCC1
+</td>
+<td style="text-align:left;">
+1_19
+</td>
+<td style="text-align:left;">
+0.01982
+</td>
+<td style="text-align:left;">
+0.03010
+</td>
+<td style="text-align:left;">
+0.93522
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RBBP5
+</td>
+<td style="text-align:left;">
+1_104
+</td>
+<td style="text-align:left;">
+0.02585
+</td>
+<td style="text-align:left;">
+0.58357
+</td>
+<td style="text-align:left;">
+0.37438
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CEBPZ
+</td>
+<td style="text-align:left;">
+2_23
+</td>
+<td style="text-align:left;">
+0.02651
+</td>
+<td style="text-align:left;">
+0.91710
+</td>
+<td style="text-align:left;">
+0.01649
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZNF638
+</td>
+<td style="text-align:left;">
+2_47
+</td>
+<td style="text-align:left;">
+0.01309
+</td>
+<td style="text-align:left;">
+0.78694
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DNAH7
+</td>
+<td style="text-align:left;">
+2_116
+</td>
+<td style="text-align:left;">
+0.01040
+</td>
+<td style="text-align:left;">
+0.63107
+</td>
+<td style="text-align:left;">
+0.13667
+</td>
+<td style="text-align:left;">
+0.00412
+</td>
+<td style="text-align:left;">
+0.0410
+</td>
+<td style="text-align:left;">
+0.8121
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EFHB
+</td>
+<td style="text-align:left;">
+3_14
+</td>
+<td style="text-align:left;">
+0.02423
+</td>
+<td style="text-align:left;">
+0.01562
+</td>
+<td style="text-align:left;">
+0.96469
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RBM6
+</td>
+<td style="text-align:left;">
+3_35
+</td>
+<td style="text-align:left;">
+0.06167
+</td>
+<td style="text-align:left;">
+0.80171
+</td>
+<td style="text-align:left;">
+0.00778
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EEFSEC
+</td>
+<td style="text-align:left;">
+3_79
+</td>
+<td style="text-align:left;">
+0.05517
+</td>
+<td style="text-align:left;">
+0.39533
+</td>
+<td style="text-align:left;">
+0.26877
+</td>
+<td style="text-align:left;">
+0.05081
+</td>
+<td style="text-align:left;">
+0.4757
+</td>
+<td style="text-align:left;">
+0.3365
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SERPINI1
+</td>
+<td style="text-align:left;">
+3_103
+</td>
+<td style="text-align:left;">
+0.17257
+</td>
+<td style="text-align:left;">
+0.49913
+</td>
+<td style="text-align:left;">
+0.32015
+</td>
+<td style="text-align:left;">
+0.00281
+</td>
+<td style="text-align:left;">
+0.7375
+</td>
+<td style="text-align:left;">
+0.2593
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MFAP3
+</td>
+<td style="text-align:left;">
+5_90
+</td>
+<td style="text-align:left;">
+0.07074
+</td>
+<td style="text-align:left;">
+0.44167
+</td>
+<td style="text-align:left;">
+0.42676
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TDRD6
+</td>
+<td style="text-align:left;">
+6_35
+</td>
+<td style="text-align:left;">
+0.01557
+</td>
+<td style="text-align:left;">
+0.08875
+</td>
+<td style="text-align:left;">
+0.43638
+</td>
+<td style="text-align:left;">
+0.00230
+</td>
+<td style="text-align:left;">
+0.9485
+</td>
+<td style="text-align:left;">
+0.1411
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SCML4
+</td>
+<td style="text-align:left;">
+6_72
+</td>
+<td style="text-align:left;">
+0.01985
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.78554
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CROT
+</td>
+<td style="text-align:left;">
+7_54
+</td>
+<td style="text-align:left;">
+0.01574
+</td>
+<td style="text-align:left;">
+0.98999
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LONRF1
+</td>
+<td style="text-align:left;">
+8_15
+</td>
+<td style="text-align:left;">
+0.11639
+</td>
+<td style="text-align:left;">
+0.73315
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FAM120AOS
+</td>
+<td style="text-align:left;">
+9_47
+</td>
+<td style="text-align:left;">
+0.05488
+</td>
+<td style="text-align:left;">
+0.76866
+</td>
+<td style="text-align:left;">
+0.04581
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.12e-02
+</td>
+<td style="text-align:left;">
+6.56e-01
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CTNNAL1
+</td>
+<td style="text-align:left;">
+9_55
+</td>
+<td style="text-align:left;">
+0.01488
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.81565
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LRMDA
+</td>
+<td style="text-align:left;">
+10_49
+</td>
+<td style="text-align:left;">
+0.03846
+</td>
+<td style="text-align:left;">
+0.81600
+</td>
+<td style="text-align:left;">
+0.01024
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KCNMA1
+</td>
+<td style="text-align:left;">
+10_50
+</td>
+<td style="text-align:left;">
+0.16283
+</td>
+<td style="text-align:left;">
+0.06272
+</td>
+<td style="text-align:left;">
+0.83307
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ATE1
+</td>
+<td style="text-align:left;">
+10_76
+</td>
+<td style="text-align:left;">
+0.01206
+</td>
+<td style="text-align:left;">
+0.59182
+</td>
+<td style="text-align:left;">
+0.01284
+</td>
+<td style="text-align:left;">
+0.00577
+</td>
+<td style="text-align:left;">
+0.5053
+</td>
+<td style="text-align:left;">
+0.3748
+</td>
+<td style="text-align:left;">
+1.21e-02
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.61078
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARL14EP
+</td>
+<td style="text-align:left;">
+11_21
+</td>
+<td style="text-align:left;">
+0.01998
+</td>
+<td style="text-align:left;">
+0.98154
+</td>
+<td style="text-align:left;">
+0.01477
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.64e-02
+</td>
+<td style="text-align:left;">
+9.36e-02
+</td>
+<td style="text-align:left;">
+0.61681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GLTP
+</td>
+<td style="text-align:left;">
+12_66
+</td>
+<td style="text-align:left;">
+0.02217
+</td>
+<td style="text-align:left;">
+0.95727
+</td>
+<td style="text-align:left;">
+0.00955
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CCDC122
+</td>
+<td style="text-align:left;">
+13_17
+</td>
+<td style="text-align:left;">
+0.01333
+</td>
+<td style="text-align:left;">
+0.56715
+</td>
+<td style="text-align:left;">
+0.01035
+</td>
+<td style="text-align:left;">
+0.00606
+</td>
+<td style="text-align:left;">
+0.3163
+</td>
+<td style="text-align:left;">
+0.5610
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GALK2
+</td>
+<td style="text-align:left;">
+15_19
+</td>
+<td style="text-align:left;">
+0.01166
+</td>
+<td style="text-align:left;">
+0.99104
+</td>
+<td style="text-align:left;">
+0.04727
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TMEM219
+</td>
+<td style="text-align:left;">
+16_24
+</td>
+<td style="text-align:left;">
+0.02987
+</td>
+<td style="text-align:left;">
+0.97349
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NLRC5
+</td>
+<td style="text-align:left;">
+16_30
+</td>
+<td style="text-align:left;">
+0.06948
+</td>
+<td style="text-align:left;">
+0.02237
+</td>
+<td style="text-align:left;">
+0.76710
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GGNBP2
+</td>
+<td style="text-align:left;">
+17_22
+</td>
+<td style="text-align:left;">
+0.02443
+</td>
+<td style="text-align:left;">
+0.07314
+</td>
+<td style="text-align:left;">
+0.89637
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ATP5MC1
+</td>
+<td style="text-align:left;">
+17_28
+</td>
+<td style="text-align:left;">
+0.07083
+</td>
+<td style="text-align:left;">
+0.53826
+</td>
+<td style="text-align:left;">
+0.34532
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+9.57e-02
+</td>
+<td style="text-align:left;">
+1.01e-02
+</td>
+<td style="text-align:left;">
+0.80730
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+XRN2
+</td>
+<td style="text-align:left;">
+20_15
+</td>
+<td style="text-align:left;">
+0.01590
+</td>
+<td style="text-align:left;">
+0.90924
+</td>
+<td style="text-align:left;">
+0.02120
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MCHR1
+</td>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+0.00662
+</td>
+<td style="text-align:left;">
+0.95219
+</td>
+<td style="text-align:left;">
+0.00428
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NDUFA6
+</td>
+<td style="text-align:left;">
+22_17,22_18
+</td>
+<td style="text-align:left;">
+0.00747
+</td>
+<td style="text-align:left;">
+0.00976
+</td>
+<td style="text-align:left;">
+0.95952
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZBED4
+</td>
+<td style="text-align:left;">
+22_24
+</td>
+<td style="text-align:left;">
+0.01265
+</td>
+<td style="text-align:left;">
+0.01146
+</td>
+<td style="text-align:left;">
+0.71645
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TIGD1
+</td>
+<td style="text-align:left;">
+2_136,2_137
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2.44e-02
+</td>
+<td style="text-align:left;">
+8.68e-03
+</td>
+<td style="text-align:left;">
+0.89846
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUTS2
+</td>
+<td style="text-align:left;">
+7_45,7_46
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.64e-01
+</td>
+<td style="text-align:left;">
+6.74e-01
+</td>
+<td style="text-align:left;">
+0.27350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TMX1
+</td>
+<td style="text-align:left;">
+14_21,14_20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.19e-02
+</td>
+<td style="text-align:left;">
+6.45e-03
+</td>
+<td style="text-align:left;">
+0.96764
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GCH1
+</td>
+<td style="text-align:left;">
+14_23,14_24
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.55e-02
+</td>
+<td style="text-align:left;">
+8.64e-03
+</td>
+<td style="text-align:left;">
+0.94710
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DISP3
+</td>
+<td style="text-align:left;">
+1_8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.45e-02
+</td>
+<td style="text-align:left;">
+2.79e-01
+</td>
+<td style="text-align:left;">
+0.62380
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THBS3
+</td>
+<td style="text-align:left;">
+1_76
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.23e-02
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.99392
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALMS1
+</td>
+<td style="text-align:left;">
+2_48
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.96e-02
+</td>
+<td style="text-align:left;">
+8.17e-01
+</td>
+<td style="text-align:left;">
+0.02492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SLC25A12
+</td>
+<td style="text-align:left;">
+2_104
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.19e-02
+</td>
+<td style="text-align:left;">
+8.93e-01
+</td>
+<td style="text-align:left;">
+0.01820
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OLA1
+</td>
+<td style="text-align:left;">
+2_105
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+7.81e-03
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.97264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NGEF
+</td>
+<td style="text-align:left;">
+2_137
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00219
+</td>
+<td style="text-align:left;">
+0.9541
+</td>
+<td style="text-align:left;">
+0.0984
+</td>
+<td style="text-align:left;">
+1.01e-02
+</td>
+<td style="text-align:left;">
+8.27e-01
+</td>
+<td style="text-align:left;">
+0.06836
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRTAP
+</td>
+<td style="text-align:left;">
+3_24,3_25
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3.15e-02
+</td>
+<td style="text-align:left;">
+2.05e-01
+</td>
+<td style="text-align:left;">
+0.73844
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CSNK2B
+</td>
+<td style="text-align:left;">
+6_26
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.61e-05
+</td>
+<td style="text-align:left;">
+4.38e-06
+</td>
+<td style="text-align:left;">
+0.86960
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DNPH1
+</td>
+<td style="text-align:left;">
+6_33
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.01540
+</td>
+<td style="text-align:left;">
+0.9386
+</td>
+<td style="text-align:left;">
+0.0266
+</td>
+<td style="text-align:left;">
+4.49e-02
+</td>
+<td style="text-align:left;">
+8.03e-01
+</td>
+<td style="text-align:left;">
+0.02822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EMC2
+</td>
+<td style="text-align:left;">
+8_74
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.75e-02
+</td>
+<td style="text-align:left;">
+6.55e-03
+</td>
+<td style="text-align:left;">
+0.80154
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABITRAM
+</td>
+<td style="text-align:left;">
+9_55
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.55e-02
+</td>
+<td style="text-align:left;">
+8.59e-01
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARHGEF7
+</td>
+<td style="text-align:left;">
+13_60
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2.65e-02
+</td>
+<td style="text-align:left;">
+6.26e-03
+</td>
+<td style="text-align:left;">
+0.85458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PPP2R3C
+</td>
+<td style="text-align:left;">
+14_9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4.32e-02
+</td>
+<td style="text-align:left;">
+8.57e-01
+</td>
+<td style="text-align:left;">
+0.01629
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARPP19
+</td>
+<td style="text-align:left;">
+15_21
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.80e-01
+</td>
+<td style="text-align:left;">
+6.79e-01
+</td>
+<td style="text-align:left;">
+0.03256
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZNF823
+</td>
+<td style="text-align:left;">
+19_10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3.85e-02
+</td>
+<td style="text-align:left;">
+9.94e-01
+</td>
+<td style="text-align:left;">
+0.00994
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAU2
+</td>
+<td style="text-align:left;">
+19_15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.22e-02
+</td>
+<td style="text-align:left;">
+7.87e-01
+</td>
+<td style="text-align:left;">
+0.02200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MOCS3
+</td>
+<td style="text-align:left;">
+20_31
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.06e-01
+</td>
+<td style="text-align:left;">
+1.53e-01
+</td>
+<td style="text-align:left;">
+0.62829
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ITSN1
+</td>
+<td style="text-align:left;">
+21_14,21_15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3.13e-02
+</td>
+<td style="text-align:left;">
+2.23e-01
+</td>
+<td style="text-align:left;">
+0.63348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NAGA
+</td>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4.92e-03
+</td>
+<td style="text-align:left;">
+2.86e-03
+</td>
+<td style="text-align:left;">
+0.99344
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SMDT1
+</td>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5.78e-03
+</td>
+<td style="text-align:left;">
+4.70e-01
+</td>
+<td style="text-align:left;">
+0.51011
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KDM4C
+</td>
+<td style="text-align:left;">
+9_7,9_8
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00443
+</td>
+<td style="text-align:left;">
+0.8165
+</td>
+<td style="text-align:left;">
+0.0307
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TSPAN2
+</td>
+<td style="text-align:left;">
+1_71
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00324
+</td>
+<td style="text-align:left;">
+0.0349
+</td>
+<td style="text-align:left;">
+0.8174
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KCNN3
+</td>
+<td style="text-align:left;">
+1_76
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00298
+</td>
+<td style="text-align:left;">
+0.8139
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNR
+</td>
+<td style="text-align:left;">
+1_86
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00231
+</td>
+<td style="text-align:left;">
+0.0232
+</td>
+<td style="text-align:left;">
+0.7884
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD46
+</td>
+<td style="text-align:left;">
+1_105
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.05287
+</td>
+<td style="text-align:left;">
+0.0410
+</td>
+<td style="text-align:left;">
+0.7889
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FOXN2
+</td>
+<td style="text-align:left;">
+2_31
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00694
+</td>
+<td style="text-align:left;">
+0.9888
+</td>
+<td style="text-align:left;">
+0.0297
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ACYP2
+</td>
+<td style="text-align:left;">
+2_35
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00323
+</td>
+<td style="text-align:left;">
+0.0597
+</td>
+<td style="text-align:left;">
+0.8922
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SMYD5
+</td>
+<td style="text-align:left;">
+2_48
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00397
+</td>
+<td style="text-align:left;">
+0.8180
+</td>
+<td style="text-align:left;">
+0.0251
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KALRN
+</td>
+<td style="text-align:left;">
+3_76,3_77
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00389
+</td>
+<td style="text-align:left;">
+0.0487
+</td>
+<td style="text-align:left;">
+0.8141
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CXXC5
+</td>
+<td style="text-align:left;">
+5_82
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00187
+</td>
+<td style="text-align:left;">
+0.0253
+</td>
+<td style="text-align:left;">
+0.8984
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ADAMTS2
+</td>
+<td style="text-align:left;">
+5_108
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00332
+</td>
+<td style="text-align:left;">
+0.8683
+</td>
+<td style="text-align:left;">
+0.0254
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HLA-DMA
+</td>
+<td style="text-align:left;">
+6_27
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00649
+</td>
+<td style="text-align:left;">
+0.0844
+</td>
+<td style="text-align:left;">
+0.9432
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CYP7B1
+</td>
+<td style="text-align:left;">
+8_49
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00265
+</td>
+<td style="text-align:left;">
+0.0364
+</td>
+<td style="text-align:left;">
+0.9650
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GLIPR2
+</td>
+<td style="text-align:left;">
+9_27
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00809
+</td>
+<td style="text-align:left;">
+0.9851
+</td>
+<td style="text-align:left;">
+0.0421
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRAT
+</td>
+<td style="text-align:left;">
+9_66
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00229
+</td>
+<td style="text-align:left;">
+0.3585
+</td>
+<td style="text-align:left;">
+0.3308
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DCP1B
+</td>
+<td style="text-align:left;">
+12_2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.01473
+</td>
+<td style="text-align:left;">
+0.9169
+</td>
+<td style="text-align:left;">
+0.0354
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+METRN
+</td>
+<td style="text-align:left;">
+16_1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.01450
+</td>
+<td style="text-align:left;">
+0.1812
+</td>
+<td style="text-align:left;">
+0.6454
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NPIPB2
+</td>
+<td style="text-align:left;">
+16_12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.04877
+</td>
+<td style="text-align:left;">
+0.6315
+</td>
+<td style="text-align:left;">
+0.2789
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXLD1
+</td>
+<td style="text-align:left;">
+17_46
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00273
+</td>
+<td style="text-align:left;">
+0.0460
+</td>
+<td style="text-align:left;">
+0.8970
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+APC2
+</td>
+<td style="text-align:left;">
+19_2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.02298
+</td>
+<td style="text-align:left;">
+0.3198
+</td>
+<td style="text-align:left;">
+0.3053
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ATP5PO
+</td>
+<td style="text-align:left;">
+21_15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.06722
+</td>
+<td style="text-align:left;">
+0.8708
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CYP2D6
+</td>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.00171
+</td>
+<td style="text-align:left;">
+0.8428
+</td>
+<td style="text-align:left;">
+0.0769
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="genomic-locus-plot" class="section level4">
 <h4>Genomic locus plot</h4>
 <p>We selected GPR137 and NGEF as an example of cTWAS results. Triangle
@@ -3987,8 +8554,8 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] enrichR_3.2      ggvenn_0.1.10    dplyr_1.0.7      ggplot2_3.3.5   
-[5] kableExtra_1.3.4 workflowr_1.7.0 
+[1] enrichR_3.2       data.table_1.14.2 ggvenn_0.1.10     dplyr_1.0.7      
+[5] ggplot2_3.3.5     kableExtra_1.3.4  workflowr_1.7.0  
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.11       svglite_2.1.0     getPass_0.2-2     ps_1.6.0         
