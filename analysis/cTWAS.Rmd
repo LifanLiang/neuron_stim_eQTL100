@@ -88,12 +88,16 @@ knitr::kable(pve.port1, caption="Genes accounting for 4% to 6% of total explaine
 Posterior inclusion probability (PIP) across time points summed up to be greater than 0.8 were considered top genes. GABA has 51 top genes. NMglut has 36 top genes. NPglut has 42 top genes. These are the candidate genes for running cTWAS with the full set of SNPs. "NA" means that the gene have no significant eQTLs in the corresponding condition.
 
 ```{r, echo=F}
+library(kableExtra)
 GABA.pip <- read.table("data/GABA_gene_PIP.txt", header=T)
 GABA.pip1 <- GABA.pip[GABA.pip$PIP_sum>0.8,]
 GABA.pip1 <- GABA.pip1[order(GABA.pip1$PIP_sum,decreasing=T),]
 GABA.pip1$PIP_diff <- rowSums(data.frame(x=GABA.pip1$PIP_sum, y=-2*GABA.pip1$PIP_0hr_GABA), na.rm=T)
 rownames(GABA.pip1) <- NULL
-knitr::kable(GABA.pip1, caption = "Top genes for the GABA cell type")
+GABA.pip1 %>%
+  kable(caption = "Top genes for the GABA cell type") %>%
+  scroll_box(height="200px")
+#knitr::kable(GABA.pip1, caption = "Top genes for the GABA cell type")
 ```
 
 ```{r, echo=F}
@@ -102,8 +106,12 @@ nmglut.pip1 <- nmglut.pip[nmglut.pip$PIP_sum>0.8,]
 nmglut.pip1 <- nmglut.pip1[order(nmglut.pip1$PIP_sum,decreasing=T),]
 nmglut.pip1$PIP_diff <- rowSums(data.frame(x=nmglut.pip1$PIP_sum, y=-2*nmglut.pip1$PIP_0hr_nmglut), na.rm=T)
 rownames(nmglut.pip1) <- NULL
-knitr::kable(nmglut.pip1, caption = "Top genes for the nmglut cell type")
+nmglut.pip1 %>%
+  kable(caption="Top genes for the nmGlut cell type") %>%
+  scroll_box(height="200px")
+#knitr::kable(nmglut.pip1, caption = "Top genes for the nmGlut cell type")
 ```
+
 
 ```{r, echo=F}
 npglut.pip <- read.table("data/npglut_gene_PIP.txt", header=T)
@@ -111,7 +119,10 @@ npglut.pip1 <- npglut.pip[npglut.pip$PIP_sum>0.8,]
 npglut.pip1 <- npglut.pip1[order(npglut.pip1$PIP_sum,decreasing=T),]
 npglut.pip1$PIP_diff <- rowSums(data.frame(x=npglut.pip1$PIP_sum, y=-2*npglut.pip1$PIP_0hr_npglut), na.rm=T)
 rownames(npglut.pip1) <- NULL
-knitr::kable(npglut.pip1, caption = "Top genes for the nmglut cell type")
+npglut.pip1 %>%
+  kable(caption="Top genes for the npGlut cell type") %>%
+  scroll_box(height="200px")
+#knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
 
 ### Correlation of PIP across cell types
@@ -130,23 +141,21 @@ plot(x=all$PIP_sum.y, y=all$PIP_sum, pch=16, xlab="npglut PIP", ylab="GABA")
 text(1.0,1.1,paste0("corr: ", sprintf("%.3f",cor(all$PIP_sum.y, all$PIP_sum, use="complete.obs"))))
 ```
 
-### Overlap of eGenes across celltypes
+### Overlap of top genes across celltypes
 
 ```{r, echo=F}
-library(VennDiagram)
-library(RColorBrewer)
-myCol <- brewer.pal(3, "Pastel2")
+library(ggvenn)
 
-venn.diagram(list(GABA.pip1$genename, nmglut.pip1$genename, npglut.pip1$genename), filename = "docs/assets/venn_egenes.svg", category.names = c("GABA","nmglut","npglut"), output=T, fill=myCol, lty="blank", lwd=2, cat.fontface = "bold", fontface="bold", cex =2, cat.cex = 2, cat.fontfamily = "sans", fontfamily="sans")
+ggvenn(list(GABA=GABA.pip1$genename, nmglut=nmglut.pip1$genename, npglut=npglut.pip1$genename),
+       c("GABA","nmglut","npglut"))
 ```
 
-![Overlap of top genes](assets/venn_egenes.svg)
 
 ### Dynamic eGenes
 
 PIP_diff > 0.5 defined as dynamic eGenes. Most genes identified in glut cells are dynamic. For GABA, more than half top genes are dynamic.
 
-```{r,echo=F}
+```{r,echo=F,message=F}
 library(ggplot2)
 dat <- data.frame(Ngenes=c(30,35,27,21,1,7), celltype=rep(c("GABA","nmglut","npglut"),2),
            dynamic=c(rep(T,3), rep(F,3)))
@@ -183,12 +192,20 @@ plot(x=static1$susie_pip, GABA.shared$PIP_sum, ylim=c(0,1), xlim=c(0,1),
 lines(c(0,1), c(0,1), col="red")
 ```
 
+### Top gene summary by locus
+
+```{r}
+library(data.table)
+gwas <- fread("../Documents/neuron_stim/SCZ_GWAS/gwas_significant.csv")
+
+```
 
 ### Enrichment analysis
 
 #### GABA top genes enrichment in GO biological process
 
-gene set enrichment analysis for each cell type and then a union
+gene set enrichment analysis for each cell type and then a union.
+
 ```{r, echo=F}
 library(enrichR)
 websiteLive <- getOption("enrichR.live")
@@ -203,7 +220,7 @@ if (websiteLive) {
 
 #### nmglut top genes enrichment in GO biological process
 
-```{r, echo=F}
+```{r, echo=F, message=F}
 if (websiteLive) {
     enriched <- enrichr(nmglut.pip1$genename, dbs)
 }
@@ -214,7 +231,7 @@ if (websiteLive) {
 
 #### npglut top genes enrichment in GO biological process
 
-```{r,echo=F}
+```{r,echo=F, message=F}
 if (websiteLive) {
     enriched <- enrichr(npglut.pip1$genename, dbs)
 }
@@ -222,6 +239,38 @@ if (websiteLive) {
     plotEnrich(enriched[[3]], showTerms = 10, numChar = 40, y = "Count", orderBy = "P.value")
 }
 ```
+
+
+#### Comparing top genes across cell types nominated in the same locus
+
+This table shows how different cell types may nominate different genes in the same locus. 
+
+Only NPIPB2 and HLA-DMA has been norminated by all the three cell types.
+
+```{r, echo=F}
+tgene <- read.table("data/multigroup_cTWAS_topgene_by_locus.txt", header=T, sep=" ")
+#rownames(npglut.pip1) <- NULL
+tgene %>%
+  mutate_if(is.numeric, format, digits=3,nsmall = 0) %>%
+  kable(caption="Dynamic genes by locus") %>%
+  scroll_box(height="200px")
+#knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
+```
+
+#### Dynamic eGenes for acroo all celltypes
+
+```{r, echo=F}
+dgene <- read.table("data/multigroup_cTWAS_dynamic_gene_by_locus.txt", header=T)
+#rownames(npglut.pip1) <- NULL
+dgene[,-1] %>%
+  mutate_if(is.numeric, format, digits=3,nsmall = 0) %>%
+  kable(caption="Dynamic genes by locus") %>%
+  scroll_box(height="200px")
+#knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
+```
+
+
+
 
 #### Genomic locus plot
 
