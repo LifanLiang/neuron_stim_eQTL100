@@ -1,0 +1,4322 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lifan Liang" />
+
+<meta name="date" content="2023-12-08" />
+
+<title>caQTL_cTWAS</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">neuron_stimulation_100line_eQTL</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/LifanLiang/neuron_stim_eQTL100">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">caQTL_cTWAS</h1>
+<h4 class="author">Lifan Liang</h4>
+<h4 class="date">2023-12-08</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2023-12-08
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20231109code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20231109)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20231109code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20231109)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefeb17830faf52041ed0ad97f06150c705aa15dcbtargetblankfeb1783a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/feb17830faf52041ed0ad97f06150c705aa15dcb" target="_blank">feb1783</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefeb17830faf52041ed0ad97f06150c705aa15dcbtargetblankfeb1783a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/feb17830faf52041ed0ad97f06150c705aa15dcb" target="_blank">feb1783</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    data/.DS_Store
+    Ignored:    data/single_group_ctwas/.DS_Store
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/caQTL_cTWAS.Rmd</code>) and HTML
+(<code>docs/caQTL_cTWAS.html</code>) files. If you’ve configured a
+remote Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/feb17830faf52041ed0ad97f06150c705aa15dcb/analysis/caQTL_cTWAS.Rmd" target="_blank">feb1783</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-08
+</td>
+<td>
+wflow_publish(c("analysis", "data"))
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="peak-selection" class="section level2">
+<h2>Peak selection</h2>
+<p>cPeaks was defined as FDR &lt; 0.05. The inclusion of peaks for each
+condition (a unique combination of time points and cell types) is: (1) a
+caPeak in any time point in the same cell type; (2) nominal P value &lt;
+0.1 in the current condition. The number of peaks was shown in the table
+below</p>
+<table>
+<caption>Number of peaks included in cTWAS</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">0hour</th>
+<th align="right">1hour</th>
+<th align="right">6hour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GABA</td>
+<td align="right">11580</td>
+<td align="right">12059</td>
+<td align="right">12110</td>
+</tr>
+<tr class="even">
+<td align="left">nmglut</td>
+<td align="right">6322</td>
+<td align="right">6593</td>
+<td align="right">6603</td>
+</tr>
+<tr class="odd">
+<td align="left">npglut</td>
+<td align="right">13107</td>
+<td align="right">13633</td>
+<td align="right">13632</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ctwas-parameter-estimation" class="section level2">
+<h2>cTWAS parameter estimation</h2>
+<p>For each peak selected, the lead caQTL was used to build the
+prediction model. cTWAS first performed parameter estimation without
+fine mapping.</p>
+<div id="gaba-parameters" class="section level3">
+<h3>GABA parameters</h3>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="npglut-parameters" class="section level3">
+<h3>NPglut parameters</h3>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="nmglut-parameters" class="section level3">
+<h3>NMglut parameters</h3>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="significant-peaks" class="section level2">
+<h2>Significant peaks</h2>
+<p>A peak is significant for the cell type if its sum of PIP across time
+points is more than 0.8.</p>
+<div id="gaba-significant-peaks" class="section level3">
+<h3>GABA significant peaks</h3>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
+<table>
+<caption>
+Significant peaks for the GABA cell type
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+PeakRange
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_sum
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_0hr_GABA
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_1hr_GABA
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_6hr_GABA
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_diff
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:right;">
+1.015
+</td>
+<td style="text-align:right;">
+0.431
+</td>
+<td style="text-align:right;">
+0.126
+</td>
+<td style="text-align:right;">
+0.458
+</td>
+<td style="text-align:right;">
+0.153
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr18_29920961_29921461
+</td>
+<td style="text-align:right;">
+1.010
+</td>
+<td style="text-align:right;">
+0.487
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.518
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_157665058_157665558
+</td>
+<td style="text-align:right;">
+1.008
+</td>
+<td style="text-align:right;">
+0.013
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.989
+</td>
+<td style="text-align:right;">
+0.982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_166996127_166996627
+</td>
+<td style="text-align:right;">
+1.007
+</td>
+<td style="text-align:right;">
+0.950
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.045
+</td>
+<td style="text-align:right;">
+-0.893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_115314324_115314824
+</td>
+<td style="text-align:right;">
+1.001
+</td>
+<td style="text-align:right;">
+0.425
+</td>
+<td style="text-align:right;">
+0.124
+</td>
+<td style="text-align:right;">
+0.453
+</td>
+<td style="text-align:right;">
+0.151
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:right;">
+0.998
+</td>
+<td style="text-align:right;">
+0.424
+</td>
+<td style="text-align:right;">
+0.123
+</td>
+<td style="text-align:right;">
+0.451
+</td>
+<td style="text-align:right;">
+0.150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_35764141_35764641
+</td>
+<td style="text-align:right;">
+0.994
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.994
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.994
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_119034762_119035262
+</td>
+<td style="text-align:right;">
+0.991
+</td>
+<td style="text-align:right;">
+0.833
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+-0.676
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr22_42313863_42314363
+</td>
+<td style="text-align:right;">
+0.991
+</td>
+<td style="text-align:right;">
+0.971
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+-0.950
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_61333644_61334144
+</td>
+<td style="text-align:right;">
+0.990
+</td>
+<td style="text-align:right;">
+0.959
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.031
+</td>
+<td style="text-align:right;">
+-0.928
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_39145350_39145850
+</td>
+<td style="text-align:right;">
+0.990
+</td>
+<td style="text-align:right;">
+0.972
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+-0.954
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_89432966_89433466
+</td>
+<td style="text-align:right;">
+0.987
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.977
+</td>
+<td style="text-align:right;">
+0.972
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:right;">
+0.986
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.301
+</td>
+<td style="text-align:right;">
+0.680
+</td>
+<td style="text-align:right;">
+0.978
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_175410533_175411033
+</td>
+<td style="text-align:right;">
+0.983
+</td>
+<td style="text-align:right;">
+0.195
+</td>
+<td style="text-align:right;">
+0.169
+</td>
+<td style="text-align:right;">
+0.618
+</td>
+<td style="text-align:right;">
+0.592
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_2010548_2011048
+</td>
+<td style="text-align:right;">
+0.981
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.971
+</td>
+<td style="text-align:right;">
+0.968
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_34165196_34165696
+</td>
+<td style="text-align:right;">
+0.981
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.956
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_64044962_64045462
+</td>
+<td style="text-align:right;">
+0.979
+</td>
+<td style="text-align:right;">
+0.760
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.216
+</td>
+<td style="text-align:right;">
+-0.541
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_78617607_78618107
+</td>
+<td style="text-align:right;">
+0.977
+</td>
+<td style="text-align:right;">
+0.401
+</td>
+<td style="text-align:right;">
+0.150
+</td>
+<td style="text-align:right;">
+0.426
+</td>
+<td style="text-align:right;">
+0.175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_138601406_138601906
+</td>
+<td style="text-align:right;">
+0.976
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.920
+</td>
+<td style="text-align:right;">
+0.869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:right;">
+0.975
+</td>
+<td style="text-align:right;">
+0.457
+</td>
+<td style="text-align:right;">
+0.133
+</td>
+<td style="text-align:right;">
+0.385
+</td>
+<td style="text-align:right;">
+0.061
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_76019114_76019614
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+0.074
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+0.952
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_114179012_114179512
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+<td style="text-align:right;">
+0.638
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.335
+</td>
+<td style="text-align:right;">
+-0.303
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_212536945_212537445
+</td>
+<td style="text-align:right;">
+0.973
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+0.964
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.954
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr16_29974550_29975050
+</td>
+<td style="text-align:right;">
+0.972
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+0.131
+</td>
+<td style="text-align:right;">
+0.827
+</td>
+<td style="text-align:right;">
+0.944
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr19_5977436_5977936
+</td>
+<td style="text-align:right;">
+0.969
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.969
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_32496237_32496737
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+0.157
+</td>
+<td style="text-align:right;">
+0.785
+</td>
+<td style="text-align:right;">
+0.919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_41035329_41035829
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.582
+</td>
+<td style="text-align:right;">
+0.170
+</td>
+<td style="text-align:right;">
+0.213
+</td>
+<td style="text-align:right;">
+-0.199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:right;">
+0.963
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.936
+</td>
+<td style="text-align:right;">
+0.909
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr21_45634645_45635145
+</td>
+<td style="text-align:right;">
+0.961
+</td>
+<td style="text-align:right;">
+0.870
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+-0.779
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_50516287_50516787
+</td>
+<td style="text-align:right;">
+0.960
+</td>
+<td style="text-align:right;">
+0.039
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.917
+</td>
+<td style="text-align:right;">
+0.882
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_53498618_53499118
+</td>
+<td style="text-align:right;">
+0.956
+</td>
+<td style="text-align:right;">
+0.953
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+-0.949
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_65539480_65539980
+</td>
+<td style="text-align:right;">
+0.954
+</td>
+<td style="text-align:right;">
+0.435
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+0.463
+</td>
+<td style="text-align:right;">
+0.083
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_159212596_159213096
+</td>
+<td style="text-align:right;">
+0.954
+</td>
+<td style="text-align:right;">
+0.938
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+-0.923
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_204619684_204620184
+</td>
+<td style="text-align:right;">
+0.951
+</td>
+<td style="text-align:right;">
+0.851
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+<td style="text-align:right;">
+0.074
+</td>
+<td style="text-align:right;">
+-0.750
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_89704715_89705215
+</td>
+<td style="text-align:right;">
+0.950
+</td>
+<td style="text-align:right;">
+0.457
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.487
+</td>
+<td style="text-align:right;">
+0.036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_108151739_108152239
+</td>
+<td style="text-align:right;">
+0.949
+</td>
+<td style="text-align:right;">
+0.459
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.484
+</td>
+<td style="text-align:right;">
+0.031
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_32659772_32660272
+</td>
+<td style="text-align:right;">
+0.948
+</td>
+<td style="text-align:right;">
+0.459
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.489
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr14_35140667_35141167
+</td>
+<td style="text-align:right;">
+0.947
+</td>
+<td style="text-align:right;">
+0.618
+</td>
+<td style="text-align:right;">
+0.071
+</td>
+<td style="text-align:right;">
+0.259
+</td>
+<td style="text-align:right;">
+-0.289
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_62564465_62564965
+</td>
+<td style="text-align:right;">
+0.946
+</td>
+<td style="text-align:right;">
+0.603
+</td>
+<td style="text-align:right;">
+0.176
+</td>
+<td style="text-align:right;">
+0.168
+</td>
+<td style="text-align:right;">
+-0.259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_43816439_43816939
+</td>
+<td style="text-align:right;">
+0.943
+</td>
+<td style="text-align:right;">
+0.872
+</td>
+<td style="text-align:right;">
+0.057
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+-0.801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_135670508_135671008
+</td>
+<td style="text-align:right;">
+0.942
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.942
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_37004928_37005428
+</td>
+<td style="text-align:right;">
+0.938
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+0.090
+</td>
+<td style="text-align:right;">
+0.837
+</td>
+<td style="text-align:right;">
+0.917
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_67716811_67717311
+</td>
+<td style="text-align:right;">
+0.930
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.927
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_19281055_19281555
+</td>
+<td style="text-align:right;">
+0.925
+</td>
+<td style="text-align:right;">
+0.020
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+0.887
+</td>
+<td style="text-align:right;">
+0.886
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr19_12365451_12365951
+</td>
+<td style="text-align:right;">
+0.923
+</td>
+<td style="text-align:right;">
+0.564
+</td>
+<td style="text-align:right;">
+0.086
+</td>
+<td style="text-align:right;">
+0.273
+</td>
+<td style="text-align:right;">
+-0.206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_27099450_27099950
+</td>
+<td style="text-align:right;">
+0.920
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.838
+</td>
+<td style="text-align:right;">
+0.780
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_4338649_4339149
+</td>
+<td style="text-align:right;">
+0.918
+</td>
+<td style="text-align:right;">
+0.060
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+<td style="text-align:right;">
+0.803
+</td>
+<td style="text-align:right;">
+0.797
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_67481828_67482328
+</td>
+<td style="text-align:right;">
+0.916
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.904
+</td>
+<td style="text-align:right;">
+0.891
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_201038456_201038956
+</td>
+<td style="text-align:right;">
+0.914
+</td>
+<td style="text-align:right;">
+0.388
+</td>
+<td style="text-align:right;">
+0.113
+</td>
+<td style="text-align:right;">
+0.413
+</td>
+<td style="text-align:right;">
+0.138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_44909786_44910286
+</td>
+<td style="text-align:right;">
+0.914
+</td>
+<td style="text-align:right;">
+0.440
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.468
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_127354900_127355400
+</td>
+<td style="text-align:right;">
+0.912
+</td>
+<td style="text-align:right;">
+0.387
+</td>
+<td style="text-align:right;">
+0.113
+</td>
+<td style="text-align:right;">
+0.412
+</td>
+<td style="text-align:right;">
+0.138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_155066370_155066870
+</td>
+<td style="text-align:right;">
+0.911
+</td>
+<td style="text-align:right;">
+0.383
+</td>
+<td style="text-align:right;">
+0.121
+</td>
+<td style="text-align:right;">
+0.407
+</td>
+<td style="text-align:right;">
+0.146
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_117783720_117784220
+</td>
+<td style="text-align:right;">
+0.911
+</td>
+<td style="text-align:right;">
+0.193
+</td>
+<td style="text-align:right;">
+0.154
+</td>
+<td style="text-align:right;">
+0.564
+</td>
+<td style="text-align:right;">
+0.525
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_174484613_174485113
+</td>
+<td style="text-align:right;">
+0.910
+</td>
+<td style="text-align:right;">
+0.860
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+0.032
+</td>
+<td style="text-align:right;">
+-0.809
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_50016402_50016902
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:right;">
+0.063
+</td>
+<td style="text-align:right;">
+0.598
+</td>
+<td style="text-align:right;">
+0.242
+</td>
+<td style="text-align:right;">
+0.778
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_154271835_154272335
+</td>
+<td style="text-align:right;">
+0.902
+</td>
+<td style="text-align:right;">
+0.345
+</td>
+<td style="text-align:right;">
+0.100
+</td>
+<td style="text-align:right;">
+0.456
+</td>
+<td style="text-align:right;">
+0.211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_163396846_163397346
+</td>
+<td style="text-align:right;">
+0.901
+</td>
+<td style="text-align:right;">
+0.878
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+-0.854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_125576532_125577032
+</td>
+<td style="text-align:right;">
+0.900
+</td>
+<td style="text-align:right;">
+0.125
+</td>
+<td style="text-align:right;">
+0.036
+</td>
+<td style="text-align:right;">
+0.739
+</td>
+<td style="text-align:right;">
+0.650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_26172421_26172921
+</td>
+<td style="text-align:right;">
+0.896
+</td>
+<td style="text-align:right;">
+0.355
+</td>
+<td style="text-align:right;">
+0.103
+</td>
+<td style="text-align:right;">
+0.439
+</td>
+<td style="text-align:right;">
+0.187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_155022243_155022743
+</td>
+<td style="text-align:right;">
+0.895
+</td>
+<td style="text-align:right;">
+0.330
+</td>
+<td style="text-align:right;">
+0.121
+</td>
+<td style="text-align:right;">
+0.444
+</td>
+<td style="text-align:right;">
+0.236
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_119153484_119153984
+</td>
+<td style="text-align:right;">
+0.892
+</td>
+<td style="text-align:right;">
+0.721
+</td>
+<td style="text-align:right;">
+0.037
+</td>
+<td style="text-align:right;">
+0.134
+</td>
+<td style="text-align:right;">
+-0.550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_50108581_50109081
+</td>
+<td style="text-align:right;">
+0.890
+</td>
+<td style="text-align:right;">
+0.015
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0.765
+</td>
+<td style="text-align:right;">
+0.860
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_193075545_193076045
+</td>
+<td style="text-align:right;">
+0.883
+</td>
+<td style="text-align:right;">
+0.121
+</td>
+<td style="text-align:right;">
+0.164
+</td>
+<td style="text-align:right;">
+0.598
+</td>
+<td style="text-align:right;">
+0.641
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_180125539_180126039
+</td>
+<td style="text-align:right;">
+0.880
+</td>
+<td style="text-align:right;">
+0.013
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.867
+</td>
+<td style="text-align:right;">
+0.854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_2258007_2258507
+</td>
+<td style="text-align:right;">
+0.879
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.865
+</td>
+<td style="text-align:right;">
+0.851
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_63633611_63634111
+</td>
+<td style="text-align:right;">
+0.873
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+0.080
+</td>
+<td style="text-align:right;">
+0.752
+</td>
+<td style="text-align:right;">
+0.790
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113032951_113033451
+</td>
+<td style="text-align:right;">
+0.873
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.869
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.865
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_230101515_230102015
+</td>
+<td style="text-align:right;">
+0.871
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.094
+</td>
+<td style="text-align:right;">
+0.777
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_27315229_27315729
+</td>
+<td style="text-align:right;">
+0.845
+</td>
+<td style="text-align:right;">
+0.434
+</td>
+<td style="text-align:right;">
+0.127
+</td>
+<td style="text-align:right;">
+0.284
+</td>
+<td style="text-align:right;">
+-0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_40746321_40746821
+</td>
+<td style="text-align:right;">
+0.845
+</td>
+<td style="text-align:right;">
+0.359
+</td>
+<td style="text-align:right;">
+0.104
+</td>
+<td style="text-align:right;">
+0.382
+</td>
+<td style="text-align:right;">
+0.127
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_12931442_12931942
+</td>
+<td style="text-align:right;">
+0.844
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.074
+</td>
+<td style="text-align:right;">
+0.771
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_35145033_35145533
+</td>
+<td style="text-align:right;">
+0.840
+</td>
+<td style="text-align:right;">
+0.401
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.431
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_27823826_27824326
+</td>
+<td style="text-align:right;">
+0.831
+</td>
+<td style="text-align:right;">
+0.807
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.018
+</td>
+<td style="text-align:right;">
+-0.784
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_109421903_109422403
+</td>
+<td style="text-align:right;">
+0.830
+</td>
+<td style="text-align:right;">
+0.642
+</td>
+<td style="text-align:right;">
+0.188
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+-0.454
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_60353696_60354196
+</td>
+<td style="text-align:right;">
+0.829
+</td>
+<td style="text-align:right;">
+0.358
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+<td style="text-align:right;">
+0.417
+</td>
+<td style="text-align:right;">
+0.114
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr9_131968631_131969131
+</td>
+<td style="text-align:right;">
+0.828
+</td>
+<td style="text-align:right;">
+0.160
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.668
+</td>
+<td style="text-align:right;">
+0.508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr9_70034045_70034545
+</td>
+<td style="text-align:right;">
+0.828
+</td>
+<td style="text-align:right;">
+0.804
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+-0.780
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_141162040_141162540
+</td>
+<td style="text-align:right;">
+0.828
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+0.763
+</td>
+<td style="text-align:right;">
+0.733
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_2409788_2410288
+</td>
+<td style="text-align:right;">
+0.826
+</td>
+<td style="text-align:right;">
+0.741
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+<td style="text-align:right;">
+-0.656
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_219177396_219177896
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+<td style="text-align:right;">
+0.115
+</td>
+<td style="text-align:right;">
+0.151
+</td>
+<td style="text-align:right;">
+0.549
+</td>
+<td style="text-align:right;">
+0.585
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_48634649_48635149
+</td>
+<td style="text-align:right;">
+0.814
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.738
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_55401095_55401595
+</td>
+<td style="text-align:right;">
+0.813
+</td>
+<td style="text-align:right;">
+0.792
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.013
+</td>
+<td style="text-align:right;">
+-0.770
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_117570304_117570804
+</td>
+<td style="text-align:right;">
+0.813
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+0.178
+</td>
+<td style="text-align:right;">
+0.623
+</td>
+<td style="text-align:right;">
+0.790
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113473959_113474459
+</td>
+<td style="text-align:right;">
+0.805
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.782
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr9_37061702_37062202
+</td>
+<td style="text-align:right;">
+0.801
+</td>
+<td style="text-align:right;">
+0.066
+</td>
+<td style="text-align:right;">
+0.108
+</td>
+<td style="text-align:right;">
+0.627
+</td>
+<td style="text-align:right;">
+0.669
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_4043149_4043649
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.726
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="npglut-significant-peaks" class="section level3">
+<h3>npglut significant peaks</h3>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
+<table>
+<caption>
+Significant peaks for the npglut cell type
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+PeakRange
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_sum
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_0hr_npglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_1hr_npglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_6hr_npglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_diff
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:right;">
+1.002
+</td>
+<td style="text-align:right;">
+0.135
+</td>
+<td style="text-align:right;">
+0.867
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.731
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:right;">
+0.994
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.980
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+0.987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr18_29920961_29921461
+</td>
+<td style="text-align:right;">
+0.989
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.985
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.981
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr18_28658016_28658516
+</td>
+<td style="text-align:right;">
+0.980
+</td>
+<td style="text-align:right;">
+0.853
+</td>
+<td style="text-align:right;">
+0.127
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+-0.726
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:right;">
+0.976
+</td>
+<td style="text-align:right;">
+0.145
+</td>
+<td style="text-align:right;">
+0.672
+</td>
+<td style="text-align:right;">
+0.160
+</td>
+<td style="text-align:right;">
+0.687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_64044962_64045462
+</td>
+<td style="text-align:right;">
+0.969
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.912
+</td>
+<td style="text-align:right;">
+0.057
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr22_41380331_41380831
+</td>
+<td style="text-align:right;">
+0.969
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.968
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_76234290_76234790
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.130
+</td>
+<td style="text-align:right;">
+0.830
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.706
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_37941713_37942213
+</td>
+<td style="text-align:right;">
+0.960
+</td>
+<td style="text-align:right;">
+0.129
+</td>
+<td style="text-align:right;">
+0.831
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.702
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_135670508_135671008
+</td>
+<td style="text-align:right;">
+0.959
+</td>
+<td style="text-align:right;">
+0.009
+</td>
+<td style="text-align:right;">
+0.950
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.942
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr9_98306783_98307283
+</td>
+<td style="text-align:right;">
+0.959
+</td>
+<td style="text-align:right;">
+0.118
+</td>
+<td style="text-align:right;">
+0.759
+</td>
+<td style="text-align:right;">
+0.082
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_33566611_33567111
+</td>
+<td style="text-align:right;">
+0.958
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.956
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.955
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:right;">
+0.957
+</td>
+<td style="text-align:right;">
+0.198
+</td>
+<td style="text-align:right;">
+0.648
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0.561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_71533041_71533541
+</td>
+<td style="text-align:right;">
+0.957
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.954
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.952
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_47093917_47094417
+</td>
+<td style="text-align:right;">
+0.954
+</td>
+<td style="text-align:right;">
+0.940
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+-0.927
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_102555979_102556479
+</td>
+<td style="text-align:right;">
+0.950
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.857
+</td>
+<td style="text-align:right;">
+0.092
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_175822509_175823009
+</td>
+<td style="text-align:right;">
+0.948
+</td>
+<td style="text-align:right;">
+0.117
+</td>
+<td style="text-align:right;">
+0.751
+</td>
+<td style="text-align:right;">
+0.081
+</td>
+<td style="text-align:right;">
+0.715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_109043532_109044032
+</td>
+<td style="text-align:right;">
+0.944
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.840
+</td>
+<td style="text-align:right;">
+0.104
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_36544631_36545131
+</td>
+<td style="text-align:right;">
+0.943
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.936
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.928
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_86244301_86244801
+</td>
+<td style="text-align:right;">
+0.943
+</td>
+<td style="text-align:right;">
+0.116
+</td>
+<td style="text-align:right;">
+0.745
+</td>
+<td style="text-align:right;">
+0.081
+</td>
+<td style="text-align:right;">
+0.710
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_45067424_45067924
+</td>
+<td style="text-align:right;">
+0.915
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.826
+</td>
+<td style="text-align:right;">
+0.089
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_52721584_52722084
+</td>
+<td style="text-align:right;">
+0.914
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.698
+</td>
+<td style="text-align:right;">
+0.215
+</td>
+<td style="text-align:right;">
+0.910
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_26838688_26839188
+</td>
+<td style="text-align:right;">
+0.910
+</td>
+<td style="text-align:right;">
+0.114
+</td>
+<td style="text-align:right;">
+0.729
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.682
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_60294072_60294572
+</td>
+<td style="text-align:right;">
+0.908
+</td>
+<td style="text-align:right;">
+0.897
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+-0.887
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_199956113_199956613
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.895
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.894
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_19307365_19307865
+</td>
+<td style="text-align:right;">
+0.894
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.674
+</td>
+<td style="text-align:right;">
+0.220
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_46051914_46052414
+</td>
+<td style="text-align:right;">
+0.891
+</td>
+<td style="text-align:right;">
+0.104
+</td>
+<td style="text-align:right;">
+0.711
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_174118473_174118973
+</td>
+<td style="text-align:right;">
+0.888
+</td>
+<td style="text-align:right;">
+0.873
+</td>
+<td style="text-align:right;">
+0.013
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+-0.859
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_61686073_61686573
+</td>
+<td style="text-align:right;">
+0.887
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.871
+</td>
+<td style="text-align:right;">
+0.016
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_125576532_125577032
+</td>
+<td style="text-align:right;">
+0.886
+</td>
+<td style="text-align:right;">
+0.110
+</td>
+<td style="text-align:right;">
+0.701
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_76083214_76083714
+</td>
+<td style="text-align:right;">
+0.880
+</td>
+<td style="text-align:right;">
+0.112
+</td>
+<td style="text-align:right;">
+0.721
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+0.656
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_127354900_127355400
+</td>
+<td style="text-align:right;">
+0.875
+</td>
+<td style="text-align:right;">
+0.116
+</td>
+<td style="text-align:right;">
+0.742
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+0.642
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_61408569_61409069
+</td>
+<td style="text-align:right;">
+0.875
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.875
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_153800464_153800964
+</td>
+<td style="text-align:right;">
+0.872
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.868
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.867
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_129857300_129857800
+</td>
+<td style="text-align:right;">
+0.864
+</td>
+<td style="text-align:right;">
+0.107
+</td>
+<td style="text-align:right;">
+0.684
+</td>
+<td style="text-align:right;">
+0.074
+</td>
+<td style="text-align:right;">
+0.651
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr21_45735211_45735711
+</td>
+<td style="text-align:right;">
+0.860
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.843
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_121520070_121520570
+</td>
+<td style="text-align:right;">
+0.859
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.818
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+0.844
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_156414327_156414827
+</td>
+<td style="text-align:right;">
+0.859
+</td>
+<td style="text-align:right;">
+0.248
+</td>
+<td style="text-align:right;">
+0.551
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.363
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_30549932_30550432
+</td>
+<td style="text-align:right;">
+0.852
+</td>
+<td style="text-align:right;">
+0.068
+</td>
+<td style="text-align:right;">
+0.782
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.716
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_115641960_115642460
+</td>
+<td style="text-align:right;">
+0.852
+</td>
+<td style="text-align:right;">
+0.021
+</td>
+<td style="text-align:right;">
+0.828
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.810
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_24683529_24684029
+</td>
+<td style="text-align:right;">
+0.845
+</td>
+<td style="text-align:right;">
+0.108
+</td>
+<td style="text-align:right;">
+0.694
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.628
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_193075545_193076045
+</td>
+<td style="text-align:right;">
+0.843
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+0.797
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+0.789
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_201038456_201038956
+</td>
+<td style="text-align:right;">
+0.834
+</td>
+<td style="text-align:right;">
+0.103
+</td>
+<td style="text-align:right;">
+0.660
+</td>
+<td style="text-align:right;">
+0.071
+</td>
+<td style="text-align:right;">
+0.628
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_28824043_28824543
+</td>
+<td style="text-align:right;">
+0.833
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.816
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_1080059_1080559
+</td>
+<td style="text-align:right;">
+0.827
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.816
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr14_35140667_35141167
+</td>
+<td style="text-align:right;">
+0.821
+</td>
+<td style="text-align:right;">
+0.230
+</td>
+<td style="text-align:right;">
+0.534
+</td>
+<td style="text-align:right;">
+0.058
+</td>
+<td style="text-align:right;">
+0.362
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_155066370_155066870
+</td>
+<td style="text-align:right;">
+0.819
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.781
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_37004928_37005428
+</td>
+<td style="text-align:right;">
+0.818
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.707
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.731
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_12010566_12011066
+</td>
+<td style="text-align:right;">
+0.811
+</td>
+<td style="text-align:right;">
+0.100
+</td>
+<td style="text-align:right;">
+0.641
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+0.611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_182736158_182736658
+</td>
+<td style="text-align:right;">
+0.811
+</td>
+<td style="text-align:right;">
+0.793
+</td>
+<td style="text-align:right;">
+0.015
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+-0.775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr19_38005125_38005625
+</td>
+<td style="text-align:right;">
+0.802
+</td>
+<td style="text-align:right;">
+0.108
+</td>
+<td style="text-align:right;">
+0.692
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.585
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr14_88978898_88979398
+</td>
+<td style="text-align:right;">
+0.801
+</td>
+<td style="text-align:right;">
+0.099
+</td>
+<td style="text-align:right;">
+0.633
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+0.602
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="nmglut-significant-peaks" class="section level3">
+<h3>nmglut significant peaks</h3>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
+<table>
+<caption>
+Significant peaks for the nmglut cell type
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+PeakRange
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_sum
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_0hr_nmglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_1hr_nmglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_6hr_nmglut
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PIP_diff
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr6_92378607_92379107
+</td>
+<td style="text-align:right;">
+1.008
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.998
+</td>
+<td style="text-align:right;">
+0.987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:right;">
+1.003
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.252
+</td>
+<td style="text-align:right;">
+0.745
+</td>
+<td style="text-align:right;">
+0.991
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr22_41362794_41363294
+</td>
+<td style="text-align:right;">
+1.002
+</td>
+<td style="text-align:right;">
+0.998
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+-0.993
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_1986364_1986864
+</td>
+<td style="text-align:right;">
+0.992
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.004
+</td>
+<td style="text-align:right;">
+0.983
+</td>
+<td style="text-align:right;">
+0.982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_33592819_33593319
+</td>
+<td style="text-align:right;">
+0.989
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+0.575
+</td>
+<td style="text-align:right;">
+0.409
+</td>
+<td style="text-align:right;">
+0.980
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:right;">
+0.988
+</td>
+<td style="text-align:right;">
+0.230
+</td>
+<td style="text-align:right;">
+0.224
+</td>
+<td style="text-align:right;">
+0.535
+</td>
+<td style="text-align:right;">
+0.529
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:right;">
+0.985
+</td>
+<td style="text-align:right;">
+0.270
+</td>
+<td style="text-align:right;">
+0.212
+</td>
+<td style="text-align:right;">
+0.503
+</td>
+<td style="text-align:right;">
+0.445
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_2191122_2191622
+</td>
+<td style="text-align:right;">
+0.979
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.045
+</td>
+<td style="text-align:right;">
+0.931
+</td>
+<td style="text-align:right;">
+0.974
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_32760724_32761224
+</td>
+<td style="text-align:right;">
+0.979
+</td>
+<td style="text-align:right;">
+0.952
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+-0.925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_180125539_180126039
+</td>
+<td style="text-align:right;">
+0.977
+</td>
+<td style="text-align:right;">
+0.323
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.654
+</td>
+<td style="text-align:right;">
+0.331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_135670508_135671008
+</td>
+<td style="text-align:right;">
+0.971
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.678
+</td>
+<td style="text-align:right;">
+0.386
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr4_79281479_79281979
+</td>
+<td style="text-align:right;">
+0.970
+</td>
+<td style="text-align:right;">
+0.022
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.948
+</td>
+<td style="text-align:right;">
+0.926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr8_129857300_129857800
+</td>
+<td style="text-align:right;">
+0.969
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.851
+</td>
+<td style="text-align:right;">
+0.852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_78617607_78618107
+</td>
+<td style="text-align:right;">
+0.965
+</td>
+<td style="text-align:right;">
+0.669
+</td>
+<td style="text-align:right;">
+0.268
+</td>
+<td style="text-align:right;">
+0.029
+</td>
+<td style="text-align:right;">
+-0.372
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_175822509_175823009
+</td>
+<td style="text-align:right;">
+0.948
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.239
+</td>
+<td style="text-align:right;">
+0.708
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_8408375_8408875
+</td>
+<td style="text-align:right;">
+0.943
+</td>
+<td style="text-align:right;">
+0.083
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.860
+</td>
+<td style="text-align:right;">
+0.777
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_2008327_2008827
+</td>
+<td style="text-align:right;">
+0.936
+</td>
+<td style="text-align:right;">
+0.907
+</td>
+<td style="text-align:right;">
+0.019
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+-0.879
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_124529874_124530374
+</td>
+<td style="text-align:right;">
+0.924
+</td>
+<td style="text-align:right;">
+0.132
+</td>
+<td style="text-align:right;">
+0.200
+</td>
+<td style="text-align:right;">
+0.591
+</td>
+<td style="text-align:right;">
+0.659
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_156414327_156414827
+</td>
+<td style="text-align:right;">
+0.899
+</td>
+<td style="text-align:right;">
+0.015
+</td>
+<td style="text-align:right;">
+0.496
+</td>
+<td style="text-align:right;">
+0.388
+</td>
+<td style="text-align:right;">
+0.869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_32659772_32660272
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:right;">
+0.503
+</td>
+<td style="text-align:right;">
+0.395
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+-0.108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_49966524_49967024
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.226
+</td>
+<td style="text-align:right;">
+0.669
+</td>
+<td style="text-align:right;">
+0.892
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr15_52721584_52722084
+</td>
+<td style="text-align:right;">
+0.895
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.892
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_27762199_27762699
+</td>
+<td style="text-align:right;">
+0.892
+</td>
+<td style="text-align:right;">
+0.269
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.624
+</td>
+<td style="text-align:right;">
+0.355
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_201038456_201038956
+</td>
+<td style="text-align:right;">
+0.879
+</td>
+<td style="text-align:right;">
+0.214
+</td>
+<td style="text-align:right;">
+0.168
+</td>
+<td style="text-align:right;">
+0.497
+</td>
+<td style="text-align:right;">
+0.451
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_127354900_127355400
+</td>
+<td style="text-align:right;">
+0.863
+</td>
+<td style="text-align:right;">
+0.210
+</td>
+<td style="text-align:right;">
+0.165
+</td>
+<td style="text-align:right;">
+0.487
+</td>
+<td style="text-align:right;">
+0.442
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr6_29016616_29017116
+</td>
+<td style="text-align:right;">
+0.857
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.841
+</td>
+<td style="text-align:right;">
+0.850
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_45017748_45018248
+</td>
+<td style="text-align:right;">
+0.850
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.215
+</td>
+<td style="text-align:right;">
+0.635
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_155066370_155066870
+</td>
+<td style="text-align:right;">
+0.848
+</td>
+<td style="text-align:right;">
+0.267
+</td>
+<td style="text-align:right;">
+0.193
+</td>
+<td style="text-align:right;">
+0.389
+</td>
+<td style="text-align:right;">
+0.315
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr16_29974550_29975050
+</td>
+<td style="text-align:right;">
+0.847
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.703
+</td>
+<td style="text-align:right;">
+0.101
+</td>
+<td style="text-align:right;">
+0.760
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_105156817_105157317
+</td>
+<td style="text-align:right;">
+0.842
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.213
+</td>
+<td style="text-align:right;">
+0.629
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_177069919_177070419
+</td>
+<td style="text-align:right;">
+0.834
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+<td style="text-align:right;">
+0.812
+</td>
+<td style="text-align:right;">
+0.809
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_61400283_61400783
+</td>
+<td style="text-align:right;">
+0.834
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+0.809
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.785
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr20_46051914_46052414
+</td>
+<td style="text-align:right;">
+0.832
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.829
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr17_36544631_36545131
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_48634649_48635149
+</td>
+<td style="text-align:right;">
+0.810
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.759
+</td>
+<td style="text-align:right;">
+0.796
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-type-overlap" class="section level2">
+<h2>Cell type overlap</h2>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] ggvenn_0.1.10    ggplot2_3.3.5    dplyr_1.0.7      kableExtra_1.3.4
+[5] workflowr_1.7.0 
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
+ [5] colorspace_2.0-2  vctrs_0.3.8       generics_0.1.2    viridisLite_0.4.0
+ [9] htmltools_0.5.2   yaml_2.2.2        utf8_1.2.2        rlang_1.0.0      
+[13] jquerylib_0.1.4   later_1.3.0       pillar_1.7.0      withr_2.4.3      
+[17] glue_1.6.1        DBI_1.1.2         lifecycle_1.0.1   stringr_1.4.0    
+[21] munsell_0.5.0     gtable_0.3.0      rvest_1.0.2       evaluate_0.14    
+[25] labeling_0.4.2    knitr_1.37        callr_3.7.0       fastmap_1.1.0    
+[29] httpuv_1.6.5      ps_1.6.0          fansi_1.0.2       highr_0.9        
+[33] Rcpp_1.0.11       promises_1.2.0.1  scales_1.1.1      webshot_0.5.5    
+[37] jsonlite_1.7.3    farver_2.1.0      systemfonts_1.0.4 fs_1.5.2         
+[41] digest_0.6.29     stringi_1.7.6     processx_3.5.2    getPass_0.2-2    
+[45] cowplot_1.1.1     rprojroot_2.0.2   cli_3.1.1         tools_4.1.2      
+[49] magrittr_2.0.2    sass_0.4.1        tibble_3.1.6      crayon_1.4.2     
+[53] whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3       
+[57] svglite_2.1.0     assertthat_0.2.1  rmarkdown_2.11    httr_1.4.2       
+[61] rstudioapi_0.13   R6_2.5.1          git2r_0.29.0      compiler_4.1.2   </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
