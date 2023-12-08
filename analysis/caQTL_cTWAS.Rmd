@@ -1,0 +1,130 @@
+---
+title: "caQTL_cTWAS"
+author: "Lifan Liang"
+date: "2023-12-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Peak selection
+
+cPeaks was defined as FDR < 0.05. The inclusion of peaks for each condition (a unique combination of time points and cell types) is: (1) a caPeak in any time point in the same cell type; (2) nominal P value < 0.1 in the current condition. The number of peaks was shown in the table below
+
+```{r, echo=F}
+GABA1 <- read.table("data/GABA_peakonly_res.txt", header=T)
+nmglut1 <- read.table("data/nmglut_peakonly_res.txt", header=T)
+npglut1 <- read.table("data/npglut_peakonly_res.txt", header=T)
+
+npeaks <- rbind(table(GABA1$timepoint), table(nmglut1$timepoint), table(npglut1$timepoint))
+colnames(npeaks) <- paste0(c(0,1,6),"hour")
+rownames(npeaks) <- c("GABA", "nmglut", "npglut")
+knitr::kable(npeaks, caption="Number of peaks included in cTWAS")
+```
+
+## cTWAS parameter estimation
+
+For each peak selected, the lead caQTL was used to build the prediction model. cTWAS first performed parameter estimation without fine mapping.
+
+### GABA parameters
+```{r, echo=F}
+GABA.params <- readRDS("data/GABA_params.rds")
+nmglut.params <- readRDS("data/nmglut_params.rds")
+npglut.params <- readRDS("data/npglut_params.rds")
+
+GABA.params$convergence_plot
+```
+
+### NPglut parameters
+```{r, echo=F}
+npglut.params$convergence_plot
+```
+
+### NMglut parameters
+```{r, echo=F}
+nmglut.params$convergence_plot
+```
+
+## Significant peaks
+
+A peak is significant for the cell type if its sum of PIP across time points is more than 0.8.
+
+### GABA significant peaks
+
+```{r, echo=F}
+library(kableExtra)
+options(knitr.kable.NA = '')
+GABA2 <- aggregate(GABA1$susie_pip, list(GABA1$genename), sum)
+GABA3 <- merge(GABA2, GABA1[GABA1$timepoint=="0hr_GABA",c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(GABA3) <- c("genename","PIP_sum","PIP_0hr_GABA")
+GABA4 <- merge(GABA3, GABA1[GABA1$timepoint=="1hr_GABA",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(GABA4)[4] <- "PIP_1hr_GABA"
+GABA5 <- merge(GABA4, GABA1[GABA1$timepoint=="6hr_GABA",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(GABA5)[5] <- "PIP_6hr_GABA"
+GABA5 <- GABA5[order(GABA5$PIP_sum, decreasing = T),]
+GABA5$PIP_diff <- GABA5$PIP_sum - 2 * GABA5$PIP_0hr_GABA
+colnames(GABA5)[1] <- "PeakRange"
+GABA5 <- GABA5[order(GABA5$PIP_sum,decreasing = T),]
+GABA5[GABA5$PIP_sum>0.8,] %>%
+  kable(caption = "Significant peaks for the GABA cell type", digits=3, row.names = F) %>%
+  scroll_box(height="400px")
+```
+
+### npglut significant peaks
+
+```{r, echo=F}
+options(knitr.kable.NA = '')
+npglut2 <- aggregate(npglut1$susie_pip, list(npglut1$genename), sum)
+npglut3 <- merge(npglut2, npglut1[npglut1$timepoint=="0hr_npglut",c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(npglut3) <- c("genename","PIP_sum","PIP_0hr_npglut")
+npglut4 <- merge(npglut3, npglut1[npglut1$timepoint=="1hr_npglut",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(npglut4)[4] <- "PIP_1hr_npglut"
+npglut5 <- merge(npglut4, npglut1[npglut1$timepoint=="6hr_npglut",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(npglut5)[5] <- "PIP_6hr_npglut"
+npglut5 <- npglut5[order(npglut5$PIP_sum, decreasing = T),]
+npglut5$PIP_diff <- npglut5$PIP_sum - 2 * npglut5$PIP_0hr_npglut
+npglut5 <- npglut5[order(npglut5$PIP_sum,decreasing = T),]
+colnames(npglut5)[1] <- "PeakRange"
+npglut5[npglut5$PIP_sum>0.8,] %>%
+  kable(caption = "Significant peaks for the npglut cell type", digits=3, row.names = F) %>%
+  scroll_box(height="400px")
+```
+
+### nmglut significant peaks
+
+```{r, echo=F}
+nmglut2 <- aggregate(nmglut1$susie_pip, list(nmglut1$genename), sum)
+nmglut3 <- merge(nmglut2, nmglut1[nmglut1$timepoint=="0hr_nmglut",c("genename","susie_pip")], 
+               by.x="Group.1", by.y="genename",all.x = T)
+colnames(nmglut3) <- c("genename","PIP_sum","PIP_0hr_nmglut")
+nmglut4 <- merge(nmglut3, nmglut1[nmglut1$timepoint=="1hr_nmglut",c("genename","susie_pip")], 
+               by="genename",all.x = T)
+colnames(nmglut4)[4] <- "PIP_1hr_nmglut"
+nmglut5 <- merge(nmglut4, nmglut1[nmglut1$timepoint=="6hr_nmglut",c("genename","susie_pip")], 
+               by="genename",all.x = T)
+colnames(nmglut5)[5] <- "PIP_6hr_nmglut"
+nmglut5$PIP_diff <- nmglut5$PIP_sum - 2 * nmglut5$PIP_0hr_nmglut
+nmglut5 <- nmglut5[order(nmglut5$PIP_sum,decreasing = T),]
+colnames(nmglut5)[1] <- "PeakRange"
+nmglut5[nmglut5$PIP_sum>0.8,] %>%
+  kable(caption = "Significant peaks for the nmglut cell type", digits=3, row.names = F) %>%
+  scroll_box(height="400px")
+```
+
+## Cell type overlap
+
+```{r, echo=F, message=F}
+library(ggvenn)
+
+ggvenn(list(GABA=GABA5$PeakRange, nmglut=nmglut5$PeakRange, npglut=npglut5$PeakRange),
+       c("GABA","nmglut","npglut"))
+```
+
+
+

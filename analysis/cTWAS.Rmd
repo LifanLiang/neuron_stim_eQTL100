@@ -96,7 +96,7 @@ GABA.pip1$PIP_diff <- rowSums(data.frame(x=GABA.pip1$PIP_sum, y=-2*GABA.pip1$PIP
 rownames(GABA.pip1) <- NULL
 GABA.pip1 %>%
   kable(caption = "Top genes for the GABA cell type") %>%
-  scroll_box(height="200px")
+  scroll_box(height="400px")
 #knitr::kable(GABA.pip1, caption = "Top genes for the GABA cell type")
 ```
 
@@ -108,7 +108,7 @@ nmglut.pip1$PIP_diff <- rowSums(data.frame(x=nmglut.pip1$PIP_sum, y=-2*nmglut.pi
 rownames(nmglut.pip1) <- NULL
 nmglut.pip1 %>%
   kable(caption="Top genes for the nmGlut cell type") %>%
-  scroll_box(height="200px")
+  scroll_box(height="400px")
 #knitr::kable(nmglut.pip1, caption = "Top genes for the nmGlut cell type")
 ```
 
@@ -121,7 +121,7 @@ npglut.pip1$PIP_diff <- rowSums(data.frame(x=npglut.pip1$PIP_sum, y=-2*npglut.pi
 rownames(npglut.pip1) <- NULL
 npglut.pip1 %>%
   kable(caption="Top genes for the npGlut cell type") %>%
-  scroll_box(height="200px")
+  scroll_box(height="400px")
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
 
@@ -268,6 +268,9 @@ dgene[,-1] %>%
   scroll_box(height="200px")
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
+
+
+#### Examples of locus plots for dynamic genes
 
 
 

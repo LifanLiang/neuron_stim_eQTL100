@@ -8,7 +8,10 @@ editor_options:
   chunk_output_type: console
 ---
 
-[Multigroup cTWAS results](cTWAS.html)
+[Multigroup cTWAS results of eQTL](cTWAS.html)
 \
 \
 [Single group cTWAS results](single_cTWAS.html)
+\
+\
+[Multigroup cTWAS results of caQTL](caQTL_cTWAS.html)
