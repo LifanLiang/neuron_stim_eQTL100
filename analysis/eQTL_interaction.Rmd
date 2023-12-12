@@ -1,0 +1,42 @@
+---
+title: "eQTL_interaction"
+author: "Lifan Liang"
+date: "2023-12-11"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Interaction testing model
+
+Within one cell type, we tested whether the genotype has time point specific effects. Following the formula style in `lm`, the model is:
+
+$$
+Y_i \sim T_i + G_i + Covar_i + G_i \cdot T_i
+$$
+
+where $Y_i$ is the gene expression of sample $i$, $T_i$ is the time point, $G_i$ is the genotype, $Covar$ is the covariates, and $G_i \cdot T_i$ is the interaction term between genotype and time point.
+
+In practice, matrixeQTL only allows effect vs. control interaction terms. Hence I run two types of interaction testing in the matrixeQTL: (1) 0 hour vs. 1 hour (1v0); (2) 0 hour vs. 6 hour (6v0).
+
+## Results on GABA cell type
+
+Interaction testing identified 435 eGenes in 6v0 and 136 eGenes in 1v0. However, P values are quite inflated in both 1v0 and 6v0.
+
+### Permutation for 1v0 nominal P values
+```{r, echo=F}
+library(MatrixEQTL)
+
+param.1v0 <- readRDS("data/mateqtl_GABA1v0_res.rds")
+plot(param.1v0)
+```
+
+
+### Permutation for 6v0 nominal P values
+```{r}
+param.6v0 <- readRDS("data/mateqtl_GABA6v0_res.rds")
+plot(param.6v0)
+```
+
+
+
