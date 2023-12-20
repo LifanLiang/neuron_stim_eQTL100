@@ -391,7 +391,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-12-08
+<strong>Last updated:</strong> 2023-12-20
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -522,15 +522,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefeb17830faf52041ed0ad97f06150c705aa15dcbtargetblankfeb1783a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee2bc65fb1294b9a2a87f81213617f9e262b0191btargetblanke2bc65fa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/feb17830faf52041ed0ad97f06150c705aa15dcb" target="_blank">feb1783</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e2bc65fb1294b9a2a87f81213617f9e262b0191b" target="_blank">e2bc65f</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefeb17830faf52041ed0ad97f06150c705aa15dcbtargetblankfeb1783a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee2bc65fb1294b9a2a87f81213617f9e262b0191btargetblanke2bc65fa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -540,7 +540,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/feb17830faf52041ed0ad97f06150c705aa15dcb" target="_blank">feb1783</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e2bc65fb1294b9a2a87f81213617f9e262b0191b" target="_blank">e2bc65f</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -604,6 +604,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e2bc65fb1294b9a2a87f81213617f9e262b0191b/analysis/caQTL_cTWAS.Rmd" target="_blank">e2bc65f</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-20
+</td>
+<td>
+wflow_publish(c("analysis", "data"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1f5299991f8a988fc30a150a821bde531885f5e2/docs/caQTL_cTWAS.html" target="_blank">1f52999</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -675,20 +709,139 @@ fine mapping.</p>
 <div id="gaba-parameters" class="section level3">
 <h3>GABA parameters</h3>
 <p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/1f5299991f8a988fc30a150a821bde531885f5e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-2-1.png" target="_blank">1f52999</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-08
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>library(RColorBrewer)
+myPalette &lt;- brewer.pal(4, &quot;Set2&quot;) 
+pie(GABA.params$group_pve, col=myPalette, border=&quot;white&quot;,
+    main = paste0(sprintf(&quot;%.2f&quot;, 100-(GABA.params$group_pve[1]/GABA.params$total_pve)*100), &quot;% PVE for GABA peaks&quot;))</code></pre>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/1f5299991f8a988fc30a150a821bde531885f5e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-3-1.png" target="_blank">1f52999</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-08
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="npglut-parameters" class="section level3">
 <h3>NPglut parameters</h3>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/1f5299991f8a988fc30a150a821bde531885f5e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-4-1.png" target="_blank">1f52999</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2023-12-08
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="nmglut-parameters" class="section level3">
 <h3>NMglut parameters</h3>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="significant-peaks" class="section level2">
 <h2>Significant peaks</h2>
 <p>A peak is significant for the cell type if its sum of PIP across time
-points is more than 0.8.</p>
+points is more than 0.8. There are 22 peaks in GABA, 6 peaks in NPglut,
+and 11 peaks in NMglut.</p>
 <div id="gaba-significant-peaks" class="section level3">
 <h3>GABA significant peaks</h3>
 <div
@@ -725,16 +878,16 @@ PIP_diff
 chr12_57096240_57096740
 </td>
 <td style="text-align:right;">
-1.015
+1.012
 </td>
 <td style="text-align:right;">
-0.431
+0.429
 </td>
 <td style="text-align:right;">
 0.126
 </td>
 <td style="text-align:right;">
-0.458
+0.457
 </td>
 <td style="text-align:right;">
 0.153
@@ -742,19 +895,39 @@ chr12_57096240_57096740
 </tr>
 <tr>
 <td style="text-align:left;">
+chr13_35764141_35764641
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 chr18_29920961_29921461
 </td>
 <td style="text-align:right;">
-1.010
+0.970
 </td>
 <td style="text-align:right;">
-0.487
+0.467
 </td>
 <td style="text-align:right;">
-0.004
+0.006
 </td>
 <td style="text-align:right;">
-0.518
+0.497
 </td>
 <td style="text-align:right;">
 0.035
@@ -762,42 +935,22 @@ chr18_29920961_29921461
 </tr>
 <tr>
 <td style="text-align:left;">
-chr7_157665058_157665558
+chr7_2010548_2011048
 </td>
 <td style="text-align:right;">
-1.008
+0.953
 </td>
 <td style="text-align:right;">
-0.013
+0.004
 </td>
 <td style="text-align:right;">
-0.006
+0.004
 </td>
 <td style="text-align:right;">
-0.989
+0.945
 </td>
 <td style="text-align:right;">
-0.982
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr4_166996127_166996627
-</td>
-<td style="text-align:right;">
-1.007
-</td>
-<td style="text-align:right;">
-0.950
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-0.045
-</td>
-<td style="text-align:right;">
--0.893
+0.946
 </td>
 </tr>
 <tr>
@@ -805,218 +958,19 @@ chr4_166996127_166996627
 chr1_115314324_115314824
 </td>
 <td style="text-align:right;">
-1.001
+0.947
 </td>
 <td style="text-align:right;">
-0.425
+0.402
 </td>
 <td style="text-align:right;">
-0.124
+0.117
 </td>
 <td style="text-align:right;">
-0.453
+0.428
 </td>
 <td style="text-align:right;">
-0.151
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_90929346_90929846
-</td>
-<td style="text-align:right;">
-0.998
-</td>
-<td style="text-align:right;">
-0.424
-</td>
-<td style="text-align:right;">
-0.123
-</td>
-<td style="text-align:right;">
-0.451
-</td>
-<td style="text-align:right;">
-0.150
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr13_35764141_35764641
-</td>
-<td style="text-align:right;">
-0.994
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.994
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.994
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_119034762_119035262
-</td>
-<td style="text-align:right;">
-0.991
-</td>
-<td style="text-align:right;">
-0.833
-</td>
-<td style="text-align:right;">
-0.111
-</td>
-<td style="text-align:right;">
-0.047
-</td>
-<td style="text-align:right;">
--0.676
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr22_42313863_42314363
-</td>
-<td style="text-align:right;">
-0.991
-</td>
-<td style="text-align:right;">
-0.971
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-<td style="text-align:right;">
--0.950
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_61333644_61334144
-</td>
-<td style="text-align:right;">
-0.990
-</td>
-<td style="text-align:right;">
-0.959
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.031
-</td>
-<td style="text-align:right;">
--0.928
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr12_39145350_39145850
-</td>
-<td style="text-align:right;">
-0.990
-</td>
-<td style="text-align:right;">
-0.972
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.014
-</td>
-<td style="text-align:right;">
--0.954
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_89432966_89433466
-</td>
-<td style="text-align:right;">
-0.987
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.977
-</td>
-<td style="text-align:right;">
-0.972
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:right;">
-0.986
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.301
-</td>
-<td style="text-align:right;">
-0.680
-</td>
-<td style="text-align:right;">
-0.978
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_175410533_175411033
-</td>
-<td style="text-align:right;">
-0.983
-</td>
-<td style="text-align:right;">
-0.195
-</td>
-<td style="text-align:right;">
-0.169
-</td>
-<td style="text-align:right;">
-0.618
-</td>
-<td style="text-align:right;">
-0.592
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_2010548_2011048
-</td>
-<td style="text-align:right;">
-0.981
-</td>
-<td style="text-align:right;">
-0.006
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.971
-</td>
-<td style="text-align:right;">
-0.968
+0.143
 </td>
 </tr>
 <tr>
@@ -1024,250 +978,36 @@ chr7_2010548_2011048
 chr13_34165196_34165696
 </td>
 <td style="text-align:right;">
-0.981
+0.933
 </td>
 <td style="text-align:right;">
-0.012
+0.019
 </td>
 <td style="text-align:right;">
-0.003
+0.005
 </td>
 <td style="text-align:right;">
-0.965
+0.909
 </td>
 <td style="text-align:right;">
-0.956
+0.895
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr11_64044962_64045462
+chr7_157665058_157665558
 </td>
 <td style="text-align:right;">
-0.979
-</td>
-<td style="text-align:right;">
-0.760
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.216
-</td>
-<td style="text-align:right;">
--0.541
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr15_78617607_78618107
-</td>
-<td style="text-align:right;">
-0.977
-</td>
-<td style="text-align:right;">
-0.401
-</td>
-<td style="text-align:right;">
-0.150
-</td>
-<td style="text-align:right;">
-0.426
-</td>
-<td style="text-align:right;">
-0.175
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_138601406_138601906
-</td>
-<td style="text-align:right;">
-0.976
-</td>
-<td style="text-align:right;">
-0.054
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.920
-</td>
-<td style="text-align:right;">
-0.869
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_232927961_232928461
-</td>
-<td style="text-align:right;">
-0.975
-</td>
-<td style="text-align:right;">
-0.457
-</td>
-<td style="text-align:right;">
-0.133
-</td>
-<td style="text-align:right;">
-0.385
-</td>
-<td style="text-align:right;">
-0.061
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_76019114_76019614
-</td>
-<td style="text-align:right;">
-0.974
+0.930
 </td>
 <td style="text-align:right;">
 0.011
 </td>
 <td style="text-align:right;">
-0.074
+0.005
 </td>
 <td style="text-align:right;">
-0.889
-</td>
-<td style="text-align:right;">
-0.952
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr13_114179012_114179512
-</td>
-<td style="text-align:right;">
-0.974
-</td>
-<td style="text-align:right;">
-0.638
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.335
-</td>
-<td style="text-align:right;">
--0.303
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_212536945_212537445
-</td>
-<td style="text-align:right;">
-0.973
-</td>
-<td style="text-align:right;">
-0.010
-</td>
-<td style="text-align:right;">
-0.964
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.954
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr16_29974550_29975050
-</td>
-<td style="text-align:right;">
-0.972
-</td>
-<td style="text-align:right;">
-0.014
-</td>
-<td style="text-align:right;">
-0.131
-</td>
-<td style="text-align:right;">
-0.827
-</td>
-<td style="text-align:right;">
-0.944
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr19_5977436_5977936
-</td>
-<td style="text-align:right;">
-0.969
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.969
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_32496237_32496737
-</td>
-<td style="text-align:right;">
-0.965
-</td>
-<td style="text-align:right;">
-0.023
-</td>
-<td style="text-align:right;">
-0.157
-</td>
-<td style="text-align:right;">
-0.785
-</td>
-<td style="text-align:right;">
-0.919
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_41035329_41035829
-</td>
-<td style="text-align:right;">
-0.965
-</td>
-<td style="text-align:right;">
-0.582
-</td>
-<td style="text-align:right;">
-0.170
-</td>
-<td style="text-align:right;">
-0.213
-</td>
-<td style="text-align:right;">
--0.199
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:right;">
-0.963
-</td>
-<td style="text-align:right;">
-0.027
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.936
+0.915
 </td>
 <td style="text-align:right;">
 0.909
@@ -1275,121 +1015,42 @@ chr2_172098931_172099431
 </tr>
 <tr>
 <td style="text-align:left;">
-chr21_45634645_45635145
+chr19_5977436_5977936
 </td>
 <td style="text-align:right;">
-0.961
+0.903
 </td>
 <td style="text-align:right;">
-0.870
+0.000
 </td>
 <td style="text-align:right;">
-0.004
+0.000
 </td>
 <td style="text-align:right;">
-0.087
+0.903
 </td>
 <td style="text-align:right;">
--0.779
+0.903
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr2_50516287_50516787
+chr3_175410533_175411033
 </td>
 <td style="text-align:right;">
-0.960
+0.900
 </td>
 <td style="text-align:right;">
-0.039
+0.181
 </td>
 <td style="text-align:right;">
-0.004
+0.155
 </td>
 <td style="text-align:right;">
-0.917
+0.564
 </td>
 <td style="text-align:right;">
-0.882
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr12_53498618_53499118
-</td>
-<td style="text-align:right;">
-0.956
-</td>
-<td style="text-align:right;">
-0.953
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
--0.949
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_65539480_65539980
-</td>
-<td style="text-align:right;">
-0.954
-</td>
-<td style="text-align:right;">
-0.435
-</td>
-<td style="text-align:right;">
-0.055
-</td>
-<td style="text-align:right;">
-0.463
-</td>
-<td style="text-align:right;">
-0.083
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_159212596_159213096
-</td>
-<td style="text-align:right;">
-0.954
-</td>
-<td style="text-align:right;">
-0.938
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
--0.923
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_204619684_204620184
-</td>
-<td style="text-align:right;">
-0.951
-</td>
-<td style="text-align:right;">
-0.851
-</td>
-<td style="text-align:right;">
-0.026
-</td>
-<td style="text-align:right;">
-0.074
-</td>
-<td style="text-align:right;">
--0.750
+0.538
 </td>
 </tr>
 <tr>
@@ -1397,312 +1058,119 @@ chr1_204619684_204620184
 chr4_89704715_89705215
 </td>
 <td style="text-align:right;">
-0.950
+0.874
 </td>
 <td style="text-align:right;">
-0.457
+0.420
 </td>
 <td style="text-align:right;">
-0.006
+0.007
 </td>
 <td style="text-align:right;">
-0.487
+0.447
 </td>
 <td style="text-align:right;">
-0.036
+0.034
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr12_108151739_108152239
-</td>
-<td style="text-align:right;">
-0.949
-</td>
-<td style="text-align:right;">
-0.459
-</td>
-<td style="text-align:right;">
-0.006
-</td>
-<td style="text-align:right;">
-0.484
-</td>
-<td style="text-align:right;">
-0.031
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_32659772_32660272
-</td>
-<td style="text-align:right;">
-0.948
-</td>
-<td style="text-align:right;">
-0.459
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.489
-</td>
-<td style="text-align:right;">
-0.030
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr14_35140667_35141167
-</td>
-<td style="text-align:right;">
-0.947
-</td>
-<td style="text-align:right;">
-0.618
-</td>
-<td style="text-align:right;">
-0.071
-</td>
-<td style="text-align:right;">
-0.259
-</td>
-<td style="text-align:right;">
--0.289
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr4_62564465_62564965
-</td>
-<td style="text-align:right;">
-0.946
-</td>
-<td style="text-align:right;">
-0.603
-</td>
-<td style="text-align:right;">
-0.176
-</td>
-<td style="text-align:right;">
-0.168
-</td>
-<td style="text-align:right;">
--0.259
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr13_43816439_43816939
-</td>
-<td style="text-align:right;">
-0.943
+chr5_90929346_90929846
 </td>
 <td style="text-align:right;">
 0.872
 </td>
 <td style="text-align:right;">
-0.057
+0.370
 </td>
 <td style="text-align:right;">
-0.014
+0.108
 </td>
 <td style="text-align:right;">
--0.801
+0.394
+</td>
+<td style="text-align:right;">
+0.132
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr5_135670508_135671008
+chr22_42313863_42314363
 </td>
 <td style="text-align:right;">
-0.942
+0.861
 </td>
 <td style="text-align:right;">
+0.841
 </td>
 <td style="text-align:right;">
+0.004
 </td>
 <td style="text-align:right;">
-0.942
+0.016
 </td>
 <td style="text-align:right;">
+-0.822
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr2_37004928_37005428
+chr2_65539480_65539980
 </td>
 <td style="text-align:right;">
-0.938
+0.857
 </td>
 <td style="text-align:right;">
-0.010
+0.390
 </td>
 <td style="text-align:right;">
-0.090
+0.052
 </td>
 <td style="text-align:right;">
-0.837
+0.415
 </td>
 <td style="text-align:right;">
-0.917
+0.077
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr15_67716811_67717311
+chr11_64044962_64045462
 </td>
 <td style="text-align:right;">
-0.930
+0.850
 </td>
 <td style="text-align:right;">
+0.656
 </td>
 <td style="text-align:right;">
 0.003
 </td>
 <td style="text-align:right;">
-0.927
+0.192
 </td>
 <td style="text-align:right;">
+-0.461
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr11_19281055_19281555
+chr11_113577991_113578491
 </td>
 <td style="text-align:right;">
-0.925
+0.845
 </td>
 <td style="text-align:right;">
-0.020
+0.003
 </td>
 <td style="text-align:right;">
-0.019
+0.260
 </td>
 <td style="text-align:right;">
-0.887
+0.582
 </td>
 <td style="text-align:right;">
-0.886
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr19_12365451_12365951
-</td>
-<td style="text-align:right;">
-0.923
-</td>
-<td style="text-align:right;">
-0.564
-</td>
-<td style="text-align:right;">
-0.086
-</td>
-<td style="text-align:right;">
-0.273
-</td>
-<td style="text-align:right;">
--0.206
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_27099450_27099950
-</td>
-<td style="text-align:right;">
-0.920
-</td>
-<td style="text-align:right;">
-0.070
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-0.838
-</td>
-<td style="text-align:right;">
-0.780
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_4338649_4339149
-</td>
-<td style="text-align:right;">
-0.918
-</td>
-<td style="text-align:right;">
-0.060
-</td>
-<td style="text-align:right;">
-0.054
-</td>
-<td style="text-align:right;">
-0.803
-</td>
-<td style="text-align:right;">
-0.797
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_67481828_67482328
-</td>
-<td style="text-align:right;">
-0.916
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.904
-</td>
-<td style="text-align:right;">
-0.891
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_201038456_201038956
-</td>
-<td style="text-align:right;">
-0.914
-</td>
-<td style="text-align:right;">
-0.388
-</td>
-<td style="text-align:right;">
-0.113
-</td>
-<td style="text-align:right;">
-0.413
-</td>
-<td style="text-align:right;">
-0.138
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_44909786_44910286
-</td>
-<td style="text-align:right;">
-0.914
-</td>
-<td style="text-align:right;">
-0.440
-</td>
-<td style="text-align:right;">
-0.005
-</td>
-<td style="text-align:right;">
-0.468
-</td>
-<td style="text-align:right;">
-0.033
+0.840
 </td>
 </tr>
 <tr>
@@ -1710,705 +1178,139 @@ chr20_44909786_44910286
 chr10_127354900_127355400
 </td>
 <td style="text-align:right;">
-0.912
+0.839
 </td>
 <td style="text-align:right;">
-0.387
-</td>
-<td style="text-align:right;">
-0.113
-</td>
-<td style="text-align:right;">
-0.412
-</td>
-<td style="text-align:right;">
-0.138
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_155066370_155066870
-</td>
-<td style="text-align:right;">
-0.911
-</td>
-<td style="text-align:right;">
-0.383
-</td>
-<td style="text-align:right;">
-0.121
-</td>
-<td style="text-align:right;">
-0.407
-</td>
-<td style="text-align:right;">
-0.146
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr4_117783720_117784220
-</td>
-<td style="text-align:right;">
-0.911
-</td>
-<td style="text-align:right;">
-0.193
-</td>
-<td style="text-align:right;">
-0.154
-</td>
-<td style="text-align:right;">
-0.564
-</td>
-<td style="text-align:right;">
-0.525
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_174484613_174485113
-</td>
-<td style="text-align:right;">
-0.910
-</td>
-<td style="text-align:right;">
-0.860
-</td>
-<td style="text-align:right;">
-0.019
-</td>
-<td style="text-align:right;">
-0.032
-</td>
-<td style="text-align:right;">
--0.809
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_50016402_50016902
-</td>
-<td style="text-align:right;">
-0.903
-</td>
-<td style="text-align:right;">
-0.063
-</td>
-<td style="text-align:right;">
-0.598
-</td>
-<td style="text-align:right;">
-0.242
-</td>
-<td style="text-align:right;">
-0.778
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_154271835_154272335
-</td>
-<td style="text-align:right;">
-0.902
-</td>
-<td style="text-align:right;">
-0.345
-</td>
-<td style="text-align:right;">
-0.100
-</td>
-<td style="text-align:right;">
-0.456
-</td>
-<td style="text-align:right;">
-0.211
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_163396846_163397346
-</td>
-<td style="text-align:right;">
-0.901
-</td>
-<td style="text-align:right;">
-0.878
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.023
-</td>
-<td style="text-align:right;">
--0.854
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_125576532_125577032
-</td>
-<td style="text-align:right;">
-0.900
-</td>
-<td style="text-align:right;">
-0.125
-</td>
-<td style="text-align:right;">
-0.036
-</td>
-<td style="text-align:right;">
-0.739
-</td>
-<td style="text-align:right;">
-0.650
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_26172421_26172921
-</td>
-<td style="text-align:right;">
-0.896
-</td>
-<td style="text-align:right;">
-0.355
-</td>
-<td style="text-align:right;">
-0.103
-</td>
-<td style="text-align:right;">
-0.439
-</td>
-<td style="text-align:right;">
-0.187
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_155022243_155022743
-</td>
-<td style="text-align:right;">
-0.895
-</td>
-<td style="text-align:right;">
-0.330
-</td>
-<td style="text-align:right;">
-0.121
-</td>
-<td style="text-align:right;">
-0.444
-</td>
-<td style="text-align:right;">
-0.236
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr12_119153484_119153984
-</td>
-<td style="text-align:right;">
-0.892
-</td>
-<td style="text-align:right;">
-0.721
-</td>
-<td style="text-align:right;">
-0.037
-</td>
-<td style="text-align:right;">
-0.134
-</td>
-<td style="text-align:right;">
--0.550
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_50108581_50109081
-</td>
-<td style="text-align:right;">
-0.890
-</td>
-<td style="text-align:right;">
-0.015
-</td>
-<td style="text-align:right;">
-0.111
-</td>
-<td style="text-align:right;">
-0.765
-</td>
-<td style="text-align:right;">
-0.860
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_193075545_193076045
-</td>
-<td style="text-align:right;">
-0.883
-</td>
-<td style="text-align:right;">
-0.121
-</td>
-<td style="text-align:right;">
-0.164
-</td>
-<td style="text-align:right;">
-0.598
-</td>
-<td style="text-align:right;">
-0.641
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_180125539_180126039
-</td>
-<td style="text-align:right;">
-0.880
-</td>
-<td style="text-align:right;">
-0.013
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.867
-</td>
-<td style="text-align:right;">
-0.854
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_2258007_2258507
-</td>
-<td style="text-align:right;">
-0.879
-</td>
-<td style="text-align:right;">
-0.014
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.865
-</td>
-<td style="text-align:right;">
-0.851
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_63633611_63634111
-</td>
-<td style="text-align:right;">
-0.873
-</td>
-<td style="text-align:right;">
-0.042
-</td>
-<td style="text-align:right;">
-0.080
-</td>
-<td style="text-align:right;">
-0.752
-</td>
-<td style="text-align:right;">
-0.790
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113032951_113033451
-</td>
-<td style="text-align:right;">
-0.873
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.869
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.865
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_230101515_230102015
-</td>
-<td style="text-align:right;">
-0.871
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.094
-</td>
-<td style="text-align:right;">
-0.777
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr8_27315229_27315729
-</td>
-<td style="text-align:right;">
-0.845
-</td>
-<td style="text-align:right;">
-0.434
-</td>
-<td style="text-align:right;">
-0.127
-</td>
-<td style="text-align:right;">
-0.284
-</td>
-<td style="text-align:right;">
--0.023
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_40746321_40746821
-</td>
-<td style="text-align:right;">
-0.845
-</td>
-<td style="text-align:right;">
-0.359
+0.356
 </td>
 <td style="text-align:right;">
 0.104
 </td>
 <td style="text-align:right;">
-0.382
+0.379
 </td>
 <td style="text-align:right;">
-0.127
+0.126
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr8_12931442_12931942
+chr2_50516287_50516787
 </td>
 <td style="text-align:right;">
-0.844
+0.835
 </td>
 <td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.074
-</td>
-<td style="text-align:right;">
-0.771
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_35145033_35145533
-</td>
-<td style="text-align:right;">
-0.840
-</td>
-<td style="text-align:right;">
-0.401
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.431
-</td>
-<td style="text-align:right;">
-0.038
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_27823826_27824326
-</td>
-<td style="text-align:right;">
-0.831
-</td>
-<td style="text-align:right;">
-0.807
+0.052
 </td>
 <td style="text-align:right;">
 0.005
 </td>
 <td style="text-align:right;">
-0.018
+0.778
 </td>
 <td style="text-align:right;">
--0.784
+0.732
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr11_109421903_109422403
-</td>
-<td style="text-align:right;">
-0.830
-</td>
-<td style="text-align:right;">
-0.642
-</td>
-<td style="text-align:right;">
-0.188
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
--0.454
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_60353696_60354196
-</td>
-<td style="text-align:right;">
-0.829
-</td>
-<td style="text-align:right;">
-0.358
-</td>
-<td style="text-align:right;">
-0.054
-</td>
-<td style="text-align:right;">
-0.417
-</td>
-<td style="text-align:right;">
-0.114
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr9_131968631_131969131
+chr5_89432966_89433466
 </td>
 <td style="text-align:right;">
 0.828
 </td>
 <td style="text-align:right;">
-0.160
+0.004
 </td>
 <td style="text-align:right;">
+0.002
 </td>
 <td style="text-align:right;">
-0.668
+0.823
 </td>
 <td style="text-align:right;">
-0.508
+0.820
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr9_70034045_70034545
+chr11_41035329_41035829
 </td>
 <td style="text-align:right;">
-0.828
+0.822
 </td>
 <td style="text-align:right;">
-0.804
+0.495
 </td>
 <td style="text-align:right;">
-0.005
+0.144
 </td>
 <td style="text-align:right;">
-0.019
+0.184
 </td>
 <td style="text-align:right;">
--0.780
+-0.167
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr7_141162040_141162540
+chr2_232927961_232928461
 </td>
 <td style="text-align:right;">
-0.828
+0.820
 </td>
 <td style="text-align:right;">
-0.047
+0.384
 </td>
 <td style="text-align:right;">
-0.017
+0.112
 </td>
 <td style="text-align:right;">
-0.763
+0.325
 </td>
 <td style="text-align:right;">
-0.733
+0.053
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr12_2409788_2410288
+chr1_27099450_27099950
 </td>
 <td style="text-align:right;">
-0.826
+0.812
 </td>
 <td style="text-align:right;">
-0.741
-</td>
-<td style="text-align:right;">
-0.059
-</td>
-<td style="text-align:right;">
-0.026
-</td>
-<td style="text-align:right;">
--0.656
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_219177396_219177896
-</td>
-<td style="text-align:right;">
-0.815
-</td>
-<td style="text-align:right;">
-0.115
-</td>
-<td style="text-align:right;">
-0.151
-</td>
-<td style="text-align:right;">
-0.549
-</td>
-<td style="text-align:right;">
-0.585
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_48634649_48635149
-</td>
-<td style="text-align:right;">
-0.814
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.076
-</td>
-<td style="text-align:right;">
-0.738
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr8_55401095_55401595
-</td>
-<td style="text-align:right;">
-0.813
-</td>
-<td style="text-align:right;">
-0.792
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.013
-</td>
-<td style="text-align:right;">
--0.770
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_117570304_117570804
-</td>
-<td style="text-align:right;">
-0.813
+0.063
 </td>
 <td style="text-align:right;">
 0.011
 </td>
 <td style="text-align:right;">
-0.178
+0.738
 </td>
 <td style="text-align:right;">
-0.623
-</td>
-<td style="text-align:right;">
-0.790
+0.686
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr11_113473959_113474459
+chr1_204619684_204620184
 </td>
 <td style="text-align:right;">
-0.805
+0.807
 </td>
 <td style="text-align:right;">
+0.716
 </td>
 <td style="text-align:right;">
-0.782
-</td>
-<td style="text-align:right;">
-0.024
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr9_37061702_37062202
-</td>
-<td style="text-align:right;">
-0.801
+0.025
 </td>
 <td style="text-align:right;">
 0.066
 </td>
 <td style="text-align:right;">
-0.108
-</td>
-<td style="text-align:right;">
-0.627
-</td>
-<td style="text-align:right;">
-0.669
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_4043149_4043649
-</td>
-<td style="text-align:right;">
-0.800
-</td>
-<td style="text-align:right;">
-0.007
-</td>
-<td style="text-align:right;">
-0.067
-</td>
-<td style="text-align:right;">
-0.726
-</td>
-<td style="text-align:right;">
-0.786
+-0.625
 </td>
 </tr>
 </tbody>
@@ -2451,18 +1353,19 @@ PIP_diff
 chr12_57096240_57096740
 </td>
 <td style="text-align:right;">
-1.002
+0.985
 </td>
 <td style="text-align:right;">
-0.135
+0.134
 </td>
 <td style="text-align:right;">
-0.867
+0.851
 </td>
 <td style="text-align:right;">
+0.000
 </td>
 <td style="text-align:right;">
-0.731
+0.718
 </td>
 </tr>
 <tr>
@@ -2470,115 +1373,19 @@ chr12_57096240_57096740
 chr2_172098931_172099431
 </td>
 <td style="text-align:right;">
-0.994
+0.920
 </td>
 <td style="text-align:right;">
 0.004
 </td>
 <td style="text-align:right;">
-0.980
+0.904
 </td>
 <td style="text-align:right;">
-0.011
-</td>
-<td style="text-align:right;">
-0.987
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr18_29920961_29921461
-</td>
-<td style="text-align:right;">
-0.989
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.985
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.981
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr18_28658016_28658516
-</td>
-<td style="text-align:right;">
-0.980
-</td>
-<td style="text-align:right;">
-0.853
-</td>
-<td style="text-align:right;">
-0.127
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
--0.726
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:right;">
-0.976
-</td>
-<td style="text-align:right;">
-0.145
-</td>
-<td style="text-align:right;">
-0.672
-</td>
-<td style="text-align:right;">
-0.160
-</td>
-<td style="text-align:right;">
-0.687
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_64044962_64045462
-</td>
-<td style="text-align:right;">
-0.969
-</td>
-<td style="text-align:right;">
+0.012
 </td>
 <td style="text-align:right;">
 0.912
-</td>
-<td style="text-align:right;">
-0.057
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr22_41380331_41380831
-</td>
-<td style="text-align:right;">
-0.969
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.965
-</td>
-<td style="text-align:right;">
-0.968
 </td>
 </tr>
 <tr>
@@ -2586,231 +1393,39 @@ chr22_41380331_41380831
 chr4_76234290_76234790
 </td>
 <td style="text-align:right;">
-0.965
+0.907
 </td>
 <td style="text-align:right;">
-0.130
+0.122
 </td>
 <td style="text-align:right;">
-0.830
+0.781
 </td>
 <td style="text-align:right;">
 0.005
 </td>
 <td style="text-align:right;">
-0.706
+0.663
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr3_37941713_37942213
+chr18_29920961_29921461
 </td>
 <td style="text-align:right;">
-0.960
+0.900
 </td>
 <td style="text-align:right;">
-0.129
+0.007
 </td>
 <td style="text-align:right;">
-0.831
+0.893
 </td>
 <td style="text-align:right;">
+0.000
 </td>
 <td style="text-align:right;">
-0.702
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_135670508_135671008
-</td>
-<td style="text-align:right;">
-0.959
-</td>
-<td style="text-align:right;">
-0.009
-</td>
-<td style="text-align:right;">
-0.950
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.942
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr9_98306783_98307283
-</td>
-<td style="text-align:right;">
-0.959
-</td>
-<td style="text-align:right;">
-0.118
-</td>
-<td style="text-align:right;">
-0.759
-</td>
-<td style="text-align:right;">
-0.082
-</td>
-<td style="text-align:right;">
-0.722
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_33566611_33567111
-</td>
-<td style="text-align:right;">
-0.958
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.956
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-<td style="text-align:right;">
-0.955
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_90929346_90929846
-</td>
-<td style="text-align:right;">
-0.957
-</td>
-<td style="text-align:right;">
-0.198
-</td>
-<td style="text-align:right;">
-0.648
-</td>
-<td style="text-align:right;">
-0.111
-</td>
-<td style="text-align:right;">
-0.561
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_71533041_71533541
-</td>
-<td style="text-align:right;">
-0.957
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.954
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.952
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_47093917_47094417
-</td>
-<td style="text-align:right;">
-0.954
-</td>
-<td style="text-align:right;">
-0.940
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-<td style="text-align:right;">
--0.927
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_102555979_102556479
-</td>
-<td style="text-align:right;">
-0.950
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.857
-</td>
-<td style="text-align:right;">
-0.092
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_175822509_175823009
-</td>
-<td style="text-align:right;">
-0.948
-</td>
-<td style="text-align:right;">
-0.117
-</td>
-<td style="text-align:right;">
-0.751
-</td>
-<td style="text-align:right;">
-0.081
-</td>
-<td style="text-align:right;">
-0.715
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr13_109043532_109044032
-</td>
-<td style="text-align:right;">
-0.944
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.840
-</td>
-<td style="text-align:right;">
-0.104
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_36544631_36545131
-</td>
-<td style="text-align:right;">
-0.943
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.936
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.928
+0.886
 </td>
 </tr>
 <tr>
@@ -2818,643 +1433,39 @@ chr17_36544631_36545131
 chr10_86244301_86244801
 </td>
 <td style="text-align:right;">
-0.943
-</td>
-<td style="text-align:right;">
-0.116
-</td>
-<td style="text-align:right;">
-0.745
-</td>
-<td style="text-align:right;">
-0.081
-</td>
-<td style="text-align:right;">
-0.710
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_45067424_45067924
-</td>
-<td style="text-align:right;">
-0.915
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.826
-</td>
-<td style="text-align:right;">
-0.089
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr15_52721584_52722084
-</td>
-<td style="text-align:right;">
-0.914
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.698
-</td>
-<td style="text-align:right;">
-0.215
-</td>
-<td style="text-align:right;">
-0.910
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr15_26838688_26839188
-</td>
-<td style="text-align:right;">
-0.910
-</td>
-<td style="text-align:right;">
-0.114
-</td>
-<td style="text-align:right;">
-0.729
-</td>
-<td style="text-align:right;">
-0.067
-</td>
-<td style="text-align:right;">
-0.682
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_60294072_60294572
-</td>
-<td style="text-align:right;">
-0.908
-</td>
-<td style="text-align:right;">
-0.897
-</td>
-<td style="text-align:right;">
-0.010
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
--0.887
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_199956113_199956613
-</td>
-<td style="text-align:right;">
-0.898
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.895
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-<td style="text-align:right;">
-0.894
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_19307365_19307865
-</td>
-<td style="text-align:right;">
-0.894
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.674
-</td>
-<td style="text-align:right;">
-0.220
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_46051914_46052414
-</td>
-<td style="text-align:right;">
-0.891
-</td>
-<td style="text-align:right;">
-0.104
-</td>
-<td style="text-align:right;">
-0.711
-</td>
-<td style="text-align:right;">
-0.076
-</td>
-<td style="text-align:right;">
-0.683
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_174118473_174118973
-</td>
-<td style="text-align:right;">
-0.888
-</td>
-<td style="text-align:right;">
-0.873
-</td>
-<td style="text-align:right;">
-0.013
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
--0.859
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_61686073_61686573
-</td>
-<td style="text-align:right;">
-0.887
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.871
-</td>
-<td style="text-align:right;">
-0.016
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_125576532_125577032
-</td>
-<td style="text-align:right;">
-0.886
-</td>
-<td style="text-align:right;">
-0.110
-</td>
-<td style="text-align:right;">
-0.701
-</td>
-<td style="text-align:right;">
-0.076
-</td>
-<td style="text-align:right;">
-0.667
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_76083214_76083714
-</td>
-<td style="text-align:right;">
-0.880
-</td>
-<td style="text-align:right;">
-0.112
-</td>
-<td style="text-align:right;">
-0.721
-</td>
-<td style="text-align:right;">
-0.047
-</td>
-<td style="text-align:right;">
-0.656
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_127354900_127355400
-</td>
-<td style="text-align:right;">
-0.875
-</td>
-<td style="text-align:right;">
-0.116
-</td>
-<td style="text-align:right;">
-0.742
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-<td style="text-align:right;">
-0.642
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_61408569_61409069
-</td>
-<td style="text-align:right;">
-0.875
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.875
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_153800464_153800964
-</td>
-<td style="text-align:right;">
-0.872
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.868
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.867
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr8_129857300_129857800
-</td>
-<td style="text-align:right;">
-0.864
-</td>
-<td style="text-align:right;">
-0.107
-</td>
-<td style="text-align:right;">
-0.684
-</td>
-<td style="text-align:right;">
-0.074
-</td>
-<td style="text-align:right;">
-0.651
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr21_45735211_45735711
-</td>
-<td style="text-align:right;">
-0.860
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.843
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_121520070_121520570
-</td>
-<td style="text-align:right;">
-0.859
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.818
-</td>
-<td style="text-align:right;">
-0.033
-</td>
-<td style="text-align:right;">
-0.844
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_156414327_156414827
-</td>
-<td style="text-align:right;">
-0.859
-</td>
-<td style="text-align:right;">
-0.248
-</td>
-<td style="text-align:right;">
-0.551
-</td>
-<td style="text-align:right;">
-0.059
-</td>
-<td style="text-align:right;">
-0.363
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_30549932_30550432
-</td>
-<td style="text-align:right;">
 0.852
 </td>
 <td style="text-align:right;">
-0.068
+0.106
 </td>
 <td style="text-align:right;">
-0.782
+0.672
 </td>
 <td style="text-align:right;">
-0.002
+0.073
 </td>
 <td style="text-align:right;">
-0.716
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_115641960_115642460
-</td>
-<td style="text-align:right;">
-0.852
-</td>
-<td style="text-align:right;">
-0.021
-</td>
-<td style="text-align:right;">
-0.828
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.810
+0.640
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr6_24683529_24684029
+chr11_64044962_64045462
 </td>
 <td style="text-align:right;">
-0.845
+0.835
 </td>
 <td style="text-align:right;">
-0.108
+0.000
 </td>
 <td style="text-align:right;">
-0.694
+0.785
 </td>
 <td style="text-align:right;">
-0.043
+0.050
 </td>
 <td style="text-align:right;">
-0.628
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_193075545_193076045
-</td>
-<td style="text-align:right;">
-0.843
-</td>
-<td style="text-align:right;">
-0.027
-</td>
-<td style="text-align:right;">
-0.797
-</td>
-<td style="text-align:right;">
-0.019
-</td>
-<td style="text-align:right;">
-0.789
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_201038456_201038956
-</td>
-<td style="text-align:right;">
-0.834
-</td>
-<td style="text-align:right;">
-0.103
-</td>
-<td style="text-align:right;">
-0.660
-</td>
-<td style="text-align:right;">
-0.071
-</td>
-<td style="text-align:right;">
-0.628
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_28824043_28824543
-</td>
-<td style="text-align:right;">
-0.833
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.816
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr8_1080059_1080559
-</td>
-<td style="text-align:right;">
-0.827
-</td>
-<td style="text-align:right;">
-0.006
-</td>
-<td style="text-align:right;">
-0.816
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.815
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr14_35140667_35141167
-</td>
-<td style="text-align:right;">
-0.821
-</td>
-<td style="text-align:right;">
-0.230
-</td>
-<td style="text-align:right;">
-0.534
-</td>
-<td style="text-align:right;">
-0.058
-</td>
-<td style="text-align:right;">
-0.362
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_155066370_155066870
-</td>
-<td style="text-align:right;">
-0.819
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.781
-</td>
-<td style="text-align:right;">
-0.038
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_37004928_37005428
-</td>
-<td style="text-align:right;">
-0.818
-</td>
-<td style="text-align:right;">
-0.043
-</td>
-<td style="text-align:right;">
-0.707
-</td>
-<td style="text-align:right;">
-0.067
-</td>
-<td style="text-align:right;">
-0.731
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_12010566_12011066
-</td>
-<td style="text-align:right;">
-0.811
-</td>
-<td style="text-align:right;">
-0.100
-</td>
-<td style="text-align:right;">
-0.641
-</td>
-<td style="text-align:right;">
-0.069
-</td>
-<td style="text-align:right;">
-0.611
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr4_182736158_182736658
-</td>
-<td style="text-align:right;">
-0.811
-</td>
-<td style="text-align:right;">
-0.793
-</td>
-<td style="text-align:right;">
-0.015
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
--0.775
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr19_38005125_38005625
-</td>
-<td style="text-align:right;">
-0.802
-</td>
-<td style="text-align:right;">
-0.108
-</td>
-<td style="text-align:right;">
-0.692
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-<td style="text-align:right;">
-0.585
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr14_88978898_88979398
-</td>
-<td style="text-align:right;">
-0.801
-</td>
-<td style="text-align:right;">
-0.099
-</td>
-<td style="text-align:right;">
-0.633
-</td>
-<td style="text-align:right;">
-0.069
-</td>
-<td style="text-align:right;">
-0.602
+0.835
 </td>
 </tr>
 </tbody>
@@ -3497,58 +1508,19 @@ PIP_diff
 chr6_92378607_92379107
 </td>
 <td style="text-align:right;">
-1.008
-</td>
-<td style="text-align:right;">
-0.011
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.998
-</td>
-<td style="text-align:right;">
 0.987
 </td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
+<td style="text-align:right;">
+0.012
 </td>
 <td style="text-align:right;">
-1.003
+0.000
 </td>
 <td style="text-align:right;">
-0.006
+0.975
 </td>
 <td style="text-align:right;">
-0.252
-</td>
-<td style="text-align:right;">
-0.745
-</td>
-<td style="text-align:right;">
-0.991
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr22_41362794_41363294
-</td>
-<td style="text-align:right;">
-1.002
-</td>
-<td style="text-align:right;">
-0.998
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
--0.993
+0.963
 </td>
 </tr>
 <tr>
@@ -3556,253 +1528,59 @@ chr22_41362794_41363294
 chr7_1986364_1986864
 </td>
 <td style="text-align:right;">
-0.992
-</td>
-<td style="text-align:right;">
-0.005
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.983
-</td>
-<td style="text-align:right;">
-0.982
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_33592819_33593319
-</td>
-<td style="text-align:right;">
-0.989
-</td>
-<td style="text-align:right;">
-0.005
-</td>
-<td style="text-align:right;">
-0.575
-</td>
-<td style="text-align:right;">
-0.409
-</td>
-<td style="text-align:right;">
-0.980
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:right;">
-0.988
-</td>
-<td style="text-align:right;">
-0.230
-</td>
-<td style="text-align:right;">
-0.224
-</td>
-<td style="text-align:right;">
-0.535
-</td>
-<td style="text-align:right;">
-0.529
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_90929346_90929846
-</td>
-<td style="text-align:right;">
-0.985
-</td>
-<td style="text-align:right;">
-0.270
-</td>
-<td style="text-align:right;">
-0.212
-</td>
-<td style="text-align:right;">
-0.503
-</td>
-<td style="text-align:right;">
-0.445
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr12_2191122_2191622
-</td>
-<td style="text-align:right;">
 0.979
 </td>
 <td style="text-align:right;">
-0.003
+0.007
 </td>
 <td style="text-align:right;">
-0.045
+0.006
 </td>
 <td style="text-align:right;">
-0.931
+0.966
 </td>
 <td style="text-align:right;">
-0.974
+0.965
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr6_32760724_32761224
-</td>
-<td style="text-align:right;">
-0.979
-</td>
-<td style="text-align:right;">
-0.952
-</td>
-<td style="text-align:right;">
-0.008
-</td>
-<td style="text-align:right;">
-0.019
-</td>
-<td style="text-align:right;">
--0.925
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_180125539_180126039
-</td>
-<td style="text-align:right;">
-0.977
-</td>
-<td style="text-align:right;">
-0.323
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.654
-</td>
-<td style="text-align:right;">
-0.331
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_135670508_135671008
-</td>
-<td style="text-align:right;">
-0.971
-</td>
-<td style="text-align:right;">
-0.292
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.678
-</td>
-<td style="text-align:right;">
-0.386
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr4_79281479_79281979
+chr22_41362794_41363294
 </td>
 <td style="text-align:right;">
 0.970
 </td>
 <td style="text-align:right;">
-0.022
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.948
-</td>
-<td style="text-align:right;">
-0.926
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr8_129857300_129857800
-</td>
-<td style="text-align:right;">
 0.969
 </td>
 <td style="text-align:right;">
-0.059
+0.000
 </td>
 <td style="text-align:right;">
-0.059
+0.001
 </td>
 <td style="text-align:right;">
-0.851
-</td>
-<td style="text-align:right;">
-0.852
+-0.967
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr15_78617607_78618107
+chr2_172098931_172099431
 </td>
 <td style="text-align:right;">
-0.965
+0.941
 </td>
 <td style="text-align:right;">
-0.669
+0.006
 </td>
 <td style="text-align:right;">
-0.268
+0.237
 </td>
 <td style="text-align:right;">
-0.029
+0.699
 </td>
 <td style="text-align:right;">
--0.372
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_175822509_175823009
-</td>
-<td style="text-align:right;">
-0.948
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.239
-</td>
-<td style="text-align:right;">
-0.708
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_8408375_8408875
-</td>
-<td style="text-align:right;">
-0.943
-</td>
-<td style="text-align:right;">
-0.083
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.860
-</td>
-<td style="text-align:right;">
-0.777
+0.929
 </td>
 </tr>
 <tr>
@@ -3810,366 +1588,139 @@ chr1_8408375_8408875
 chr7_2008327_2008827
 </td>
 <td style="text-align:right;">
-0.936
+0.912
 </td>
 <td style="text-align:right;">
-0.907
+0.877
 </td>
 <td style="text-align:right;">
-0.019
-</td>
-<td style="text-align:right;">
-0.010
-</td>
-<td style="text-align:right;">
--0.879
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_124529874_124530374
-</td>
-<td style="text-align:right;">
-0.924
-</td>
-<td style="text-align:right;">
-0.132
-</td>
-<td style="text-align:right;">
-0.200
-</td>
-<td style="text-align:right;">
-0.591
-</td>
-<td style="text-align:right;">
-0.659
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_156414327_156414827
-</td>
-<td style="text-align:right;">
-0.899
+0.021
 </td>
 <td style="text-align:right;">
 0.015
 </td>
 <td style="text-align:right;">
-0.496
-</td>
-<td style="text-align:right;">
-0.388
-</td>
-<td style="text-align:right;">
-0.869
+-0.841
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr6_32659772_32660272
+chr2_180125539_180126039
 </td>
 <td style="text-align:right;">
-0.898
+0.899
 </td>
 <td style="text-align:right;">
-0.503
-</td>
-<td style="text-align:right;">
-0.395
+0.298
 </td>
 <td style="text-align:right;">
 0.000
 </td>
 <td style="text-align:right;">
--0.108
+0.602
+</td>
+<td style="text-align:right;">
+0.304
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr3_49966524_49967024
+chr11_113577991_113578491
 </td>
 <td style="text-align:right;">
-0.898
+0.874
 </td>
 <td style="text-align:right;">
-0.003
+0.203
 </td>
 <td style="text-align:right;">
-0.226
+0.197
 </td>
 <td style="text-align:right;">
-0.669
+0.474
 </td>
 <td style="text-align:right;">
-0.892
+0.468
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr15_52721584_52722084
+chr6_33592819_33593319
 </td>
 <td style="text-align:right;">
-0.895
+0.852
 </td>
 <td style="text-align:right;">
+0.002
 </td>
 <td style="text-align:right;">
-0.003
+0.494
 </td>
 <td style="text-align:right;">
-0.892
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_27762199_27762699
-</td>
-<td style="text-align:right;">
-0.892
-</td>
-<td style="text-align:right;">
-0.269
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.624
-</td>
-<td style="text-align:right;">
-0.355
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_201038456_201038956
-</td>
-<td style="text-align:right;">
-0.879
-</td>
-<td style="text-align:right;">
-0.214
-</td>
-<td style="text-align:right;">
-0.168
-</td>
-<td style="text-align:right;">
-0.497
-</td>
-<td style="text-align:right;">
-0.451
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_127354900_127355400
-</td>
-<td style="text-align:right;">
-0.863
-</td>
-<td style="text-align:right;">
-0.210
-</td>
-<td style="text-align:right;">
-0.165
-</td>
-<td style="text-align:right;">
-0.487
-</td>
-<td style="text-align:right;">
-0.442
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr6_29016616_29017116
-</td>
-<td style="text-align:right;">
-0.857
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-0.841
-</td>
-<td style="text-align:right;">
-0.850
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_45017748_45018248
-</td>
-<td style="text-align:right;">
-0.850
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.215
-</td>
-<td style="text-align:right;">
-0.635
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_155066370_155066870
+0.356
 </td>
 <td style="text-align:right;">
 0.848
 </td>
-<td style="text-align:right;">
-0.267
+</tr>
+<tr>
+<td style="text-align:left;">
+chr12_2191122_2191622
 </td>
 <td style="text-align:right;">
-0.193
+0.838
 </td>
 <td style="text-align:right;">
-0.389
+0.002
 </td>
 <td style="text-align:right;">
-0.315
+0.034
+</td>
+<td style="text-align:right;">
+0.803
+</td>
+<td style="text-align:right;">
+0.835
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr16_29974550_29975050
+chr5_135670508_135671008
 </td>
 <td style="text-align:right;">
-0.847
+0.822
 </td>
 <td style="text-align:right;">
-0.043
+0.248
 </td>
 <td style="text-align:right;">
-0.703
+0.000
 </td>
 <td style="text-align:right;">
-0.101
+0.574
 </td>
 <td style="text-align:right;">
-0.760
+0.326
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-chr7_105156817_105157317
+chr5_90929346_90929846
 </td>
 <td style="text-align:right;">
-0.842
+0.816
 </td>
 <td style="text-align:right;">
+0.224
 </td>
 <td style="text-align:right;">
-0.213
+0.176
 </td>
 <td style="text-align:right;">
-0.629
+0.416
 </td>
 <td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_177069919_177070419
-</td>
-<td style="text-align:right;">
-0.834
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-0.010
-</td>
-<td style="text-align:right;">
-0.812
-</td>
-<td style="text-align:right;">
-0.809
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_61400283_61400783
-</td>
-<td style="text-align:right;">
-0.834
-</td>
-<td style="text-align:right;">
-0.024
-</td>
-<td style="text-align:right;">
-0.809
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.785
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr20_46051914_46052414
-</td>
-<td style="text-align:right;">
-0.832
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.003
-</td>
-<td style="text-align:right;">
-0.829
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr17_36544631_36545131
-</td>
-<td style="text-align:right;">
-0.815
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.815
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_48634649_48635149
-</td>
-<td style="text-align:right;">
-0.810
-</td>
-<td style="text-align:right;">
-0.007
-</td>
-<td style="text-align:right;">
-0.043
-</td>
-<td style="text-align:right;">
-0.759
-</td>
-<td style="text-align:right;">
-0.796
+0.368
 </td>
 </tr>
 </tbody>
@@ -4179,7 +1730,455 @@ chr3_48634649_48635149
 </div>
 <div id="cell-type-overlap" class="section level2">
 <h2>Cell type overlap</h2>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="overlap-of-the-ctwas-input" class="section level3">
+<h3>Overlap of the cTWAS input</h3>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="overlap-of-the-ctwas-significant-peaks" class="section level3">
+<h3>Overlap of the cTWAS significant peaks</h3>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="dynamic-cpeaks" class="section level2">
+<h2>Dynamic cPeaks</h2>
+<p>In addition to PIP sum &gt; 0.8, dynamic cpeaks must satisfy
+that:</p>
+<p><span class="math display">\[
+PIP_{GABA6} + PIP_{GABA1} - PIP_{GABA0} \geq 0.5
+\]</span> for the GABA cell type. The same condition applies to the
+other cell types .</p>
+<p>Peaks not included in one time point are regarded as <span
+class="math inline">\(PIP=0\)</span>.</p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cell-type-correlation" class="section level2">
+<h2>Cell type correlation</h2>
+<div
+id="comparing-top-genes-across-cell-types-nominated-in-the-same-locus"
+class="section level4">
+<h4>Comparing top genes across cell types nominated in the same
+locus</h4>
+<p>This table shows how different cell types may nominate different
+genes in the same locus.</p>
+<p>All shared peaks are consistent except locus 3&amp;4 in chr7.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
+<table>
+<caption>
+Dynamic genes by locus
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+locus_tag
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GABA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+npglut
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+nmglut
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1_19
+</td>
+<td style="text-align:left;">
+chr1_27099450_27099950
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_71
+</td>
+<td style="text-align:left;">
+chr1_115314324_115314824
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1_103
+</td>
+<td style="text-align:left;">
+chr1_204619684_204620184
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_32
+</td>
+<td style="text-align:left;">
+chr2_50516287_50516787
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_42
+</td>
+<td style="text-align:left;">
+chr2_65539480_65539980
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_137
+</td>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3_108
+</td>
+<td style="text-align:left;">
+chr3_175410533_175411033
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4_61
+</td>
+<td style="text-align:left;">
+chr4_89704715_89705215
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_52
+</td>
+<td style="text-align:left;">
+chr5_89432966_89433466
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_53
+</td>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_3
+</td>
+<td style="text-align:left;">
+chr7_2010548_2011048
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr7_1986364_1986864,chr7_2008327_2008827
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_4
+</td>
+<td style="text-align:left;">
+chr7_2010548_2011048
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr7_2008327_2008827
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7_98
+</td>
+<td style="text-align:left;">
+chr7_157665058_157665558
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_80
+</td>
+<td style="text-align:left;">
+chr10_127354900_127355400
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_26
+</td>
+<td style="text-align:left;">
+chr11_41035329_41035829
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_36
+</td>
+<td style="text-align:left;">
+chr11_64044962_64045462
+</td>
+<td style="text-align:left;">
+chr11_64044962_64045462
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11_67
+</td>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_35
+</td>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_11
+</td>
+<td style="text-align:left;">
+chr13_34165196_34165696
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_13
+</td>
+<td style="text-align:left;">
+chr13_35764141_35764641
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18_16
+</td>
+<td style="text-align:left;">
+chr18_29920961_29921461
+</td>
+<td style="text-align:left;">
+chr18_29920961_29921461
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_6
+</td>
+<td style="text-align:left;">
+chr19_5977436_5977936
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_18
+</td>
+<td style="text-align:left;">
+chr22_42313863_42314363
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_104
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4_52
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr4_76234290_76234790
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_55
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr10_86244301_86244801
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2_108
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr2_180125539_180126039
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5_81
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr5_135670508_135671008
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_28
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr6_33592819_33593319
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6_62
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr6_92378607_92379107
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12_2
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr12_2191122_2191622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22_17
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+chr22_41362794_41363294
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -4205,8 +2204,8 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] ggvenn_0.1.10    ggplot2_3.3.5    dplyr_1.0.7      kableExtra_1.3.4
-[5] workflowr_1.7.0 
+[1] ggvenn_0.1.10      ggplot2_3.3.5      dplyr_1.0.7        kableExtra_1.3.4  
+[5] RColorBrewer_1.1-2 workflowr_1.7.0   
 
 loaded via a namespace (and not attached):
  [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
@@ -4225,6 +2224,7 @@ loaded via a namespace (and not attached):
 [53] whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3       
 [57] svglite_2.1.0     assertthat_0.2.1  rmarkdown_2.11    httr_1.4.2       
 [61] rstudioapi_0.13   R6_2.5.1          git2r_0.29.0      compiler_4.1.2   </code></pre>
+</div>
 </div>
 </div>
 
