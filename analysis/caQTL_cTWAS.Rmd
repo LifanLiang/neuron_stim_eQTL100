@@ -12,9 +12,9 @@ editor_options:
 cPeaks was defined as FDR < 0.05. The inclusion of peaks for each condition (a unique combination of time points and cell types) is: (1) a caPeak in any time point in the same cell type; (2) nominal P value < 0.1 in the current condition. The number of peaks was shown in the table below
 
 ```{r, echo=F}
-GABA1 <- read.table("data/GABA_peakonly_res.txt", header=T)
-nmglut1 <- read.table("data/nmglut_peakonly_res.txt", header=T)
-npglut1 <- read.table("data/npglut_peakonly_res.txt", header=T)
+GABA1 <- readRDS("data/caQTL_GABA_res.RDS")
+nmglut1 <- readRDS("data/caQTL_nmglut_res.RDS")
+npglut1 <- readRDS("data/caQTL_npglut_res.RDS")
 
 npeaks <- rbind(table(GABA1$timepoint), table(nmglut1$timepoint), table(npglut1$timepoint))
 colnames(npeaks) <- paste0(c(0,1,6),"hour")
@@ -35,19 +35,38 @@ npglut.params <- readRDS("data/npglut_params.rds")
 GABA.params$convergence_plot
 ```
 
+```{r}
+library(RColorBrewer)
+myPalette <- brewer.pal(4, "Set2") 
+pie(GABA.params$group_pve, col=myPalette, border="white",
+    main = paste0(sprintf("%.2f", 100-(GABA.params$group_pve[1]/GABA.params$total_pve)*100), "% PVE for GABA peaks"))
+```
+
 ### NPglut parameters
 ```{r, echo=F}
 npglut.params$convergence_plot
 ```
 
+```{r, echo=F}
+pie(npglut.params$group_pve, col=myPalette, border="white",
+    main = paste0(sprintf("%.2f", 100-(npglut.params$group_pve[1]/npglut.params$total_pve)*100), "% PVE for NPglut peaks"))
+```
+
 ### NMglut parameters
+
 ```{r, echo=F}
 nmglut.params$convergence_plot
 ```
 
+```{r, echo=F}
+pie(nmglut.params$group_pve, col=myPalette, border="white",
+    main = paste0(sprintf("%.2f", 100-(nmglut.params$group_pve[1]/nmglut.params$total_pve)*100), "% PVE for NMglut peaks"))
+```
+
+
 ## Significant peaks
 
-A peak is significant for the cell type if its sum of PIP across time points is more than 0.8.
+A peak is significant for the cell type if its sum of PIP across time points is more than 0.8. There are 22 peaks in GABA, 6 peaks in NPglut, and 11 peaks in NMglut.
 
 ### GABA significant peaks
 
@@ -64,6 +83,7 @@ colnames(GABA4)[4] <- "PIP_1hr_GABA"
 GABA5 <- merge(GABA4, GABA1[GABA1$timepoint=="6hr_GABA",c("genename","susie_pip")], 
                  by="genename",all.x = T)
 colnames(GABA5)[5] <- "PIP_6hr_GABA"
+GABA5[is.na(GABA5)] <- 0
 GABA5 <- GABA5[order(GABA5$PIP_sum, decreasing = T),]
 GABA5$PIP_diff <- GABA5$PIP_sum - 2 * GABA5$PIP_0hr_GABA
 colnames(GABA5)[1] <- "PeakRange"
@@ -87,6 +107,7 @@ colnames(npglut4)[4] <- "PIP_1hr_npglut"
 npglut5 <- merge(npglut4, npglut1[npglut1$timepoint=="6hr_npglut",c("genename","susie_pip")], 
                  by="genename",all.x = T)
 colnames(npglut5)[5] <- "PIP_6hr_npglut"
+npglut5[is.na(npglut5)] <- 0
 npglut5 <- npglut5[order(npglut5$PIP_sum, decreasing = T),]
 npglut5$PIP_diff <- npglut5$PIP_sum - 2 * npglut5$PIP_0hr_npglut
 npglut5 <- npglut5[order(npglut5$PIP_sum,decreasing = T),]
@@ -109,6 +130,7 @@ colnames(nmglut4)[4] <- "PIP_1hr_nmglut"
 nmglut5 <- merge(nmglut4, nmglut1[nmglut1$timepoint=="6hr_nmglut",c("genename","susie_pip")], 
                by="genename",all.x = T)
 colnames(nmglut5)[5] <- "PIP_6hr_nmglut"
+nmglut5[is.na(nmglut5)] <- 0
 nmglut5$PIP_diff <- nmglut5$PIP_sum - 2 * nmglut5$PIP_0hr_nmglut
 nmglut5 <- nmglut5[order(nmglut5$PIP_sum,decreasing = T),]
 colnames(nmglut5)[1] <- "PeakRange"
@@ -119,6 +141,8 @@ nmglut5[nmglut5$PIP_sum>0.8,] %>%
 
 ## Cell type overlap
 
+### Overlap of the cTWAS input
+
 ```{r, echo=F, message=F}
 library(ggvenn)
 
@@ -126,5 +150,56 @@ ggvenn(list(GABA=GABA5$PeakRange, nmglut=nmglut5$PeakRange, npglut=npglut5$PeakR
        c("GABA","nmglut","npglut"))
 ```
 
+### Overlap of the cTWAS significant peaks
 
+```{r, echo=F, message=F}
+library(ggvenn)
 
+ggvenn(list(GABA=GABA5[GABA5$PIP_sum>0.8,"PeakRange"], nmglut=nmglut5[nmglut5$PIP_sum>0.8,"PeakRange"], npglut=npglut5[npglut5$PIP_sum>0.8,"PeakRange"]), c("GABA","nmglut","npglut"))
+```
+
+## Dynamic cPeaks
+
+In addition to PIP sum > 0.8, dynamic cpeaks must satisfy that:
+
+$$
+PIP_{GABA6} + PIP_{GABA1} - PIP_{GABA0} \geq 0.5
+$$
+for the GABA cell type. The same condition applies to the other cell types .
+
+Peaks not included in one time point are regarded as $PIP=0$.
+
+```{r,echo=F,message=F}
+library(ggplot2)
+Negenes <- c(sum((GABA5$PIP_diff>=0.5) & (GABA5$PIP_sum>0.8)),
+             sum((nmglut5$PIP_diff>=0.5) & (nmglut5$PIP_sum>0.8)),
+             sum((npglut5$PIP_diff>=0.5) & (npglut5$PIP_sum>0.8)),
+             sum((GABA5$PIP_diff<0.5) & (GABA5$PIP_sum>0.8)),
+             sum((nmglut5$PIP_diff<0.5) & (nmglut5$PIP_sum>0.8)),
+             sum((npglut5$PIP_diff<0.5) & (npglut5$PIP_sum>0.8)))
+dat <- data.frame(Ngenes=Negenes, celltype=rep(c("GABA","nmglut","npglut"),2),
+           dynamic=c(rep(T,3), rep(F,3)))
+ggplot(dat, aes(x=celltype, fill=dynamic, y=Ngenes, label=Ngenes)) + 
+  geom_bar(position="stack", stat="identity") +
+  geom_text(size = 6, position = position_stack(vjust = 0.5)) + 
+  xlab("Number of Top genes") + ylab("Cell type")
+```
+
+## Cell type correlation
+
+#### Comparing top genes across cell types nominated in the same locus
+
+This table shows how different cell types may nominate different genes in the same locus. 
+
+All shared peaks are consistent except locus 3&4 in chr7.
+
+```{r, echo=F}
+tpeak <- read.table("data/multigroup_cTWAS_toppeak_by_locus.txt", header=T, sep=" ")
+tpeak$locus_tag <- rownames(tpeak)
+rownames(tpeak) <- NULL
+tpeak[,c(4,1,2,3)] %>%
+  mutate_if(is.numeric, format, digits=3,nsmall = 0) %>%
+  kable(caption="Dynamic genes by locus") %>%
+  scroll_box(height="400px")
+#knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
+```

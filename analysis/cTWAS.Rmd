@@ -192,14 +192,6 @@ plot(x=static1$susie_pip, GABA.shared$PIP_sum, ylim=c(0,1), xlim=c(0,1),
 lines(c(0,1), c(0,1), col="red")
 ```
 
-### Top gene summary by locus
-
-```{r}
-library(data.table)
-gwas <- fread("../Documents/neuron_stim/SCZ_GWAS/gwas_significant.csv")
-
-```
-
 ### Enrichment analysis
 
 #### GABA top genes enrichment in GO biological process
@@ -253,7 +245,7 @@ tgene <- read.table("data/multigroup_cTWAS_topgene_by_locus.txt", header=T, sep=
 tgene %>%
   mutate_if(is.numeric, format, digits=3,nsmall = 0) %>%
   kable(caption="Dynamic genes by locus") %>%
-  scroll_box(height="200px")
+  scroll_box(height="400px")
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
 
@@ -265,7 +257,7 @@ dgene <- read.table("data/multigroup_cTWAS_dynamic_gene_by_locus.txt", header=T)
 dgene[,-1] %>%
   mutate_if(is.numeric, format, digits=3,nsmall = 0) %>%
   kable(caption="Dynamic genes by locus") %>%
-  scroll_box(height="200px")
+  scroll_box(height="400px")
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
 
