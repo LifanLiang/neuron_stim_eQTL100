@@ -203,3 +203,36 @@ tpeak[,c(4,1,2,3)] %>%
   scroll_box(height="400px")
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
+
+## Weak signal aggregation
+
+### Locus level
+```{r, echo=F}
+GABA.locusPIP <- aggregate(GABA1$susie_pip, list(GABA1$region_tag1, GABA1$region_tag2, GABA1$timepoint),sum)
+colnames(GABA.locusPIP) <- c("chr","locus","timepoint","PIP_sum")
+hist(GABA.locusPIP$PIP_sum, breaks = 30, main="GABA PIP aggregated on locus level")
+lines(c(0.8,0.8),c(0,300), col="red ")
+text(1.1,200,paste0(sum(GABA.locusPIP$PIP_sum>0.8)," locus (", sprintf("%.1f",mean(GABA.locusPIP$PIP_sum>0.8)*100),"%)"), col="blue")
+```
+
+### Rerunning cTWAS merging caQTL with the same SNP
+
+For each SNP, we only selected one cPeak related to it with FDR<0.05. 
+
+#### GABA parameters
+
+GABA has more cPeaks than those run with multiple cPeaks. But only 6 hours has more.
+
+```{r, echo=F}
+GABA.params <- readRDS("data/uniqueSNP_GABA_params.rds")
+GABA.params$convergence_plot
+```
+
+```{r}
+library(RColorBrewer)
+myPalette <- brewer.pal(4, "Set2") 
+pie(GABA.params$group_pve, col=myPalette, border="white",
+    main = paste0(sprintf("%.2f", 100-(GABA.params$group_pve[1]/GABA.params$total_pve)*100), "% PVE for GABA OCR clusters"))
+```
+
+

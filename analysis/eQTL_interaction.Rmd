@@ -21,22 +21,14 @@ In practice, matrixeQTL only allows effect vs. control interaction terms. Hence 
 
 ## Results on GABA cell type
 
-Interaction testing identified 435 eGenes in 6v0 and 136 eGenes in 1v0. However, P values are quite inflated in both 1v0 and 6v0.
+Interaction testing identified  20 eGenes in both 6v0 and 1v0. 
 
-### Permutation for 1v0 nominal P values
-```{r, echo=F}
-library(MatrixEQTL)
+### Permutation testing
 
-param.1v0 <- readRDS("data/mateqtl_GABA1v0_res.rds")
-plot(param.1v0)
-```
+![Inflation analysis of 1v0 interaction testing](assets/GABA1v0_permutation.png)
 
+![Inflation analysis of 6v0 interaction testing](assets/GABA6v0_permutation.png)
 
-### Permutation for 6v0 nominal P values
-```{r}
-param.6v0 <- readRDS("data/mateqtl_GABA6v0_res.rds")
-plot(param.6v0)
-```
 
 
 
