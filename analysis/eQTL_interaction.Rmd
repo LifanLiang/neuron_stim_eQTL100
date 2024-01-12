@@ -9,6 +9,14 @@ editor_options:
 
 ## Interaction testing model
 
+We attempted interaction testing with three approaches: (1) Heuristic thereshold selection based on single condition eQTL; (2) Full eQTL interaction testing with matrixeQTL; (3) Interaction testing using eQTL lead variant only based on single condition eQTL. So far, we only tested these three approaches with on GABA cells.
+
+### Heuristic dynamic eQTL
+
+Dynamic eQTL for 1 hour and 6 hour satisfy the following criteria: (1) FDR<0.05 in either 1 hour eQTLs or 6 hour eQTLs; (2) nominal P value > 0.1 in 0 hour eQTL. This resulted in 1850 egenes / 111273 eQTls for GABA 1 hour and 1878 egenes / 114013 eQTLs for GABA 6 hour.
+
+### MatrixeQTL interaction testing
+
 Within one cell type, we tested whether the genotype has time point specific effects. Following the formula style in `lm`, the model is:
 
 $$
@@ -19,16 +27,68 @@ where $Y_i$ is the gene expression of sample $i$, $T_i$ is the time point, $G_i$
 
 In practice, matrixeQTL only allows effect vs. control interaction terms. Hence I run two types of interaction testing in the matrixeQTL: (1) 0 hour vs. 1 hour (1v0); (2) 0 hour vs. 6 hour (6v0).
 
-## Results on GABA cell type
+#### Results on GABA cell type
 
-Interaction testing identified  20 eGenes in both 6v0 and 1v0. 
+Interaction testing identified 20 eGenes in both 6v0 and 1v0. Shown below are the eQTL with smallest FDR for each eGene.
 
-### Permutation testing
+```{r, echo=F}
+res <- readRDS("data/GABA_mateqtl100_interaction_lead.rds")
+rownames(res$GABA1) <- NULL
+knitr::kable(res$GABA1, caption="Lead interaction eQTL for GABA 1 hour")
+```
+
+```{r, echo=F}
+rownames(res$GABA6) <- NULL
+knitr::kable(res$GABA6, caption="Lead interaction eQTL for GABA 6 hour")
+```
+
+#### Permutation testing
 
 ![Inflation analysis of 1v0 interaction testing](assets/GABA1v0_permutation.png)
 
 ![Inflation analysis of 6v0 interaction testing](assets/GABA6v0_permutation.png)
 
+### Interaction testing for lead variants
+
+We selected eQTLs with minimum FDR<20% in any time point. And then selected lead variant for each gene within this subset. It results in 7547 lead eQTLs in 0 hour, 8269 lead eQTLs in 1 hour, and 8498 lead eQTLs in 6 hour. We used `lm` in base R with the same model as in matrixeQTL. And then we applied Benjamini Hochberg method to adjust nominal P values. The resulting eGenes is very similar to matrixeQTL results.
 
 
 
+```{r, echo=F}
+library(ggvenn)
+
+res.lead <- readRDS("data/fdr20_GABA_lead.rds")
+res1 <- res.lead$GABA1$gene[res.lead$GABA1$fdr<0.05]
+ggvenn(list(matrixeqtl_1hr=res$GABA1$gene, lead_eQTL_1hr=res1),
+       c("matrixeqtl_1hr","lead_eQTL_1hr"))
+```
+
+```{r,echo=F}
+res6 <- res.lead$GABA6$gene[res.lead$GABA6$fdr<0.05]
+ggvenn(list(matrixeqtl_6hr=res$GABA6$gene, lead_eQTL_6hr=res6),
+       c("matrixeqtl_6hr","lead_eQTL_6hr"))
+```
+
+# Potential inflation
+Despite the similarity, nominal P values may be inflated. `lambda` (inflation factor) are 3.9 and 4.3 respectively for 1v0 and 6v0. Perhaps inflation factor is not suitable for lead variant testing. I will need to perform permutation analysis.
+
+```{r, echo=F}
+library(gap)
+gcontrol2(res.lead$GABA1$`Pr(>|t|)`)
+```
+
+
+```{r, echo=F}
+gcontrol2(res.lead$GABA6$`Pr(>|t|)`)
+```
+
+
+#### Visualization of dynamic eQTL
+
+Most interaction eQTL actually has opposite effect direction, as shown by the figure below
+
+![The strongest eQTL in GABA 6 hour vs 0 hour](assets/TBC1D1_6v0.png)
+
+In addition, BH correction may be too stringent. Figure below is an example with high FDR and plausible time point-specific effect.
+
+![Interaction eQTL with FDR>0.99 but Qvalue<0.05](assets/SELENOK_6v0.png)

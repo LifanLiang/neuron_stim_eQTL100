@@ -15,3 +15,6 @@ editor_options:
 \
 \
 [Multigroup cTWAS results of caQTL](caQTL_cTWAS.html)
+\
+\
+[Interaction testing for eQTL](eQTL_interaction.html)

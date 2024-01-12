@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-01-05
+<strong>Last updated:</strong> 2024-01-12
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,33 +418,120 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5bbe54f08a652760f2b238187523ea44c929a51ftargetblank5bbe54fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20231109code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20231109)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20231109code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20231109)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1ac12f16783147280374195f6555cce438534140targetblank1ac12f1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5bbe54f08a652760f2b238187523ea44c929a51f" target="_blank">5bbe54f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1ac12f16783147280374195f6555cce438534140" target="_blank">1ac12f1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5bbe54f08a652760f2b238187523ea44c929a51ftargetblank5bbe54fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1ac12f16783147280374195f6555cce438534140targetblank1ac12f1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5bbe54f08a652760f2b238187523ea44c929a51f" target="_blank">5bbe54f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1ac12f16783147280374195f6555cce438534140" target="_blank">1ac12f1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -473,6 +560,14 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/GABA_mateqtl100_interaction_lead.rds
+    Untracked:  data/fdr20_GABA_lead.rds
+
+Unstaged changes:
+    Modified:   analysis/eQTL_interaction.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -518,6 +613,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1ac12f16783147280374195f6555cce438534140/docs/eQTL_interaction.html" target="_blank">1ac12f1</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -578,6 +690,21 @@ wflow_publish(c("analysis", "data"))
 </div>
 <div id="interaction-testing-model" class="section level2">
 <h2>Interaction testing model</h2>
+<p>We attempted interaction testing with three approaches: (1) Heuristic
+thereshold selection based on single condition eQTL; (2) Full eQTL
+interaction testing with matrixeQTL; (3) Interaction testing using eQTL
+lead variant only based on single condition eQTL. So far, we only tested
+these three approaches with on GABA cells.</p>
+<div id="heuristic-dynamic-eqtl" class="section level3">
+<h3>Heuristic dynamic eQTL</h3>
+<p>Dynamic eQTL for 1 hour and 6 hour satisfy the following criteria:
+(1) FDR&lt;0.05 in either 1 hour eQTLs or 6 hour eQTLs; (2) nominal P
+value &gt; 0.1 in 0 hour eQTL. This resulted in 1850 egenes / 111273
+eQTls for GABA 1 hour and 1878 egenes / 114013 eQTLs for GABA 6
+hour.</p>
+</div>
+<div id="matrixeqtl-interaction-testing" class="section level3">
+<h3>MatrixeQTL interaction testing</h3>
 <p>Within one cell type, we tested whether the genotype has time point
 specific effects. Following the formula style in <code>lm</code>, the
 model is:</p>
@@ -594,12 +721,363 @@ between genotype and time point.</p>
 <p>In practice, matrixeQTL only allows effect vs. control interaction
 terms. Hence I run two types of interaction testing in the matrixeQTL:
 (1) 0 hour vs. 1 hour (1v0); (2) 0 hour vs. 6 hour (6v0).</p>
+<div id="results-on-gaba-cell-type" class="section level4">
+<h4>Results on GABA cell type</h4>
+<p>Interaction testing identified 20 eGenes in both 6v0 and 1v0. Shown
+below are the eQTL with smallest FDR for each eGene.</p>
+<table>
+<caption>Lead interaction eQTL for GABA 1 hour</caption>
+<thead>
+<tr class="header">
+<th align="left">snps</th>
+<th align="left">gene</th>
+<th align="right">statistic</th>
+<th align="right">pvalue</th>
+<th align="right">FDR</th>
+<th align="right">beta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rs2879588</td>
+<td align="left">USP13</td>
+<td align="right">8.293273</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0000001</td>
+<td align="right">1.1828938</td>
+</tr>
+<tr class="even">
+<td align="left">rs2062537</td>
+<td align="left">ANKH</td>
+<td align="right">8.254802</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0000001</td>
+<td align="right">0.6266472</td>
+</tr>
+<tr class="odd">
+<td align="left">rs1518991</td>
+<td align="left">ST3GAL5</td>
+<td align="right">-7.780764</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0000003</td>
+<td align="right">-0.9566247</td>
+</tr>
+<tr class="even">
+<td align="left">rs142285028</td>
+<td align="left">SLC18A2</td>
+<td align="right">6.570599</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0001786</td>
+<td align="right">0.7733415</td>
+</tr>
+<tr class="odd">
+<td align="left">rs514049</td>
+<td align="left">ADAM10</td>
+<td align="right">-6.364937</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0003834</td>
+<td align="right">-0.5012765</td>
+</tr>
+<tr class="even">
+<td align="left">rs73015166</td>
+<td align="left">RAVER1</td>
+<td align="right">-5.957394</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0020144</td>
+<td align="right">-0.8693457</td>
+</tr>
+<tr class="odd">
+<td align="left">rs2015586</td>
+<td align="left">PDZD8</td>
+<td align="right">-5.901943</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0024588</td>
+<td align="right">-0.6783419</td>
+</tr>
+<tr class="even">
+<td align="left">rs212532</td>
+<td align="left">ECE1</td>
+<td align="right">5.794244</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0033674</td>
+<td align="right">0.5204004</td>
+</tr>
+<tr class="odd">
+<td align="left">rs819412</td>
+<td align="left">HEATR1</td>
+<td align="right">5.773586</td>
+<td align="right">0.0e+00</td>
+<td align="right">0.0034802</td>
+<td align="right">1.0835563</td>
+</tr>
+<tr class="even">
+<td align="left">rs9906189</td>
+<td align="left">GGNBP2</td>
+<td align="right">-5.601372</td>
+<td align="right">1.0e-07</td>
+<td align="right">0.0070555</td>
+<td align="right">-0.5636888</td>
+</tr>
+<tr class="odd">
+<td align="left">rs73205139</td>
+<td align="left">BMT2</td>
+<td align="right">-5.533924</td>
+<td align="right">1.0e-07</td>
+<td align="right">0.0073322</td>
+<td align="right">-0.9746045</td>
+</tr>
+<tr class="even">
+<td align="left">rs59800082</td>
+<td align="left">TRIM33</td>
+<td align="right">5.405518</td>
+<td align="right">2.0e-07</td>
+<td align="right">0.0116391</td>
+<td align="right">0.5531549</td>
+</tr>
+<tr class="odd">
+<td align="left">rs7968937</td>
+<td align="left">MON2</td>
+<td align="right">-5.346662</td>
+<td align="right">3.0e-07</td>
+<td align="right">0.0134324</td>
+<td align="right">-0.3577775</td>
+</tr>
+<tr class="even">
+<td align="left">rs79876692</td>
+<td align="left">SLC2A9</td>
+<td align="right">-5.292546</td>
+<td align="right">4.0e-07</td>
+<td align="right">0.0157308</td>
+<td align="right">-2.0165864</td>
+</tr>
+<tr class="odd">
+<td align="left">rs4934358</td>
+<td align="left">PAPSS2</td>
+<td align="right">-5.175735</td>
+<td align="right">7.0e-07</td>
+<td align="right">0.0251694</td>
+<td align="right">-0.7818541</td>
+</tr>
+<tr class="even">
+<td align="left">rs3733897</td>
+<td align="left">TXNDC15</td>
+<td align="right">-5.154593</td>
+<td align="right">7.0e-07</td>
+<td align="right">0.0270964</td>
+<td align="right">-0.6722922</td>
+</tr>
+<tr class="odd">
+<td align="left">rs35992941</td>
+<td align="left">RHD</td>
+<td align="right">5.152268</td>
+<td align="right">7.0e-07</td>
+<td align="right">0.0272725</td>
+<td align="right">0.6647769</td>
+</tr>
+<tr class="even">
+<td align="left">rs9873028</td>
+<td align="left">ATP1B3</td>
+<td align="right">5.110595</td>
+<td align="right">9.0e-07</td>
+<td align="right">0.0287385</td>
+<td align="right">0.5573733</td>
+</tr>
+<tr class="odd">
+<td align="left">rs2055248</td>
+<td align="left">PRMT3</td>
+<td align="right">5.108308</td>
+<td align="right">9.0e-07</td>
+<td align="right">0.0289870</td>
+<td align="right">0.3684225</td>
+</tr>
+<tr class="even">
+<td align="left">rs1049684</td>
+<td align="left">CABYR</td>
+<td align="right">5.007705</td>
+<td align="right">1.4e-06</td>
+<td align="right">0.0354318</td>
+<td align="right">0.7815061</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Lead interaction eQTL for GABA 6 hour</caption>
+<thead>
+<tr class="header">
+<th align="left">snps</th>
+<th align="left">gene</th>
+<th align="right">statistic</th>
+<th align="right">pvalue</th>
+<th align="right">FDR</th>
+<th align="right">beta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rs35336506</td>
+<td align="left">TBC1D1</td>
+<td align="right">7.522735</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000045</td>
+<td align="right">0.7109246</td>
+</tr>
+<tr class="even">
+<td align="left">rs212540</td>
+<td align="left">ECE1</td>
+<td align="right">7.405290</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000073</td>
+<td align="right">0.8834885</td>
+</tr>
+<tr class="odd">
+<td align="left">rs494873</td>
+<td align="left">SNAP91</td>
+<td align="right">7.288275</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000073</td>
+<td align="right">0.5659714</td>
+</tr>
+<tr class="even">
+<td align="left">rs2062537</td>
+<td align="left">ANKH</td>
+<td align="right">6.770235</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000887</td>
+<td align="right">0.5182975</td>
+</tr>
+<tr class="odd">
+<td align="left">rs363225</td>
+<td align="left">SLC18A2</td>
+<td align="right">-6.278345</td>
+<td align="right">0e+00</td>
+<td align="right">0.0009236</td>
+<td align="right">-0.7182514</td>
+</tr>
+<tr class="even">
+<td align="left">rs11674609</td>
+<td align="left">COL4A4</td>
+<td align="right">6.065814</td>
+<td align="right">0e+00</td>
+<td align="right">0.0026578</td>
+<td align="right">0.8262405</td>
+</tr>
+<tr class="odd">
+<td align="left">rs7178124</td>
+<td align="left">TTC23</td>
+<td align="right">5.996242</td>
+<td align="right">0e+00</td>
+<td align="right">0.0028486</td>
+<td align="right">0.4854957</td>
+</tr>
+<tr class="even">
+<td align="left">rs350208</td>
+<td align="left">SNX29</td>
+<td align="right">5.976879</td>
+<td align="right">0e+00</td>
+<td align="right">0.0031008</td>
+<td align="right">0.3998180</td>
+</tr>
+<tr class="odd">
+<td align="left">rs227288</td>
+<td align="left">MANBA</td>
+<td align="right">-5.836543</td>
+<td align="right">0e+00</td>
+<td align="right">0.0044854</td>
+<td align="right">-0.7605838</td>
+</tr>
+<tr class="even">
+<td align="left">rs4904448</td>
+<td align="left">SPATA7</td>
+<td align="right">-5.776667</td>
+<td align="right">0e+00</td>
+<td align="right">0.0044854</td>
+<td align="right">-0.5694794</td>
+</tr>
+<tr class="odd">
+<td align="left">rs3733897</td>
+<td align="left">TXNDC15</td>
+<td align="right">-5.720533</td>
+<td align="right">0e+00</td>
+<td align="right">0.0051873</td>
+<td align="right">-0.8121581</td>
+</tr>
+<tr class="even">
+<td align="left">rs2486378</td>
+<td align="left">PLPPR1</td>
+<td align="right">5.518676</td>
+<td align="right">1e-07</td>
+<td align="right">0.0125749</td>
+<td align="right">0.4469913</td>
+</tr>
+<tr class="odd">
+<td align="left">rs2361219</td>
+<td align="left">KMT2C</td>
+<td align="right">-5.495443</td>
+<td align="right">1e-07</td>
+<td align="right">0.0138015</td>
+<td align="right">-0.4275849</td>
+</tr>
+<tr class="even">
+<td align="left">rs13328864</td>
+<td align="left">NCAM1</td>
+<td align="right">5.457895</td>
+<td align="right">2e-07</td>
+<td align="right">0.0151376</td>
+<td align="right">0.7168385</td>
+</tr>
+<tr class="odd">
+<td align="left">rs17057781</td>
+<td align="left">PTTG1</td>
+<td align="right">5.277601</td>
+<td align="right">4e-07</td>
+<td align="right">0.0245033</td>
+<td align="right">0.5414355</td>
+</tr>
+<tr class="even">
+<td align="left">rs11217076</td>
+<td align="left">RPS25</td>
+<td align="right">-5.207135</td>
+<td align="right">6e-07</td>
+<td align="right">0.0289117</td>
+<td align="right">-0.2719182</td>
+</tr>
+<tr class="odd">
+<td align="left">rs17279566</td>
+<td align="left">EFEMP1</td>
+<td align="right">5.207042</td>
+<td align="right">6e-07</td>
+<td align="right">0.0289117</td>
+<td align="right">1.0069568</td>
+</tr>
+<tr class="even">
+<td align="left">rs26481</td>
+<td align="left">ERAP1</td>
+<td align="right">-5.157554</td>
+<td align="right">7e-07</td>
+<td align="right">0.0332552</td>
+<td align="right">-0.5515207</td>
+</tr>
+<tr class="odd">
+<td align="left">rs76625023</td>
+<td align="left">HBS1L</td>
+<td align="right">5.145625</td>
+<td align="right">7e-07</td>
+<td align="right">0.0347610</td>
+<td align="right">1.3201714</td>
+</tr>
+<tr class="even">
+<td align="left">rs10872155</td>
+<td align="left">NUS1</td>
+<td align="right">-5.099346</td>
+<td align="right">9e-07</td>
+<td align="right">0.0414441</td>
+<td align="right">-1.2050193</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="results-on-gaba-cell-type" class="section level2">
-<h2>Results on GABA cell type</h2>
-<p>Interaction testing identified 20 eGenes in both 6v0 and 1v0.</p>
-<div id="permutation-testing" class="section level3">
-<h3>Permutation testing</h3>
+<div id="permutation-testing" class="section level4">
+<h4>Permutation testing</h4>
 <div class="figure">
 <img src="assets/GABA1v0_permutation.png" alt="" />
 <p class="caption">Inflation analysis of 1v0 interaction testing</p>
@@ -607,6 +1085,101 @@ terms. Hence I run two types of interaction testing in the matrixeQTL:
 <div class="figure">
 <img src="assets/GABA6v0_permutation.png" alt="" />
 <p class="caption">Inflation analysis of 6v0 interaction testing</p>
+</div>
+</div>
+</div>
+<div id="interaction-testing-for-lead-variants" class="section level3">
+<h3>Interaction testing for lead variants</h3>
+<p>We selected eQTLs with minimum FDR&lt;20% in any time point. And then
+selected lead variant for each gene within this subset. It results in
+7547 lead eQTLs in 0 hour, 8269 lead eQTLs in 1 hour, and 8498 lead
+eQTLs in 6 hour. We used <code>lm</code> in base R with the same model
+as in matrixeQTL. And then we applied Benjamini Hochberg method to
+adjust nominal P values. The resulting eGenes is very similar to
+matrixeQTL results.</p>
+<pre><code>Loading required package: dplyr</code></pre>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>Loading required package: grid</code></pre>
+<pre><code>Loading required package: ggplot2</code></pre>
+<p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="potential-inflation" class="section level1">
+<h1>Potential inflation</h1>
+<p>Despite the similarity, nominal P values may be inflated. But I
+haven’t performed permutation analysis yet. <code>lambda</code>
+(inflation factor) are 3.9 and 4.3 respectively for 1v0 and 6v0.</p>
+<pre><code>Loading required package: gap.datasets</code></pre>
+<pre><code>gap version 1.2.3-6</code></pre>
+<p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="visualization-of-dynamic-eqtl" class="section level4">
+<h4>Visualization of dynamic eQTL</h4>
+<p>Most interaction eQTL actually has opposite effect direction, as
+shown by the figure below</p>
+<div class="figure">
+<img src="assets/TBC1D1_6v0.png" alt="" />
+<p class="caption">The strongest eQTL in GABA 6 hour vs 0 hour</p>
+</div>
+<p>In addition, BH correction may be too stringent. Figure below is an
+example with high FDR and plausible time point-specific effect.</p>
+<div class="figure">
+<img src="assets/SELENOK_6v0.png" alt="" />
+<p class="caption">Interaction eQTL with FDR&gt;0.99 but
+Qvalue&lt;0.05</p>
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] gap_1.2.3-6        gap.datasets_0.0.5 ggvenn_0.1.10      ggplot2_3.3.5     
+[5] dplyr_1.0.7        workflowr_1.7.0   
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
+ [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
+ [9] yaml_2.2.2       utf8_1.2.2       rlang_1.0.0      jquerylib_0.1.4 
+[13] later_1.3.0      pillar_1.7.0     withr_2.4.3      glue_1.6.1      
+[17] DBI_1.1.2        lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
+[21] gtable_0.3.0     evaluate_0.14    labeling_0.4.2   knitr_1.37      
+[25] callr_3.7.0      fastmap_1.1.0    httpuv_1.6.5     ps_1.6.0        
+[29] fansi_1.0.2      highr_0.9        Rcpp_1.0.11      promises_1.2.0.1
+[33] scales_1.1.1     jsonlite_1.7.3   farver_2.1.0     fs_1.5.2        
+[37] digest_0.6.29    stringi_1.7.6    processx_3.5.2   getPass_0.2-2   
+[41] rprojroot_2.0.2  cli_3.1.1        tools_4.1.2      magrittr_2.0.2  
+[45] sass_0.4.1       tibble_3.1.6     crayon_1.4.2     whisker_0.4     
+[49] pkgconfig_2.0.3  ellipsis_0.3.2   assertthat_0.2.1 rmarkdown_2.11  
+[53] httr_1.4.2       rstudioapi_0.13  R6_2.5.1         git2r_0.29.0    
+[57] compiler_4.1.2  </code></pre>
 </div>
 </div>
 </div>
