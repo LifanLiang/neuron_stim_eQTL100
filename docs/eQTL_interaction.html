@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,21 +418,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -523,15 +520,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1ac12f16783147280374195f6555cce438534140targetblank1ac12f1a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8targetblank9a4c4cda">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1ac12f16783147280374195f6555cce438534140" target="_blank">1ac12f1</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8" target="_blank">9a4c4cd</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1ac12f16783147280374195f6555cce438534140targetblank1ac12f1a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8targetblank9a4c4cda"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -541,7 +538,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1ac12f16783147280374195f6555cce438534140" target="_blank">1ac12f1</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8" target="_blank">9a4c4cd</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -560,14 +557,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
-
-Untracked files:
-    Untracked:  data/GABA_mateqtl100_interaction_lead.rds
-    Untracked:  data/fdr20_GABA_lead.rds
-
-Unstaged changes:
-    Modified:   analysis/eQTL_interaction.Rmd
-    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -613,6 +602,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/analysis/eQTL_interaction.Rmd" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/eQTL_interaction.html" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1109,18 +1132,167 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>Loading required package: grid</code></pre>
 <pre><code>Loading required package: ggplot2</code></pre>
 <p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/figure/eQTL_interaction.Rmd/unnamed-chunk-3-1.png" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/figure/eQTL_interaction.Rmd/unnamed-chunk-4-1.png" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="potential-inflation" class="section level1">
 <h1>Potential inflation</h1>
-<p>Despite the similarity, nominal P values may be inflated. But I
-haven’t performed permutation analysis yet. <code>lambda</code>
-(inflation factor) are 3.9 and 4.3 respectively for 1v0 and 6v0.</p>
+<p>Despite the similarity, nominal P values may be inflated.
+<code>lambda</code> (inflation factor) are 3.9 and 4.3 respectively for
+1v0 and 6v0. Perhaps inflation factor is not suitable for lead variant
+testing. I will need to perform permutation analysis.</p>
 <pre><code>Loading required package: gap.datasets</code></pre>
 <pre><code>gap version 1.2.3-6</code></pre>
 <p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/figure/eQTL_interaction.Rmd/unnamed-chunk-5-1.png" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/eQTL_interaction.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/figure/eQTL_interaction.Rmd/unnamed-chunk-6-1.png" target="_blank">9a4c4cd</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="visualization-of-dynamic-eqtl" class="section level4">
 <h4>Visualization of dynamic eQTL</h4>
 <p>Most interaction eQTL actually has opposite effect direction, as
