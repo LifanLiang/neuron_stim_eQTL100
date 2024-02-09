@@ -17,4 +17,10 @@ editor_options:
 [Multigroup cTWAS results of caQTL](caQTL_cTWAS.html)
 \
 \
+[eQTL mapping (fixed effect only)](eQTL_mapping.html)
+\
+\
 [Interaction testing for eQTL](eQTL_interaction.html)
+\
+\
+
