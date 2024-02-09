@@ -281,7 +281,7 @@ knitr::kable(nmglut.table[order(nmglut.table$PIP, decreasing = T),], caption="Lo
 
 ## Shared signals between cTWAS and ASoC
 
-For each cell type, if an allelic specific open chromatin (ASoC) SNP is within 500 bps upstream and downstream of a cPeak and the matched cPeak has GWAS PIP > 0.8, then they shared the same signal.
+For each cell type, if an allelic specific open chromatin (ASoC) SNP (FDR<0.05) is within 500 bps upstream and downstream of a cPeak and the matched cPeak has GWAS PIP > 0.8, then they shared the same signal.
 
 ### GABA
 
@@ -333,7 +333,6 @@ ggvenn(list(GABA_caQTL_cTWAS=GABA6$PeakRange, ASoC_GABA_1hr=temp),
        c("GABA_caQTL_cTWAS","ASoC_GABA_1hr"))
 ```
 
-
 ```{r,echo=F}
 peak2asoc6 <- data.frame(peakrange=GABA6$PeakRange[asoc6@from],ASOC_SNP=GABA6.asoc1$ID[asoc6@to])
 knitr::kable(peak2asoc6, caption="Significant cTWAS peaks overlapped with ASoC in GABA 6 hours")
@@ -346,7 +345,6 @@ temp[asoc6@to] <- GABA6$PeakRange[asoc6@from]
 ggvenn(list(GABA_caQTL_cTWAS=GABA6$PeakRange, ASoC_GABA_6hr=temp),
        c("GABA_caQTL_cTWAS","ASoC_GABA_6hr"))
 ```
-
 
 ### NPglut
 
@@ -372,15 +370,37 @@ peak2asoc0 <- data.frame(peakrange=npglut6$PeakRange[asoc0@from],ASOC_SNP=npglut
 knitr::kable(peak2asoc0, caption="Significant cTWAS peaks overlapped with ASoC in NPglut 0 hours")
 ```
 
+```{r,echo=F}
+temp <- npglut0.asoc1$ID
+temp[asoc0@to] <- npglut6$PeakRange[asoc0@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_0hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_0hr"))
+```
+
 ```{r, echo=F}
 peak2asoc1 <- data.frame(peakrange=npglut6$PeakRange[asoc1@from],ASOC_SNP=npglut1.asoc1$ID[asoc1@to])
 knitr::kable(peak2asoc1, caption="Significant cTWAS peaks overlapped with ASoC in NPglut 1 hours")
+```
+
+```{r,echo=F}
+temp <- npglut1.asoc1$ID
+temp[asoc1@to] <- npglut6$PeakRange[asoc1@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_1hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_1hr"))
 ```
 
 ```{r, echo=F}
 peak2asoc6 <- data.frame(peakrange=GABA6$PeakRange[asoc6@from],ASOC_SNP=GABA6.asoc1$ID[asoc6@to])
 knitr::kable(peak2asoc6, caption="Significant cTWAS peaks overlapped with ASoC in NPglut 6 hours")
 ```
+
+```{r,echo=F}
+temp <- npglut6.asoc1$ID
+temp[asoc6@to] <- npglut6$PeakRange[asoc6@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_6hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_6hr"))
+```
+
 
 ### NMglut
 ```{r, echo=F}
@@ -405,14 +425,35 @@ peak2asoc0 <- data.frame(peakrange=nmglut6$PeakRange[asoc0@from],ASOC_SNP=nmglut
 knitr::kable(peak2asoc0, caption="Significant cTWAS peaks overlapped with ASoC in NMglut 0 hours")
 ```
 
+```{r,echo=F}
+temp <- nmglut0.asoc1$ID
+temp[asoc0@to] <- nmglut6$PeakRange[asoc0@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_0hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_0hr"))
+```
+
 ```{r, echo=F}
 peak2asoc1 <- data.frame(peakrange=nmglut6$PeakRange[asoc1@from],ASOC_SNP=nmglut1.asoc1$ID[asoc1@to])
 knitr::kable(peak2asoc1, caption="Significant cTWAS peaks overlapped with ASoC in NMglut 1 hours")
 ```
 
+```{r,echo=F}
+temp <- nmglut1.asoc1$ID
+temp[asoc1@to] <- nmglut6$PeakRange[asoc1@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_1hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_1hr"))
+```
+
 ```{r, echo=F}
 peak2asoc6 <- data.frame(peakrange=nmglut6$PeakRange[asoc6@from],ASOC_SNP=nmglut6.asoc1$ID[asoc6@to])
 knitr::kable(peak2asoc6, caption="Significant cTWAS peaks overlapped with ASoC in NMglut 6 hours")
+```
+
+```{r,echo=F}
+temp <- nmglut6.asoc1$ID
+temp[asoc6@to] <- nmglut6$PeakRange[asoc6@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_6hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_6hr"))
 ```
 
 ### Rerunning cTWAS merging caQTL with the same SNP
