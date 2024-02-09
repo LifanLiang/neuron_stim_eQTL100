@@ -391,7 +391,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-01-05
+<strong>Last updated:</strong> 2024-02-09
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -522,15 +522,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5bbe54f08a652760f2b238187523ea44c929a51ftargetblank5bbe54fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree78c0cbc5d0856a39a8e12258f53088f989b9e00atargetblank78c0cbca">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5bbe54f08a652760f2b238187523ea44c929a51f" target="_blank">5bbe54f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/78c0cbc5d0856a39a8e12258f53088f989b9e00a" target="_blank">78c0cbc</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5bbe54f08a652760f2b238187523ea44c929a51ftargetblank5bbe54fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree78c0cbc5d0856a39a8e12258f53088f989b9e00atargetblank78c0cbca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -540,7 +540,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5bbe54f08a652760f2b238187523ea44c929a51f" target="_blank">5bbe54f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/78c0cbc5d0856a39a8e12258f53088f989b9e00a" target="_blank">78c0cbc</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -604,6 +604,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/78c0cbc5d0856a39a8e12258f53088f989b9e00a/analysis/caQTL_cTWAS.Rmd" target="_blank">78c0cbc</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-02-09
+</td>
+<td>
+wflow_publish(c("analysis", "data"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1ac12f16783147280374195f6555cce438534140/docs/caQTL_cTWAS.html" target="_blank">1ac12f1</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -703,6 +737,29 @@ condition (a unique combination of time points and cell types) is: (1) a
 caPeak in any time point in the same cell type; (2) nominal P value &lt;
 0.1 in the current condition. The number of peaks was shown in the table
 below</p>
+<pre><code>Loading required package: stats4</code></pre>
+<pre><code>Loading required package: BiocGenerics</code></pre>
+<pre><code>
+Attaching package: &#39;BiocGenerics&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    IQR, mad, sd, var, xtabs</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min</code></pre>
+<pre><code>Loading required package: S4Vectors</code></pre>
+<pre><code>
+Attaching package: &#39;S4Vectors&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    expand.grid, I, unname</code></pre>
+<pre><code>Loading required package: IRanges</code></pre>
+<pre><code>Loading required package: GenomeInfoDb</code></pre>
 <table>
 <caption>Number of peaks included in cTWAS</caption>
 <thead>
@@ -2461,9 +2518,5581 @@ chr22_41362794_41363294
 </div>
 <div id="weak-signal-aggregation" class="section level2">
 <h2>Weak signal aggregation</h2>
+<div id="snp-level" class="section level3">
+<h3>SNP level</h3>
+<p>Aggregate PIPs of peaks by their shared lead variants.</p>
+<table>
+<caption>
+SNPs with a sum of PIP&gt;0.8 in npglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+snploc
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+<th style="text-align:left;">
+chr
+</th>
+<th style="text-align:left;">
+pos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1586
+</td>
+<td style="text-align:left;">
+10_86233362
+</td>
+<td style="text-align:right;">
+0.8517522
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+86233362
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4429
+</td>
+<td style="text-align:left;">
+12_57096317
+</td>
+<td style="text-align:right;">
+0.9851832
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+57096317
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10182
+</td>
+<td style="text-align:left;">
+18_29920663
+</td>
+<td style="text-align:right;">
+0.8932926
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+29920663
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17024
+</td>
+<td style="text-align:left;">
+2_172091721
+</td>
+<td style="text-align:right;">
+0.9043174
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+172091721
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22355
+</td>
+<td style="text-align:left;">
+4_76224560
+</td>
+<td style="text-align:right;">
+0.9026634
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+76224560
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+SNPs with a sum of PIP&gt;0.8 in GABA
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+snploc
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+<th style="text-align:left;">
+chr
+</th>
+<th style="text-align:left;">
+pos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+411
+</td>
+<td style="text-align:left;">
+10_127356715
+</td>
+<td style="text-align:right;">
+0.8388492
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+127356715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4030
+</td>
+<td style="text-align:left;">
+12_57096317
+</td>
+<td style="text-align:right;">
+1.0118116
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+57096317
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4759
+</td>
+<td style="text-align:left;">
+13_34165495
+</td>
+<td style="text-align:right;">
+0.9094412
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+34165495
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4778
+</td>
+<td style="text-align:left;">
+13_35742112
+</td>
+<td style="text-align:right;">
+0.9999771
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+35742112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9160
+</td>
+<td style="text-align:left;">
+18_29920663
+</td>
+<td style="text-align:right;">
+0.9640032
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+29920663
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10435
+</td>
+<td style="text-align:left;">
+19_5998231
+</td>
+<td style="text-align:right;">
+0.9028704
+</td>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+5998231
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10694
+</td>
+<td style="text-align:left;">
+1_115309383
+</td>
+<td style="text-align:right;">
+0.9474639
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+115309383
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14580
+</td>
+<td style="text-align:left;">
+22_42301443
+</td>
+<td style="text-align:right;">
+0.8413722
+</td>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+42301443
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16976
+</td>
+<td style="text-align:left;">
+2_65542897
+</td>
+<td style="text-align:right;">
+0.8052714
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+65542897
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20359
+</td>
+<td style="text-align:left;">
+4_89704960
+</td>
+<td style="text-align:right;">
+0.8669599
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+89704960
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21971
+</td>
+<td style="text-align:left;">
+5_89448145
+</td>
+<td style="text-align:right;">
+0.8225518
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+89448145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21975
+</td>
+<td style="text-align:left;">
+5_90920989
+</td>
+<td style="text-align:right;">
+0.8720353
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+90920989
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24277
+</td>
+<td style="text-align:left;">
+7_157672322
+</td>
+<td style="text-align:right;">
+0.9150728
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+157672322
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24368
+</td>
+<td style="text-align:left;">
+7_2027958
+</td>
+<td style="text-align:right;">
+0.9453575
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+2027958
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+SNPs with a sum of PIP&gt;0.8 in nmglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+snploc
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+<th style="text-align:left;">
+chr
+</th>
+<th style="text-align:left;">
+pos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2055
+</td>
+<td style="text-align:left;">
+12_2188830
+</td>
+<td style="text-align:right;">
+0.8026575
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+2188830
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8095
+</td>
+<td style="text-align:left;">
+22_41357599
+</td>
+<td style="text-align:right;">
+0.9685206
+</td>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+41357599
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8654
+</td>
+<td style="text-align:left;">
+2_172092378
+</td>
+<td style="text-align:right;">
+0.9353746
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+172092378
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11527
+</td>
+<td style="text-align:left;">
+5_135671420
+</td>
+<td style="text-align:right;">
+0.8222031
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+135671420
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13193
+</td>
+<td style="text-align:left;">
+6_92367782
+</td>
+<td style="text-align:right;">
+0.9751299
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+92367782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13571
+</td>
+<td style="text-align:left;">
+7_1990232
+</td>
+<td style="text-align:right;">
+0.9660026
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+1990232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13574
+</td>
+<td style="text-align:left;">
+7_2027958
+</td>
+<td style="text-align:right;">
+0.8765450
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+2027958
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="gene-level" class="section level3">
+<h3>Gene level</h3>
+<p>After aggregating PIP to SNP, we assign each SNP to its nearest gene
+by TSS. SNP-gene pair with distance &gt; 250L were removed. Then the PIP
+of SNPs were attributed its nearest genes.</p>
+<table>
+<caption>
+Genes with sum of PIP&gt;0.8 in npglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+EntrezID
+</th>
+<th style="text-align:right;">
+aggregate_PIP
+</th>
+<th style="text-align:left;">
+symbol
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1196
+</td>
+<td style="text-align:left;">
+152002
+</td>
+<td style="text-align:right;">
+1.2379354
+</td>
+<td style="text-align:left;">
+XXYLT1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1254
+</td>
+<td style="text-align:left;">
+157285
+</td>
+<td style="text-align:right;">
+0.8178959
+</td>
+<td style="text-align:left;">
+PRAG1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1429
+</td>
+<td style="text-align:left;">
+1745
+</td>
+<td style="text-align:right;">
+0.9158288
+</td>
+<td style="text-align:left;">
+DLX1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1451
+</td>
+<td style="text-align:left;">
+1813
+</td>
+<td style="text-align:right;">
+0.9639978
+</td>
+<td style="text-align:left;">
+DRD2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1956
+</td>
+<td style="text-align:left;">
+23272
+</td>
+<td style="text-align:right;">
+0.8690222
+</td>
+<td style="text-align:left;">
+TASOR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2094
+</td>
+<td style="text-align:left;">
+23769
+</td>
+<td style="text-align:right;">
+1.1179211
+</td>
+<td style="text-align:left;">
+FLRT1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2660
+</td>
+<td style="text-align:left;">
+2894
+</td>
+<td style="text-align:right;">
+1.0631088
+</td>
+<td style="text-align:left;">
+GRID1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3595
+</td>
+<td style="text-align:left;">
+4665
+</td>
+<td style="text-align:right;">
+0.9851832
+</td>
+<td style="text-align:left;">
+NAB2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5125
+</td>
+<td style="text-align:left;">
+642938
+</td>
+<td style="text-align:right;">
+0.9433385
+</td>
+<td style="text-align:left;">
+INSYN2A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5530
+</td>
+<td style="text-align:left;">
+7143
+</td>
+<td style="text-align:right;">
+0.8037717
+</td>
+<td style="text-align:left;">
+TNR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6920
+</td>
+<td style="text-align:left;">
+950
+</td>
+<td style="text-align:right;">
+0.9072632
+</td>
+<td style="text-align:left;">
+SCARB2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6933
+</td>
+<td style="text-align:left;">
+9547
+</td>
+<td style="text-align:right;">
+0.8999510
+</td>
+<td style="text-align:left;">
+CXCL14
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Genes with sum of PIP&gt;0.8 in GABA
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+EntrezID
+</th>
+<th style="text-align:right;">
+aggregate_PIP
+</th>
+<th style="text-align:left;">
+symbol
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:left;">
+101929355
+</td>
+<td style="text-align:right;">
+1.0578251
+</td>
+<td style="text-align:left;">
+CFAP97D2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+223
+</td>
+<td style="text-align:left;">
+10446
+</td>
+<td style="text-align:right;">
+0.8496607
+</td>
+<td style="text-align:left;">
+LRRN2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+328
+</td>
+<td style="text-align:left;">
+10762
+</td>
+<td style="text-align:right;">
+0.8230223
+</td>
+<td style="text-align:left;">
+NUP50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1084
+</td>
+<td style="text-align:left;">
+150372
+</td>
+<td style="text-align:right;">
+0.9313198
+</td>
+<td style="text-align:left;">
+NFAM1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1177
+</td>
+<td style="text-align:left;">
+157285
+</td>
+<td style="text-align:right;">
+0.9360480
+</td>
+<td style="text-align:left;">
+PRAG1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1370
+</td>
+<td style="text-align:left;">
+1813
+</td>
+<td style="text-align:right;">
+1.1330234
+</td>
+<td style="text-align:left;">
+DRD2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1448
+</td>
+<td style="text-align:left;">
+200734
+</td>
+<td style="text-align:right;">
+0.9153062
+</td>
+<td style="text-align:left;">
+SPRED2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1502
+</td>
+<td style="text-align:left;">
+2066
+</td>
+<td style="text-align:right;">
+0.8210754
+</td>
+<td style="text-align:left;">
+ERBB4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1967
+</td>
+<td style="text-align:left;">
+23769
+</td>
+<td style="text-align:right;">
+0.8504935
+</td>
+<td style="text-align:left;">
+FLRT1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020
+</td>
+<td style="text-align:left;">
+254394
+</td>
+<td style="text-align:right;">
+0.8260090
+</td>
+<td style="text-align:left;">
+MCM9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2033
+</td>
+<td style="text-align:left;">
+2558
+</td>
+<td style="text-align:right;">
+1.0230500
+</td>
+<td style="text-align:left;">
+GABRA5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2539
+</td>
+<td style="text-align:left;">
+2903
+</td>
+<td style="text-align:right;">
+0.9358295
+</td>
+<td style="text-align:left;">
+GRIN2A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2617
+</td>
+<td style="text-align:left;">
+29960
+</td>
+<td style="text-align:right;">
+1.0722028
+</td>
+<td style="text-align:left;">
+MRM2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3091
+</td>
+<td style="text-align:left;">
+389084
+</td>
+<td style="text-align:right;">
+0.9002753
+</td>
+<td style="text-align:left;">
+SNORC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3256
+</td>
+<td style="text-align:left;">
+4088
+</td>
+<td style="text-align:right;">
+0.8753865
+</td>
+<td style="text-align:left;">
+SMAD3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3401
+</td>
+<td style="text-align:left;">
+4665
+</td>
+<td style="text-align:right;">
+1.0118116
+</td>
+<td style="text-align:left;">
+NAB2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3442
+</td>
+<td style="text-align:left;">
+4803
+</td>
+<td style="text-align:right;">
+0.9474639
+</td>
+<td style="text-align:left;">
+NGF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4871
+</td>
+<td style="text-align:left;">
+642938
+</td>
+<td style="text-align:right;">
+1.0517486
+</td>
+<td style="text-align:left;">
+INSYN2A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5090
+</td>
+<td style="text-align:left;">
+6622
+</td>
+<td style="text-align:right;">
+0.9195724
+</td>
+<td style="text-align:left;">
+SNCA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5521
+</td>
+<td style="text-align:left;">
+79643
+</td>
+<td style="text-align:right;">
+0.8299000
+</td>
+<td style="text-align:left;">
+CHMP6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6065
+</td>
+<td style="text-align:left;">
+8498
+</td>
+<td style="text-align:right;">
+0.9447275
+</td>
+<td style="text-align:left;">
+RANBP3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6206
+</td>
+<td style="text-align:left;">
+8851
+</td>
+<td style="text-align:right;">
+0.8364515
+</td>
+<td style="text-align:left;">
+CDK5R1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6541
+</td>
+<td style="text-align:left;">
+9444
+</td>
+<td style="text-align:right;">
+0.8900265
+</td>
+<td style="text-align:left;">
+QKI
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Genes with sum of PIP&gt;0.8 in nmglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+EntrezID
+</th>
+<th style="text-align:right;">
+aggregate_PIP
+</th>
+<th style="text-align:left;">
+symbol
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+99
+</td>
+<td style="text-align:left;">
+101929355
+</td>
+<td style="text-align:right;">
+0.8302894
+</td>
+<td style="text-align:left;">
+CFAP97D2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+927
+</td>
+<td style="text-align:left;">
+1745
+</td>
+<td style="text-align:right;">
+0.9353746
+</td>
+<td style="text-align:left;">
+DLX1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+944
+</td>
+<td style="text-align:left;">
+1813
+</td>
+<td style="text-align:right;">
+0.8742666
+</td>
+<td style="text-align:left;">
+DRD2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1786
+</td>
+<td style="text-align:left;">
+29960
+</td>
+<td style="text-align:right;">
+1.0090039
+</td>
+<td style="text-align:left;">
+MRM2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1815
+</td>
+<td style="text-align:left;">
+3127
+</td>
+<td style="text-align:right;">
+0.9591088
+</td>
+<td style="text-align:left;">
+HLA-DRB5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3116
+</td>
+<td style="text-align:left;">
+57703
+</td>
+<td style="text-align:right;">
+0.8992319
+</td>
+<td style="text-align:left;">
+CWC22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3129
+</td>
+<td style="text-align:left;">
+578
+</td>
+<td style="text-align:right;">
+0.8668568
+</td>
+<td style="text-align:left;">
+BAK1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3351
+</td>
+<td style="text-align:left;">
+642938
+</td>
+<td style="text-align:right;">
+0.9050830
+</td>
+<td style="text-align:left;">
+INSYN2A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3572
+</td>
+<td style="text-align:left;">
+7008
+</td>
+<td style="text-align:right;">
+0.9696907
+</td>
+<td style="text-align:left;">
+TEF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4475
+</td>
+<td style="text-align:left;">
+9547
+</td>
+<td style="text-align:right;">
+0.8523206
+</td>
+<td style="text-align:left;">
+CXCL14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="locus-level" class="section level3">
 <h3>Locus level</h3>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Aggregate PIPs of peaks by locus.</p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<table>
+<caption>
+Locus with sum of PIP&gt;0.8 in npglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+locus_tag
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1666
+</td>
+<td style="text-align:left;">
+9 66 _
+</td>
+<td style="text-align:right;">
+1.6857473
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+375
+</td>
+<td style="text-align:left;">
+12 81 _
+</td>
+<td style="text-align:right;">
+1.6044457
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+635
+</td>
+<td style="text-align:left;">
+17 47 _
+</td>
+<td style="text-align:right;">
+1.5713064
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+924
+</td>
+<td style="text-align:left;">
+21 23 _
+</td>
+<td style="text-align:right;">
+1.4991060
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+891
+</td>
+<td style="text-align:left;">
+20 28 _
+</td>
+<td style="text-align:right;">
+1.4722687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+218
+</td>
+<td style="text-align:left;">
+11 13 _
+</td>
+<td style="text-align:right;">
+1.3662746
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1287
+</td>
+<td style="text-align:left;">
+5 81 _
+</td>
+<td style="text-align:right;">
+1.3594081
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+10 55 _
+</td>
+<td style="text-align:right;">
+1.3566715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+733
+</td>
+<td style="text-align:left;">
+2 104 _
+</td>
+<td style="text-align:right;">
+1.3184995
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+324
+</td>
+<td style="text-align:left;">
+12 35 _
+</td>
+<td style="text-align:right;">
+1.2984109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+727
+</td>
+<td style="text-align:left;">
+2 1 _
+</td>
+<td style="text-align:right;">
+1.2847528
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+941
+</td>
+<td style="text-align:left;">
+22 17 _
+</td>
+<td style="text-align:right;">
+1.2609506
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+608
+</td>
+<td style="text-align:left;">
+17 22 _
+</td>
+<td style="text-align:right;">
+1.2362076
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+772
+</td>
+<td style="text-align:left;">
+2 14 _
+</td>
+<td style="text-align:right;">
+1.1841470
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1647
+</td>
+<td style="text-align:left;">
+9 49 _
+</td>
+<td style="text-align:right;">
+1.1651480
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+275
+</td>
+<td style="text-align:left;">
+11 67 _
+</td>
+<td style="text-align:right;">
+1.1549905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1147
+</td>
+<td style="text-align:left;">
+4 52 _
+</td>
+<td style="text-align:right;">
+1.1430117
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1515
+</td>
+<td style="text-align:left;">
+8 1 _
+</td>
+<td style="text-align:right;">
+1.1420990
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+190
+</td>
+<td style="text-align:left;">
+10 65 _
+</td>
+<td style="text-align:right;">
+1.1392077
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+713
+</td>
+<td style="text-align:left;">
+19 32 _
+</td>
+<td style="text-align:right;">
+1.1381388
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+207
+</td>
+<td style="text-align:left;">
+10 80 _
+</td>
+<td style="text-align:right;">
+1.1350186
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+210
+</td>
+<td style="text-align:left;">
+10 83 _
+</td>
+<td style="text-align:right;">
+1.1171492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+1 22 _
+</td>
+<td style="text-align:right;">
+1.1015765
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+318
+</td>
+<td style="text-align:left;">
+12 3 _
+</td>
+<td style="text-align:right;">
+1.0973603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1014
+</td>
+<td style="text-align:left;">
+3 41 _
+</td>
+<td style="text-align:right;">
+1.0878642
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1111
+</td>
+<td style="text-align:left;">
+4 2 _
+</td>
+<td style="text-align:right;">
+1.0615463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1605
+</td>
+<td style="text-align:left;">
+8 93 _
+</td>
+<td style="text-align:right;">
+1.0557196
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+760
+</td>
+<td style="text-align:left;">
+2 129 _
+</td>
+<td style="text-align:right;">
+1.0533169
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+998
+</td>
+<td style="text-align:left;">
+3 27 _
+</td>
+<td style="text-align:right;">
+1.0521923
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+241
+</td>
+<td style="text-align:left;">
+11 36 _
+</td>
+<td style="text-align:right;">
+1.0509919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+556
+</td>
+<td style="text-align:left;">
+16 24 _
+</td>
+<td style="text-align:right;">
+1.0504540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+374
+</td>
+<td style="text-align:left;">
+12 80 _
+</td>
+<td style="text-align:right;">
+1.0463065
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1011
+</td>
+<td style="text-align:left;">
+3 39 _
+</td>
+<td style="text-align:right;">
+1.0446919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+239
+</td>
+<td style="text-align:left;">
+11 34 _
+</td>
+<td style="text-align:right;">
+1.0252132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1257
+</td>
+<td style="text-align:left;">
+5 53 _
+</td>
+<td style="text-align:right;">
+1.0162205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+648
+</td>
+<td style="text-align:left;">
+18 16 _
+</td>
+<td style="text-align:right;">
+1.0122836
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+132
+</td>
+<td style="text-align:left;">
+10 10 _
+</td>
+<td style="text-align:right;">
+1.0091476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+1 2 _
+</td>
+<td style="text-align:right;">
+1.0084681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+1 20 _
+</td>
+<td style="text-align:right;">
+1.0013477
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1514
+</td>
+<td style="text-align:left;">
+7 99 _
+</td>
+<td style="text-align:right;">
+1.0003798
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+519
+</td>
+<td style="text-align:left;">
+15 36 _
+</td>
+<td style="text-align:right;">
+0.9651029
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+1 102 _
+</td>
+<td style="text-align:right;">
+0.9642781
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1517
+</td>
+<td style="text-align:left;">
+8 11 _
+</td>
+<td style="text-align:right;">
+0.9598167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1606
+</td>
+<td style="text-align:left;">
+8 94 _
+</td>
+<td style="text-align:right;">
+0.9579314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+981
+</td>
+<td style="text-align:left;">
+3 120 _
+</td>
+<td style="text-align:right;">
+0.9450738
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+842
+</td>
+<td style="text-align:left;">
+2 73 _
+</td>
+<td style="text-align:right;">
+0.9417912
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+779
+</td>
+<td style="text-align:left;">
+2 16 _
+</td>
+<td style="text-align:right;">
+0.9397367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+1 86 _
+</td>
+<td style="text-align:right;">
+0.9313823
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+296
+</td>
+<td style="text-align:left;">
+12 1 _
+</td>
+<td style="text-align:right;">
+0.9304428
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+582
+</td>
+<td style="text-align:left;">
+16 48 _
+</td>
+<td style="text-align:right;">
+0.9290407
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:left;">
+10 12 _
+</td>
+<td style="text-align:right;">
+0.9209346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+474
+</td>
+<td style="text-align:left;">
+14 44 _
+</td>
+<td style="text-align:right;">
+0.9168398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+434
+</td>
+<td style="text-align:left;">
+13 62 _
+</td>
+<td style="text-align:right;">
+0.9133621
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+787
+</td>
+<td style="text-align:left;">
+2 23 _
+</td>
+<td style="text-align:right;">
+0.9102175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+631
+</td>
+<td style="text-align:left;">
+17 43 _
+</td>
+<td style="text-align:right;">
+0.9074719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+767
+</td>
+<td style="text-align:left;">
+2 135 _
+</td>
+<td style="text-align:right;">
+0.9014718
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1301
+</td>
+<td style="text-align:left;">
+5 94 _
+</td>
+<td style="text-align:right;">
+0.8972972
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+1 11 _
+</td>
+<td style="text-align:right;">
+0.8963498
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1274
+</td>
+<td style="text-align:left;">
+5 69 _
+</td>
+<td style="text-align:right;">
+0.8962160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1550
+</td>
+<td style="text-align:left;">
+8 43 _
+</td>
+<td style="text-align:right;">
+0.8951206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1531
+</td>
+<td style="text-align:left;">
+8 24 _
+</td>
+<td style="text-align:right;">
+0.8935553
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1318
+</td>
+<td style="text-align:left;">
+6 109 _
+</td>
+<td style="text-align:right;">
+0.8932847
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+1 18 _
+</td>
+<td style="text-align:right;">
+0.8904184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1511
+</td>
+<td style="text-align:left;">
+7 96 _
+</td>
+<td style="text-align:right;">
+0.8842184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+953
+</td>
+<td style="text-align:left;">
+22 6 _
+</td>
+<td style="text-align:right;">
+0.8819313
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+665
+</td>
+<td style="text-align:left;">
+18 31 _
+</td>
+<td style="text-align:right;">
+0.8765709
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1059
+</td>
+<td style="text-align:left;">
+3 82 _
+</td>
+<td style="text-align:right;">
+0.8753606
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+277
+</td>
+<td style="text-align:left;">
+11 69 _
+</td>
+<td style="text-align:right;">
+0.8749408
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1604
+</td>
+<td style="text-align:left;">
+8 92 _
+</td>
+<td style="text-align:right;">
+0.8687222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+10 85 _
+</td>
+<td style="text-align:right;">
+0.8681192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1067
+</td>
+<td style="text-align:left;">
+3 9 _
+</td>
+<td style="text-align:right;">
+0.8616979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+815
+</td>
+<td style="text-align:left;">
+2 49 _
+</td>
+<td style="text-align:right;">
+0.8544611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+979
+</td>
+<td style="text-align:left;">
+3 119 _
+</td>
+<td style="text-align:right;">
+0.8496305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+1 103 _
+</td>
+<td style="text-align:right;">
+0.8483370
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1352
+</td>
+<td style="text-align:left;">
+6 39 _
+</td>
+<td style="text-align:right;">
+0.8479696
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+892
+</td>
+<td style="text-align:left;">
+20 29 _
+</td>
+<td style="text-align:right;">
+0.8460563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1452
+</td>
+<td style="text-align:left;">
+7 4 _
+</td>
+<td style="text-align:right;">
+0.8387948
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1608
+</td>
+<td style="text-align:left;">
+9 10 _
+</td>
+<td style="text-align:right;">
+0.8374036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+570
+</td>
+<td style="text-align:left;">
+16 37 _
+</td>
+<td style="text-align:right;">
+0.8366926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+900
+</td>
+<td style="text-align:left;">
+20 36 _
+</td>
+<td style="text-align:right;">
+0.8343028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1432
+</td>
+<td style="text-align:left;">
+7 21 _
+</td>
+<td style="text-align:right;">
+0.8320001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+922
+</td>
+<td style="text-align:left;">
+21 21 _
+</td>
+<td style="text-align:right;">
+0.8253748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+156
+</td>
+<td style="text-align:left;">
+10 32 _
+</td>
+<td style="text-align:right;">
+0.8192991
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+611
+</td>
+<td style="text-align:left;">
+17 25 _
+</td>
+<td style="text-align:right;">
+0.8136097
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1054
+</td>
+<td style="text-align:left;">
+3 78 _
+</td>
+<td style="text-align:right;">
+0.8119179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1297
+</td>
+<td style="text-align:left;">
+5 90 _
+</td>
+<td style="text-align:right;">
+0.8104536
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+235
+</td>
+<td style="text-align:left;">
+11 29 _
+</td>
+<td style="text-align:right;">
+0.8088793
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+800
+</td>
+<td style="text-align:left;">
+2 35 _
+</td>
+<td style="text-align:right;">
+0.8073448
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+1 101 _
+</td>
+<td style="text-align:right;">
+0.8042940
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+995
+</td>
+<td style="text-align:left;">
+3 23 _
+</td>
+<td style="text-align:right;">
+0.8039594
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1315
+</td>
+<td style="text-align:left;">
+6 106 _
+</td>
+<td style="text-align:right;">
+0.8026232
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Locus with sum of PIP&gt;0.8 in GABA
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+locus_tag
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+798
+</td>
+<td style="text-align:left;">
+2 32 _
+</td>
+<td style="text-align:right;">
+2.1556504
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+276
+</td>
+<td style="text-align:left;">
+11 67 _
+</td>
+<td style="text-align:right;">
+1.9555389
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1649
+</td>
+<td style="text-align:left;">
+9 66 _
+</td>
+<td style="text-align:right;">
+1.9540407
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1304
+</td>
+<td style="text-align:left;">
+6 109 _
+</td>
+<td style="text-align:right;">
+1.8513284
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+940
+</td>
+<td style="text-align:left;">
+22 18 _
+</td>
+<td style="text-align:right;">
+1.8363530
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+922
+</td>
+<td style="text-align:left;">
+21 23 _
+</td>
+<td style="text-align:right;">
+1.7531553
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+435
+</td>
+<td style="text-align:left;">
+13 62 _
+</td>
+<td style="text-align:right;">
+1.6386900
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1519
+</td>
+<td style="text-align:left;">
+8 3 _
+</td>
+<td style="text-align:right;">
+1.6290953
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+516
+</td>
+<td style="text-align:left;">
+15 31 _
+</td>
+<td style="text-align:right;">
+1.5953528
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1587
+</td>
+<td style="text-align:left;">
+8 93 _
+</td>
+<td style="text-align:right;">
+1.5695894
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+636
+</td>
+<td style="text-align:left;">
+17 46 _
+</td>
+<td style="text-align:right;">
+1.5528343
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+602
+</td>
+<td style="text-align:left;">
+17 15 _
+</td>
+<td style="text-align:right;">
+1.5342893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+695
+</td>
+<td style="text-align:left;">
+19 15 _
+</td>
+<td style="text-align:right;">
+1.5212105
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1532
+</td>
+<td style="text-align:left;">
+8 43 _
+</td>
+<td style="text-align:right;">
+1.5207346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+615
+</td>
+<td style="text-align:left;">
+17 27 _
+</td>
+<td style="text-align:right;">
+1.4996464
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+365
+</td>
+<td style="text-align:left;">
+12 72 _
+</td>
+<td style="text-align:right;">
+1.4856762
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1496
+</td>
+<td style="text-align:left;">
+7 98 _
+</td>
+<td style="text-align:right;">
+1.4755720
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+558
+</td>
+<td style="text-align:left;">
+16 24 _
+</td>
+<td style="text-align:right;">
+1.4710288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+770
+</td>
+<td style="text-align:left;">
+2 137 _
+</td>
+<td style="text-align:right;">
+1.4663540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+761
+</td>
+<td style="text-align:left;">
+2 129 _
+</td>
+<td style="text-align:right;">
+1.4566977
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+1 15 _
+</td>
+<td style="text-align:right;">
+1.4358095
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+1 103 _
+</td>
+<td style="text-align:right;">
+1.4234150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1168
+</td>
+<td style="text-align:left;">
+4 8 _
+</td>
+<td style="text-align:right;">
+1.4084935
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+214
+</td>
+<td style="text-align:left;">
+10 85 _
+</td>
+<td style="text-align:right;">
+1.3970928
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+273
+</td>
+<td style="text-align:left;">
+11 64 _
+</td>
+<td style="text-align:right;">
+1.3941486
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:left;">
+10 80 _
+</td>
+<td style="text-align:right;">
+1.3866527
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+714
+</td>
+<td style="text-align:left;">
+19 32 _
+</td>
+<td style="text-align:right;">
+1.3668690
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+323
+</td>
+<td style="text-align:left;">
+12 33 _
+</td>
+<td style="text-align:right;">
+1.3629610
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1273
+</td>
+<td style="text-align:left;">
+5 81 _
+</td>
+<td style="text-align:right;">
+1.3544687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+637
+</td>
+<td style="text-align:left;">
+17 47 _
+</td>
+<td style="text-align:right;">
+1.3517416
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+10 83 _
+</td>
+<td style="text-align:right;">
+1.3357292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+243
+</td>
+<td style="text-align:left;">
+11 36 _
+</td>
+<td style="text-align:right;">
+1.3328563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+1 11 _
+</td>
+<td style="text-align:right;">
+1.3167602
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+487
+</td>
+<td style="text-align:left;">
+14 54 _
+</td>
+<td style="text-align:right;">
+1.2963300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+101
+</td>
+<td style="text-align:left;">
+1 71 _
+</td>
+<td style="text-align:right;">
+1.2868755
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1301
+</td>
+<td style="text-align:left;">
+6 106 _
+</td>
+<td style="text-align:right;">
+1.2760571
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+606
+</td>
+<td style="text-align:left;">
+17 19 _
+</td>
+<td style="text-align:right;">
+1.2594704
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1148
+</td>
+<td style="text-align:left;">
+4 61 _
+</td>
+<td style="text-align:right;">
+1.2530883
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+366
+</td>
+<td style="text-align:left;">
+12 73 _
+</td>
+<td style="text-align:right;">
+1.2365072
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1444
+</td>
+<td style="text-align:left;">
+7 5 _
+</td>
+<td style="text-align:right;">
+1.2343141
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+374
+</td>
+<td style="text-align:left;">
+12 80 _
+</td>
+<td style="text-align:right;">
+1.2316299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+357
+</td>
+<td style="text-align:left;">
+12 65 _
+</td>
+<td style="text-align:right;">
+1.2239848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+943
+</td>
+<td style="text-align:left;">
+22 20 _
+</td>
+<td style="text-align:right;">
+1.2238637
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+899
+</td>
+<td style="text-align:left;">
+20 37 _
+</td>
+<td style="text-align:right;">
+1.2218033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1309
+</td>
+<td style="text-align:left;">
+6 12 _
+</td>
+<td style="text-align:right;">
+1.2167996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+16 12 _
+</td>
+<td style="text-align:right;">
+1.2157408
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1500
+</td>
+<td style="text-align:left;">
+8 11 _
+</td>
+<td style="text-align:right;">
+1.2131759
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+951
+</td>
+<td style="text-align:left;">
+22 6 _
+</td>
+<td style="text-align:right;">
+1.2087336
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+461
+</td>
+<td style="text-align:left;">
+14 30 _
+</td>
+<td style="text-align:right;">
+1.2005228
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1497
+</td>
+<td style="text-align:left;">
+7 99 _
+</td>
+<td style="text-align:right;">
+1.1943786
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+728
+</td>
+<td style="text-align:left;">
+2 1 _
+</td>
+<td style="text-align:right;">
+1.1886398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+522
+</td>
+<td style="text-align:left;">
+15 37 _
+</td>
+<td style="text-align:right;">
+1.1809624
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+325
+</td>
+<td style="text-align:left;">
+12 35 _
+</td>
+<td style="text-align:right;">
+1.1770397
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+832
+</td>
+<td style="text-align:left;">
+2 63 _
+</td>
+<td style="text-align:right;">
+1.1764415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:left;">
+11 26 _
+</td>
+<td style="text-align:right;">
+1.1746673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+220
+</td>
+<td style="text-align:left;">
+11 13 _
+</td>
+<td style="text-align:right;">
+1.1703420
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+633
+</td>
+<td style="text-align:left;">
+17 43 _
+</td>
+<td style="text-align:right;">
+1.1632678
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+809
+</td>
+<td style="text-align:left;">
+2 42 _
+</td>
+<td style="text-align:right;">
+1.1631928
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1498
+</td>
+<td style="text-align:left;">
+8 1 _
+</td>
+<td style="text-align:right;">
+1.1624095
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+525
+</td>
+<td style="text-align:left;">
+15 4 _
+</td>
+<td style="text-align:right;">
+1.1592374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1085
+</td>
+<td style="text-align:left;">
+4 11 _
+</td>
+<td style="text-align:right;">
+1.1552717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+734
+</td>
+<td style="text-align:left;">
+2 104 _
+</td>
+<td style="text-align:right;">
+1.1539670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+724
+</td>
+<td style="text-align:left;">
+19 6 _
+</td>
+<td style="text-align:right;">
+1.1533399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1588
+</td>
+<td style="text-align:left;">
+8 94 _
+</td>
+<td style="text-align:right;">
+1.1470599
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1435
+</td>
+<td style="text-align:left;">
+7 4 _
+</td>
+<td style="text-align:right;">
+1.1464733
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+626
+</td>
+<td style="text-align:left;">
+17 37 _
+</td>
+<td style="text-align:right;">
+1.1464269
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1286
+</td>
+<td style="text-align:left;">
+5 93 _
+</td>
+<td style="text-align:right;">
+1.1337205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+715
+</td>
+<td style="text-align:left;">
+19 33 _
+</td>
+<td style="text-align:right;">
+1.1192242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+1 104 _
+</td>
+<td style="text-align:right;">
+1.1189220
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1327
+</td>
+<td style="text-align:left;">
+6 29 _
+</td>
+<td style="text-align:right;">
+1.1172934
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+631
+</td>
+<td style="text-align:left;">
+17 41 _
+</td>
+<td style="text-align:right;">
+1.1172792
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+1 26 _
+</td>
+<td style="text-align:right;">
+1.1130330
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+709
+</td>
+<td style="text-align:left;">
+19 28 _
+</td>
+<td style="text-align:right;">
+1.1027345
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1586
+</td>
+<td style="text-align:left;">
+8 92 _
+</td>
+<td style="text-align:right;">
+1.1023041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+542
+</td>
+<td style="text-align:left;">
+16 1 _
+</td>
+<td style="text-align:right;">
+1.0974698
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+828
+</td>
+<td style="text-align:left;">
+2 6 _
+</td>
+<td style="text-align:right;">
+1.0974336
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1502
+</td>
+<td style="text-align:left;">
+8 13 _
+</td>
+<td style="text-align:right;">
+1.0966629
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+1 6 _
+</td>
+<td style="text-align:right;">
+1.0962539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+488
+</td>
+<td style="text-align:left;">
+14 55 _
+</td>
+<td style="text-align:right;">
+1.0953667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+1 101 _
+</td>
+<td style="text-align:right;">
+1.0936268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+584
+</td>
+<td style="text-align:left;">
+16 48 _
+</td>
+<td style="text-align:right;">
+1.0929902
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+628
+</td>
+<td style="text-align:left;">
+17 39 _
+</td>
+<td style="text-align:right;">
+1.0924738
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+783
+</td>
+<td style="text-align:left;">
+2 19 _
+</td>
+<td style="text-align:right;">
+1.0896155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+920
+</td>
+<td style="text-align:left;">
+21 21 _
+</td>
+<td style="text-align:right;">
+1.0888937
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+104
+</td>
+<td style="text-align:left;">
+1 74 _
+</td>
+<td style="text-align:right;">
+1.0880900
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+843
+</td>
+<td style="text-align:left;">
+2 73 _
+</td>
+<td style="text-align:right;">
+1.0862206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+816
+</td>
+<td style="text-align:left;">
+2 49 _
+</td>
+<td style="text-align:right;">
+1.0860713
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1380
+</td>
+<td style="text-align:left;">
+6 79 _
+</td>
+<td style="text-align:right;">
+1.0815688
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+1 130 _
+</td>
+<td style="text-align:right;">
+1.0772449
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+1 81 _
+</td>
+<td style="text-align:right;">
+1.0753509
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+1 19 _
+</td>
+<td style="text-align:right;">
+1.0730784
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1283
+</td>
+<td style="text-align:left;">
+5 90 _
+</td>
+<td style="text-align:right;">
+1.0720800
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+784
+</td>
+<td style="text-align:left;">
+2 2 _
+</td>
+<td style="text-align:right;">
+1.0720273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+1 13 _
+</td>
+<td style="text-align:right;">
+1.0713123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+282
+</td>
+<td style="text-align:left;">
+11 72 _
+</td>
+<td style="text-align:right;">
+1.0663331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+635
+</td>
+<td style="text-align:left;">
+17 45 _
+</td>
+<td style="text-align:right;">
+1.0636257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+380
+</td>
+<td style="text-align:left;">
+13 11 _
+</td>
+<td style="text-align:right;">
+1.0631115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1315
+</td>
+<td style="text-align:left;">
+6 18 _
+</td>
+<td style="text-align:right;">
+1.0602462
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+844
+</td>
+<td style="text-align:left;">
+2 74 _
+</td>
+<td style="text-align:right;">
+1.0583847
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+898
+</td>
+<td style="text-align:left;">
+20 36 _
+</td>
+<td style="text-align:right;">
+1.0578329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+308
+</td>
+<td style="text-align:left;">
+12 2 _
+</td>
+<td style="text-align:right;">
+1.0428500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1054
+</td>
+<td style="text-align:left;">
+3 80 _
+</td>
+<td style="text-align:right;">
+1.0386845
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+650
+</td>
+<td style="text-align:left;">
+18 16 _
+</td>
+<td style="text-align:right;">
+1.0374453
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1326
+</td>
+<td style="text-align:left;">
+6 28 _
+</td>
+<td style="text-align:right;">
+1.0372900
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1209
+</td>
+<td style="text-align:left;">
+5 2 _
+</td>
+<td style="text-align:right;">
+1.0368230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+10 74 _
+</td>
+<td style="text-align:right;">
+1.0320552
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+386
+</td>
+<td style="text-align:left;">
+13 17 _
+</td>
+<td style="text-align:right;">
+1.0297937
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+1 21 _
+</td>
+<td style="text-align:right;">
+1.0272434
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1285
+</td>
+<td style="text-align:left;">
+5 92 _
+</td>
+<td style="text-align:right;">
+1.0268583
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+362
+</td>
+<td style="text-align:left;">
+12 7 _
+</td>
+<td style="text-align:right;">
+1.0266401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1513
+</td>
+<td style="text-align:left;">
+8 24 _
+</td>
+<td style="text-align:right;">
+1.0238652
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+278
+</td>
+<td style="text-align:left;">
+11 69 _
+</td>
+<td style="text-align:right;">
+1.0231049
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+200
+</td>
+<td style="text-align:left;">
+10 72 _
+</td>
+<td style="text-align:right;">
+1.0166516
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1052
+</td>
+<td style="text-align:left;">
+3 79 _
+</td>
+<td style="text-align:right;">
+1.0158905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1180
+</td>
+<td style="text-align:left;">
+4 92 _
+</td>
+<td style="text-align:right;">
+1.0123709
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+949
+</td>
+<td style="text-align:left;">
+22 4 _
+</td>
+<td style="text-align:right;">
+1.0077017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+382
+</td>
+<td style="text-align:left;">
+13 13 _
+</td>
+<td style="text-align:right;">
+0.9999771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+638
+</td>
+<td style="text-align:left;">
+17 5 _
+</td>
+<td style="text-align:right;">
+0.9987504
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1647
+</td>
+<td style="text-align:left;">
+9 64 _
+</td>
+<td style="text-align:right;">
+0.9975139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+206
+</td>
+<td style="text-align:left;">
+10 78 _
+</td>
+<td style="text-align:right;">
+0.9968791
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+777
+</td>
+<td style="text-align:left;">
+2 143 _
+</td>
+<td style="text-align:right;">
+0.9968196
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+780
+</td>
+<td style="text-align:left;">
+2 16 _
+</td>
+<td style="text-align:right;">
+0.9956074
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1494
+</td>
+<td style="text-align:left;">
+7 96 _
+</td>
+<td style="text-align:right;">
+0.9924660
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+16 10 _
+</td>
+<td style="text-align:right;">
+0.9903910
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+216
+</td>
+<td style="text-align:left;">
+11 1 _
+</td>
+<td style="text-align:right;">
+0.9886436
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+618
+</td>
+<td style="text-align:left;">
+17 3 _
+</td>
+<td style="text-align:right;">
+0.9865607
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+634
+</td>
+<td style="text-align:left;">
+17 44 _
+</td>
+<td style="text-align:right;">
+0.9845953
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+261
+</td>
+<td style="text-align:left;">
+11 52 _
+</td>
+<td style="text-align:right;">
+0.9814090
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1243
+</td>
+<td style="text-align:left;">
+5 53 _
+</td>
+<td style="text-align:right;">
+0.9811814
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1333
+</td>
+<td style="text-align:left;">
+6 34 _
+</td>
+<td style="text-align:right;">
+0.9795573
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+897
+</td>
+<td style="text-align:left;">
+20 35 _
+</td>
+<td style="text-align:right;">
+0.9718983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+596
+</td>
+<td style="text-align:left;">
+17 1 _
+</td>
+<td style="text-align:right;">
+0.9684870
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+965
+</td>
+<td style="text-align:left;">
+3 108 _
+</td>
+<td style="text-align:right;">
+0.9638082
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+1 102 _
+</td>
+<td style="text-align:right;">
+0.9589233
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:left;">
+1 67 _
+</td>
+<td style="text-align:right;">
+0.9580095
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+700
+</td>
+<td style="text-align:left;">
+19 2 _
+</td>
+<td style="text-align:right;">
+0.9521389
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+521
+</td>
+<td style="text-align:left;">
+15 36 _
+</td>
+<td style="text-align:right;">
+0.9517832
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+479
+</td>
+<td style="text-align:left;">
+14 47 _
+</td>
+<td style="text-align:right;">
+0.9473084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+889
+</td>
+<td style="text-align:left;">
+20 28 _
+</td>
+<td style="text-align:right;">
+0.9470525
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+392
+</td>
+<td style="text-align:left;">
+13 22 _
+</td>
+<td style="text-align:right;">
+0.9452593
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:left;">
+10 64 _
+</td>
+<td style="text-align:right;">
+0.9449823
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+629
+</td>
+<td style="text-align:left;">
+17 4 _
+</td>
+<td style="text-align:right;">
+0.9428701
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1490
+</td>
+<td style="text-align:left;">
+7 92 _
+</td>
+<td style="text-align:right;">
+0.9419429
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1455
+</td>
+<td style="text-align:left;">
+7 6 _
+</td>
+<td style="text-align:right;">
+0.9415869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+757
+</td>
+<td style="text-align:left;">
+2 125 _
+</td>
+<td style="text-align:right;">
+0.9352038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+937
+</td>
+<td style="text-align:left;">
+22 15 _
+</td>
+<td style="text-align:right;">
+0.9340238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1012
+</td>
+<td style="text-align:left;">
+3 41 _
+</td>
+<td style="text-align:right;">
+0.9317536
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:left;">
+10 2 _
+</td>
+<td style="text-align:right;">
+0.9302580
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+1 5 _
+</td>
+<td style="text-align:right;">
+0.9293070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+976
+</td>
+<td style="text-align:left;">
+3 118 _
+</td>
+<td style="text-align:right;">
+0.9278297
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+379
+</td>
+<td style="text-align:left;">
+13 10 _
+</td>
+<td style="text-align:right;">
+0.9274576
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+192
+</td>
+<td style="text-align:left;">
+10 65 _
+</td>
+<td style="text-align:right;">
+0.9245839
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+251
+</td>
+<td style="text-align:left;">
+11 43 _
+</td>
+<td style="text-align:right;">
+0.9216206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+297
+</td>
+<td style="text-align:left;">
+12 1 _
+</td>
+<td style="text-align:right;">
+0.9194273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1297
+</td>
+<td style="text-align:left;">
+6 102 _
+</td>
+<td style="text-align:right;">
+0.9125291
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1 1 _
+</td>
+<td style="text-align:right;">
+0.9105067
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+788
+</td>
+<td style="text-align:left;">
+2 23 _
+</td>
+<td style="text-align:right;">
+0.9102751
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1504
+</td>
+<td style="text-align:left;">
+8 15 _
+</td>
+<td style="text-align:right;">
+0.9089883
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+722
+</td>
+<td style="text-align:left;">
+19 4 _
+</td>
+<td style="text-align:right;">
+0.9064299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1249
+</td>
+<td style="text-align:left;">
+5 6 _
+</td>
+<td style="text-align:right;">
+0.9063473
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1298
+</td>
+<td style="text-align:left;">
+6 103 _
+</td>
+<td style="text-align:right;">
+0.9059987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+465
+</td>
+<td style="text-align:left;">
+14 34 _
+</td>
+<td style="text-align:right;">
+0.9054344
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+921
+</td>
+<td style="text-align:left;">
+21 22 _
+</td>
+<td style="text-align:right;">
+0.9039254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1319
+</td>
+<td style="text-align:left;">
+6 21 _
+</td>
+<td style="text-align:right;">
+0.9030180
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+766
+</td>
+<td style="text-align:left;">
+2 133 _
+</td>
+<td style="text-align:right;">
+0.9026483
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1306
+</td>
+<td style="text-align:left;">
+6 110 _
+</td>
+<td style="text-align:right;">
+0.8932322
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+1 55 _
+</td>
+<td style="text-align:right;">
+0.8923683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1199
+</td>
+<td style="text-align:left;">
+5 109 _
+</td>
+<td style="text-align:right;">
+0.8888368
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1084
+</td>
+<td style="text-align:left;">
+4 109 _
+</td>
+<td style="text-align:right;">
+0.8791723
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1119
+</td>
+<td style="text-align:left;">
+4 33 _
+</td>
+<td style="text-align:right;">
+0.8789536
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+189
+</td>
+<td style="text-align:left;">
+10 62 _
+</td>
+<td style="text-align:right;">
+0.8777304
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+655
+</td>
+<td style="text-align:left;">
+18 20 _
+</td>
+<td style="text-align:right;">
+0.8775944
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1640
+</td>
+<td style="text-align:left;">
+9 58 _
+</td>
+<td style="text-align:right;">
+0.8729820
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+174
+</td>
+<td style="text-align:left;">
+10 49 _
+</td>
+<td style="text-align:right;">
+0.8701964
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+1 20 _
+</td>
+<td style="text-align:right;">
+0.8688662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1004
+</td>
+<td style="text-align:left;">
+3 34 _
+</td>
+<td style="text-align:right;">
+0.8688231
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+906
+</td>
+<td style="text-align:left;">
+20 9 _
+</td>
+<td style="text-align:right;">
+0.8665672
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+477
+</td>
+<td style="text-align:left;">
+14 45 _
+</td>
+<td style="text-align:right;">
+0.8652309
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1131
+</td>
+<td style="text-align:left;">
+4 44 _
+</td>
+<td style="text-align:right;">
+0.8649222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+10 51 _
+</td>
+<td style="text-align:right;">
+0.8647898
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1272
+</td>
+<td style="text-align:left;">
+5 80 _
+</td>
+<td style="text-align:right;">
+0.8643147
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1654
+</td>
+<td style="text-align:left;">
+9 70 _
+</td>
+<td style="text-align:right;">
+0.8636673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+941
+</td>
+<td style="text-align:left;">
+22 19 _
+</td>
+<td style="text-align:right;">
+0.8628314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+738
+</td>
+<td style="text-align:left;">
+2 108 _
+</td>
+<td style="text-align:right;">
+0.8602874
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+245
+</td>
+<td style="text-align:left;">
+11 38 _
+</td>
+<td style="text-align:right;">
+0.8595901
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1544
+</td>
+<td style="text-align:left;">
+8 54 _
+</td>
+<td style="text-align:right;">
+0.8561729
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+97
+</td>
+<td style="text-align:left;">
+1 68 _
+</td>
+<td style="text-align:right;">
+0.8527322
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+864
+</td>
+<td style="text-align:left;">
+2 93 _
+</td>
+<td style="text-align:right;">
+0.8517594
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1226
+</td>
+<td style="text-align:left;">
+5 36 _
+</td>
+<td style="text-align:right;">
+0.8509947
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+1 116 _
+</td>
+<td style="text-align:right;">
+0.8503834
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+280
+</td>
+<td style="text-align:left;">
+11 70 _
+</td>
+<td style="text-align:right;">
+0.8498366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1328
+</td>
+<td style="text-align:left;">
+6 3 _
+</td>
+<td style="text-align:right;">
+0.8459339
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+691
+</td>
+<td style="text-align:left;">
+19 10 _
+</td>
+<td style="text-align:right;">
+0.8444055
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1516
+</td>
+<td style="text-align:left;">
+8 27 _
+</td>
+<td style="text-align:right;">
+0.8433735
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+705
+</td>
+<td style="text-align:left;">
+19 24 _
+</td>
+<td style="text-align:right;">
+0.8407537
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+1 27 _
+</td>
+<td style="text-align:right;">
+0.8402707
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+122
+</td>
+<td style="text-align:left;">
+1 91 _
+</td>
+<td style="text-align:right;">
+0.8393741
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+972
+</td>
+<td style="text-align:left;">
+3 114 _
+</td>
+<td style="text-align:right;">
+0.8370526
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+10 50 _
+</td>
+<td style="text-align:right;">
+0.8363613
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:left;">
+10 31 _
+</td>
+<td style="text-align:right;">
+0.8339978
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1006
+</td>
+<td style="text-align:left;">
+3 36 _
+</td>
+<td style="text-align:right;">
+0.8330511
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+1 90 _
+</td>
+<td style="text-align:right;">
+0.8325208
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+246
+</td>
+<td style="text-align:left;">
+11 39 _
+</td>
+<td style="text-align:right;">
+0.8324858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+587
+</td>
+<td style="text-align:left;">
+16 50 _
+</td>
+<td style="text-align:right;">
+0.8298086
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+1 18 _
+</td>
+<td style="text-align:right;">
+0.8288117
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+774
+</td>
+<td style="text-align:left;">
+2 140 _
+</td>
+<td style="text-align:right;">
+0.8287496
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1242
+</td>
+<td style="text-align:left;">
+5 52 _
+</td>
+<td style="text-align:right;">
+0.8284649
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+614
+</td>
+<td style="text-align:left;">
+17 26 _
+</td>
+<td style="text-align:right;">
+0.8282251
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+813
+</td>
+<td style="text-align:left;">
+2 46 _
+</td>
+<td style="text-align:right;">
+0.8259967
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+667
+</td>
+<td style="text-align:left;">
+18 31 _
+</td>
+<td style="text-align:right;">
+0.8258025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+825
+</td>
+<td style="text-align:left;">
+2 57 _
+</td>
+<td style="text-align:right;">
+0.8255061
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:left;">
+10 12 _
+</td>
+<td style="text-align:right;">
+0.8251965
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+945
+</td>
+<td style="text-align:left;">
+22 22 _
+</td>
+<td style="text-align:right;">
+0.8247050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+367
+</td>
+<td style="text-align:left;">
+12 74 _
+</td>
+<td style="text-align:right;">
+0.8241745
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+492
+</td>
+<td style="text-align:left;">
+14 9 _
+</td>
+<td style="text-align:right;">
+0.8213893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+915
+</td>
+<td style="text-align:left;">
+21 17 _
+</td>
+<td style="text-align:right;">
+0.8192222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+603
+</td>
+<td style="text-align:left;">
+17 16 _
+</td>
+<td style="text-align:right;">
+0.8185617
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+776
+</td>
+<td style="text-align:left;">
+2 142 _
+</td>
+<td style="text-align:right;">
+0.8171474
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+591
+</td>
+<td style="text-align:left;">
+16 54 _
+</td>
+<td style="text-align:right;">
+0.8168221
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+107
+</td>
+<td style="text-align:left;">
+1 77 _
+</td>
+<td style="text-align:right;">
+0.8167623
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+901
+</td>
+<td style="text-align:left;">
+20 4 _
+</td>
+<td style="text-align:right;">
+0.8157675
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:left;">
+1 41 _
+</td>
+<td style="text-align:right;">
+0.8151797
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1060
+</td>
+<td style="text-align:left;">
+3 86 _
+</td>
+<td style="text-align:right;">
+0.8150396
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+1 12 _
+</td>
+<td style="text-align:right;">
+0.8144801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+467
+</td>
+<td style="text-align:left;">
+14 36 _
+</td>
+<td style="text-align:right;">
+0.8139736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+553
+</td>
+<td style="text-align:left;">
+16 2 _
+</td>
+<td style="text-align:right;">
+0.8104182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1230
+</td>
+<td style="text-align:left;">
+5 40 _
+</td>
+<td style="text-align:right;">
+0.8084683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:left;">
+1 23 _
+</td>
+<td style="text-align:right;">
+0.8077247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1530
+</td>
+<td style="text-align:left;">
+8 41 _
+</td>
+<td style="text-align:right;">
+0.8014944
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Locus with sum of PIP&gt;0.8 in nmglut
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+locus_tag
+</th>
+<th style="text-align:right;">
+PIP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1362
+</td>
+<td style="text-align:left;">
+7 3 _
+</td>
+<td style="text-align:right;">
+1.5493836
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1575
+</td>
+<td style="text-align:left;">
+9 66 _
+</td>
+<td style="text-align:right;">
+1.4129184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+297
+</td>
+<td style="text-align:left;">
+12 2 _
+</td>
+<td style="text-align:right;">
+1.2945106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+897
+</td>
+<td style="text-align:left;">
+22 17 _
+</td>
+<td style="text-align:right;">
+1.2175522
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1216
+</td>
+<td style="text-align:left;">
+5 81 _
+</td>
+<td style="text-align:right;">
+1.1971462
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1269
+</td>
+<td style="text-align:left;">
+6 28 _
+</td>
+<td style="text-align:right;">
+1.1495411
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+265
+</td>
+<td style="text-align:left;">
+11 67 _
+</td>
+<td style="text-align:right;">
+1.1224124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+497
+</td>
+<td style="text-align:left;">
+15 37 _
+</td>
+<td style="text-align:right;">
+1.1040395
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1304
+</td>
+<td style="text-align:left;">
+6 62 _
+</td>
+<td style="text-align:right;">
+1.0932611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+851
+</td>
+<td style="text-align:left;">
+20 28 _
+</td>
+<td style="text-align:right;">
+1.0824395
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+701
+</td>
+<td style="text-align:left;">
+2 104 _
+</td>
+<td style="text-align:right;">
+1.0664736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+416
+</td>
+<td style="text-align:left;">
+13 62 _
+</td>
+<td style="text-align:right;">
+1.0314853
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+705
+</td>
+<td style="text-align:left;">
+2 108 _
+</td>
+<td style="text-align:right;">
+1.0212343
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+10 80 _
+</td>
+<td style="text-align:right;">
+1.0197639
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+11 13 _
+</td>
+<td style="text-align:right;">
+1.0119041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1371
+</td>
+<td style="text-align:left;">
+7 4 _
+</td>
+<td style="text-align:right;">
+1.0109574
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+16 12 _
+</td>
+<td style="text-align:right;">
+0.9680306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1188
+</td>
+<td style="text-align:left;">
+5 53 _
+</td>
+<td style="text-align:right;">
+0.8603143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+115
+</td>
+<td style="text-align:left;">
+1 86 _
+</td>
+<td style="text-align:right;">
+0.8502421
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1090
+</td>
+<td style="text-align:left;">
+4 53 _
+</td>
+<td style="text-align:right;">
+0.8494472
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1266
+</td>
+<td style="text-align:left;">
+6 25 _
+</td>
+<td style="text-align:right;">
+0.8413715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+668
+</td>
+<td style="text-align:left;">
+19 2 _
+</td>
+<td style="text-align:right;">
+0.8298231
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1510
+</td>
+<td style="text-align:left;">
+8 85 _
+</td>
+<td style="text-align:right;">
+0.8164635
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+909
+</td>
+<td style="text-align:left;">
+22 6 _
+</td>
+<td style="text-align:right;">
+0.8099199
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="shared-signals-between-ctwas-and-asoc" class="section level2">
+<h2>Shared signals between cTWAS and ASoC</h2>
+<p>For each cell type, if an allelic specific open chromatin (ASoC) SNP
+is within 500 bps upstream and downstream of a cPeak and the matched
+cPeak has GWAS PIP &gt; 0.8, then they shared the same signal.</p>
+<div id="gaba" class="section level3">
+<h3>GABA</h3>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in GABA 0 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs7928017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:left;">
+rs908588521
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_27099450_27099950
+</td>
+<td style="text-align:left;">
+rs5810
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in GABA 1 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:left;">
+rs324015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_2010548_2011048
+</td>
+<td style="text-align:left;">
+rs11771625
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr3_175410533_175411033
+</td>
+<td style="text-align:left;">
+rs2862015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:left;">
+rs10035662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_65539480_65539980
+</td>
+<td style="text-align:left;">
+rs702906
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs7928017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_27099450_27099950
+</td>
+<td style="text-align:left;">
+rs5810
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in GABA 6 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:left;">
+rs324015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr7_2010548_2011048
+</td>
+<td style="text-align:left;">
+rs11771625
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_115314324_115314824
+</td>
+<td style="text-align:left;">
+rs12145726
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr5_90929346_90929846
+</td>
+<td style="text-align:left;">
+rs10035662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr22_42313863_42314363
+</td>
+<td style="text-align:left;">
+rs6002686
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr22_42313863_42314363
+</td>
+<td style="text-align:left;">
+rs6002687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_65539480_65539980
+</td>
+<td style="text-align:left;">
+rs702906
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs7928017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:left;">
+rs908588521
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:left;">
+rs181813160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_232927961_232928461
+</td>
+<td style="text-align:left;">
+rs191373913
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_27099450_27099950
+</td>
+<td style="text-align:left;">
+rs5810
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="npglut" class="section level3">
+<h3>NPglut</h3>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NPglut 0 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr12_57096240_57096740
+</td>
+<td style="text-align:left;">
+rs324015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183858
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NPglut 1 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr18_29920961_29921461
+</td>
+<td style="text-align:left;">
+rs9964412
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr10_86244301_86244801
+</td>
+<td style="text-align:left;">
+rs74716128
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NPglut 6 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr13_35764141_35764641
+</td>
+<td style="text-align:left;">
+rs2282978
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr13_35764141_35764641
+</td>
+<td style="text-align:left;">
+rs74008916
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr1_115314324_115314824
+</td>
+<td style="text-align:left;">
+rs1199604025
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="nmglut" class="section level3">
+<h3>NMglut</h3>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NMglut 0 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs78605981
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NMglut 1 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs79365605
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_180125539_180126039
+</td>
+<td style="text-align:left;">
+rs1518431
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs7928017
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+Significant cTWAS peaks overlapped with ASoC in NMglut 6 hours
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+peakrange
+</th>
+<th style="text-align:left;">
+ASOC_SNP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_172098931_172099431
+</td>
+<td style="text-align:left;">
+rs62183857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr2_180125539_180126039
+</td>
+<td style="text-align:left;">
+rs1518431
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chr11_113577991_113578491
+</td>
+<td style="text-align:left;">
+rs7928017
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="rerunning-ctwas-merging-caqtl-with-the-same-snp"
 class="section level3">
@@ -2474,12 +8103,12 @@ FDR&lt;0.05.</p>
 <h4>GABA parameters</h4>
 <p>GABA has more cPeaks than those run with multiple cPeaks. But only 6
 hours has more.</p>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>library(RColorBrewer)
 myPalette &lt;- brewer.pal(4, &quot;Set2&quot;) 
 pie(GABA.params$group_pve, col=myPalette, border=&quot;white&quot;,
     main = paste0(sprintf(&quot;%.2f&quot;, 100-(GABA.params$group_pve[1]/GABA.params$total_pve)*100), &quot;% PVE for GABA OCR clusters&quot;))</code></pre>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -2501,30 +8130,39 @@ locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] grid      stats     graphics  grDevices utils     datasets  methods  
-[8] base     
+[1] grid      stats4    stats     graphics  grDevices utils     datasets 
+[8] methods   base     
 
 other attached packages:
-[1] ggvenn_0.1.10      ggplot2_3.3.5      dplyr_1.0.7        kableExtra_1.3.4  
-[5] RColorBrewer_1.1-2 workflowr_1.7.0   
+ [1] ggvenn_0.1.10        ggplot2_3.3.5        dplyr_1.0.7         
+ [4] kableExtra_1.3.4     RColorBrewer_1.1-2   GenomicRanges_1.46.1
+ [7] GenomeInfoDb_1.30.1  IRanges_2.28.0       S4Vectors_0.32.3    
+[10] BiocGenerics_0.40.0  workflowr_1.7.0     
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
- [5] colorspace_2.0-2  vctrs_0.3.8       generics_0.1.2    viridisLite_0.4.0
- [9] htmltools_0.5.2   yaml_2.2.2        utf8_1.2.2        rlang_1.0.0      
-[13] jquerylib_0.1.4   later_1.3.0       pillar_1.7.0      withr_2.4.3      
-[17] glue_1.6.1        DBI_1.1.2         lifecycle_1.0.1   stringr_1.4.0    
-[21] munsell_0.5.0     gtable_0.3.0      rvest_1.0.2       evaluate_0.14    
-[25] labeling_0.4.2    knitr_1.37        callr_3.7.0       fastmap_1.1.0    
-[29] httpuv_1.6.5      ps_1.6.0          fansi_1.0.2       highr_0.9        
-[33] Rcpp_1.0.11       promises_1.2.0.1  scales_1.1.1      webshot_0.5.5    
-[37] jsonlite_1.7.3    farver_2.1.0      systemfonts_1.0.4 fs_1.5.2         
-[41] digest_0.6.29     stringi_1.7.6     processx_3.5.2    getPass_0.2-2    
-[45] cowplot_1.1.1     rprojroot_2.0.2   cli_3.1.1         tools_4.1.2      
-[49] magrittr_2.0.2    sass_0.4.1        tibble_3.1.6      crayon_1.4.2     
-[53] whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3       
-[57] svglite_2.1.0     assertthat_0.2.1  rmarkdown_2.11    httr_1.4.2       
-[61] rstudioapi_0.13   R6_2.5.1          git2r_0.29.0      compiler_4.1.2   </code></pre>
+ [1] Rcpp_1.0.11            svglite_2.1.0          getPass_0.2-2         
+ [4] ps_1.6.0               assertthat_0.2.1       rprojroot_2.0.2       
+ [7] digest_0.6.29          utf8_1.2.2             R6_2.5.1              
+[10] evaluate_0.14          httr_1.4.2             highr_0.9             
+[13] pillar_1.7.0           zlibbioc_1.40.0        rlang_1.0.0           
+[16] rstudioapi_0.13        whisker_0.4            callr_3.7.0           
+[19] jquerylib_0.1.4        rmarkdown_2.11         labeling_0.4.2        
+[22] webshot_0.5.5          stringr_1.4.0          RCurl_1.98-1.6        
+[25] munsell_0.5.0          compiler_4.1.2         httpuv_1.6.5          
+[28] xfun_0.29              systemfonts_1.0.4      pkgconfig_2.0.3       
+[31] htmltools_0.5.2        tidyselect_1.1.1       tibble_3.1.6          
+[34] GenomeInfoDbData_1.2.7 viridisLite_0.4.0      fansi_1.0.2           
+[37] withr_2.4.3            crayon_1.4.2           later_1.3.0           
+[40] bitops_1.0-7           jsonlite_1.7.3         gtable_0.3.0          
+[43] lifecycle_1.0.1        DBI_1.1.2              git2r_0.29.0          
+[46] magrittr_2.0.2         scales_1.1.1           cli_3.1.1             
+[49] stringi_1.7.6          farver_2.1.0           XVector_0.34.0        
+[52] fs_1.5.2               promises_1.2.0.1       xml2_1.3.3            
+[55] bslib_0.3.1            ellipsis_0.3.2         vctrs_0.3.8           
+[58] generics_0.1.2         cowplot_1.1.1          tools_4.1.2           
+[61] glue_1.6.1             purrr_0.3.4            processx_3.5.2        
+[64] fastmap_1.1.0          yaml_2.2.2             colorspace_2.0-2      
+[67] rvest_1.0.2            knitr_1.37             sass_0.4.1            </code></pre>
 </div>
 </div>
 </div>
