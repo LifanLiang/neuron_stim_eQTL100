@@ -17,6 +17,9 @@ editor_options:
 [Multigroup cTWAS results of caQTL](caQTL_cTWAS.html)
 \
 \
+[Sharing signal between caQTL (cTWAS) and ASoC](caQTL_ASoC_shared.html)
+\
+\
 [eQTL mapping (fixed effect only)](eQTL_mapping.html)
 \
 \

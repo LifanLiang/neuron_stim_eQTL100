@@ -370,7 +370,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -381,8 +381,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -395,9 +395,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -420,18 +420,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -522,15 +525,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree608b9694ec760ed1539c98fbd8f0be8b3ec328f8targetblank608b969a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6targetblankbf1b7cea">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/608b9694ec760ed1539c98fbd8f0be8b3ec328f8" target="_blank">608b969</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6" target="_blank">bf1b7ce</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree608b9694ec760ed1539c98fbd8f0be8b3ec328f8targetblank608b969a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6targetblankbf1b7cea"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -540,7 +543,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/608b9694ec760ed1539c98fbd8f0be8b3ec328f8" target="_blank">608b969</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6" target="_blank">bf1b7ce</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -559,6 +562,13 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/caQTL_ASoC_shared.Rmd
+
+Unstaged changes:
+    Modified:   analysis/caQTL_cTWAS.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -604,6 +614,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6/docs/caQTL_cTWAS.html" target="_blank">bf1b7ce</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-02-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2411,6 +2438,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bf1b7ce1caec97dc3ea9c1ebc58b0720781d9ec6/docs/figure/caQTL_cTWAS.Rmd/peak-snp-1.png" target="_blank">bf1b7ce</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-02-20
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/0bef30051ad8860833cd02466960840068612276/docs/figure/caQTL_cTWAS.Rmd/peak-snp-1.png" target="_blank">0bef300</a>
@@ -4251,900 +4289,6 @@ PIP_sum
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div id="shared-signals-between-ctwas-and-asoc" class="section level2">
-<h2>Shared signals between cTWAS and ASoC</h2>
-<p>For each cell type, if an allelic specific open chromatin (ASoC) SNP
-(FDR&lt;0.05) is within 500 bps upstream and downstream of a cPeak and
-the matched cPeak has GWAS PIP &gt; 0.8, then they shared the same
-signal.</p>
-<div id="gaba-1" class="section level3">
-<h3>GABA</h3>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in GABA 0 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs7928017
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-25-1">
-Past versions of unnamed-chunk-25-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-25-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-25-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in GABA 1 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr12_57096240_57096740
-</td>
-<td style="text-align:left;">
-rs324015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_2010548_2011048
-</td>
-<td style="text-align:left;">
-rs11771625
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr3_175410533_175411033
-</td>
-<td style="text-align:left;">
-rs2862015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_90929346_90929846
-</td>
-<td style="text-align:left;">
-rs10035662
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_65539480_65539980
-</td>
-<td style="text-align:left;">
-rs702906
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs7928017
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-27-1">
-Past versions of unnamed-chunk-27-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-27-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-27-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in GABA 6 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr12_57096240_57096740
-</td>
-<td style="text-align:left;">
-rs324015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_115314324_115314824
-</td>
-<td style="text-align:left;">
-rs12145726
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr7_2010548_2011048
-</td>
-<td style="text-align:left;">
-rs11771625
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr5_90929346_90929846
-</td>
-<td style="text-align:left;">
-rs10035662
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_65539480_65539980
-</td>
-<td style="text-align:left;">
-rs702906
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs7928017
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-29-1">
-Past versions of unnamed-chunk-29-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-29-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-29-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="npglut-1" class="section level3">
-<h3>NPglut</h3>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NPglut 0 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr12_57096240_57096740
-</td>
-<td style="text-align:left;">
-rs324015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183857
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183858
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">
-Past versions of unnamed-chunk-31-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-31-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-31-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NPglut 1 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183857
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183858
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr18_29920961_29921461
-</td>
-<td style="text-align:left;">
-rs9964412
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr10_86244301_86244801
-</td>
-<td style="text-align:left;">
-rs74716128
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-33-1">
-Past versions of unnamed-chunk-33-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-33-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-33-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NPglut 6 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr13_35764141_35764641
-</td>
-<td style="text-align:left;">
-rs2282978
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr13_35764141_35764641
-</td>
-<td style="text-align:left;">
-rs74008916
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr1_115314324_115314824
-</td>
-<td style="text-align:left;">
-rs1199604025
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-35-1">
-Past versions of unnamed-chunk-35-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-35-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-35-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="nmglut-1" class="section level3">
-<h3>NMglut</h3>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NMglut 0 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs78605981
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-37-1">
-Past versions of unnamed-chunk-37-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-37-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-37-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ef4395e10a7a838a47f2ebe9b18e1b72d3e9b34a/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-37-1.png" target="_blank">ef4395e</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/eedfee5819b640e6616ca4b8aea86b52983b5b9c/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-37-1.png" target="_blank">eedfee5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NMglut 1 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183857
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183858
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs79365605
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs7928017
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-39-1">
-Past versions of unnamed-chunk-39-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-39-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-39-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-Significant cTWAS peaks overlapped with ASoC in NMglut 6 hours
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-peakrange
-</th>
-<th style="text-align:left;">
-ASOC_SNP
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183858
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr2_172098931_172099431
-</td>
-<td style="text-align:left;">
-rs62183857
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-chr11_113577991_113578491
-</td>
-<td style="text-align:left;">
-rs7928017
-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-41-1">
-Past versions of unnamed-chunk-41-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-41-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-41-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="rerunning-ctwas-merging-caqtl-with-the-same-snp"
-class="section level3">
-<h3>Rerunning cTWAS merging caQTL with the same SNP</h3>
-<p>For each SNP, we only selected one cPeak related to it with
-FDR&lt;0.05.</p>
-<div id="gaba-parameters-1" class="section level4">
-<h4>GABA parameters</h4>
-<p>GABA has more cPeaks than those run with multiple cPeaks. But only 6
-hours has more.</p>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-42-1">
-Past versions of unnamed-chunk-42-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-42-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-42-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ef4395e10a7a838a47f2ebe9b18e1b72d3e9b34a/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-42-1.png" target="_blank">ef4395e</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>library(RColorBrewer)
-myPalette &lt;- brewer.pal(4, &quot;Set2&quot;) 
-pie(GABA.params$group_pve, col=myPalette, border=&quot;white&quot;,
-    main = paste0(sprintf(&quot;%.2f&quot;, 100-(GABA.params$group_pve[1]/GABA.params$total_pve)*100), &quot;% PVE for GABA OCR clusters&quot;))</code></pre>
-<p><img src="figure/caQTL_cTWAS.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-43-1">
-Past versions of unnamed-chunk-43-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-43-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/2f6867a4bc5e53230320a1ffb39e4cf69af157e2/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-43-1.png" target="_blank">2f6867a</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ef4395e10a7a838a47f2ebe9b18e1b72d3e9b34a/docs/figure/caQTL_cTWAS.Rmd/unnamed-chunk-43-1.png" target="_blank">ef4395e</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <br>
 <p>

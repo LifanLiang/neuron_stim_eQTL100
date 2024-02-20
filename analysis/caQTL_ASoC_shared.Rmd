@@ -1,0 +1,363 @@
+---
+title: "caQTL_ASoC_shared"
+author: "Lifan Liang"
+date: "2024-02-20"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+# Shared signals between cTWAS and ASoC
+
+For each cell type, if an allelic specific open chromatin (ASoC) SNP (FDR<0.05) is within 500 bps upstream and downstream of a cPeak and the matched cPeak has GWAS PIP > 0.8, then they shared the same signal.
+
+```{r,echo=F}
+library(GenomicRanges)
+GABA1 <- readRDS("data/caQTL_GABA_res.RDS")
+nmglut1 <- readRDS("data/caQTL_nmglut_res.RDS")
+npglut1 <- readRDS("data/caQTL_npglut_res.RDS")
+```
+
+```{r, echo=F}
+library(kableExtra)
+options(knitr.kable.NA = '')
+GABA1 <- GABA1[GABA1$cs_index>0,]
+GABA2 <- aggregate(GABA1$susie_pip, list(GABA1$genename), sum)
+GABA3 <- merge(GABA2, GABA1[GABA1$timepoint=="0hr_GABA",c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(GABA3) <- c("genename","PIP_sum","PIP_0hr_GABA")
+GABA4 <- merge(GABA3, GABA1[GABA1$timepoint=="1hr_GABA",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(GABA4)[4] <- "PIP_1hr_GABA"
+GABA5 <- merge(GABA4, GABA1[GABA1$timepoint=="6hr_GABA",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(GABA5)[5] <- "PIP_6hr_GABA"
+GABA5[is.na(GABA5)] <- 0
+GABA5 <- GABA5[order(GABA5$PIP_sum, decreasing = T),]
+GABA5$PIP_diff <- GABA5$PIP_sum - 2 * GABA5$PIP_0hr_GABA
+colnames(GABA5)[1] <- "PeakRange"
+GABA5 <- GABA5[order(GABA5$PIP_sum,decreasing = T),]
+
+options(knitr.kable.NA = '')
+npglut1 <- npglut1[npglut1$cs_index>0,]
+npglut2 <- aggregate(npglut1$susie_pip, list(npglut1$genename), sum)
+npglut3 <- merge(npglut2, npglut1[npglut1$timepoint=="0hr_npglut",c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(npglut3) <- c("genename","PIP_sum","PIP_0hr_npglut")
+npglut4 <- merge(npglut3, npglut1[npglut1$timepoint=="1hr_npglut",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(npglut4)[4] <- "PIP_1hr_npglut"
+npglut5 <- merge(npglut4, npglut1[npglut1$timepoint=="6hr_npglut",c("genename","susie_pip")], 
+                 by="genename",all.x = T)
+colnames(npglut5)[5] <- "PIP_6hr_npglut"
+npglut5[is.na(npglut5)] <- 0
+npglut5 <- npglut5[order(npglut5$PIP_sum, decreasing = T),]
+npglut5$PIP_diff <- npglut5$PIP_sum - 2 * npglut5$PIP_0hr_npglut
+npglut5 <- npglut5[order(npglut5$PIP_sum,decreasing = T),]
+colnames(npglut5)[1] <- "PeakRange"
+
+nmglut1 <- nmglut1[nmglut1$cs_index>0,]
+nmglut2 <- aggregate(nmglut1$susie_pip, list(nmglut1$genename), sum)
+nmglut3 <- merge(nmglut2, nmglut1[nmglut1$timepoint=="0hr_nmglut",c("genename","susie_pip")], 
+               by.x="Group.1", by.y="genename",all.x = T)
+colnames(nmglut3) <- c("genename","PIP_sum","PIP_0hr_nmglut")
+nmglut4 <- merge(nmglut3, nmglut1[nmglut1$timepoint=="1hr_nmglut",c("genename","susie_pip")], 
+               by="genename",all.x = T)
+colnames(nmglut4)[4] <- "PIP_1hr_nmglut"
+nmglut5 <- merge(nmglut4, nmglut1[nmglut1$timepoint=="6hr_nmglut",c("genename","susie_pip")], 
+               by="genename",all.x = T)
+colnames(nmglut5)[5] <- "PIP_6hr_nmglut"
+nmglut5[is.na(nmglut5)] <- 0
+nmglut5$PIP_diff <- nmglut5$PIP_sum - 2 * nmglut5$PIP_0hr_nmglut
+nmglut5 <- nmglut5[order(nmglut5$PIP_sum,decreasing = T),]
+colnames(nmglut5)[1] <- "PeakRange"
+```
+
+## GABA
+
+### Shared signal in each time point
+
+```{r, echo=F}
+GABA0.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/0hr_GABA_SNP_2_30_full.tsv",
+                         header=T)
+GABA1.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/1hr_GABA_SNP_2_30_full.tsv",
+                         header=T)
+GABA6.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/6hr_GABA_SNP_2_30_full.tsv",
+                         header=T)
+GABA0.asoc1 <- makeGRangesFromDataFrame(GABA0.asoc[GABA0.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+GABA1.asoc1 <- makeGRangesFromDataFrame(GABA1.asoc[GABA1.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+GABA6.asoc1 <- makeGRangesFromDataFrame(GABA6.asoc[GABA6.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+GABA6 <- GABA5[GABA5$PIP_sum>0.8,]
+GABA6$chr <- sapply(strsplit(GABA6$PeakRange,"_"), function(x) {x[1]})
+GABA6$start <- sapply(strsplit(GABA6$PeakRange,"_"), function(x) {x[2]})
+GABA6$end <- sapply(strsplit(GABA6$PeakRange,"_"), function(x) {x[3]})
+GABA7 <- makeGRangesFromDataFrame(GABA6)
+start(GABA7) <- start(GABA7) - 500
+end(GABA7) <- end(GABA7) + 500
+asoc0 <- findOverlaps(GABA7,GABA0.asoc1)
+asoc1 <- findOverlaps(GABA7,GABA1.asoc1)
+asoc6 <- findOverlaps(GABA7,GABA6.asoc1)
+
+
+peak2asoc0 <- data.frame(peakrange=GABA6$PeakRange[asoc0@from],ASOC_SNP=GABA0.asoc1$ID[asoc0@to])
+peak2asoc0 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in GABA 0 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+library(ggvenn)
+temp <- GABA0.asoc1$ID
+temp[asoc0@to] <- GABA6$PeakRange[asoc0@from]
+ggvenn(list(GABA_caQTL_cTWAS=GABA6$PeakRange, ASoC_GABA_0hr=temp),
+       c("GABA_caQTL_cTWAS","ASoC_GABA_0hr"))
+```
+
+
+```{r,echo=F}
+peak2asoc1 <- data.frame(peakrange=GABA6$PeakRange[asoc1@from],ASOC_SNP=GABA1.asoc1$ID[asoc1@to])
+peak2asoc1 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in GABA 1 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+library(ggvenn)
+temp <- GABA1.asoc1$ID
+temp[asoc1@to] <- GABA6$PeakRange[asoc1@from]
+ggvenn(list(GABA_caQTL_cTWAS=GABA6$PeakRange, ASoC_GABA_1hr=temp),
+       c("GABA_caQTL_cTWAS","ASoC_GABA_1hr"))
+```
+
+```{r,echo=F}
+peak2asoc6 <- data.frame(peakrange=GABA6$PeakRange[asoc6@from],ASOC_SNP=GABA6.asoc1$ID[asoc6@to])
+peak2asoc6 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in GABA 6 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+library(ggvenn)
+temp <- GABA6.asoc1$ID
+temp[asoc6@to] <- GABA6$PeakRange[asoc6@from]
+ggvenn(list(GABA_caQTL_cTWAS=GABA6$PeakRange, ASoC_GABA_6hr=temp),
+       c("GABA_caQTL_cTWAS","ASoC_GABA_6hr"))
+```
+
+### Shared dynamic elements
+
+Dynamic cPeaks were defined in previous section. Dynamic ASoC were defined as FDR < 0.05 in 1 hour or 6 hour and P value > 0.1 in 0 hour. I used more lenient criteria for GABA ASoC, which is FDR > 0.05 in 0 hour. Because no overlap between dynamic cPeaks and dynamic ASoC can be found in GABA with P value criteria.
+
+```{r, echo=F}
+GABA.snp16 <- union(GABA1.asoc1$ID, GABA6.asoc1$ID)
+GABA.staticP <- GABA0.asoc[GABA0.asoc$ID %in% GABA.snp16,]
+rownames(GABA.staticP) <- GABA.staticP$ID
+GABA.snp160 <- GABA.snp16[GABA.staticP[GABA.snp16,"FDR"]>0.05]
+GABA.snp160 <- GABA.snp160[!is.na(GABA.snp160)]
+GABA8 <- GABA7[GABA6$PIP_diff>0.5,]
+GABA.asocpos <- rbind(GABA1.asoc[,1:3],GABA6.asoc[,1:3])
+GABA.asocpos <- GABA.asocpos[!duplicated(GABA.asocpos$ID),]
+GABA160.pos <- GABA.asocpos[GABA.asocpos$ID %in% GABA.snp160,]
+GABA160.range <- makeGRangesFromDataFrame(GABA160.pos, seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+assoc160 <- findOverlaps(GABA8,GABA160.range)
+
+GABA160.peak2asoc <- data.frame(cPeak=GABA8[assoc160@from],ASOC_SNP=GABA160.range[assoc160@to])
+GABA160.peak2asoc[,c(1:3,6:7,11)] %>%
+  kbl(caption="Overlap between dynamic cPeaks and dynamic ASoC in GABA") %>%
+  kable_styling()
+```
+
+#### Locus plot for shared dynamic signals
+
+P values for the ASoC SNP, rs11771625, in Schizophrenia GWAS is 1.812174e-20.
+
+
+![Locus plot for cPeak chr7_2010548_2011048](assets/caQTL_cTWAS_rs11771625_GABA.pdf){width=100% height=550px}
+
+
+## NPglut
+
+### Shared signal in each time point
+```{r, echo=F}
+npglut0.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/0hr_npglut_SNP_2_30_full.tsv", header=T)
+npglut1.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/1hr_npglut_SNP_2_30_full.tsv", header=T)
+npglut6.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/6hr_npglut_SNP_2_30_full.tsv", header=T)
+npglut0.asoc1 <- makeGRangesFromDataFrame(npglut0.asoc[npglut0.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+npglut1.asoc1 <- makeGRangesFromDataFrame(npglut1.asoc[npglut1.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+npglut6.asoc1 <- makeGRangesFromDataFrame(npglut6.asoc[npglut6.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+npglut6 <- npglut5[npglut5$PIP_sum>0.8,]
+npglut6$chr <- sapply(strsplit(npglut6$PeakRange,"_"), function(x) {x[1]})
+npglut6$start <- sapply(strsplit(npglut6$PeakRange,"_"), function(x) {x[2]})
+npglut6$end <- sapply(strsplit(npglut6$PeakRange,"_"), function(x) {x[3]})
+npglut7 <- makeGRangesFromDataFrame(npglut6)
+start(npglut7) <- start(npglut7) - 500
+end(npglut7) <- end(npglut7) + 500
+asoc0 <- findOverlaps(npglut7,npglut0.asoc1)
+asoc1 <- findOverlaps(npglut7,npglut1.asoc1)
+asoc6 <- findOverlaps(npglut7,npglut6.asoc1)
+
+peak2asoc0 <- data.frame(peakrange=npglut6$PeakRange[asoc0@from],ASOC_SNP=npglut0.asoc1$ID[asoc0@to])
+peak2asoc0 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NPglut 0 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- npglut0.asoc1$ID
+temp[asoc0@to] <- npglut6$PeakRange[asoc0@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_0hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_0hr"))
+```
+
+```{r, echo=F}
+peak2asoc1 <- data.frame(peakrange=npglut6$PeakRange[asoc1@from],ASOC_SNP=npglut1.asoc1$ID[asoc1@to])
+peak2asoc1 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NPglut 1 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- npglut1.asoc1$ID
+temp[asoc1@to] <- npglut6$PeakRange[asoc1@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_1hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_1hr"))
+```
+
+```{r, echo=F}
+peak2asoc6 <- data.frame(peakrange=GABA6$PeakRange[asoc6@from],ASOC_SNP=GABA6.asoc1$ID[asoc6@to])
+peak2asoc6 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NPglut 6 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- npglut6.asoc1$ID
+temp[asoc6@to] <- npglut6$PeakRange[asoc6@from]
+ggvenn(list(npglut_caQTL_cTWAS=npglut6$PeakRange, ASoC_npglut_6hr=temp),
+       c("npglut_caQTL_cTWAS","ASoC_npglut_6hr"))
+```
+
+### Shared dynamic elements
+
+```{r, echo=F}
+npglut.snp16 <- union(npglut1.asoc1$ID, npglut6.asoc1$ID)
+npglut.staticP <- npglut0.asoc[npglut0.asoc$ID %in% npglut.snp16,]
+rownames(npglut.staticP) <- npglut.staticP$ID
+npglut.snp160 <- npglut.snp16[npglut.staticP[npglut.snp16,"pVal"]>0.1]
+npglut.snp160 <- npglut.snp160[!is.na(npglut.snp160)]
+npglut8 <- npglut7[npglut6$PIP_diff>0.5,]
+npglut.asocpos <- rbind(npglut1.asoc[,1:3],npglut6.asoc[,1:3])
+npglut.asocpos <- npglut.asocpos[!duplicated(npglut.asocpos$ID),]
+npglut160.pos <- npglut.asocpos[npglut.asocpos$ID %in% npglut.snp160,]
+npglut160.range <- makeGRangesFromDataFrame(npglut160.pos, seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+assoc160 <- findOverlaps(npglut8,npglut160.range)
+
+npglut160.peak2asoc <- data.frame(cPeak=npglut8[assoc160@from],ASOC_SNP=npglut160.range[assoc160@to])
+npglut160.peak2asoc[,c(1:3,6:7,11)] %>%
+  kbl(caption="Overlap between dynamic cPeaks and dynamic ASoC in npglut") %>%
+  kable_styling()
+```
+
+
+#### Locus plot for shared dynamic signals
+
+rs9964412 in not in Schizophrenia GWAS.
+
+![Locus plot for cPeak chr18_29920961_29921461](assets/caQTL_cTWAS_rs9964412_npglut.pdf){width=100% height=550px}
+
+rs74716128 in Schizophrenia GWAS has P value of 1.234014e-05
+
+![Locus plot for cPeak chr10_86244301_86244801](assets/caQTL_cTWAS_rs74716128_npglut.pdf){width=100% height=550px}
+
+
+## NMglut
+
+### Shared signals in each time point
+
+```{r, echo=F}
+nmglut0.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/0hr_nmglut_SNP_2_30_full.tsv", header=T)
+nmglut1.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/1hr_nmglut_SNP_2_30_full.tsv", header=T)
+nmglut6.asoc <- read.table("/Users/lifanliang/Documents/neuron_stim/ASoC_100_lines_22Dec2023/6hr_nmglut_SNP_2_30_full.tsv", header=T)
+nmglut0.asoc1 <- makeGRangesFromDataFrame(nmglut0.asoc[nmglut0.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+nmglut1.asoc1 <- makeGRangesFromDataFrame(nmglut1.asoc[nmglut1.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+nmglut6.asoc1 <- makeGRangesFromDataFrame(nmglut6.asoc[nmglut6.asoc$FDR<0.05,], seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+nmglut6 <- nmglut5[nmglut5$PIP_sum>0.8,]
+nmglut6$chr <- sapply(strsplit(nmglut6$PeakRange,"_"), function(x) {x[1]})
+nmglut6$start <- sapply(strsplit(nmglut6$PeakRange,"_"), function(x) {x[2]})
+nmglut6$end <- sapply(strsplit(nmglut6$PeakRange,"_"), function(x) {x[3]})
+nmglut7 <- makeGRangesFromDataFrame(nmglut6)
+start(nmglut7) <- start(nmglut7) - 500
+end(nmglut7) <- end(nmglut7) + 500
+asoc0 <- findOverlaps(nmglut7,nmglut0.asoc1)
+asoc1 <- findOverlaps(nmglut7,nmglut1.asoc1)
+asoc6 <- findOverlaps(nmglut7,nmglut6.asoc1)
+
+peak2asoc0 <- data.frame(peakrange=nmglut6$PeakRange[asoc0@from],ASOC_SNP=nmglut0.asoc1$ID[asoc0@to])
+peak2asoc0 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NMglut 0 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- nmglut0.asoc1$ID
+temp[asoc0@to] <- nmglut6$PeakRange[asoc0@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_0hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_0hr"))
+```
+
+```{r, echo=F}
+peak2asoc1 <- data.frame(peakrange=nmglut6$PeakRange[asoc1@from],ASOC_SNP=nmglut1.asoc1$ID[asoc1@to])
+peak2asoc1 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NMglut 1 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- nmglut1.asoc1$ID
+temp[asoc1@to] <- nmglut6$PeakRange[asoc1@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_1hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_1hr"))
+```
+
+```{r, echo=F}
+peak2asoc6 <- data.frame(peakrange=nmglut6$PeakRange[asoc6@from],ASOC_SNP=nmglut6.asoc1$ID[asoc6@to])
+peak2asoc6 %>%
+  kbl(caption="Significant cTWAS peaks overlapped with ASoC in NMglut 6 hours") %>%
+  kable_styling()
+```
+
+```{r,echo=F}
+temp <- nmglut6.asoc1$ID
+temp[asoc6@to] <- nmglut6$PeakRange[asoc6@from]
+ggvenn(list(nmglut_caQTL_cTWAS=nmglut6$PeakRange, ASoC_nmglut_6hr=temp),
+       c("nmglut_caQTL_cTWAS","ASoC_nmglut_6hr"))
+```
+
+### Shared dynamic elements
+
+```{r, echo=F}
+nmglut.snp16 <- union(nmglut1.asoc1$ID, nmglut6.asoc1$ID)
+nmglut.staticP <- nmglut0.asoc[nmglut0.asoc$ID %in% nmglut.snp16,]
+rownames(nmglut.staticP) <- nmglut.staticP$ID
+nmglut.snp160 <- nmglut.snp16[nmglut.staticP[nmglut.snp16,"pVal"]>0.1]
+nmglut.snp160 <- nmglut.snp160[!is.na(nmglut.snp160)]
+nmglut8 <- nmglut7[nmglut6$PIP_diff>0.5,]
+nmglut.asocpos <- rbind(nmglut1.asoc[,1:3],nmglut6.asoc[,1:3])
+nmglut.asocpos <- nmglut.asocpos[!duplicated(nmglut.asocpos$ID),]
+nmglut160.pos <- nmglut.asocpos[nmglut.asocpos$ID %in% nmglut.snp160,]
+nmglut160.range <- makeGRangesFromDataFrame(nmglut160.pos, seqnames.field = "CHROM", end.field = "POS", start.field = "POS", keep.extra.columns = T)
+assoc160 <- findOverlaps(nmglut8,nmglut160.range)
+
+nmglut160.peak2asoc <- data.frame(cPeak=nmglut8[assoc160@from],ASOC_SNP=nmglut160.range[assoc160@to])
+nmglut160.peak2asoc[,c(1:3,6:7,11)] %>%
+  kbl(caption="Overlap between dynamic cPeaks and dynamic ASoC in nmglut") %>%
+  kable_styling()
+```
+
+#### Locus plot for shared dynamic signals
+
+All the three SNPs are overlapped with the same peak, but none of them are not in SCZ GWAS.
+
+![Locus plot for cPeak chr2_172098931_172099431](assets/caQTL_cTWAS_rs172099203_nmglut.pdf){width=100% height=550px}
+
+
