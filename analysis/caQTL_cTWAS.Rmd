@@ -215,13 +215,14 @@ tpeak[,c(4,1,2,3)] %>%
 ## Weak signal aggregation
 
 We tried to aggregate PIP of each peak in several ways:
+
 * merge peaks to the same lead variants
 * merge peaks to the nearest the gene in terms of distance between lead variants and gene bodies
 * merge peaks in the same locus
 
 ### Power gain via aggregation
 
-```{r sigcount, echo=F}
+```{r sig-count, echo=F}
 npglut.aggr <- readRDS("data/npglut_aggr_PIP_caQTL_ctwas.RDS")
 nmglut.aggr <- readRDS("data/nmglut_aggr_PIP_caQTL_ctwas.RDS")
 GABA.aggr <- readRDS("data/GABA_aggr_PIP_caQTL_ctwas.RDS")
@@ -238,9 +239,9 @@ ggplot(temp, aes(x=celltype, y=Nsig, fill=level)) + geom_bar(stat="identity", po
   theme_bw() + ylab("# of units with PIP sum > 0.8")
 ```
 
-Figure \@ref(fig:sigcount) shows that significant drops after SNP aggregation and then increases through gene and locus level aggregation. SNP level detects less significant units because most cPeaks at one timepoint correspond to one SNP only (Figure \@ref(fig:peak2snp).
+Figure above shows that significant drops after SNP aggregation and then increases through gene and locus level aggregation. SNP level detects less significant units because most cPeaks at one timepoint correspond to one SNP only (Figure below).
 
-```{r peak2snp, echo=F}
+```{r peak-snp, echo=F}
 snp.time <- paste(GABA1$chrom, GABA1$pos, GABA1$timepoint, sep="_")
 hist(table(snp.time),breaks = 20, main="", xlab="# of peaks grouped by unique caQTL in GABA")
 ```
