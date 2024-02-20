@@ -74,6 +74,7 @@ A peak is significant for the cell type if its sum of PIP across time points is 
 ```{r, echo=F}
 library(kableExtra)
 options(knitr.kable.NA = '')
+GABA1 <- GABA1[GABA1$cs_index>0,]
 GABA2 <- aggregate(GABA1$susie_pip, list(GABA1$genename), sum)
 GABA3 <- merge(GABA2, GABA1[GABA1$timepoint=="0hr_GABA",c("genename","susie_pip")], 
                  by.x="Group.1", by.y="genename",all.x = T)
@@ -90,7 +91,7 @@ GABA5$PIP_diff <- GABA5$PIP_sum - 2 * GABA5$PIP_0hr_GABA
 colnames(GABA5)[1] <- "PeakRange"
 GABA5 <- GABA5[order(GABA5$PIP_sum,decreasing = T),]
 GABA5[GABA5$PIP_sum>0.8,] %>%
-  kable(caption = "Significant peaks for the GABA cell type", digits=3, row.names = F) %>%
+  kable(caption = paste(sum(GABA5$PIP_sum>0.8),"significant peaks for the GABA cell type"), digits=3, row.names = F) %>%
   scroll_box(height="400px")
 ```
 
@@ -98,6 +99,7 @@ GABA5[GABA5$PIP_sum>0.8,] %>%
 
 ```{r, echo=F}
 options(knitr.kable.NA = '')
+npglut1 <- npglut1[npglut1$cs_index>0,]
 npglut2 <- aggregate(npglut1$susie_pip, list(npglut1$genename), sum)
 npglut3 <- merge(npglut2, npglut1[npglut1$timepoint=="0hr_npglut",c("genename","susie_pip")], 
                  by.x="Group.1", by.y="genename",all.x = T)
@@ -114,13 +116,14 @@ npglut5$PIP_diff <- npglut5$PIP_sum - 2 * npglut5$PIP_0hr_npglut
 npglut5 <- npglut5[order(npglut5$PIP_sum,decreasing = T),]
 colnames(npglut5)[1] <- "PeakRange"
 npglut5[npglut5$PIP_sum>0.8,] %>%
-  kable(caption = "Significant peaks for the npglut cell type", digits=3, row.names = F) %>%
+  kable(caption = paste(sum(npglut5$PIP_sum>0.8), "significant peaks for the npglut cell type"), digits=3, row.names = F) %>%
   scroll_box(height="400px")
 ```
 
 ### nmglut significant peaks
 
 ```{r, echo=F}
+nmglut1 <- nmglut1[nmglut1$cs_index>0,]
 nmglut2 <- aggregate(nmglut1$susie_pip, list(nmglut1$genename), sum)
 nmglut3 <- merge(nmglut2, nmglut1[nmglut1$timepoint=="0hr_nmglut",c("genename","susie_pip")], 
                by.x="Group.1", by.y="genename",all.x = T)
@@ -136,7 +139,7 @@ nmglut5$PIP_diff <- nmglut5$PIP_sum - 2 * nmglut5$PIP_0hr_nmglut
 nmglut5 <- nmglut5[order(nmglut5$PIP_sum,decreasing = T),]
 colnames(nmglut5)[1] <- "PeakRange"
 nmglut5[nmglut5$PIP_sum>0.8,] %>%
-  kable(caption = "Significant peaks for the nmglut cell type", digits=3, row.names = F) %>%
+  kable(caption = paste(sum(nmglut5$PIP_sum>0.8),"significant peaks for the nmglut cell type"), digits=3, row.names = F) %>%
   scroll_box(height="400px")
 ```
 
@@ -188,14 +191,18 @@ ggplot(dat, aes(x=celltype, fill=dynamic, y=Ngenes, label=Ngenes)) +
 
 ## Cell type correlation
 
-#### Comparing top genes across cell types nominated in the same locus
+#### Comparing top cPeaks across cell types nominated in the same locus
 
-This table shows how different cell types may nominate different genes in the same locus. 
+This table shows how different cell types may nominate different peaks in the same locus. 
 
-All shared peaks are consistent except locus 3&4 in chr7.
+All shared peaks are consistent except 7_4 in chr7. Also note that both "7_3" and "7_4" nominate chr7_2010548_2011048.
 
 ```{r, echo=F}
-tpeak <- read.table("data/multigroup_cTWAS_toppeak_by_locus.txt", header=T, sep=" ")
+tpeak <- read.table("data/multigroup_cTWAS_toppeak_by_locus.txt", header=T, sep=" ") # Previous results includ false postivies from credible set 0
+tpeak$GABA[!(tpeak$GABA %in% GABA5$PeakRange[GABA5$PIP_sum>0.8])] <- ""
+tpeak$npglut[!(tpeak$npglut %in% npglut5$PeakRange[npglut5$PIP_sum>0.8])] <- ""
+tpeak$nmglut[!(tpeak$nmglut %in% nmglut5$PeakRange[nmglut5$PIP_sum>0.8])] <- ""
+tpeak <- tpeak[rowSums((tpeak)=="")<3,]
 tpeak$locus_tag <- rownames(tpeak)
 rownames(tpeak) <- NULL
 tpeak[,c(4,1,2,3)] %>%
@@ -207,98 +214,116 @@ tpeak[,c(4,1,2,3)] %>%
 
 ## Weak signal aggregation
 
-### SNP level
+We tried to aggregate PIP of each peak in several ways:
+* merge peaks to the same lead variants
+* merge peaks to the nearest the gene in terms of distance between lead variants and gene bodies
+* merge peaks in the same locus
+
+### Power gain via aggregation
+
+```{r sigcount, echo=F}
+npglut.aggr <- readRDS("data/npglut_aggr_PIP_caQTL_ctwas.RDS")
+nmglut.aggr <- readRDS("data/nmglut_aggr_PIP_caQTL_ctwas.RDS")
+GABA.aggr <- readRDS("data/GABA_aggr_PIP_caQTL_ctwas.RDS")
+
+npglut.Nsig <- c(sum(npglut5$PIP_sum>0.8),sapply(npglut.aggr, function(x){sum(x$PIP_sum>0.8)}))
+GABA.Nsig <- c(sum(GABA5$PIP_sum>0.8), sapply(GABA.aggr, function(x){sum(x$PIP_sum>0.8)}))
+nmglut.Nsig <- c(sum(nmglut5$PIP_sum>0.8), sapply(nmglut.aggr, function(x){sum(x$PIP_sum>0.8)}))
+
+temp <- data.frame(Nsig=c(npglut.Nsig,GABA.Nsig,nmglut.Nsig),
+                   celltype=c(rep("npglut",4), rep("GABA",4), rep("nmglut",4)),
+                   level=factor(rep(c("raw","SNP","gene","locus"),3), levels = c("raw","SNP","gene","locus")))
+
+ggplot(temp, aes(x=celltype, y=Nsig, fill=level)) + geom_bar(stat="identity", position="dodge") + 
+  theme_bw() + ylab("# of units with PIP sum > 0.8")
+```
+
+Figure \@ref(fig:sigcount) shows that significant drops after SNP aggregation and then increases through gene and locus level aggregation. SNP level detects less significant units because most cPeaks at one timepoint correspond to one SNP only (Figure \@ref(fig:peak2snp).
+
+```{r peak2snp, echo=F}
+snp.time <- paste(GABA1$chrom, GABA1$pos, GABA1$timepoint, sep="_")
+hist(table(snp.time),breaks = 20, main="", xlab="# of peaks grouped by unique caQTL in GABA")
+```
+
+
+### SNP level significant units
 
 Aggregate PIPs of peaks by their shared lead variants.
 
 ```{r, echo=F}
-npglut.aggrPIP <- readRDS("data/caQTL_NPglut_ctwas_aggr.RDS")
-nmglut.aggrPIP <- readRDS("data/caQTL_NMglut_ctwas_aggr.RDS")
-GABA.aggrPIP <- readRDS("data/caQTL_GABA_ctwas_aggr.RDS")
+npglut.table <- npglut.aggr$snpsum[npglut.aggr$snpsum$PIP_sum>0.8,-6]
+nmglut.table <- nmglut.aggr$snpsum[nmglut.aggr$snpsum$PIP_sum>0.8,-6]
+GABA.table <- GABA.aggr$snpsum[GABA.aggr$snpsum$PIP_sum>0.8,-6]
 
-npglut.table <- npglut.aggrPIP$aggrbysnp[npglut.aggrPIP$aggrbysnp$PIP>0.8,]
-nmglut.table <- nmglut.aggrPIP$aggrbysnp[nmglut.aggrPIP$aggrbysnp$PIP>0.8,]
-GABA.table <- GABA.aggrPIP$aggrbysnp[GABA.aggrPIP$aggrbysnp$PIP>0.8,]
-
-tab <- npglut.table[,c(1,4,3,2)]
+tab <- npglut.table
 rownames(tab) <- NULL
-tab[order(tab$PIP,decreasing = T),] %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
   kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in npglut")) %>%
   kable_styling()
 ```
 
 ```{r, echo=F}
-tab <- GABA.table[,c(1,4,3,2)]
+tab <- GABA.table
 rownames(tab) <- NULL
-tab[order(tab$PIP,decreasing = T),] %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
   kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in GABA")) %>%
   kable_styling()
 ```
 
 ```{r, echo=F}
-tab <- nmglut.table[,c(1,4,3,2)]
+tab <- nmglut.table
 rownames(tab) <- NULL
-tab[order(tab$PIP,decreasing = T),] %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
   kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in nmglut")) %>%
   kable_styling()
 ```
 
 ### Gene level
-After aggregating PIP to SNP, we assign each SNP to its nearest gene by TSS. SNP-gene pair with distance > 250L were removed. Then the PIP of SNPs were attributed its nearest genes.
+
+After aggregating PIP to SNP, we assign each SNP to its nearest gene by TSS. SNP-gene pair with distance over one million bps were removed. Then the PIP of SNPs were attributed to its nearest genes.
 
 ```{r,echo=F}
-npglut.table <- npglut.aggrPIP$aggrbygene[npglut.aggrPIP$aggrbygene$aggregate_PIP>0.8,]
-nmglut.table <- nmglut.aggrPIP$aggrbygene[nmglut.aggrPIP$aggrbygene$aggregate_PIP>0.8,]
-GABA.table <- GABA.aggrPIP$aggrbygene[GABA.aggrPIP$aggrbygene$aggregate_PIP>0.8,]
+npglut.table <- npglut.aggr$genesum[npglut.aggr$genesum$PIP_sum>0.8,]
+nmglut.table <- nmglut.aggr$genesum[nmglut.aggr$genesum$PIP_sum>0.8,]
+GABA.table <- GABA.aggr$genesum[GABA.aggr$genesum$PIP_sum>0.8,]
 
-tab <- GABA.table[,c(1,3,2)]
+tab <- GABA.table
 rownames(tab) <- NULL
-tab[order(tab$aggregate_PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in GABA")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"genes with a sum of PIP>0.8 in GABA")) %>%
   kable_styling()
 ```
 
 ```{r, echo=F}
-tab <- npglut.table[,c(1,3,2)]
+tab <- npglut.table
 rownames(tab) <- NULL
-tab[order(tab$aggregate_PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in npglut")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"genes with a sum of PIP>0.8 in npglut")) %>%
   kable_styling()
 ```
 
 ```{r, echo=F}
-tab <- nmglut.table[,c(1,3,2)]
+tab <- nmglut.table
 rownames(tab) <- NULL
-tab[order(tab$aggregate_PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in nmglut")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"genes with a sum of PIP>0.8 in nmglut")) %>%
   kable_styling()
 ```
 
 
 ### Locus level
 
-Aggregate PIPs of peaks by locus. Locus tag dictates locus location. The first number indicates the chromosome and the second number indicates the ordered position of the locus in the chromosome.
-
-
-```{r, echo=F}
-GABA.locusPIP <- aggregate(GABA1$susie_pip, list(GABA1$region_tag1, GABA1$region_tag2, GABA1$timepoint),sum)
-colnames(GABA.locusPIP) <- c("chr","locus","timepoint","PIP_sum")
-hist(GABA.locusPIP$PIP_sum, breaks = 30, main="GABA time point specific PIP aggregated on locus level")
-lines(c(0.8,0.8),c(0,300), col="red ")
-```
-
 #### NPglut
 
 ```{r,echo=F}
-npglut.table <- npglut.aggrPIP$aggrbylocus[npglut.aggrPIP$aggrbylocus$PIP>0.8,]
-nmglut.table <- nmglut.aggrPIP$aggrbylocus[nmglut.aggrPIP$aggrbylocus$PIP>0.8,]
-GABA.table <- GABA.aggrPIP$aggrbylocus[GABA.aggrPIP$aggrbylocus$PIP>0.8,]
+npglut.table <- npglut.aggr$locusum[npglut.aggr$locusum$PIP_sum>0.8,]
+nmglut.table <- nmglut.aggr$locusum[nmglut.aggr$locusum$PIP_sum>0.8,]
+GABA.table <- GABA.aggr$locusum[GABA.aggr$locusum$PIP_sum>0.8,]
 
 tab <- npglut.table
 rownames(tab) <- NULL
-tab$locus_tag <- sapply(strsplit(tab$locus_tag," "), function(x){paste0(x[1],"_",x[2])})
-tab[order(tab$PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in npglut")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"loci with a sum of PIP>0.8 in npglut")) %>%
   kable_styling() %>%
   scroll_box(height="400px")
 ```
@@ -308,9 +333,8 @@ tab[order(tab$PIP,decreasing = T),] %>%
 ```{r,echo=F}
 tab <- GABA.table
 rownames(tab) <- NULL
-tab$locus_tag <- sapply(strsplit(tab$locus_tag," "), function(x){paste0(x[1],"_",x[2])})
-tab[order(tab$PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in GABA")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"loci with a sum of PIP>0.8 in GABA")) %>%
   kable_styling() %>%
   scroll_box(height="400px")
 ```
@@ -320,9 +344,8 @@ tab[order(tab$PIP,decreasing = T),] %>%
 ```{r,echo=F}
 tab <- nmglut.table
 rownames(tab) <- NULL
-tab$locus_tag <- sapply(strsplit(tab$locus_tag," "), function(x){paste0(x[1],"_",x[2])})
-tab[order(tab$PIP,decreasing = T),] %>%
-  kbl(caption = paste(nrow(tab),"SNPs with a sum of PIP>0.8 in nmglut")) %>%
+tab[order(tab$PIP_sum,decreasing = T),] %>%
+  kbl(caption = paste(nrow(tab),"loci with a sum of PIP>0.8 in nmglut")) %>%
   kable_styling() %>%
   scroll_box(height="400px")
 ```
