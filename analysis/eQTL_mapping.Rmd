@@ -22,15 +22,13 @@ Sample 10 sets of matched control SNPs with vSampler.
 Take lead eQTL per gene to overlap with GTEx eQTL. GTEx eQTL was filtered by qvalue < 0.05. For the overlapped eQTLs, plot whether they have the same effect size direction.
 
 ![Effect size correlation with cerebellum](assets/beta_corr_nocombat_cerebellum.png)
-
-  
   
   
   
 ![Effect size correlation with whole blood](assets/beta_corr_nocombat_wholeblood.png)
 
-![Proportion of concordance](assets/GTex_shared_proportion.png)
+![Proportion of shared effect size](assets/GTex_shared_proportion.png)
 
-![Proportion of concordance](assets/GTEx_shared_coeffecients.png)
+![OLS coeffecients for GTEx effect size](assets/GTEx_shared_coeffecients.png)
 
 
