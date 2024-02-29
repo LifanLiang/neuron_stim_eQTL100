@@ -7,9 +7,30 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Introduction
+## Validation
 
-```{r}
+### Validation with matched control SNPs
 
-```
+Sample 10 sets of matched control SNPs with vSampler.
+
+![Pi1 analysis for 6hr_GABA with matched controls (using combat)](assets/combat_vsampler_heatmap.png)
+
+![Pi1 analysis for 6hr_GABA with matched controls (w/ combat)](assets/nocombat_vsampler_heatmap.png)
+
+### Effect size concordance
+
+Take lead eQTL per gene to overlap with GTEx eQTL. GTEx eQTL was filtered by qvalue < 0.05. For the overlapped eQTLs, plot whether they have the same effect size direction.
+
+![Effect size correlation with cerebellum](assets/beta_corr_nocombat_cerebellum.png)
+
+  
+  
+  
+  
+![Effect size correlation with whole blood](assets/beta_corr_nocombat_wholeblood.png)
+
+![Proportion of concordance](assets/GTex_shared_proportion.png)
+
+![Proportion of concordance](assets/GTEx_shared_coeffecients.png)
+
 

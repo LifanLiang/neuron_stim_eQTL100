@@ -38,7 +38,6 @@ Estimating all parameters by sampling 10% of SNPs. (thin=0.1)
 
 ![GABA multigroup](assets/GABA.png)
 
-
 ### cTWAS parameter estimates for nmglut
 
 ![nmglut multigroup](assets/nmglut.png)
@@ -112,7 +111,6 @@ nmglut.pip1 %>%
 #knitr::kable(nmglut.pip1, caption = "Top genes for the nmGlut cell type")
 ```
 
-
 ```{r, echo=F}
 npglut.pip <- read.table("data/npglut_gene_PIP.txt", header=T)
 npglut.pip1 <- npglut.pip[npglut.pip$PIP_sum>0.8,]
@@ -143,6 +141,8 @@ text(1.0,1.1,paste0("corr: ", sprintf("%.3f",cor(all$PIP_sum.y, all$PIP_sum, use
 
 ### Overlap of top genes across celltypes
 
+All cTWAS eGenes were cell type specific.
+
 ```{r, echo=F}
 library(ggvenn)
 
@@ -157,12 +157,12 @@ PIP_diff > 0.5 defined as dynamic eGenes. Most genes identified in glut cells ar
 
 ```{r,echo=F,message=F}
 library(ggplot2)
-dat <- data.frame(Ngenes=c(30,35,27,21,1,7), celltype=rep(c("GABA","nmglut","npglut"),2),
+dat <- data.frame(Ngenes=c(4,8,4,3,0,1), celltype=rep(c("GABA","nmglut","npglut"),2),
            dynamic=c(rep(T,3), rep(F,3)))
 ggplot(dat, aes(x=celltype, fill=dynamic, y=Ngenes, label=Ngenes)) + 
   geom_bar(position="stack", stat="identity") +
   geom_text(size = 6, position = position_stack(vjust = 0.5)) + 
-  xlab("Number of Top genes") + ylab("Cell type")
+  xlab("Number of Top genes") + ylab("Cell type") + theme_bw()
 ```
 
 ### Comparison with single group cTWAS
@@ -249,7 +249,7 @@ tgene %>%
 #knitr::kable(npglut.pip1, caption = "Top genes for the npGlut cell type")
 ```
 
-#### Dynamic eGenes for acroo all celltypes
+#### Dynamic eGenes for across all celltypes
 
 ```{r, echo=F}
 dgene <- read.table("data/multigroup_cTWAS_dynamic_gene_by_locus.txt", header=T)
@@ -263,8 +263,6 @@ dgene[,-1] %>%
 
 
 #### Examples of locus plots for dynamic genes
-
-
 
 
 #### Genomic locus plot
