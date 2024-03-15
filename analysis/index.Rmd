@@ -26,4 +26,4 @@ editor_options:
 [Interaction testing for eQTL](eQTL_interaction.html)
 \
 \
-
+[Pseudo bulk eQTL across all cell types](eQTL_all_cell.html)

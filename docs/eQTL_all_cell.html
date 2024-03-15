@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Lifan Liang" />
 
+<meta name="date" content="2024-03-15" />
 
-<title>Home</title>
+<title>eQTL_all_cell</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -230,6 +235,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -237,6 +305,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -280,7 +358,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">eQTL_all_cell</h1>
+<h4 class="author">Lifan Liang</h4>
+<h4 class="date">2024-03-15</h4>
 
 </div>
 
@@ -347,10 +427,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -421,296 +501,40 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML
-(<code>docs/index.html</code>) files. If you’ve configured a remote Git
-repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
-in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/6f8a4e8b6458a665215fd5152bdf735b5d28fba5/docs/index.html" target="_blank">6f8a4e8</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ad1046797a0f8315a89d617ebfcac03c046d7550/analysis/index.Rmd" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ad1046797a0f8315a89d617ebfcac03c046d7550/docs/index.html" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/eedfee5819b640e6616ca4b8aea86b52983b5b9c/docs/index.html" target="_blank">eedfee5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/78c0cbc5d0856a39a8e12258f53088f989b9e00a/analysis/index.Rmd" target="_blank">78c0cbc</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/fedff992f00871e1f4a791a67ed5c2391c0f31f0/docs/index.html" target="_blank">fedff99</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/analysis/index.Rmd" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/index.html" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1f5299991f8a988fc30a150a821bde531885f5e2/docs/index.html" target="_blank">1f52999</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/feb17830faf52041ed0ad97f06150c705aa15dcb/analysis/index.Rmd" target="_blank">feb1783</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cf0d8df0c4013bbe3ed414e035f6805e85e476aa/docs/index.html" target="_blank">cf0d8df</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/analysis/index.Rmd" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ee193fe130edb0a02a90add90d21f60d0557f934/docs/index.html" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/28e7b447dabef7c79d28e422478c82869280171a/analysis/index.Rmd" target="_blank">28e7b44</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<p><a href="cTWAS.html">Multigroup cTWAS results of eQTL</a><br />
-<br />
-<a href="single_cTWAS.html">Single group cTWAS results</a><br />
-<br />
-<a href="caQTL_cTWAS.html">Multigroup cTWAS results of caQTL</a><br />
-<br />
-<a href="caQTL_ASoC_shared.html">Sharing signal between caQTL (cTWAS)
-and ASoC</a><br />
-<br />
-<a href="eQTL_mapping.html">eQTL mapping (fixed effect only)</a><br />
-<br />
-<a href="eQTL_interaction.html">Interaction testing for eQTL</a><br />
-<br />
-<a href="eQTL_all_cell.html">Pseudo bulk eQTL across all cell
-types</a></p>
+<div id="procedure" class="section level2">
+<h2>Procedure</h2>
+<ol style="list-style-type: decimal">
+<li><p>Sum up read counts across cells within a time point, cell type
+and cell line</p></li>
+<li><p>Apply TPM normalization for each of the 900 samples</p></li>
+<li><p>Remove sequencing batch 22 (95 cell lines remain) and sum up all
+samples within the same cell line</p></li>
+<li><p>14772 genes after QC</p></li>
+<li><p>Apply Inverse Normal Transformation (INT)</p></li>
+<li><p>PCA on expression</p></li>
+<li><p>eQTL mapping using previous genotypes. Covariates include age,
+gender, disease condition, cell type proportion, genotype PCs,
+expression PCs,</p></li>
+<li><p>Use 21 expression PCs with the maximum eGenes discovered</p></li>
+</ol>
+<p><img src="assets/exPC_egenes.png" /></p>
+</div>
+<div id="compared-to-previous-eqtl-results" class="section level2">
+<h2>Compared to previous eQTL results</h2>
+<p><img src="assets/Bulk_shared_single_condition.png" /></p>
+<p>eQTL shared with the union of single condition eQTLs.</p>
+<p><img src="assets/AllBulk_vs_union.png" /></p>
+<p>eGenes shared with the union of single condition eQTLs.</p>
+<p><img src="assets/AllBulk_vs_union_eGENES.png" /></p>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -728,6 +552,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -760,6 +586,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

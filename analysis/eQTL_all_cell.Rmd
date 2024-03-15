@@ -1,0 +1,43 @@
+---
+title: "eQTL_all_cell"
+author: "Lifan Liang"
+date: "2024-03-15"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Procedure
+
+1. Sum up read counts across cells within a time point, cell type and cell line
+
+2. Apply TPM normalization for each of the 900 samples
+
+3. Remove sequencing batch 22 (95 cell lines remain) and sum up all samples within the same cell line
+
+4. 14772 genes after QC
+
+5. Apply Inverse Normal Transformation (INT)
+
+6. PCA on expression
+
+7. eQTL mapping using previous genotypes. Covariates include age, gender, disease condition, cell type proportion, genotype PCs, expression PCs,
+
+8. Use 21 expression PCs with the maximum eGenes discovered
+
+![](assets/exPC_egenes.png)
+
+
+## Compared to previous eQTL results
+
+![](assets/Bulk_shared_single_condition.png)
+
+eQTL shared with the union of single condition eQTLs.
+
+![](assets/AllBulk_vs_union.png)
+
+eGenes shared with the union of single condition eQTLs.
+
+![](assets/AllBulk_vs_union_eGENES.png)
+
+
