@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,33 +418,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree467f424c6868c5138e5e4bce58155e7a2032d6d6targetblank467f424a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree77c61c11e53f479e9ecf0a55e0870620f9168e1etargetblank77c61c1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/467f424c6868c5138e5e4bce58155e7a2032d6d6" target="_blank">467f424</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/77c61c11e53f479e9ecf0a55e0870620f9168e1e" target="_blank">77c61c1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree467f424c6868c5138e5e4bce58155e7a2032d6d6targetblank467f424a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree77c61c11e53f479e9ecf0a55e0870620f9168e1etargetblank77c61c1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +457,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/467f424c6868c5138e5e4bce58155e7a2032d6d6" target="_blank">467f424</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/77c61c11e53f479e9ecf0a55e0870620f9168e1e" target="_blank">77c61c1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -479,6 +482,7 @@ Untracked files:
     Untracked:  data/pi1_6hr_GABA_vs_controlSNP.rds
 
 Unstaged changes:
+    Modified:   analysis/eQTL_all_cell.Rmd
     Modified:   data/GABA_gene_PIP.txt
     Modified:   data/nmglut_gene_PIP.txt
     Modified:   data/npglut_gene_PIP.txt
@@ -527,6 +531,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/77c61c11e53f479e9ecf0a55e0870620f9168e1e/docs/eQTL_all_cell.html" target="_blank">77c61c1</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -578,7 +599,7 @@ and cell line</p></li>
 samples within the same cell line</p></li>
 <li><p>14772 genes after QC</p></li>
 <li><p>Apply Inverse Normal Transformation (INT)</p></li>
-<li><p>PCA on expression</p></li>
+<li><p>PCA on Normalized expression</p></li>
 <li><p>eQTL mapping using previous genotypes. Covariates include age,
 gender, disease condition, cell type proportion, genotype PCs,
 expression PCs,</p></li>
@@ -593,6 +614,7 @@ expression PCs,</p></li>
 <p><img src="assets/AllBulk_vs_union.png" /></p>
 <p>eGenes shared with the union of single condition eQTLs.</p>
 <p><img src="assets/AllBulk_vs_union_eGENES.png" /></p>
+<p><img src="assets/Pi1_bulk_vs_union.png" /></p>
 </div>
 
 

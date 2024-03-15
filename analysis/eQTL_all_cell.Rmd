@@ -19,7 +19,7 @@ editor_options:
 
 5. Apply Inverse Normal Transformation (INT)
 
-6. PCA on expression
+6. PCA on Normalized expression
 
 7. eQTL mapping using previous genotypes. Covariates include age, gender, disease condition, cell type proportion, genotype PCs, expression PCs,
 
@@ -40,4 +40,4 @@ eGenes shared with the union of single condition eQTLs.
 
 ![](assets/AllBulk_vs_union_eGENES.png)
 
-
+![](assets/Pi1_bulk_vs_union.png)
