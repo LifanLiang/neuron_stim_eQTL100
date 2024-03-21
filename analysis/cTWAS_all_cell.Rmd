@@ -1,0 +1,117 @@
+---
+title: "cTWAS_all_cell"
+author: "Lifan Liang"
+date: "2024-03-20"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Weights
+
+Use the same set of eQTLs as cell type sperated cTWAS.These eQTLs are the unions of top eQTL within the same cell type. But eQTLs with nominal P values less than 0.1 in a certain condition was removed.
+
+```{r, echo=F}
+ctwas.params <- readRDS("data/joint_celltype_cTWAS_params.rds")
+ctwas.params$group_size[c(1,2,5,8,3,6,9,4,7,10)]
+```
+
+## Parameters
+
+```{r, echo=F}
+ctwas.params$convergence_plot
+```
+
+### Prior for each context
+
+```{r, echo=F}
+barplot(ctwas.params$group_prior[c(1,2,5,8,3,6,9,4,7,10)],las=2)
+```
+
+NMglut has higher priors than the other cell types. However, this is also the cell type with the least sample size for eQTL and hence the smallest number of eGenes.
+
+```{r, echo=F}
+samples.size <- c(94,97,99,83,92,87,97,99,100)
+names(samples.size) <- names(ctwas.params$group_prior)[c(2,5,8,3,6,9,4,7,10)]
+barplot(samples.size,las=2,main="sample size for eQTL")
+```
+
+### PVE for each context
+
+Total PVE from all eGenes in all contexts is 11.0%.
+
+```{r, echo=F}
+perc <- ctwas.params$group_pve / ctwas.params$total_pve
+pie(perc)
+```
+
+```{r}
+barplot(perc[c(2,5,8,3,6,9,4,7,10)], las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
+```
+
+## Results
+
+```{r, echo=F}
+res <- readRDS("data/join_celltype_ctwas_noSNP_res.rds")
+#res <- res[res$cs_index>0,]
+cond <- names(table(res$type))
+res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+for(i in 2:length(cond)) {
+  res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                    by="genename",all.x = T)
+  colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+}
+res3[is.na(res3)] <- 0
+
+hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T,
+     xlab="sum of PIP", main="Distribution for PIP summed across all contexts")
+```
+
+### Cell type specific eGenes
+
+An eGene is assigned to a cell type if over 60% of the PIP sum are from that cell type.
+
+```{r, echo=F}
+res4 <- res3[res3$PIP_sum>0.5,]
+res4$GABA_sum <- rowSums(res4[,c(3,6,9)])
+res4$nmglut_sum <- rowSums(res4[,c(4,7,10)])
+res4$npglut_sum <- rowSums(res4[,c(5,8,11)])
+ctperc <- res4[c("GABA_sum","nmglut_sum","npglut_sum")] / res4$PIP_sum
+res4$celltype <- "Unspecific"
+ind <- which(ctperc>0.6, arr.ind=1)
+res4[ind[,1],"celltype"] <- substr(colnames(ctperc),1,nchar(colnames(ctperc))-4)[ind[,2]]
+table(res4$celltype)
+```
+
+```{r, echo=F}
+library(ggplot2)
+
+ggplot(res4[c("PIP_sum","celltype")], aes(PIP_sum, fill=celltype)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
+```
+
+### Dynamic eGenes
+
+For each cell type, we computed `PIP_diff` as in previous cTWAS results. `PIP_diff` > 0.5 in a certain cell type was regarded as Dynamic eGenes.
+
+```{r, echo=F}
+res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
+res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12,16)]
+knitr::kable(res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),])
+```
+
+```{r, echo=F}
+res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,13,17)]
+knitr::kable(res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),])
+```
+
+```{r, echo=F}
+res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,14,18)]
+knitr::kable(res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),])
+```
+
+
+
+

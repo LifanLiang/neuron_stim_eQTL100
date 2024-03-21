@@ -27,3 +27,7 @@ editor_options:
 \
 \
 [Pseudo bulk eQTL across all cell types](eQTL_all_cell.html)
+\
+\
+[cTWAS across all cell types](cTWAS_all_cell.html)
+
