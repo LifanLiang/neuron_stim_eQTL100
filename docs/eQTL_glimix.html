@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Lifan Liang" />
 
+<meta name="date" content="2024-03-21" />
 
-<title>Home</title>
+<title>eQTL_glimix</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -230,6 +235,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -237,6 +305,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -280,7 +358,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">eQTL_glimix</h1>
+<h4 class="author">Lifan Liang</h4>
+<h4 class="date">2024-03-21</h4>
 
 </div>
 
@@ -410,10 +490,11 @@ have uncommitted changes.
 
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML
-(<code>docs/index.html</code>) files. If you’ve configured a remote Git
-repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
-in the table below to view the files as they were in that past version.
+made to the R Markdown (<code>analysis/eQTL_glimix.Rmd</code>) and HTML
+(<code>docs/eQTL_glimix.html</code>) files. If you’ve configured a
+remote Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -442,7 +523,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/586008310eb8456d7d545b51b0f4847a5d6e1e84/analysis/index.Rmd" target="_blank">5860083</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/586008310eb8456d7d545b51b0f4847a5d6e1e84/analysis/eQTL_glimix.Rmd" target="_blank">5860083</a>
 </td>
 <td>
 Lifan Liang
@@ -454,329 +535,6 @@ Lifan Liang
 wflow_publish("analysis")
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bee6c05ecbabca67f912ea1eb8cd1f2f2bce3697/docs/index.html" target="_blank">bee6c05</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/0c544d0141dc0c075444f7bcb6a6cf77ac845d57/analysis/index.Rmd" target="_blank">0c544d0</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-wflow_publish(c("data", "analysis"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/77c61c11e53f479e9ecf0a55e0870620f9168e1e/docs/index.html" target="_blank">77c61c1</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/467f424c6868c5138e5e4bce58155e7a2032d6d6/analysis/index.Rmd" target="_blank">467f424</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/467f424c6868c5138e5e4bce58155e7a2032d6d6/docs/index.html" target="_blank">467f424</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/6f8a4e8b6458a665215fd5152bdf735b5d28fba5/docs/index.html" target="_blank">6f8a4e8</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ad1046797a0f8315a89d617ebfcac03c046d7550/analysis/index.Rmd" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ad1046797a0f8315a89d617ebfcac03c046d7550/docs/index.html" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/eedfee5819b640e6616ca4b8aea86b52983b5b9c/docs/index.html" target="_blank">eedfee5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/78c0cbc5d0856a39a8e12258f53088f989b9e00a/analysis/index.Rmd" target="_blank">78c0cbc</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/fedff992f00871e1f4a791a67ed5c2391c0f31f0/docs/index.html" target="_blank">fedff99</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/analysis/index.Rmd" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/index.html" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1f5299991f8a988fc30a150a821bde531885f5e2/docs/index.html" target="_blank">1f52999</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/feb17830faf52041ed0ad97f06150c705aa15dcb/analysis/index.Rmd" target="_blank">feb1783</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cf0d8df0c4013bbe3ed414e035f6805e85e476aa/docs/index.html" target="_blank">cf0d8df</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/analysis/index.Rmd" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ee193fe130edb0a02a90add90d21f60d0557f934/docs/index.html" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/28e7b447dabef7c79d28e422478c82869280171a/analysis/index.Rmd" target="_blank">28e7b44</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -784,25 +542,41 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p><a href="cTWAS.html">Multigroup cTWAS results of eQTL</a><br />
-<br />
-<a href="single_cTWAS.html">Single group cTWAS results</a><br />
-<br />
-<a href="caQTL_cTWAS.html">Multigroup cTWAS results of caQTL</a><br />
-<br />
-<a href="caQTL_ASoC_shared.html">Sharing signal between caQTL (cTWAS)
-and ASoC</a><br />
-<br />
-<a href="eQTL_mapping.html">eQTL mapping (fixed effect only)</a><br />
-<br />
-<a href="eQTL_glimix.html">eQTL mapping with mixed effects</a><br />
-<br />
-<a href="eQTL_interaction.html">Interaction testing for eQTL</a><br />
-<br />
-<a href="eQTL_all_cell.html">Pseudo bulk eQTL across all cell
-types</a><br />
-<br />
-<a href="cTWAS_all_cell.html">cTWAS across all cell types</a></p>
+<div id="individual-random-effect-in-a-single-context"
+class="section level3">
+<h3>Individual random effect in a single context</h3>
+<p><span class="math display">\[
+y = G + X + \sigma
+\]</span></p>
+<p>The only difference from fixed effect model is the i.i.d. error term
+modeled as random effect. Still, Z score are shrinked towards zero in
+LMM.</p>
+<p><img src="assets/lmm_vs_lm_zscore.png" /></p>
+</div>
+<div id="individual-random-effect-shared-across-all-contexts"
+class="section level3">
+<h3>Individual random effect shared across all contexts</h3>
+<p><span class="math display">\[
+y = G * context + X * Context + S(v0 \cdot Z + v1 \cdot \sigma)
+\]</span></p>
+<p>This model adds individual random effects shared across all
+context.</p>
+<div class="figure">
+<img src="assets/lmm_ratio_dist.png" alt="" />
+<p class="caption">the distribution of log10(v0/v1)</p>
+</div>
+<div class="figure">
+<img src="assets/lmm_v0_dist.png" alt="" />
+<p class="caption">the distribution of log10(v0)</p>
+</div>
+<div class="figure">
+<img src="assets/lmm_v1_dist.png" alt="" />
+<p class="caption">the distribution of v1</p>
+</div>
+<p>The zscore is no longer correlated. The problem could be that the
+variance of residual error is also shared across contexts.</p>
+<p><img src="assets/share_randeff_vs_single_lm_zscore.png" /></p>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -820,6 +594,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -852,6 +628,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
