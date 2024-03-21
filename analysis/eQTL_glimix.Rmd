@@ -1,0 +1,38 @@
+---
+title: "eQTL_glimix"
+author: "Lifan Liang"
+date: "2024-03-21"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+
+
+### Individual random effect in a single context
+
+$$
+y = G + X + \sigma
+$$
+
+The only difference from fixed effect model is the i.i.d. error term modeled as random effect. Still, Z score are shrinked towards zero in LMM.
+
+![](assets/lmm_vs_lm_zscore.png)
+
+### Individual random effect shared across all contexts
+
+$$
+y = G * context + X * Context + S(v0 \cdot Z + v1 \cdot \sigma)
+$$
+
+This model adds individual random effects shared across all context.
+
+![the distribution of log10(v0/v1)](assets/lmm_ratio_dist.png)
+
+![the distribution of log10(v0)](assets/lmm_v0_dist.png)
+
+![the distribution of v1](assets/lmm_v1_dist.png)
+
+The zscore is no longer correlated. The problem could be that the variance of residual error is also shared across contexts.
+
+![](assets/share_randeff_vs_single_lm_zscore.png)

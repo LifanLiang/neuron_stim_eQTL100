@@ -23,6 +23,9 @@ editor_options:
 [eQTL mapping (fixed effect only)](eQTL_mapping.html)
 \
 \
+[eQTL mapping with mixed effects](eQTL_glimix.html)
+\
+\
 [Interaction testing for eQTL](eQTL_interaction.html)
 \
 \
