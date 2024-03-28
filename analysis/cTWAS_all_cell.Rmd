@@ -62,7 +62,7 @@ text(x = p, y = egenes + 2.5, labels = egenes)
 
 ## Results
 
-There are 50 egenes if the cutoff was set to PIP>0.5.
+There are 60 egenes if the cutoff was set to PIP>0.5.
 
 ```{r, echo=F}
 res <- readRDS("data/allcell_cover6_noSNP_ctwas.RDS")
@@ -80,8 +80,8 @@ for(i in 2:length(cond)) {
 }
 res3[is.na(res3)] <- 0
 
-hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 21),
-     xlab="sum of PIP", main="Distribution for PIP summed across all contexts")
+hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
+     xlab="sum of PIP", main="# of eGenes in different PIP intervals")
 ```
 
 ### Cell type specific eGenes
