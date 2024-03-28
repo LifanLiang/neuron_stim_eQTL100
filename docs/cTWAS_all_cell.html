@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,9 +401,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treea10668bc89bd0de675fe10aac40dfd62f94819d5targetblanka10668ba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebe0ac9a06b968c97d9fc4d667515f4dc02f91883targetblankbe0ac9aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/a10668bc89bd0de675fe10aac40dfd62f94819d5" target="_blank">a10668b</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/be0ac9a06b968c97d9fc4d667515f4dc02f91883" target="_blank">be0ac9a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treea10668bc89bd0de675fe10aac40dfd62f94819d5targetblanka10668ba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebe0ac9a06b968c97d9fc4d667515f4dc02f91883targetblankbe0ac9aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/a10668bc89bd0de675fe10aac40dfd62f94819d5" target="_blank">a10668b</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/be0ac9a06b968c97d9fc4d667515f4dc02f91883" target="_blank">be0ac9a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -569,6 +572,9 @@ Ignored files:
 Untracked files:
     Untracked:  data/allcell_cover6_noSNP_ctwas.RDS
     Untracked:  data/hemisphere_ctwas_genelist.RDS
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
 
 </code></pre>
 <p>
@@ -614,6 +620,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/be0ac9a06b968c97d9fc4d667515f4dc02f91883/docs/cTWAS_all_cell.html" target="_blank">be0ac9a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1003,6 +1026,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/be0ac9a06b968c97d9fc4d667515f4dc02f91883/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-8-1.png" target="_blank">be0ac9a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/435d87d5d7a74d1891cb7c0362b33234bcfdc575/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-8-1.png" target="_blank">435d87d</a>
 </td>
 <td>
@@ -1089,7 +1123,7 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","regulation of neuronal synaptic plasticity (GO:0048168)","regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","alditol metabolic process (GO:0019400)","glycerol-3-phosphate metabolic process (GO:0006072)","regulated exocytosis (GO:0045055)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)"],["2/11","2/24","1/6","1/6","1/7","1/7","1/8","2/148","1/10","1/10"],[5.74219267049387e-05,0.000285795311196131,0.00628419133253944,0.00628419133253944,0.00732789827728551,0.00732789827728551,0.00837056168160556,0.0104161052146076,0.0104527615118677,0.0104527615118677],[0.00585703652390375,0.0145755608710027,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[233.567251461988,95.488038277512,199.74,199.74,166.441666666667,166.441666666667,142.657142857143,14.2992069214131,110.944444444444,110.944444444444],[2280.80390707458,779.204803243358,1012.62549558717,1012.62549558717,818.238307210298,818.238307210298,682.334006028863,65.267329990588,506.005304706543,506.005304706543],["SYNGR1;PPFIA3","SYNGR1;PPFIA3","NLRC5","NLRC5","NLRC5","GALK2","GALK2","SYNGR1;PCDH7","CROT","CROT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","regulation of neuronal synaptic plasticity (GO:0048168)","regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","alditol metabolic process (GO:0019400)","glycerol-3-phosphate metabolic process (GO:0006072)","regulated exocytosis (GO:0045055)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)"],["2/11","2/24","1/6","1/6","1/7","1/7","1/8","2/148","1/10","1/10"],[5.74219267049387e-05,0.000285795311196131,0.00628419133253944,0.00628419133253944,0.00732789827728551,0.00732789827728551,0.00837056168160556,0.0104161052146076,0.0104527615118677,0.0104527615118677],[0.00585703652390375,0.0145755608710027,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283],["SYNGR1;PPFIA3","SYNGR1;PPFIA3","NLRC5","NLRC5","NLRC5","GALK2","GALK2","SYNGR1;PCDH7","CROT","CROT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-gaba-dynamic-genes"
 class="section level5">
@@ -1098,7 +1132,9 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-a50efc78b4c04b4a25da" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","alditol metabolic process (GO:0019400)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","glycerol-3-phosphate metabolic process (GO:0006072)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)","carnitine metabolic process (GO:0009437)","glycerol metabolic process (GO:0006071)","regulation of transferase activity (GO:0051338)"],["1/6","1/6","1/7","1/7","1/8","1/10","1/10","1/11","1/11","1/14"],[0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00598509351248777,0.00598509351248777,0.00658179619787483,0.00658179619787483,0.00836993582094223],[0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.068583369882975],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[363.327272727273,363.327272727273,302.757575757576,302.757575757576,259.493506493507,201.808080808081,201.808080808081,181.618181818182,181.618181818182,139.685314685315],[2044.88281453851,2044.88281453851,1657.3964565725,1657.3964565725,1385.97508325908,1032.95129457314,1032.95129457314,912.349418208102,912.349418208102,668.130094535827],["NLRC5","NLRC5","GALK2","NLRC5","GALK2","CROT","CROT","CROT","GALK2","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","alditol metabolic process (GO:0019400)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","glycerol-3-phosphate metabolic process (GO:0006072)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)","carnitine metabolic process (GO:0009437)","glycerol metabolic process (GO:0006071)","regulation of transferase activity (GO:0051338)"],["1/6","1/6","1/7","1/7","1/8","1/10","1/10","1/11","1/11","1/14"],[0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00598509351248777,0.00598509351248777,0.00658179619787483,0.00658179619787483,0.00836993582094223],[0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.068583369882975],["NLRC5","NLRC5","GALK2","NLRC5","GALK2","CROT","CROT","CROT","GALK2","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<p><img src="assets/cTWAS_allcell_KCNA4.png" /></p>
+<p><img src="assets/cTWAS_allcell_NLRC5.png" /></p>
 </div>
 </div>
 <div id="dynamic-egenes-in-nmglut" class="section level4">
@@ -1113,7 +1149,7 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-771ad2536610c1179489" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","generation of neurons (GO:0048699)","negative regulation of dendrite development (GO:2000171)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","purine-containing compound catabolic process (GO:0072523)"],["1/6","1/6","1/6","2/130","1/7","1/7","1/8","1/8","1/13","1/14"],[0.00538846593898824,0.00538846593898824,0.00538846593898824,0.00599208526644116,0.0062838777740326,0.0062838777740326,0.0071785287204102,0.0071785287204102,0.0116403892865311,0.0125304865571367],[0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.105939568164883,0.105939568164883],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[235.023529411765,235.023529411765,235.023529411765,19.388671875,195.843137254902,195.843137254902,167.857142857143,167.857142857143,97.8921568627451,90.3574660633484],[1227.6441242999,1227.6441242999,1227.6441242999,99.2179569816591,992.879272061154,992.879272061154,828.65378226444,828.65378226444,435.940635469407,395.728716189981],["NGEF","DCP1B","CYP7B1","FZD4;KIAA0319","KIAA0319","NGEF","DCP1B","DCP1B","ZMYND10","DNPH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","generation of neurons (GO:0048699)","negative regulation of dendrite development (GO:2000171)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","purine-containing compound catabolic process (GO:0072523)"],["1/6","1/6","1/6","2/130","1/7","1/7","1/8","1/8","1/13","1/14"],[0.00538846593898824,0.00538846593898824,0.00538846593898824,0.00599208526644116,0.0062838777740326,0.0062838777740326,0.0071785287204102,0.0071785287204102,0.0116403892865311,0.0125304865571367],[0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.105939568164883,0.105939568164883],["NGEF","DCP1B","CYP7B1","FZD4;KIAA0319","KIAA0319","NGEF","DCP1B","DCP1B","ZMYND10","DNPH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-nmglut-dynamic-genes"
 class="section level5">
@@ -1122,7 +1158,9 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","inner dynein arm assembly (GO:0036159)","outer dynein arm assembly (GO:0036158)","regulation of dendritic spine morphogenesis (GO:0061001)"],["1/6","1/6","1/6","1/7","1/8","1/8","1/13","1/16","1/18","1/23"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00479070309341298,0.00479070309341298,0.00777421720760798,0.00956039001281181,0.0107495345067082,0.013716673976595],[0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0744103647013907,0.079629895627998,0.079629895627998,0.079629895627998],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[363.327272727273,363.327272727273,363.327272727273,302.757575757576,259.493506493507,259.493506493507,151.333333333333,121.048484848485,106.79679144385,82.504132231405],[2044.88281453851,2044.88281453851,2044.88281453851,1657.3964565725,1385.97508325908,1385.97508325908,735.017299344087,562.890798219462,484.098409887525,353.872030109198],["NGEF","DCP1B","CYP7B1","NGEF","DCP1B","DCP1B","ZMYND10","ZMYND10","ZMYND10","NGEF"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","inner dynein arm assembly (GO:0036159)","outer dynein arm assembly (GO:0036158)","regulation of dendritic spine morphogenesis (GO:0061001)"],["1/6","1/6","1/6","1/7","1/8","1/8","1/13","1/16","1/18","1/23"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00479070309341298,0.00479070309341298,0.00777421720760798,0.00956039001281181,0.0107495345067082,0.013716673976595],[0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0744103647013907,0.079629895627998,0.079629895627998,0.079629895627998],["NGEF","DCP1B","CYP7B1","NGEF","DCP1B","DCP1B","ZMYND10","ZMYND10","ZMYND10","NGEF"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<p><img src="assets/cTWAS_allcell_NGEF.png" /></p>
+<p><img src="assets/cTWAS_allcell_FZD4.png" /></p>
 </div>
 </div>
 <div id="dynamic-egenes-in-npglut" class="section level4">
@@ -1137,7 +1175,7 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-3989c53c1df7f640b079" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3989c53c1df7f640b079">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["protein insertion into mitochondrial membrane involved in apoptotic signaling pathway (GO:0001844)","regulation of superoxide metabolic process (GO:0090322)","phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)"],["1/6","1/6","1/6","1/6","1/6","1/6","1/7","1/7","1/7","1/7"],[0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00454175360916762,0.00454175360916762,0.00454175360916762,0.00454175360916762],[0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[333.033333333333,333.033333333333,333.033333333333,333.033333333333,333.033333333333,333.033333333333,277.513888888889,277.513888888889,277.513888888889,277.513888888889],[1847.7667100463,1847.7667100463,1847.7667100463,1847.7667100463,1847.7667100463,1847.7667100463,1497.03260111151,1497.03260111151,1497.03260111151,1497.03260111151],["BMF","GCH1","CHRM3","GCH1","NAGA","CHRM3","NAGA","GCH1","NAGA","NAGA"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-3989c53c1df7f640b079">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["protein insertion into mitochondrial membrane involved in apoptotic signaling pathway (GO:0001844)","regulation of superoxide metabolic process (GO:0090322)","phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)"],["1/6","1/6","1/6","1/6","1/6","1/6","1/7","1/7","1/7","1/7"],[0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00454175360916762,0.00454175360916762,0.00454175360916762,0.00454175360916762],[0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359],["BMF","GCH1","CHRM3","GCH1","NAGA","CHRM3","NAGA","GCH1","NAGA","NAGA"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-npglut-dynamic-genes"
 class="section level5">
@@ -1146,7 +1184,9 @@ class="section level5">
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-f8241748eb28a8a54961" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f8241748eb28a8a54961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","regulation of superoxide metabolic process (GO:0090322)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","organonitrogen compound biosynthetic process (GO:1901566)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)"],["1/6","1/6","1/6","1/6","1/6","2/181","1/7","1/7","1/7","1/7"],[0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00281223611243233,0.00314617197276363,0.00314617197276363,0.00314617197276363,0.00314617197276363],[0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[499.65,499.65,499.65,499.65,499.65,31.6233040702314,416.354166666667,416.354166666667,416.354166666667,416.354166666667],[2955.68973928353,2955.68973928353,2955.68973928353,2955.68973928353,2955.68973928353,185.748183697507,2398.8531813702,2398.8531813702,2398.8531813702,2398.8531813702],["CHRM3","GCH1","NAGA","GCH1","CHRM3","PCYT1A;GCH1","NAGA","NAGA","NAGA","GCH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Old.P.value<\/th>\n      <th>Old.Adjusted.P.value<\/th>\n      <th>Odds.Ratio<\/th>\n      <th>Combined.Score<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-f8241748eb28a8a54961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","regulation of superoxide metabolic process (GO:0090322)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","organonitrogen compound biosynthetic process (GO:1901566)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)"],["1/6","1/6","1/6","1/6","1/6","2/181","1/7","1/7","1/7","1/7"],[0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00281223611243233,0.00314617197276363,0.00314617197276363,0.00314617197276363,0.00314617197276363],[0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927],["CHRM3","GCH1","NAGA","GCH1","CHRM3","PCYT1A;GCH1","NAGA","NAGA","NAGA","GCH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<p><img src="assets/cTWAS_allcell_NAGA.png" /></p>
+<p><img src="assets/cTWAS_allcell_THBS3.png" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

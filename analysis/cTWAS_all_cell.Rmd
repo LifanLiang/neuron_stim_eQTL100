@@ -129,15 +129,25 @@ res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
 library(enrichR)
 
 enrich.GABA <- enrichr(res4.GABA$genename, "GO_Biological_Process_2018")
-DT::datatable(head(enrich.GABA[[1]],10))
+head(enrich.GABA$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
 ##### Enrichment analysis for GABA dynamic genes
 
 ```{r, message=F, echo=F}
 enrich.GABA1 <- enrichr(res4.GABA$genename[res4.GABA$GABA_PIP_diff>0.5], "GO_Biological_Process_2018")
-DT::datatable(head(enrich.GABA1[[1]],10))
+head(enrich.GABA1$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
+
+![](assets/cTWAS_allcell_KCNA4.png)
+
+
+![](assets/cTWAS_allcell_NLRC5.png)
+
 
 #### Dynamic eGenes in NMglut
 
@@ -154,15 +164,23 @@ res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
 
 ```{r, message=F, echo=F}
 enrich.nmglut <- enrichr(res4.nmglut$genename, "GO_Biological_Process_2018")
-DT::datatable(head(enrich.nmglut$GO_Biological_Process_2018,10))
+head(enrich.nmglut$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
 ##### Enrichment analysis for NMglut dynamic genes
 
 ```{r, message=F, echo=F}
 enrich.nmglut1 <- enrichr(res4.nmglut$genename[res4.nmglut$nmglut_PIP_diff>0.5], "GO_Biological_Process_2018")
-DT::datatable(head(enrich.nmglut1$GO_Biological_Process_2018,10))
+head(enrich.nmglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
+
+![](assets/cTWAS_allcell_NGEF.png)
+
+![](assets/cTWAS_allcell_FZD4.png)
 
 #### Dynamic eGenes in NPglut
 
@@ -179,14 +197,21 @@ res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),] %>%
 
 ```{r, message=F, echo=F}
 enrich.npglut <- enrichr(res4.npglut$genename, "GO_Biological_Process_2018")
-DT::datatable(head(enrich.npglut$GO_Biological_Process_2018,10))
+head(enrich.npglut$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
 ##### Enrichment analysis for NPglut dynamic genes
 
 ```{r, message=F, echo=F}
 enrich.npglut1 <- enrichr(res4.npglut$genename[res4.npglut$npglut_PIP_diff>0.5], "GO_Biological_Process_2018")
-DT::datatable(head(enrich.npglut1$GO_Biological_Process_2018,10))
+head(enrich.npglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
+![](assets/cTWAS_allcell_NAGA.png)
+
+![](assets/cTWAS_allcell_THBS3.png)
 
