@@ -84,12 +84,34 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
      xlab="sum of PIP", main="# of eGenes in different PIP intervals")
 ```
 
+### Comparing with GTEx
+
+Cerebellum hemisphere is the tissue with the highest power in GTEx cTWAS. There are 28 genes with PIPs > 0.5.
+
+```{r, echo=F}
+#library(VennDiagram)
+#library(RColorBrewer)
+res4 <- res3[res3$PIP_sum>0.5,]
+GTEx.gene <- readRDS("data/hemisphere_ctwas_genelist.RDS")
+# venn.diagram(x=list(GTEx.gene$stringent,res4$genename),
+#              category.names = c("GTEx" , "neuron_stim"),
+#              filename="docs/assets/venn_GTEx.png")
+```
+
+![](assets/venn_GTEx.png)
+
+```{r,echo=F}
+knitr::kable(res4[res4$genename %in% GTEx.gene$stringent,])
+```
+
+![](docs/assets/cTWAS_allcell_FOXN2.png)
+
 ### Cell type specific eGenes
 
 An eGene is assigned to a cell type if over 60% of the PIP sum are from that cell type. Genes with higher sum of PIP are more likely to be cell type specific.
 
 ```{r, echo=F}
-res4 <- res3[res3$PIP_sum>0.5,]
+
 res4$GABA_sum <- rowSums(res4[,c(3,6,9)])
 res4$nmglut_sum <- rowSums(res4[,c(4,7,10)])
 res4$npglut_sum <- rowSums(res4[,c(5,8,11)])
