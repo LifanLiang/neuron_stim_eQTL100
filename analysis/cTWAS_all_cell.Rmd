@@ -87,7 +87,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
 
 ### Comparing with GTEx
 
-Compare the cTWAS results of 13 GTEx tissues with our results.
+Compare the cTWAS results of 13 GTEx tissues (union of all genes) with our results.
 
 ```{r, echo=F}
 library(VennDiagram)
