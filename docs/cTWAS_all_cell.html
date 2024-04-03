@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-03-28
+<strong>Last updated:</strong> 2024-04-03
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree412ec7c9ea54927e6e815b4d924d6f46acc170a2targetblank412ec7ca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9eec00fdbd6966b47a5796595de668e0637c4feetargetblank9eec00fa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/412ec7c9ea54927e6e815b4d924d6f46acc170a2" target="_blank">412ec7c</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9eec00fdbd6966b47a5796595de668e0637c4fee" target="_blank">9eec00f</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree412ec7c9ea54927e6e815b4d924d6f46acc170a2targetblank412ec7ca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9eec00fdbd6966b47a5796595de668e0637c4feetargetblank9eec00fa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/412ec7c9ea54927e6e815b4d924d6f46acc170a2" target="_blank">412ec7c</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9eec00fdbd6966b47a5796595de668e0637c4fee" target="_blank">9eec00f</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -563,8 +566,17 @@ were generated:
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds
+    Untracked:  data/SCZ_GTEx_brain_cTWAS_noSNP_res.rds
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/eQTL_glimix.Rmd
 
 </code></pre>
 <p>
@@ -610,6 +622,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9eec00fdbd6966b47a5796595de668e0637c4fee/docs/cTWAS_all_cell.html" target="_blank">9eec00f</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -809,6 +838,14 @@ wflow_publish(c("data", "analysis"))
 <p>Use the same set of eQTLs as cell type sperated cTWAS.These eQTLs are
 the unions of top eQTL within the same cell type. But eQTLs with nominal
 P values less than 0.1 in a certain condition was removed.</p>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
 <pre><code>       SNP   0hr_GABA   1hr_GABA   6hr_GABA 0hr_nmglut 1hr_nmglut 6hr_nmglut 
    6964380       3517       3509       3507       2153       2118       2157 
 0hr_npglut 1hr_npglut 6hr_npglut 
@@ -977,7 +1014,6 @@ Lifan Liang
 </table>
 </div>
 </div>
-<pre class="r"><code>barplot(perc[c(2,5,8,3,6,9,4,7,10)], las=2, col=c(rep(&quot;red&quot;,3), rep(&quot;yellow&quot;,3), rep(&quot;blue&quot;,3)))</code></pre>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
@@ -1127,9 +1163,12 @@ Lifan Liang
 </div>
 <div id="comparing-with-gtex" class="section level3">
 <h3>Comparing with GTEx</h3>
-<p>Cerebellum hemisphere is the tissue with the highest power in GTEx
-cTWAS. There are 28 genes with PIPs &gt; 0.5.</p>
+<p>Compare the cTWAS results of 13 GTEx tissues with our results.</p>
+<pre><code>Loading required package: grid</code></pre>
+<pre><code>Loading required package: futile.logger</code></pre>
 <p><img src="assets/venn_GTEx.png" /></p>
+<div id="the-shared-8-genes" class="section level4">
+<h4>The shared 8 genes</h4>
 <table>
 <colgroup>
 <col width="2%" />
@@ -1163,80 +1202,131 @@ cTWAS. There are 28 genes with PIPs &gt; 0.5.</p>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">50</td>
+<td align="left">DNAH7</td>
+<td align="right">0.7053632</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+<td align="right">0.1284425</td>
+<td align="right">0.0729663</td>
+<td align="right">0.0000000</td>
+<td align="right">0.00000</td>
+<td align="right">0.1359647</td>
+<td align="right">0.2116003</td>
+<td align="right">0.1563893</td>
+</tr>
+<tr class="even">
 <td align="left">62</td>
 <td align="left">FOXN2</td>
 <td align="right">0.8830154</td>
+<td align="right">0.0000000</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0.000000</td>
+<td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.8830154</td>
 <td align="right">0.00000</td>
 <td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="left">99</td>
+<td align="left">NPIPB2</td>
+<td align="right">0.7024961</td>
+<td align="right">0.1372745</td>
 <td align="right">0</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.3028503</td>
+<td align="right">0.00000</td>
+<td align="right">0.1361102</td>
+<td align="right">0.1262611</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
 <td align="left">130</td>
 <td align="left">SERPINI1</td>
 <td align="right">0.7920083</td>
+<td align="right">0.0000000</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0.000000</td>
+<td align="right">0.0000000</td>
 <td align="right">0.2293343</td>
 <td align="right">0.3876045</td>
 <td align="right">0.00000</td>
 <td align="right">0.1750695</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="left">137</td>
+<td align="left">SLF2</td>
+<td align="right">0.5159815</td>
+<td align="right">0.0000000</td>
 <td align="right">0</td>
+<td align="right">0.0000000</td>
+<td align="right">0.2390830</td>
+<td align="right">0.0000000</td>
+<td align="right">0.00000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.2768985</td>
+</tr>
+<tr class="even">
+<td align="left">140</td>
+<td align="left">SNX19</td>
+<td align="right">0.6339460</td>
+<td align="right">0.0948664</td>
+<td align="right">0</td>
+<td align="right">0.0888443</td>
+<td align="right">0.0000000</td>
+<td align="right">0.2095748</td>
+<td align="right">0.00000</td>
+<td align="right">0.0940609</td>
+<td align="right">0.1465995</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="odd">
 <td align="left">146</td>
 <td align="left">TDRD6</td>
 <td align="right">0.7867461</td>
+<td align="right">0.0000000</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0.217928</td>
+<td align="right">0.2179280</td>
 <td align="right">0.3031301</td>
 <td align="right">0.0000000</td>
 <td align="right">0.00000</td>
 <td align="right">0.0000000</td>
-<td align="right">0</td>
+<td align="right">0.0000000</td>
 <td align="right">0.2656881</td>
 </tr>
 <tr class="even">
 <td align="left">161</td>
 <td align="left">ZNF823</td>
 <td align="right">0.9242300</td>
+<td align="right">0.0000000</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0.000000</td>
+<td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.92423</td>
 <td align="right">0.0000000</td>
-<td align="right">0</td>
+<td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 </tr>
 </tbody>
 </table>
 <p><img src="docs/assets/cTWAS_allcell_FOXN2.png" /></p>
 </div>
-<div id="cell-type-specific-egenes" class="section level3">
-<h3>Cell type specific eGenes</h3>
-<p>An eGene is assigned to a cell type if over 60% of the PIP sum are
-from that cell type. Genes with higher sum of PIP are more likely to be
-cell type specific.</p>
-<pre><code>
-      GABA     nmglut     npglut Unspecific 
-        21         18         13          8 </code></pre>
-<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="number-of-shared-genes-across-14-tissues"
+class="section level4">
+<h4>Number of shared genes across 14 tissues</h4>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
-Past versions of unnamed-chunk-12-1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
 </button>
 </p>
-<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div id="fig-unnamed-chunk-11-1" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1255,7 +1345,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/412ec7c9ea54927e6e815b4d924d6f46acc170a2/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-12-1.png" target="_blank">412ec7c</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9eec00fdbd6966b47a5796595de668e0637c4fee/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">9eec00f</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/412ec7c9ea54927e6e815b4d924d6f46acc170a2/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">412ec7c</a>
 </td>
 <td>
 Lifan Liang
@@ -1269,6 +1370,58 @@ Lifan Liang
 </div>
 </div>
 </div>
+</div>
+<div id="enrichment-analysis-regardless-of-cell-types"
+class="section level3">
+<h3>Enrichment analysis regardless of cell types</h3>
+<div id="enrichment-analysis-of-all-genes-together"
+class="section level4">
+<h4>Enrichment analysis of all genes together</h4>
+<pre><code>Welcome to enrichR
+Checking connection ... </code></pre>
+<pre><code>Enrichr ... Connection is Live!
+FlyEnrichr ... Connection is Live!
+WormEnrichr ... Connection is Live!
+YeastEnrichr ... Connection is Live!
+FishEnrichr ... Connection is Live!
+OxEnrichr ... Connection is Live!</code></pre>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2018... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","inner dynein arm assembly (GO:0036159)","regulation of neuronal synaptic plasticity (GO:0048168)","axonemal dynein complex assembly (GO:0070286)","mitochondrial electron transport, NADH to ubiquinone (GO:0006120)","regulated exocytosis (GO:0045055)","NADH dehydrogenase complex assembly (GO:0010257)","mitochondrial respiratory chain complex I biogenesis (GO:0097031)","mitochondrial respiratory chain complex I assembly (GO:0032981)","purine ribonucleotide metabolic process (GO:0009150)"],["2/11","2/16","2/24","2/33","2/46","3/148","2/64","2/64","2/64","2/66"],[0.00047836212312948,0.0010336760126706,0.00234106985124172,0.00440165995846702,0.00841552302255207,0.00998748233882421,0.0158368318017117,0.0158368318017117,0.0158368318017117,0.0167859551544596],[0.158816224878987,0.17159021810332,0.192780795093076,0.192780795093076,0.192780795093076,0.192780795093076,0.192780795093076,0.192780795093076,0.192780795093076,0.192780795093076],["SYNGR1;PPFIA3","DNAH7;ZMYND10","SYNGR1;PPFIA3","DNAH7;ZMYND10","NDUFA6;NDUFS5","SYNGR1;PCDH7;OLA1","NDUFA6;NDUFS5","NDUFA6;NDUFS5","NDUFA6;NDUFS5","OLA1;CROT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+<div id="enrichment-analysis-of-dynamic-genes" class="section level4">
+<h4>Enrichment analysis of dynamic genes</h4>
+<p>PIPs in time points <code>6hr</code> and <code>1hr</code> are summed
+up and then subtracted the time point <code>0hr</code>. If the
+difference is larger than 0.5, genes are called dynamic.</p>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2018... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["purine ribonucleotide metabolic process (GO:0009150)","nucleic acid phosphodiester bond hydrolysis (GO:0090305)","regulation of superoxide metabolic process (GO:0090322)","glycosyl compound catabolic process (GO:1901658)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","regulation of MHC class I biosynthetic process (GO:0045343)"],["2/66","2/73","1/6","1/6","1/6","1/6","1/6","1/6","1/6","1/6"],[0.00734606342789102,0.00892341174482248,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795],[0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859],["OLA1;CROT","XRN2;DCP1B","GCH1","NAGA","NLRC5","CHRM3","NGEF","DCP1B","CYP7B1","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+<div id="enrichment-analysis-of-static-genes" class="section level4">
+<h4>Enrichment analysis of static genes</h4>
+<p>Static genes are significant genes that are not dynamic genes.</p>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2018... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-a50efc78b4c04b4a25da" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","regulation of neuronal synaptic plasticity (GO:0048168)","protein insertion into mitochondrial membrane involved in apoptotic signaling pathway (GO:0001844)","positive regulation of memory T cell differentiation (GO:0043382)","negative regulation of dendrite development (GO:2000171)","regulation of memory T cell differentiation (GO:0043380)","sequestering of extracellular ligand from receptor (GO:0035581)","protein insertion into mitochondrial membrane (GO:0051204)","positive regulation of transforming growth factor beta production (GO:0071636)","positive regulation of regulatory T cell differentiation (GO:0045591)"],["2/11","2/24","1/6","1/6","1/7","1/7","1/7","1/8","1/8","1/8"],[5.74219267049387e-05,0.000285795311196131,0.00628419133253944,0.00628419133253944,0.00732789827728551,0.00732789827728551,0.00732789827728551,0.00837056168160556,0.00837056168160556,0.00837056168160556],[0.00551250496367412,0.0137181749374143,0.0648976930053685,0.0648976930053685,0.0648976930053685,0.0648976930053685,0.0648976930053685,0.0648976930053685,0.0648976930053685,0.0648976930053685],["SYNGR1;PPFIA3","SYNGR1;PPFIA3","BMF","CD46","KIAA0319","CD46","CD46","BMF","CD46","CD46"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="cell-type-specific-egenes" class="section level3">
+<h3>Cell type specific eGenes</h3>
+<p>An eGene is assigned to a cell type if over 60% of the PIP sum are
+from that cell type. Genes with higher sum of PIP are more likely to be
+cell type specific.</p>
+<pre><code>
+      GABA     nmglut     npglut Unspecific 
+        21         18         13          8 </code></pre>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <div id="dynamic-egenes" class="section level3">
 <h3>Dynamic eGenes</h3>
 <p>For each cell type, we computed <code>PIP_diff</code> as in previous
@@ -1278,24 +1431,16 @@ dynamic.</p>
 <div id="dynamic-egenes-in-gaba" class="section level4">
 <h4>Dynamic eGenes in GABA</h4>
 <p>GABA has 21 eGenes, 12 of them are dynamic.</p>
-<pre><code>
-Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>The following objects are masked from &#39;package:stats&#39;:
-
-    filter, lag</code></pre>
-<pre><code>The following objects are masked from &#39;package:base&#39;:
-
-    intersect, setdiff, setequal, union</code></pre>
-<div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["64","54","40","94","9","121","124","70","153","154","78","97","32","114","109","142","102","120","7","108","27"],["GALK2","EFHB","CROT","NDUFA6","ARL14EP","RBBP5","RCC1","GPR137","XKR4","XRN2","KCNA4","NLRC5","CHL1","PPFIA3","PCNX1","SYNGR1","NUDT22","RASA3","ANKRD39","PCDH7","CDPF1"],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.506382495498012,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0,0,0,0,0,0,0,0,0,0,0,0.20331188644087,0.52827228979762,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0.885489351807218,0,0.840067687944772,0,0.433995316689152,0.735657608968323,0,0.612057718738372,0,0.548551293787507,0.525354230688015,0.264244209801506,0.204283441083917,0,0,0,0,0,0,0],[0.937840919816047,0,0.868267869654942,0,0.813893454826733,0.330883537113793,0,0.710177091630636,0,0.572312290869186,0,0,0.201590955678396,0,0,0,0,0,0,0,0],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.262523279039032,-0.323988848713703,-0.36324645386944,-0.527051722997696,-0.603687005036302,-0.714221526355868,-0.758136462474273,-0.8229272530088,-0.924944260000973]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["64","54","40","94","9","121","124","70","153","154","78","97","32","114","109","142","102","120","7","108","27"],["GALK2","EFHB","CROT","NDUFA6","ARL14EP","RBBP5","RCC1","GPR137","XKR4","XRN2","KCNA4","NLRC5","CHL1","PPFIA3","PCNX1","SYNGR1","NUDT22","RASA3","ANKRD39","PCDH7","CDPF1"],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.506382495498012,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0,0,0,0,0,0,0,0,0,0,0,0.20331188644087,0.52827228979762,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0.885489351807218,0,0.840067687944772,0,0.433995316689152,0.735657608968323,0,0.612057718738372,0,0.548551293787507,0.525354230688015,0.264244209801506,0.204283441083917,0,0,0,0,0,0,0],[0.937840919816047,0,0.868267869654942,0,0.813893454826733,0.330883537113793,0,0.710177091630636,0,0.572312290869186,0,0,0.201590955678396,0,0,0,0,0,0,0,0],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.262523279039032,-0.323988848713703,-0.36324645386944,-0.527051722997696,-0.603687005036302,-0.714221526355868,-0.758136462474273,-0.8229272530088,-0.924944260000973]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-gaba-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for GABA specific genes</h5>
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","regulation of neuronal synaptic plasticity (GO:0048168)","regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","alditol metabolic process (GO:0019400)","glycerol-3-phosphate metabolic process (GO:0006072)","regulated exocytosis (GO:0045055)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)"],["2/11","2/24","1/6","1/6","1/7","1/7","1/8","2/148","1/10","1/10"],[5.74219267049387e-05,0.000285795311196131,0.00628419133253944,0.00628419133253944,0.00732789827728551,0.00732789827728551,0.00837056168160556,0.0104161052146076,0.0104527615118677,0.0104527615118677],[0.00585703652390375,0.0145755608710027,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283],["SYNGR1;PPFIA3","SYNGR1;PPFIA3","NLRC5","NLRC5","NLRC5","GALK2","GALK2","SYNGR1;PCDH7","CROT","CROT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-771ad2536610c1179489" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of short-term neuronal synaptic plasticity (GO:0048172)","regulation of neuronal synaptic plasticity (GO:0048168)","regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","alditol metabolic process (GO:0019400)","glycerol-3-phosphate metabolic process (GO:0006072)","regulated exocytosis (GO:0045055)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)"],["2/11","2/24","1/6","1/6","1/7","1/7","1/8","2/148","1/10","1/10"],[5.74219267049387e-05,0.000285795311196131,0.00628419133253944,0.00628419133253944,0.00732789827728551,0.00732789827728551,0.00837056168160556,0.0104161052146076,0.0104527615118677,0.0104527615118677],[0.00585703652390375,0.0145755608710027,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283,0.0901703523007283],["SYNGR1;PPFIA3","SYNGR1;PPFIA3","NLRC5","NLRC5","NLRC5","GALK2","GALK2","SYNGR1;PCDH7","CROT","CROT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-gaba-dynamic-genes"
 class="section level5">
@@ -1303,8 +1448,8 @@ class="section level5">
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-a50efc78b4c04b4a25da" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","alditol metabolic process (GO:0019400)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","glycerol-3-phosphate metabolic process (GO:0006072)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)","carnitine metabolic process (GO:0009437)","glycerol metabolic process (GO:0006071)","regulation of transferase activity (GO:0051338)"],["1/6","1/6","1/7","1/7","1/8","1/10","1/10","1/11","1/11","1/14"],[0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00598509351248777,0.00598509351248777,0.00658179619787483,0.00658179619787483,0.00836993582094223],[0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.068583369882975],["NLRC5","NLRC5","GALK2","NLRC5","GALK2","CROT","CROT","CROT","GALK2","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","alditol metabolic process (GO:0019400)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","glycerol-3-phosphate metabolic process (GO:0006072)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)","carnitine metabolic process (GO:0009437)","glycerol metabolic process (GO:0006071)","regulation of transferase activity (GO:0051338)"],["1/6","1/6","1/7","1/7","1/8","1/10","1/10","1/11","1/11","1/14"],[0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00598509351248777,0.00598509351248777,0.00658179619787483,0.00658179619787483,0.00836993582094223],[0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.068583369882975],["NLRC5","NLRC5","GALK2","NLRC5","GALK2","CROT","CROT","CROT","GALK2","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 <p><img src="assets/cTWAS_allcell_KCNA4.png" /></p>
 <p><img src="assets/cTWAS_allcell_NLRC5.png" /></p>
 </div>
@@ -1312,16 +1457,16 @@ Parsing results... Done.</code></pre>
 <div id="dynamic-egenes-in-nmglut" class="section level4">
 <h4>Dynamic eGenes in NMglut</h4>
 <p>nmglut has 19 eGenes, 13 of them are dynamic.</p>
-<div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["158","68","38","62","12","5","45","63","96","18","107","47","10","99","8","53","81","95"],["ZMYND10","GLIPR2","CPT1C","FOXN2","ATP5PO","ADAMTS2","CYP7B1","FZD4","NGEF","C17orf75","OXLD1","DCP1B","ATE1","NPIPB2","ANKRD45","DNPH1","KIAA0319","NDUFS5"],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.707817613969744,0.702496106482498,0.566994321408849,0.558263998092711,0.511527827108036,0.577652913489344],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.577652913489344],[0,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0,0.704223815145326,0.698673284675076,0,0,0.596419033075071,0.2647860752224,0.302850254309491,0.388638373605348,0.38558095805507,0.356365282890939,0],[0.940355591290139,0,0,0,0,0,0.742701508150125,0,0,0.650158345780552,0.640488813351533,0,0.185883537497403,0.126261128941732,0,0,0,0],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,0.577652913489344],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,-0.577652913489344]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-7af0e23c13b7c4def9a9" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7af0e23c13b7c4def9a9">{"x":{"filter":"none","vertical":false,"data":[["158","68","38","62","12","5","45","63","96","18","107","47","10","99","8","53","81","95"],["ZMYND10","GLIPR2","CPT1C","FOXN2","ATP5PO","ADAMTS2","CYP7B1","FZD4","NGEF","C17orf75","OXLD1","DCP1B","ATE1","NPIPB2","ANKRD45","DNPH1","KIAA0319","NDUFS5"],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.707817613969744,0.702496106482498,0.566994321408849,0.558263998092711,0.511527827108036,0.577652913489344],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.577652913489344],[0,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0,0.704223815145326,0.698673284675076,0,0,0.596419033075071,0.2647860752224,0.302850254309491,0.388638373605348,0.38558095805507,0.356365282890939,0],[0.940355591290139,0,0,0,0,0,0.742701508150125,0,0,0.650158345780552,0.640488813351533,0,0.185883537497403,0.126261128941732,0,0,0,0],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,0.577652913489344],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,-0.577652913489344]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-nmglut-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for NMglut specific genes</h5>
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-771ad2536610c1179489" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","generation of neurons (GO:0048699)","negative regulation of dendrite development (GO:2000171)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","purine-containing compound catabolic process (GO:0072523)"],["1/6","1/6","1/6","2/130","1/7","1/7","1/8","1/8","1/13","1/14"],[0.00538846593898824,0.00538846593898824,0.00538846593898824,0.00599208526644116,0.0062838777740326,0.0062838777740326,0.0071785287204102,0.0071785287204102,0.0116403892865311,0.0125304865571367],[0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.105939568164883,0.105939568164883],["NGEF","DCP1B","CYP7B1","FZD4;KIAA0319","KIAA0319","NGEF","DCP1B","DCP1B","ZMYND10","DNPH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-3989c53c1df7f640b079" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3989c53c1df7f640b079">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","generation of neurons (GO:0048699)","negative regulation of dendrite development (GO:2000171)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","purine-containing compound catabolic process (GO:0072523)"],["1/6","1/6","1/6","2/130","1/7","1/7","1/8","1/8","1/13","1/14"],[0.00538846593898824,0.00538846593898824,0.00538846593898824,0.00599208526644116,0.0062838777740326,0.0062838777740326,0.0071785287204102,0.0071785287204102,0.0116403892865311,0.0125304865571367],[0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.0834503963747686,0.105939568164883,0.105939568164883],["NGEF","DCP1B","CYP7B1","FZD4;KIAA0319","KIAA0319","NGEF","DCP1B","DCP1B","ZMYND10","DNPH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-nmglut-dynamic-genes"
 class="section level5">
@@ -1329,8 +1474,8 @@ class="section level5">
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","inner dynein arm assembly (GO:0036159)","outer dynein arm assembly (GO:0036158)","regulation of dendritic spine morphogenesis (GO:0061001)"],["1/6","1/6","1/6","1/7","1/8","1/8","1/13","1/16","1/18","1/23"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00479070309341298,0.00479070309341298,0.00777421720760798,0.00956039001281181,0.0107495345067082,0.013716673976595],[0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0744103647013907,0.079629895627998,0.079629895627998,0.079629895627998],["NGEF","DCP1B","CYP7B1","NGEF","DCP1B","DCP1B","ZMYND10","ZMYND10","ZMYND10","NGEF"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-f8241748eb28a8a54961" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f8241748eb28a8a54961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","inner dynein arm assembly (GO:0036159)","outer dynein arm assembly (GO:0036158)","regulation of dendritic spine morphogenesis (GO:0061001)"],["1/6","1/6","1/6","1/7","1/8","1/8","1/13","1/16","1/18","1/23"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00479070309341298,0.00479070309341298,0.00777421720760798,0.00956039001281181,0.0107495345067082,0.013716673976595],[0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0744103647013907,0.079629895627998,0.079629895627998,0.079629895627998],["NGEF","DCP1B","CYP7B1","NGEF","DCP1B","DCP1B","ZMYND10","ZMYND10","ZMYND10","NGEF"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 <p><img src="assets/cTWAS_allcell_NGEF.png" /></p>
 <p><img src="assets/cTWAS_allcell_FZD4.png" /></p>
 </div>
@@ -1338,16 +1483,16 @@ Parsing results... Done.</code></pre>
 <div id="dynamic-egenes-in-npglut" class="section level4">
 <h4>Dynamic eGenes in NPglut</h4>
 <p>npglut has 13 eGenes, 9 of them are dynamic</p>
-<div id="htmlwidget-7af0e23c13b7c4def9a9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7af0e23c13b7c4def9a9">{"x":{"filter":"none","vertical":false,"data":[["147","92","161","105","111","138","65","156","33","146","112","88","15"],["THBS3","NAGA","ZNF823","OLA1","PCYT1A","SMDT1","GCH1","ZCCHC4","CHRM3","TDRD6","PDXDC1","MOB3A","BMF"],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.786746131007089,0.672211938974441,0.732585049667497,0.908743687922834],[0,0,0,0,0,0,0,0,0,0.217928009627839,0.45143416166357,0.732585049667497,0.908743687922834],[0,0,0.924230021097604,0,0,0.370719909931534,0,0,0,0,0.220777777310871,0,0],[0.958523468139702,0.952637017566327,0,0.800427559876444,0.755054652974393,0.358227510148793,0.702388865128127,0.61685713169152,0.611909983807443,0.265688052633165,0,0,0],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.483616062261004,0.672211938974441,0.732585049667497,0.908743687922834],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.047760043005326,-0.230656384352699,-0.732585049667497,-0.908743687922834]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-224ae002e7acfef1f0c4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-224ae002e7acfef1f0c4">{"x":{"filter":"none","vertical":false,"data":[["147","92","161","105","111","138","65","156","33","146","112","88","15"],["THBS3","NAGA","ZNF823","OLA1","PCYT1A","SMDT1","GCH1","ZCCHC4","CHRM3","TDRD6","PDXDC1","MOB3A","BMF"],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.786746131007089,0.672211938974441,0.732585049667497,0.908743687922834],[0,0,0,0,0,0,0,0,0,0.217928009627839,0.45143416166357,0.732585049667497,0.908743687922834],[0,0,0.924230021097604,0,0,0.370719909931534,0,0,0,0,0.220777777310871,0,0],[0.958523468139702,0.952637017566327,0,0.800427559876444,0.755054652974393,0.358227510148793,0.702388865128127,0.61685713169152,0.611909983807443,0.265688052633165,0,0,0],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.483616062261004,0.672211938974441,0.732585049667497,0.908743687922834],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.047760043005326,-0.230656384352699,-0.732585049667497,-0.908743687922834]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-npglut-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for NPglut specific genes</h5>
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-3989c53c1df7f640b079" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3989c53c1df7f640b079">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["protein insertion into mitochondrial membrane involved in apoptotic signaling pathway (GO:0001844)","regulation of superoxide metabolic process (GO:0090322)","phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)"],["1/6","1/6","1/6","1/6","1/6","1/6","1/7","1/7","1/7","1/7"],[0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00454175360916762,0.00454175360916762,0.00454175360916762,0.00454175360916762],[0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359],["BMF","GCH1","CHRM3","GCH1","NAGA","CHRM3","NAGA","GCH1","NAGA","NAGA"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-8a77ddace3de46aaf004" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8a77ddace3de46aaf004">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["protein insertion into mitochondrial membrane involved in apoptotic signaling pathway (GO:0001844)","regulation of superoxide metabolic process (GO:0090322)","phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)"],["1/6","1/6","1/6","1/6","1/6","1/6","1/7","1/7","1/7","1/7"],[0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00389409648539669,0.00454175360916762,0.00454175360916762,0.00454175360916762,0.00454175360916762],[0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359,0.0349839774342359],["BMF","GCH1","CHRM3","GCH1","NAGA","CHRM3","NAGA","GCH1","NAGA","NAGA"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-for-npglut-dynamic-genes"
 class="section level5">
@@ -1355,8 +1500,8 @@ class="section level5">
 <pre><code>Uploading data to Enrichr... Done.
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
-<div id="htmlwidget-f8241748eb28a8a54961" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f8241748eb28a8a54961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","regulation of superoxide metabolic process (GO:0090322)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","organonitrogen compound biosynthetic process (GO:1901566)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)"],["1/6","1/6","1/6","1/6","1/6","2/181","1/7","1/7","1/7","1/7"],[0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00281223611243233,0.00314617197276363,0.00314617197276363,0.00314617197276363,0.00314617197276363],[0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927],["CHRM3","GCH1","NAGA","GCH1","CHRM3","PCYT1A;GCH1","NAGA","NAGA","NAGA","GCH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-69fb037def67fa5c79bd" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-69fb037def67fa5c79bd">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","regulation of superoxide metabolic process (GO:0090322)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","organonitrogen compound biosynthetic process (GO:1901566)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)"],["1/6","1/6","1/6","1/6","1/6","2/181","1/7","1/7","1/7","1/7"],[0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00281223611243233,0.00314617197276363,0.00314617197276363,0.00314617197276363,0.00314617197276363],[0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927],["CHRM3","GCH1","NAGA","GCH1","CHRM3","PCYT1A;GCH1","NAGA","NAGA","NAGA","GCH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 <p><img src="assets/cTWAS_allcell_NAGA.png" /></p>
 <p><img src="assets/cTWAS_allcell_THBS3.png" /></p>
 <br>
@@ -1380,29 +1525,37 @@ locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
 
 other attached packages:
-[1] enrichR_3.2     dplyr_1.0.7     ggplot2_3.3.5   workflowr_1.7.0
+[1] ggplot2_3.3.5       enrichR_3.2         VennDiagram_1.7.1  
+[4] futile.logger_1.4.3 dplyr_1.0.7         workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
- [5] colorspace_2.0-2  vctrs_0.3.8       generics_0.1.2    htmltools_0.5.2  
- [9] yaml_2.2.2        utf8_1.2.2        rlang_1.0.0       jquerylib_0.1.4  
-[13] later_1.3.0       pillar_1.7.0      withr_2.4.3       glue_1.6.1       
-[17] DBI_1.1.2         lifecycle_1.0.1   stringr_1.4.0     munsell_0.5.0    
-[21] gtable_0.3.0      htmlwidgets_1.5.4 evaluate_0.14     WriteXLS_6.4.0   
-[25] labeling_0.4.2    knitr_1.37        callr_3.7.0       fastmap_1.1.0    
-[29] crosstalk_1.2.0   httpuv_1.6.5      ps_1.6.0          curl_4.3.2       
-[33] fansi_1.0.2       highr_0.9         Rcpp_1.0.11       DT_0.26          
-[37] promises_1.2.0.1  scales_1.1.1      jsonlite_1.7.3    farver_2.1.0     
-[41] fs_1.5.2          rjson_0.2.21      digest_0.6.29     stringi_1.7.6    
-[45] processx_3.5.2    getPass_0.2-2     rprojroot_2.0.2   grid_4.1.2       
-[49] cowplot_1.1.1     cli_3.1.1         tools_4.1.2       magrittr_2.0.2   
-[53] sass_0.4.1        tibble_3.1.6      crayon_1.4.2      whisker_0.4      
-[57] pkgconfig_2.0.3   ellipsis_0.3.2    assertthat_0.2.1  rmarkdown_2.11   
-[61] httr_1.4.2        rstudioapi_0.13   R6_2.5.1          git2r_0.29.0     
-[65] compiler_4.1.2   </code></pre>
+ [1] Rcpp_1.0.11          getPass_0.2-2        ps_1.6.0            
+ [4] assertthat_0.2.1     rprojroot_2.0.2      digest_0.6.29       
+ [7] utf8_1.2.2           R6_2.5.1             futile.options_1.0.1
+[10] WriteXLS_6.4.0       evaluate_0.14        httr_1.4.2          
+[13] highr_0.9            pillar_1.7.0         rlang_1.0.0         
+[16] curl_4.3.2           rstudioapi_0.13      whisker_0.4         
+[19] callr_3.7.0          jquerylib_0.1.4      DT_0.26             
+[22] rmarkdown_2.11       labeling_0.4.2       stringr_1.4.0       
+[25] htmlwidgets_1.5.4    munsell_0.5.0        compiler_4.1.2      
+[28] httpuv_1.6.5         xfun_0.29            pkgconfig_2.0.3     
+[31] htmltools_0.5.2      tidyselect_1.1.1     tibble_3.1.6        
+[34] fansi_1.0.2          crayon_1.4.2         withr_2.4.3         
+[37] later_1.3.0          jsonlite_1.7.3       gtable_0.3.0        
+[40] lifecycle_1.0.1      DBI_1.1.2            git2r_0.29.0        
+[43] magrittr_2.0.2       formatR_1.11         scales_1.1.1        
+[46] cli_3.1.1            stringi_1.7.6        farver_2.1.0        
+[49] fs_1.5.2             promises_1.2.0.1     bslib_0.3.1         
+[52] ellipsis_0.3.2       generics_0.1.2       vctrs_0.3.8         
+[55] cowplot_1.1.1        rjson_0.2.21         lambda.r_1.2.4      
+[58] tools_4.1.2          glue_1.6.1           purrr_0.3.4         
+[61] crosstalk_1.2.0      processx_3.5.2       fastmap_1.1.0       
+[64] yaml_2.2.2           colorspace_2.0-2     knitr_1.37          
+[67] sass_0.4.1          </code></pre>
 </div>
 </div>
 </div>

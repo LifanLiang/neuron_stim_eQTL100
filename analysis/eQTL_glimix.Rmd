@@ -7,32 +7,73 @@ editor_options:
   chunk_output_type: console
 ---
 
+### Introduction
 
-
-### Individual random effect in a single context
-
-$$
-y = G + X + \sigma
-$$
-
-The only difference from fixed effect model is the i.i.d. error term modeled as random effect. Still, Z score are shrinked towards zero in LMM.
-
-![](assets/lmm_vs_lm_zscore.png)
+This page introduces how to adapt a python package, "glimix_core", to fit the individual random effect shared across 9 conditions (3 timepoints by 3 cell types).
 
 ### Individual random effect shared across all contexts
 
+#### Null model
+
+First, gene expression was regressed out of covariates (e.g. sex, age, disease status, 5 genotype PCs, 15 expression PCs) for each condition respectively. And then we estimated model likelihood and individual random effects from the null model.
+
 $$
-y = G * context + X * Context + S(v0 \cdot Z + v1 \cdot \sigma)
+y = X\mu + \epsilon 
 $$
 
-This model adds individual random effects shared across all context.
+where $X$ is a vector of 1 since all covariates have been regressed out beforehand, $\mu$ is effectively the intercept term, and $\epsilon$ was sampled from a multivariate Normal with forms below:
 
-![the distribution of log10(v0/v1)](assets/lmm_ratio_dist.png)
+$$
+\epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I)
+$$
 
-![the distribution of log10(v0)](assets/lmm_v0_dist.png)
+where $Z$ is the design matrix such that samples within the same individual have correlation of 1 and samples for different individuals are 0, $I$ is the identity matrix to capture i.i.d noise, $S$ is the overall scaling coefficient, $v_0$ and $v_1$ captures the relative weights of individual random effects and noise.
 
-![the distribution of v1](assets/lmm_v1_dist.png)
+The null model provides baseline model likelihood and an estimate of $v_0$ and $v_1$.
 
-The zscore is no longer correlated. The problem could be that the variance of residual error is also shared across contexts.
+![distribution of $log10(\dfrac{v_0}{v_0+v_1})$](assets/glimix_random_effect.png)
 
-![](assets/share_randeff_vs_single_lm_zscore.png)
+#### Alternative model
+
+We estimate the persistent genetic effects with following model. All parameters will be re-estimated except $v_0$ and $v_1$ in the distribution of $\epsilon$.
+
+$$
+y = G\beta + X\mu+ \epsilon
+$$
+
+#### Likelihood ratio testing
+
+The alternative model provides the alternative model likelihood and an estimate of $\beta$ and its standard error. Since the log likelihood ratio follows Chi-square distribution asymptotically, we can compute the P values for genetic effects:
+
+$$
+\lambda_{LR} = 2(\ell_{alt} - \ell_{null}) \sim Chisq(1)
+$$
+
+We permuted genotyeps for 500 genes with lowest individual random effects, genotypes were permuted 100 times for each gene, P values are well calibrated:
+
+![P values with permuted genotyeps for genes with low individual random effects](assets/P_calibration_low_randeff.png)
+
+We also performed the permutation for 1000 genes with highest individual random effects, P values seems slightly inflated.
+
+![P values with permuted genotyeps for genes with high individual random effects](assets/P_calibration_high_randeff.png)
+
+
+### Pi1 analysis comparing with single condition fixed effect eQTL
+
+We run Pi1 analysis on nominal P values from previous eQTL and the current main effect eQTL. 
+
+```{r, echo=F}
+pi1 <- 1 - c(0.9158922, 0.9401148, 0.9080124, 0.9059326, 0.9312895, 
+         0.9019636, 0.9043789, 0.9339399, 0.8936793, 0.892888)
+
+ct <- expand.grid(c("GABA","nmglut","npglut"), paste0(c(0,1,6),"hr"))
+names(pi1)[1:9] <- paste(ct$Var2, ct$Var1, sep="_")
+names(pi1)[10] <- "Glimix_main_effect"
+barplot(pi1, las=2, main="Pi1 for all eQTLs")
+```
+
+
+
+
+
+

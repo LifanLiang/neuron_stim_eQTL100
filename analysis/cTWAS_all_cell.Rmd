@@ -12,6 +12,7 @@ editor_options:
 Use the same set of eQTLs as cell type sperated cTWAS.These eQTLs are the unions of top eQTL within the same cell type. But eQTLs with nominal P values less than 0.1 in a certain condition was removed.
 
 ```{r, echo=F}
+library(dplyr)
 ctwas.params <- readRDS("data/joint_celltype_cTWAS_params.rds")
 ctwas.params$group_size[c(1,2,5,8,3,6,9,4,7,10)]
 ```
@@ -45,7 +46,7 @@ perc <- ctwas.params$group_pve / ctwas.params$total_pve
 pie(perc)
 ```
 
-```{r}
+```{r, echo=F}
 barplot(perc[c(2,5,8,3,6,9,4,7,10)], las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
 ```
 
@@ -86,25 +87,81 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
 
 ### Comparing with GTEx
 
-Cerebellum hemisphere is the tissue with the highest power in GTEx cTWAS. There are 28 genes with PIPs > 0.5.
+Compare the cTWAS results of 13 GTEx tissues with our results.
 
 ```{r, echo=F}
-#library(VennDiagram)
+library(VennDiagram)
 #library(RColorBrewer)
 res4 <- res3[res3$PIP_sum>0.5,]
-GTEx.gene <- readRDS("data/hemisphere_ctwas_genelist.RDS")
-# venn.diagram(x=list(GTEx.gene$stringent,res4$genename),
-#              category.names = c("GTEx" , "neuron_stim"),
+GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
+GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
+gtex.union <- unique(unlist(GTEx.gene))
+# intersect(gtex.union, res4$genename)
+# venn.diagram(x=list(gtex.union,res4$genename),
+#              category.names = c("GTEx_brain" , "neuron_stim"),
 #              filename="docs/assets/venn_GTEx.png")
 ```
 
 ![](assets/venn_GTEx.png)
 
+#### The shared 8 genes 
+
 ```{r,echo=F}
-knitr::kable(res4[res4$genename %in% GTEx.gene$stringent,])
+knitr::kable(res4[res4$genename %in% gtex.union,])
 ```
 
 ![](docs/assets/cTWAS_allcell_FOXN2.png)
+
+#### Number of shared genes across 14 tissues
+
+```{r,echo=F}
+shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
+names(shared) <- substr(names(shared), 7, nchar(names(shared)))
+shared <- shared[order(shared, decreasing = T)]
+x <- barplot(shared, las=2, xaxt="n")
+text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
+```
+
+
+### Enrichment analysis regardless of cell types
+
+#### Enrichment analysis of all genes together
+
+```{r, echo=F}
+library(enrichR)
+
+enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
+head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+#### Enrichment analysis of dynamic genes
+
+PIPs in time points `6hr` and `1hr` are summed up and then subtracted the time point `0hr`. If the difference is larger than 0.5, genes are called dynamic.
+
+```{r, echo=F}
+res4$PIP_diff <- rowSums(res4[,grepl("1hr", colnames(res4)) | grepl("6hr", colnames(res4))]) - 
+  rowSums(res4[,grepl("0hr", colnames(res4))])
+enrich.dynamic <- enrichr(res4$genename[res4$PIP_diff>0.5], "GO_Biological_Process_2018")
+head(enrich.dynamic$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+#### Enrichment analysis of static genes
+
+Static genes are significant genes that are not dynamic genes.
+
+```{r, echo=F}
+enrich.static <- enrichr(res4$genename[res4$PIP_diff<=0.5], "GO_Biological_Process_2018")
+head(enrich.static$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
 
 ### Cell type specific eGenes
 
@@ -139,7 +196,7 @@ GABA has 21 eGenes, 12 of them are dynamic.
 ```{r, echo=F}
 library(dplyr)
 res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
-res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12,16)]
+res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,13,17)]
 res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.GABA)[-1], digits=3)
@@ -176,7 +233,7 @@ head(enrich.GABA1$GO_Biological_Process_2018[-(5:8)],10) %>%
 nmglut has 19 eGenes, 13 of them are dynamic.
 
 ```{r, echo=F}
-res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,13,17)]
+res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,14,18)]
 res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.nmglut)[-1], digits=3)
@@ -209,7 +266,7 @@ head(enrich.nmglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
 npglut has 13 eGenes, 9 of them are dynamic
 
 ```{r, echo=F}
-res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,14,18)]
+res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,15,19)]
 res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.npglut)[-1], digits=3)
@@ -236,4 +293,7 @@ head(enrich.npglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
 ![](assets/cTWAS_allcell_NAGA.png)
 
 ![](assets/cTWAS_allcell_THBS3.png)
+
+
+
 

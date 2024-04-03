@@ -1,0 +1,9 @@
+INFO [2024-04-02 17:17:13] $x
+INFO [2024-04-02 17:17:13] list(gtex.union, res4$genename)
+INFO [2024-04-02 17:17:13] 
+INFO [2024-04-02 17:17:13] $category.names
+INFO [2024-04-02 17:17:13] c("GTEx_brain_union", "neuron_stim")
+INFO [2024-04-02 17:17:13] 
+INFO [2024-04-02 17:17:13] $filename
+INFO [2024-04-02 17:17:13] [1] "docs/assets/venn_GTEx.png"
+INFO [2024-04-02 17:17:13] 
