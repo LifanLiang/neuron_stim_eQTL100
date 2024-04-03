@@ -96,10 +96,10 @@ res4 <- res3[res3$PIP_sum>0.5,]
 GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
 GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
 gtex.union <- unique(unlist(GTEx.gene))
-# intersect(gtex.union, res4$genename)
-# venn.diagram(x=list(gtex.union,res4$genename),
-#              category.names = c("GTEx_brain" , "neuron_stim"),
-#              filename="docs/assets/venn_GTEx.png")
+intersect(gtex.union, res4$genename)
+venn.diagram(x=list(gtex.union,res4$genename),
+             category.names = c("GTEx_brain" , "neuron_stim"),
+             filename="docs/assets/venn_GTEx.png", imagetype = "png")
 ```
 
 ![](assets/venn_GTEx.png)
@@ -109,8 +109,6 @@ gtex.union <- unique(unlist(GTEx.gene))
 ```{r,echo=F}
 knitr::kable(res4[res4$genename %in% gtex.union,])
 ```
-
-![](docs/assets/cTWAS_allcell_FOXN2.png)
 
 #### Number of shared genes across 14 tissues
 
