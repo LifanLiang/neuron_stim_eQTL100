@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-03
+<strong>Last updated:</strong> 2024-04-04
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +418,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,15 +523,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree600a88fc701b52faa92fe43aade58146d058f3fctargetblank600a88fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree62d4f251e7602cff1e4e6852986f31a8e3e50fd8targetblank62d4f25a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/600a88fc701b52faa92fe43aade58146d058f3fc" target="_blank">600a88f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/62d4f251e7602cff1e4e6852986f31a8e3e50fd8" target="_blank">62d4f25</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree600a88fc701b52faa92fe43aade58146d058f3fctargetblank600a88fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree62d4f251e7602cff1e4e6852986f31a8e3e50fd8targetblank62d4f25a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/600a88fc701b52faa92fe43aade58146d058f3fc" target="_blank">600a88f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/62d4f251e7602cff1e4e6852986f31a8e3e50fd8" target="_blank">62d4f25</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -557,6 +560,10 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/eQTL_glimix.Rmd
 
 </code></pre>
 <p>
@@ -602,6 +609,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/4ae5cadc48ac80c3bbfd7b74cd768fe8da31166f/docs/eQTL_glimix.html" target="_blank">4ae5cad</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -689,19 +713,21 @@ class="section level3">
 <div id="null-model" class="section level4">
 <h4>Null model</h4>
 <p>First, gene expression was regressed out of covariates (e.g. sex,
-age, disease status, 5 genotype PCs, 15 expression PCs) for each
-condition respectively. And then we estimated model likelihood and
+age, disease status, 5 genotype PCs) jointly across conditions. And then
+we computed expression PC from the residual expression. The residual
+expression and expression PCs were used to estimate model likelihood and
 individual random effects from the null model.</p>
 <p><span class="math display">\[
 y = X\mu + \epsilon
 \]</span></p>
-<p>where <span class="math inline">\(X\)</span> is a vector of 1 since
-all covariates have been regressed out beforehand, <span
-class="math inline">\(\mu\)</span> is effectively the intercept term,
-and <span class="math inline">\(\epsilon\)</span> was sampled from a
-multivariate Normal with forms below:</p>
+<p>where <span class="math inline">\(X\)</span> is 15 expression PCs and
+a vector of 1 since all other covariates have been regressed out
+beforehand, <span class="math inline">\(\mu\)</span> indicates
+coefficients for the expression PCs plus the intercept term, and <span
+class="math inline">\(\epsilon\)</span> was sampled from a multivariate
+Normal with forms below:</p>
 <p><span class="math display">\[
-\epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I)
+\epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I))
 \]</span></p>
 <p>where <span class="math inline">\(Z\)</span> is the design matrix
 such that samples within the same individual have correlation of 1 and
@@ -710,14 +736,20 @@ class="math inline">\(I\)</span> is the identity matrix to capture i.i.d
 noise, <span class="math inline">\(S\)</span> is the overall scaling
 coefficient, <span class="math inline">\(v_0\)</span> and <span
 class="math inline">\(v_1\)</span> captures the relative weights of
-individual random effects and noise.</p>
+individual random effects and noise. There are 6822 genes with
+individual variation more than 1% of overall error.</p>
 <p>The null model provides baseline model likelihood and an estimate of
 <span class="math inline">\(v_0\)</span> and <span
 class="math inline">\(v_1\)</span>.</p>
 <div class="figure">
-<img src="assets/glimix_random_effect.png" alt="" />
+<img src="assets/log_glimix_random_effect.png" alt="" />
 <p class="caption">distribution of <span
 class="math inline">\(log10(\dfrac{v_0}{v_0+v_1})\)</span></p>
+</div>
+<div class="figure">
+<img src="assets/glimix_random_effect.png" alt="" />
+<p class="caption">distribution of <span
+class="math inline">\(\dfrac{v_0}{v_0+v_1}\)</span></p>
 </div>
 </div>
 <div id="alternative-model" class="section level4">
@@ -758,11 +790,12 @@ individual random effects</p>
 </div>
 </div>
 </div>
-<div id="pi1-analysis-comparing-with-single-condition-fixed-effect-eqtl"
+<div
+id="pi1-analysis-comparison-with-single-condition-fixed-effect-eqtl"
 class="section level3">
-<h3>Pi1 analysis comparing with single condition fixed effect eQTL</h3>
-<p>We run Pi1 analysis on nominal P values from previous eQTL and the
-current main effect eQTL.</p>
+<h3>Pi1 analysis comparison with single condition fixed effect eQTL</h3>
+<p>We run Pi1 analysis on nominal P values from single condition
+matrixeQTL results and the current main effect eQTLs.</p>
 <p><img src="figure/eQTL_glimix.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
@@ -801,6 +834,8 @@ Lifan Liang
 </table>
 </div>
 </div>
+<p>If I applied Storey’s Pi to compute qvalues for all eQTLs and used
+qvalues&lt;0.05 as a cutoff, LMM main effect eQTLs have 8730 eGenes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-03
+<strong>Last updated:</strong> 2024-04-04
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5efb2b47489dfe23f00aca1a0e7e21a456602c42targetblank5efb2b4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree62d4f251e7602cff1e4e6852986f31a8e3e50fd8targetblank62d4f25a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5efb2b47489dfe23f00aca1a0e7e21a456602c42" target="_blank">5efb2b4</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/62d4f251e7602cff1e4e6852986f31a8e3e50fd8" target="_blank">62d4f25</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree5efb2b47489dfe23f00aca1a0e7e21a456602c42targetblank5efb2b4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree62d4f251e7602cff1e4e6852986f31a8e3e50fd8targetblank62d4f25a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/5efb2b47489dfe23f00aca1a0e7e21a456602c42" target="_blank">5efb2b4</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/62d4f251e7602cff1e4e6852986f31a8e3e50fd8" target="_blank">62d4f25</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -563,8 +566,13 @@ were generated:
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/eQTL_glimix.Rmd
 
 </code></pre>
 <p>
@@ -610,6 +618,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/62d4f251e7602cff1e4e6852986f31a8e3e50fd8/docs/cTWAS_all_cell.html" target="_blank">62d4f25</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1253,13 +1278,63 @@ Lifan Liang
 </div>
 <div id="comparing-with-gtex" class="section level3">
 <h3>Comparing with GTEx</h3>
-<p>Compare the cTWAS results of 13 GTEx tissues (union of all genes)
-with our results.</p>
+<p>Compare the cTWAS results of 13 GTEx tissues with our results. Each
+GTEx tissue was analyzed with single group cTWAS ones. GTEx genes were
+selected with PIP &gt; 0.5. Histogram below showed the number of
+overlapped genes with each GTEx brain tissue.</p>
 <pre><code>Loading required package: grid</code></pre>
 <pre><code>Loading required package: futile.logger</code></pre>
-<pre><code>[1] &quot;SNX19&quot;    &quot;FOXN2&quot;    &quot;TDRD6&quot;    &quot;ZNF823&quot;   &quot;NPIPB2&quot;   &quot;SLF2&quot;     &quot;SERPINI1&quot;
-[8] &quot;DNAH7&quot;   </code></pre>
-<pre><code>[1] 1</code></pre>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9eec00fdbd6966b47a5796595de668e0637c4fee/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" target="_blank">9eec00f</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/435d87d5d7a74d1891cb7c0362b33234bcfdc575/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" target="_blank">435d87d</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Venn diagram showed the intersection of our results and the union of
+all GTEx brain genes.</p>
 <p><img src="assets/venn_GTEx.png" /></p>
 <div id="the-shared-8-genes" class="section level4">
 <h4>The shared 8 genes</h4>
@@ -1413,66 +1488,6 @@ with our results.</p>
 <div id="number-of-shared-genes-across-14-tissues"
 class="section level4">
 <h4>Number of shared genes across 14 tissues</h4>
-<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
-Past versions of unnamed-chunk-11-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-11-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/600a88fc701b52faa92fe43aade58146d058f3fc/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">600a88f</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-03
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9eec00fdbd6966b47a5796595de668e0637c4fee/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">9eec00f</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-28
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/412ec7c9ea54927e6e815b4d924d6f46acc170a2/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">412ec7c</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-28
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 </div>
 <div id="enrichment-analysis-regardless-of-cell-types"
@@ -1591,8 +1606,14 @@ class="section level5">
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of MHC class I biosynthetic process (GO:0045343)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","alditol metabolic process (GO:0019400)","positive regulation of type I interferon-mediated signaling pathway (GO:0060340)","glycerol-3-phosphate metabolic process (GO:0006072)","coenzyme A metabolic process (GO:0015936)","medium-chain fatty acid metabolic process (GO:0051791)","carnitine metabolic process (GO:0009437)","glycerol metabolic process (GO:0006071)","regulation of transferase activity (GO:0051338)"],["1/6","1/6","1/7","1/7","1/8","1/10","1/10","1/11","1/11","1/14"],[0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00598509351248777,0.00598509351248777,0.00658179619787483,0.00658179619787483,0.00836993582094223],[0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.0658179619787483,0.068583369882975],["NLRC5","NLRC5","GALK2","NLRC5","GALK2","CROT","CROT","CROT","GALK2","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-<p><img src="assets/cTWAS_allcell_KCNA4.png" /></p>
-<p><img src="assets/cTWAS_allcell_NLRC5.png" /></p>
+<div class="figure">
+<img src="assets/cTWAS_allcell_KCNA4.png" alt="" />
+<p class="caption">TWAS locus plot for KCNA4</p>
+</div>
+<div class="figure">
+<img src="assets/cTWAS_allcell_NLRC5.png" alt="" />
+<p class="caption">TWAS locus plot for NLRC5</p>
+</div>
 </div>
 </div>
 <div id="dynamic-egenes-in-nmglut" class="section level4">
@@ -1617,8 +1638,14 @@ class="section level5">
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-f8241748eb28a8a54961" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-f8241748eb28a8a54961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","negative regulation of dendrite morphogenesis (GO:0050774)","deadenylation-dependent decapping of nuclear-transcribed mRNA (GO:0000290)","nuclear-transcribed mRNA catabolic process, deadenylation-independent decay (GO:0031086)","motile cilium assembly (GO:0044458)","inner dynein arm assembly (GO:0036159)","outer dynein arm assembly (GO:0036158)","regulation of dendritic spine morphogenesis (GO:0061001)"],["1/6","1/6","1/6","1/7","1/8","1/8","1/13","1/16","1/18","1/23"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00479070309341298,0.00479070309341298,0.00777421720760798,0.00956039001281181,0.0107495345067082,0.013716673976595],[0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0534961845431116,0.0744103647013907,0.079629895627998,0.079629895627998,0.079629895627998],["NGEF","DCP1B","CYP7B1","NGEF","DCP1B","DCP1B","ZMYND10","ZMYND10","ZMYND10","NGEF"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-<p><img src="assets/cTWAS_allcell_NGEF.png" /></p>
-<p><img src="assets/cTWAS_allcell_FZD4.png" /></p>
+<div class="figure">
+<img src="assets/cTWAS_allcell_NGEF.png" alt="" />
+<p class="caption">TWAS locus plot for NGEF</p>
+</div>
+<div class="figure">
+<img src="assets/cTWAS_allcell_FZD4.png" alt="" />
+<p class="caption">TWAS locus plot for FZD4</p>
+</div>
 </div>
 </div>
 <div id="dynamic-egenes-in-npglut" class="section level4">
@@ -1643,8 +1670,14 @@ class="section level5">
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-69fb037def67fa5c79bd" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-69fb037def67fa5c79bd">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["phospholipase C-activating G-protein coupled acetylcholine receptor signaling pathway (GO:0007207)","regulation of cellular response to oxidative stress (GO:1900407)","glycosyl compound catabolic process (GO:1901658)","regulation of superoxide metabolic process (GO:0090322)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","organonitrogen compound biosynthetic process (GO:1901566)","glycosphingolipid catabolic process (GO:0046479)","glycosylceramide metabolic process (GO:0006677)","glycoside catabolic process (GO:0016139)","pteridine-containing compound biosynthetic process (GO:0042559)"],["1/6","1/6","1/6","1/6","1/6","2/181","1/7","1/7","1/7","1/7"],[0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00269725593591418,0.00281223611243233,0.00314617197276363,0.00314617197276363,0.00314617197276363,0.00314617197276363],[0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927,0.0213939694147927],["CHRM3","GCH1","NAGA","GCH1","CHRM3","PCYT1A;GCH1","NAGA","NAGA","NAGA","GCH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-<p><img src="assets/cTWAS_allcell_NAGA.png" /></p>
-<p><img src="assets/cTWAS_allcell_THBS3.png" /></p>
+<div class="figure">
+<img src="assets/cTWAS_allcell_NAGA.png" alt="" />
+<p class="caption">cTWAS locus plot for NAGA</p>
+</div>
+<div class="figure">
+<img src="assets/cTWAS_allcell_THBS3.png" alt="" />
+<p class="caption">TWAS locus plot for THBS3</p>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

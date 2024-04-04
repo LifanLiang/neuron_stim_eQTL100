@@ -87,7 +87,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
 
 ### Comparing with GTEx
 
-Compare the cTWAS results of 13 GTEx tissues (union of all genes) with our results.
+Compare the cTWAS results of 13 GTEx tissues with our results. Each GTEx tissue was analyzed with single group cTWAS ones. GTEx genes were selected with PIP > 0.5. Histogram below showed the number of overlapped genes with each GTEx brain tissue.
 
 ```{r, echo=F}
 library(VennDiagram)
@@ -96,11 +96,22 @@ res4 <- res3[res3$PIP_sum>0.5,]
 GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
 GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
 gtex.union <- unique(unlist(GTEx.gene))
-intersect(gtex.union, res4$genename)
-venn.diagram(x=list(gtex.union,res4$genename),
-             category.names = c("GTEx_brain" , "neuron_stim"),
-             filename="docs/assets/venn_GTEx.png", imagetype = "png")
+#intersect(gtex.union, res4$genename)
+#venn.diagram(x=list(gtex.union,res4$genename),
+#             category.names = c("GTEx_brain" , "neuron_stim"),
+#             filename="docs/assets/venn_GTEx.png", imagetype = "png")
 ```
+
+```{r,echo=F}
+shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
+names(shared) <- substr(names(shared), 7, nchar(names(shared)))
+shared <- shared[order(shared, decreasing = T)]
+x <- barplot(shared, las=2, xaxt="n")
+text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
+```
+
+
+Venn diagram showed the intersection of our results and the union of all GTEx brain genes.
 
 ![](assets/venn_GTEx.png)
 
@@ -112,13 +123,6 @@ knitr::kable(res4[res4$genename %in% gtex.union,])
 
 #### Number of shared genes across 14 tissues
 
-```{r,echo=F}
-shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
-names(shared) <- substr(names(shared), 7, nchar(names(shared)))
-shared <- shared[order(shared, decreasing = T)]
-x <- barplot(shared, las=2, xaxt="n")
-text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
-```
 
 
 ### Enrichment analysis regardless of cell types
@@ -220,10 +224,10 @@ head(enrich.GABA1$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
-![](assets/cTWAS_allcell_KCNA4.png)
+![TWAS locus plot for KCNA4](assets/cTWAS_allcell_KCNA4.png)
 
 
-![](assets/cTWAS_allcell_NLRC5.png)
+![TWAS locus plot for NLRC5](assets/cTWAS_allcell_NLRC5.png)
 
 
 #### Dynamic eGenes in NMglut
@@ -255,9 +259,9 @@ head(enrich.nmglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
-![](assets/cTWAS_allcell_NGEF.png)
+![TWAS locus plot for NGEF](assets/cTWAS_allcell_NGEF.png)
 
-![](assets/cTWAS_allcell_FZD4.png)
+![TWAS locus plot for FZD4](assets/cTWAS_allcell_FZD4.png)
 
 #### Dynamic eGenes in NPglut
 
@@ -288,9 +292,9 @@ head(enrich.npglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
-![](assets/cTWAS_allcell_NAGA.png)
+![cTWAS locus plot for NAGA](assets/cTWAS_allcell_NAGA.png)
 
-![](assets/cTWAS_allcell_THBS3.png)
+![TWAS locus plot for THBS3](assets/cTWAS_allcell_THBS3.png)
 
 
 

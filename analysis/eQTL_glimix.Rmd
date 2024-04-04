@@ -15,23 +15,25 @@ This page introduces how to adapt a python package, "glimix_core", to fit the in
 
 #### Null model
 
-First, gene expression was regressed out of covariates (e.g. sex, age, disease status, 5 genotype PCs, 15 expression PCs) for each condition respectively. And then we estimated model likelihood and individual random effects from the null model.
+First, gene expression was regressed out of covariates (e.g. sex, age, disease status, 5 genotype PCs) jointly across conditions. And then we computed expression PC from the residual expression. The residual expression and  expression PCs were used to estimate model likelihood and individual random effects from the null model.
 
 $$
 y = X\mu + \epsilon 
 $$
 
-where $X$ is a vector of 1 since all covariates have been regressed out beforehand, $\mu$ is effectively the intercept term, and $\epsilon$ was sampled from a multivariate Normal with forms below:
+where $X$ is 15 expression PCs and a vector of 1 since all other covariates have been regressed out beforehand, $\mu$ indicates coefficients for the expression PCs plus the intercept term, and $\epsilon$ was sampled from a multivariate Normal with forms below:
 
 $$
-\epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I)
+\epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I))
 $$
 
-where $Z$ is the design matrix such that samples within the same individual have correlation of 1 and samples for different individuals are 0, $I$ is the identity matrix to capture i.i.d noise, $S$ is the overall scaling coefficient, $v_0$ and $v_1$ captures the relative weights of individual random effects and noise.
+where $Z$ is the design matrix such that samples within the same individual have correlation of 1 and samples for different individuals are 0, $I$ is the identity matrix to capture i.i.d noise, $S$ is the overall scaling coefficient, $v_0$ and $v_1$ captures the relative weights of individual random effects and noise. There are 6822 genes with individual variation more than 1% of overall error.
 
 The null model provides baseline model likelihood and an estimate of $v_0$ and $v_1$.
 
-![distribution of $log10(\dfrac{v_0}{v_0+v_1})$](assets/glimix_random_effect.png)
+![distribution of $log10(\dfrac{v_0}{v_0+v_1})$](assets/log_glimix_random_effect.png)
+
+![distribution of $\dfrac{v_0}{v_0+v_1}$](assets/glimix_random_effect.png)
 
 #### Alternative model
 
@@ -58,13 +60,13 @@ We also performed the permutation for 1000 genes with highest individual random 
 ![P values with permuted genotyeps for genes with high individual random effects](assets/P_calibration_high_randeff.png)
 
 
-### Pi1 analysis comparing with single condition fixed effect eQTL
+### Pi1 analysis comparison with single condition fixed effect eQTL
 
-We run Pi1 analysis on nominal P values from previous eQTL and the current main effect eQTL. 
+We run Pi1 analysis on nominal P values from single condition matrixeQTL results and the current main effect eQTLs. 
 
 ```{r, echo=F}
 pi1 <- 1 - c(0.9158922, 0.9401148, 0.9080124, 0.9059326, 0.9312895, 
-         0.9019636, 0.9043789, 0.9339399, 0.8936793, 0.892888)
+         0.9019636, 0.9043789, 0.9339399, 0.8936793, 0.8210295)
 
 ct <- expand.grid(c("GABA","nmglut","npglut"), paste0(c(0,1,6),"hr"))
 names(pi1)[1:9] <- paste(ct$Var2, ct$Var1, sep="_")
@@ -72,7 +74,7 @@ names(pi1)[10] <- "Glimix_main_effect"
 barplot(pi1, las=2, main="Pi1 for all eQTLs")
 ```
 
-
+If I applied Storey's Pi to compute qvalues for all eQTLs and used qvalues<0.05 as a cutoff, LMM main effect eQTLs have 8730 eGenes.
 
 
 
