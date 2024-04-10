@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-04
+<strong>Last updated:</strong> 2024-04-10
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree25c360f208ab0fa33479a5a80542e0ff721e5504targetblank25c360fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1b438e1d554ef95f811eea1359fcb80f409691b3targetblank1b438e1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/25c360f208ab0fa33479a5a80542e0ff721e5504" target="_blank">25c360f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1b438e1d554ef95f811eea1359fcb80f409691b3" target="_blank">1b438e1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree25c360f208ab0fa33479a5a80542e0ff721e5504targetblank25c360fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1b438e1d554ef95f811eea1359fcb80f409691b3targetblank1b438e1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/25c360f208ab0fa33479a5a80542e0ff721e5504" target="_blank">25c360f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1b438e1d554ef95f811eea1359fcb80f409691b3" target="_blank">1b438e1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -565,6 +568,13 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  ctwas_top_genes_locus_plot.zip
+    Untracked:  ctwas_top_genes_locus_plot/
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
 
 </code></pre>
 <p>
@@ -610,6 +620,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1b438e1d554ef95f811eea1359fcb80f409691b3/docs/cTWAS_all_cell.html" target="_blank">1b438e1</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1308,8 +1335,70 @@ Lifan Liang
 GTEx tissue was analyzed with single group cTWAS ones. GTEx genes were
 selected with PIP &gt; 0.5. Histogram below showed the number of
 overlapped genes with each GTEx brain tissue.</p>
+<div id="shared-with-each-gtex-brain-tissue" class="section level4">
+<h4>Shared with each GTEx brain tissue</h4>
 <pre><code>Loading required package: grid</code></pre>
 <pre><code>Loading required package: futile.logger</code></pre>
+<pre><code> [1] &quot;Amygdala&quot;                        &quot;Anterior_cingulate_cortex_BA24&quot; 
+ [3] &quot;Caudate_basal_ganglia&quot;           &quot;Cerebellar_Hemisphere&quot;          
+ [5] &quot;Cerebellum&quot;                      &quot;Cortex&quot;                         
+ [7] &quot;Frontal_Cortex_BA9&quot;              &quot;Hippocampus&quot;                    
+ [9] &quot;Hypothalamus&quot;                    &quot;Nucleus_accumbens_basal_ganglia&quot;
+[11] &quot;Putamen_basal_ganglia&quot;           &quot;Spinal_cord_cervical_c-1&quot;       
+[13] &quot;Substantia_nigra&quot;                &quot;union&quot;                          </code></pre>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/435d87d5d7a74d1891cb7c0362b33234bcfdc575/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-9-1.png" target="_blank">435d87d</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-28
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bee6c05ecbabca67f912ea1eb8cd1f2f2bce3697/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-9-1.png" target="_blank">bee6c05</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-03-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="total-ctwas-significant-genes-within-each-gtex-brain-tissue"
+class="section level4">
+<h4>Total cTWAS significant genes within each GTEx brain tissue</h4>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
@@ -1370,11 +1459,17 @@ Lifan Liang
 </table>
 </div>
 </div>
+</div>
+<div id="venn-diagram-between-our-ctwas-genes-and-gtex-brain-tissues"
+class="section level4">
+<h4>Venn diagram between our cTWAS genes and GTEx brain tissues</h4>
 <p>Venn diagram showed the intersection of our results and the union of
 all GTEx brain genes.</p>
 <p><img src="assets/venn_GTEx.png" /></p>
-<div id="the-shared-8-genes" class="section level4">
-<h4>The shared 8 genes</h4>
+</div>
+<div id="the-shared-8-genes-pip-in-our-ctwas-results"
+class="section level4">
+<h4>The shared 8 genes PIP in our cTWAS results</h4>
 <table>
 <colgroup>
 <col width="2%" />
@@ -1522,10 +1617,6 @@ all GTEx brain genes.</p>
 </tbody>
 </table>
 </div>
-<div id="number-of-shared-genes-across-14-tissues"
-class="section level4">
-<h4>Number of shared genes across 14 tissues</h4>
-</div>
 </div>
 <div id="enrichment-analysis-regardless-of-cell-types"
 class="section level3">
@@ -1558,6 +1649,13 @@ Parsing results... Done.</code></pre>
 <div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["purine ribonucleotide metabolic process (GO:0009150)","nucleic acid phosphodiester bond hydrolysis (GO:0090305)","regulation of superoxide metabolic process (GO:0090322)","glycosyl compound catabolic process (GO:1901658)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","regulation of MHC class I biosynthetic process (GO:0045343)"],["2/66","2/73","1/6","1/6","1/6","1/6","1/6","1/6","1/6","1/6"],[0.00734606342789102,0.00892341174482248,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795],[0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859],["OLA1;CROT","XRN2;DCP1B","GCH1","NAGA","NLRC5","CHRM3","NGEF","DCP1B","CYP7B1","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
+<div id="dynamics-of-the-8-shared-genes-with-gtex"
+class="section level4">
+<h4>Dynamics of the 8 shared genes with GTEx</h4>
+<pre class="r"><code>shared &lt;- res4[res4$genename %in% gtex.union,]
+boxplot(shared$PIP_diff)</code></pre>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <div id="enrichment-analysis-of-static-genes" class="section level4">
 <h4>Enrichment analysis of static genes</h4>
 <p>Static genes are significant genes that are not dynamic genes.</p>
@@ -1576,43 +1674,18 @@ cell type specific.</p>
 <pre><code>
       GABA     nmglut     npglut Unspecific 
         21         18         13          8 </code></pre>
-<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
-Past versions of unnamed-chunk-16-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-16-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/600a88fc701b52faa92fe43aade58146d058f3fc/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" target="_blank">600a88f</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-03
-</td>
-</tr>
-</tbody>
-</table>
+<div id="cell-type-composition-across-pip-distribution"
+class="section level4">
+<h4>Cell type composition across PIP distribution</h4>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
+<div id="cell-type-composition-of-gtex-shared-genes"
+class="section level4">
+<h4>Cell type composition of GTEx shared genes</h4>
+<p>Since GTEx is bulk eQTL, the cell type contribution of the shared
+genes for SCZ can only be elucidated by our joint condition cTWAS
+results.</p>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dynamic-egenes" class="section level3">

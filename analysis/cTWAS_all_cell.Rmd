@@ -89,6 +89,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
 
 Compare the cTWAS results of 13 GTEx tissues with our results. Each GTEx tissue was analyzed with single group cTWAS ones. GTEx genes were selected with PIP > 0.5. Histogram below showed the number of overlapped genes with each GTEx brain tissue.
 
+#### Shared with each GTEx brain tissue
 ```{r, echo=F}
 library(VennDiagram)
 #library(RColorBrewer)
@@ -96,32 +97,33 @@ res4 <- res3[res3$PIP_sum>0.5,]
 GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
 GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
 gtex.union <- unique(unlist(GTEx.gene))
-#intersect(gtex.union, res4$genename)
-#venn.diagram(x=list(gtex.union,res4$genename),
-#             category.names = c("GTEx_brain" , "neuron_stim"),
-#             filename="docs/assets/venn_GTEx.png", imagetype = "png")
-```
-
-```{r,echo=F}
+GTEx.gene$Brain_union <- gtex.union
 shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
 names(shared) <- substr(names(shared), 7, nchar(names(shared)))
+names(shared)
 shared <- shared[order(shared, decreasing = T)]
 x <- barplot(shared, las=2, xaxt="n")
 text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
 ```
 
+#### Total cTWAS significant genes within each GTEx brain tissue
+```{r,echo=F}
+gtex.total <- sapply(GTEx.gene, length)
+names(gtex.total) <- substr(names(gtex.total), 7, nchar(names(gtex.total)))
+x <- barplot(gtex.total[names(shared)], las=2, xaxt="n")
+text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
+```
 
+#### Venn diagram between our cTWAS genes and GTEx brain tissues
 Venn diagram showed the intersection of our results and the union of all GTEx brain genes.
 
 ![](assets/venn_GTEx.png)
 
-#### The shared 8 genes 
+#### The shared 8 genes PIP in our cTWAS results
 
 ```{r,echo=F}
 knitr::kable(res4[res4$genename %in% gtex.union,])
 ```
-
-#### Number of shared genes across 14 tissues
 
 
 
@@ -152,6 +154,13 @@ head(enrich.dynamic$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
 
+#### Dynamics of the 8 shared genes with GTEx
+
+```{r}
+shared <- res4[res4$genename %in% gtex.union,]
+boxplot(shared$PIP_diff)
+```
+
 
 #### Enrichment analysis of static genes
 
@@ -170,7 +179,6 @@ head(enrich.static$GO_Biological_Process_2018[-(5:8)],10) %>%
 An eGene is assigned to a cell type if over 60% of the PIP sum are from that cell type. Genes with higher sum of PIP are more likely to be cell type specific.
 
 ```{r, echo=F}
-
 res4$GABA_sum <- rowSums(res4[,c(3,6,9)])
 res4$nmglut_sum <- rowSums(res4[,c(4,7,10)])
 res4$npglut_sum <- rowSums(res4[,c(5,8,11)])
@@ -181,11 +189,26 @@ res4[ind[,1],"celltype"] <- substr(colnames(ctperc),1,nchar(colnames(ctperc))-4)
 table(res4$celltype)
 ```
 
+#### Cell type composition across PIP distribution
+
 ```{r, echo=F}
 library(ggplot2)
 
 ggplot(res4[c("PIP_sum","celltype")], aes(PIP_sum, fill=celltype)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
 ```
+
+#### Cell type composition of GTEx shared genes
+
+Since GTEx is bulk eQTL, the cell type contribution of the shared genes for SCZ can only be elucidated by our joint condition cTWAS results.
+
+```{r,echo=F}
+par(mfrow=c(1,2))
+shared <- res4[res4$genename %in% gtex.union,]
+notshared <- res4[!(res4$genename %in% gtex.union),]
+pie(table(shared$celltype), main="GTEx shared genes",col = c("white","blue","red"))
+pie(table(notshared$celltype), main="Genes not shared with GTEx", col=c("green","white","blue","red"))
+```
+
 
 ### Dynamic eGenes
 
