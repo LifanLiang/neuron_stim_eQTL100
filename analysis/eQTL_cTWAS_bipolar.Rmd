@@ -1,0 +1,181 @@
+---
+title: "eQTL_cTWAS_bipolar"
+author: "Lifan Liang"
+date: "2024-04-11"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Weights
+
+Use the same set of eQTLs as cell type sperated cTWAS.These eQTLs are the unions of top eQTL within the same cell type. But eQTLs with nominal P values less than 0.1 in a certain condition was removed.
+
+```{r, echo=F}
+library(dplyr)
+ctwas.params <- readRDS("data/bipolar_cTWAS_params.rds")
+ctwas.params$group_size[c(1,2,5,8,3,6,9,4,7,10)]
+```
+
+## Parameters
+
+```{r, echo=F}
+ctwas.params$convergence_plot
+```
+
+### Prior for each context
+
+```{r, echo=F}
+barplot(ctwas.params$group_prior,las=2,col=c("grey",rep("red",3), rep("green",3), rep("blue",3)))
+```
+
+### PVE for each context
+
+Total PVE from all eGenes in all contexts is 12.49%.
+
+```{r, echo=F}
+perc <- ctwas.params$group_pve / ctwas.params$total_pve
+pie(perc)
+```
+
+```{r, echo=F}
+barplot(perc[-1], las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
+```
+
+## Results
+
+There are 55 egenes if the cutoff was set to PIP>0.5.
+
+```{r, echo=F}
+res <- readRDS("data/bipolar_ctwas_noSNP_res.RDS")
+res <- res[res$cs_index>0,]
+cond <- names(table(res$type))
+res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+for(i in 2:length(cond)) {
+  res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                    by="genename",all.x = T)
+  colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+}
+res3[is.na(res3)] <- 0
+
+hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 21),
+     xlab="sum of PIP", main="# of eGenes in different PIP intervals")
+```
+
+### Comparison with Schizophrenia cTWAS results
+
+```{r,echo=F}
+library(VennDiagram)
+scz <- readRDS("data/allcell_cover6_noSNP_ctwas.RDS")
+scz <- scz[scz$cs_index>0,]
+cond <- names(table(scz$type))
+scz$genename <- sapply(strsplit(scz$id, "\\|"), function(x) {x[1]})
+scz2 <- aggregate(scz$susie_pip, list(scz$genename), sum)
+scz.gene <- scz2$Group.1[scz2$x>0.5]
+venn.diagram(list(bipolar=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene), 
+             "docs/assets/venn_SCZ_vs_bipolar.png", imagetype = "png")
+```
+
+![](docs/assets/venn_SCZ_vs_bipolar.png)
+
+### Enrichment analysis regardless of cell types
+
+#### Enrichment analysis of all genes together
+
+```{r, echo=F}
+library(enrichR)
+res4 <- res3[res3$PIP_sum>0.5,]
+enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
+head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+#### Enrichment analysis of dynamic genes
+
+PIPs in time points `6hr` and `1hr` are summed up and then subtracted the time point `0hr`. If the difference is larger than 0.5, genes are called dynamic.
+
+```{r, echo=F}
+res4$PIP_diff <- rowSums(res4[,grepl("1hr", colnames(res4)) | grepl("6hr", colnames(res4))]) - 
+  rowSums(res4[,grepl("0hr", colnames(res4))])
+enrich.dynamic <- enrichr(res4$genename[res4$PIP_diff>0.5], "GO_Biological_Process_2018")
+head(enrich.dynamic$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+#### Enrichment analysis of static genes
+
+Static genes are significant genes that are not dynamic genes.
+
+```{r, echo=F}
+enrich.static <- enrichr(res4$genename[res4$PIP_diff<=0.5], "GO_Biological_Process_2018")
+head(enrich.static$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+### Cell type specific eGenes
+
+An eGene is assigned to a cell type if over 60% of the PIP sum are from that cell type. Genes with higher sum of PIP are more likely to be cell type specific.
+
+```{r, echo=F}
+res4$GABA_sum <- rowSums(res4[,c(3,6,9)])
+res4$nmglut_sum <- rowSums(res4[,c(4,7,10)])
+res4$npglut_sum <- rowSums(res4[,c(5,8,11)])
+ctperc <- res4[c("GABA_sum","nmglut_sum","npglut_sum")] / res4$PIP_sum
+res4$celltype <- "Unspecific"
+ind <- which(ctperc>0.6, arr.ind=1)
+res4[ind[,1],"celltype"] <- substr(colnames(ctperc),1,nchar(colnames(ctperc))-4)[ind[,2]]
+table(res4$celltype)
+```
+
+#### Cell type composition across PIP distribution
+
+```{r, echo=F}
+library(ggplot2)
+
+ggplot(res4[c("PIP_sum","celltype")], aes(PIP_sum, fill=celltype)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
+```
+
+#### Dynamic eGenes in GABA
+
+GABA has 18 eGenes, 8 of them are dynamic.
+
+```{r, echo=F}
+library(dplyr)
+res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
+res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,13,17)]
+res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=colnames(res4.GABA)[-1], digits=3)
+```
+
+#### Dynamic eGenes in NMglut
+
+nmglut has 12 eGenes, 11 of them are dynamic.
+
+```{r, echo=F}
+res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,14,18)]
+res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=colnames(res4.nmglut)[-1], digits=3)
+```
+
+#### Dynamic eGenes in NPglut
+
+npglut has 18 eGenes, 11 of them are dynamic.
+
+```{r, echo=F}
+res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,15,19)]
+res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),] %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=colnames(res4.npglut)[-1], digits=3)
+```
