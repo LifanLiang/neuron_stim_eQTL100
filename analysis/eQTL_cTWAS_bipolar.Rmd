@@ -1,5 +1,5 @@
 ---
-title: "eQTL_cTWAS_bipolar"
+title: "cTWAS Results: Neuron Stimulation eQTL for Bipolar"
 author: "Lifan Liang"
 date: "2024-04-11"
 output: workflowr::wflow_html
