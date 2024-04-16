@@ -436,10 +436,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -567,6 +567,7 @@ were generated:
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
 
@@ -598,125 +599,10 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/eQTL_cTWAS_bipolar.Rmd</code>)
-and HTML (<code>docs/eQTL_cTWAS_bipolar.html</code>) files. If you’ve
-configured a remote Git repository (see <code>?wflow_git_remote</code>),
-click on the hyperlinks in the table below to view the files as they
-were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/6d64fd37636e5c33f662874c872ad70be72b733f/docs/eQTL_cTWAS_bipolar.html" target="_blank">6d64fd3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/6e61fb8dd16291844c4e378728d8495edffac318/analysis/eQTL_cTWAS_bipolar.Rmd" target="_blank">6e61fb8</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-wflow_publish(c("analysis"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ed904886dce4cfb993e1fb1812f5d51a863b4456/docs/eQTL_cTWAS_bipolar.html" target="_blank">ed90488</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/analysis/eQTL_cTWAS_bipolar.Rmd" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-wflow_publish(c("analysis", "docs", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/eQTL_cTWAS_bipolar.html" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-wflow_publish(c("analysis", "docs", "data"))
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
@@ -726,7 +612,8 @@ wflow_publish(c("analysis", "docs", "data"))
 <p>Use the same set of eGenes as previous restuls.These eGenes are the
 unions of eGenes across all cell types. CONTENT will produce
 tissue-specific weights for that gene if it has nonzeros weights in that
-certain tissue.</p>
+certain tissue. Compared to the eQTL results, many genes were filtered.
+Coverage was set to 90%.</p>
 <pre><code>
 Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>The following objects are masked from &#39;package:stats&#39;:
@@ -736,220 +623,41 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 <pre><code>       SNP   0hr_GABA 0hr_nmglut 0hr_npglut   1hr_GABA 1hr_nmglut 1hr_npglut 
-   6934250       4157       2553       5151       4183       2516       5112 
+   6964380       1345       1262       1378       1372       1278       1430 
   6hr_GABA 6hr_nmglut 6hr_npglut 
-      4127       2562       5170 </code></pre>
+      1374       1248       1518 </code></pre>
 </div>
 <div id="parameters" class="section level2">
 <h2>Parameters</h2>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
-Past versions of unnamed-chunk-2-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-2-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="prior-for-each-context" class="section level3">
 <h3>Prior for each context</h3>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-3-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="pve-for-each-context" class="section level3">
 <h3>PVE for each context</h3>
-<p>Total PVE from all eGenes in all contexts is 13.5%.</p>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
-Past versions of unnamed-chunk-4-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-4-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-4-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
-Past versions of unnamed-chunk-5-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-5-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-5-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p>Total PVE from all eGenes in all contexts is 8.3%.</p>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
-<p>There are 55 egenes if the cutoff was set to PIP&gt;0.5.</p>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
-Past versions of unnamed-chunk-6-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-6-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-6-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="comparison-with-schizophrenia-ctwas-results"
+<p>There are 38 egenes if the cutoff was set to PIP&gt;0.5.</p>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="comparison-with-eqtl-ctwas-results-on-scz"
 class="section level3">
-<h3>Comparison with Schizophrenia cTWAS results</h3>
+<h3>Comparison with eQTL cTWAS results on SCZ</h3>
 <pre><code>Loading required package: grid</code></pre>
 <pre><code>Loading required package: futile.logger</code></pre>
 <pre><code>[1] 1</code></pre>
-<p><img src="docs/assets/venn_SCZ_vs_bipolar.png" /></p>
+<p><img src="docs/assets/venn_SCZ_CONTENT_vs_eQTL.png" /></p>
+</div>
+<div id="comparison-with-gtex-eqtl-results" class="section level3">
+<h3>Comparison with GTEx eQTL results</h3>
+<p>6 genes are shared with GTEx cTWAS results.</p>
+<pre><code>[1] 1</code></pre>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="enrichment-analysis-regardless-of-cell-types"
 class="section level3">
@@ -969,7 +677,7 @@ OxEnrichr ... Connection is Live!</code></pre>
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["positive regulation of endothelial cell migration (GO:0010595)","positive regulation of blood vessel endothelial cell migration (GO:0043536)","regulation of blood vessel endothelial cell migration (GO:0043535)","positive regulation of epithelial cell migration (GO:0010634)","positive regulation of JNK cascade (GO:0046330)","positive regulation of stress-activated MAPK cascade (GO:0032874)","retrograde transport, endosome to Golgi (GO:0042147)","NADH metabolic process (GO:0006734)","protein repair (GO:0030091)","regulation of protein K63-linked ubiquitination (GO:1900044)"],["3/70","2/45","2/50","2/74","2/76","2/80","2/82","1/6","1/6","1/6"],[0.000113071615530326,0.00167639746200947,0.00206572935455435,0.00446486536638843,0.00470335896749297,0.00519768076905213,0.00545344788828848,0.00807362689081275,0.00807362689081275,0.00807362689081275],[0.0307554794242486,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226,0.0895544953924226],["HMGB1;PLCG1;SASH1","HMGB1;PLCG1","HMGB1;PLCG1","PLCG1;SASH1","HMGB1;SASH1","HMGB1;SASH1","ARFRP1;DENND2A","MDH1","MSRA","SASH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["response to nicotine (GO:0035094)","response to alkaloid (GO:0043279)","neuromuscular synaptic transmission (GO:0007274)","anterograde trans-synaptic signaling (GO:0098916)","synaptic transmission, cholinergic (GO:0007271)","chemical synaptic transmission (GO:0007268)","response to organic cyclic compound (GO:0014070)","regulation of cell cycle G2/M phase transition (GO:1902749)","azole transport (GO:0045117)","activation of transmembrane receptor protein tyrosine kinase activity (GO:0007171)"],["2/21","2/23","2/24","4/240","2/28","4/289","2/69","2/84","1/6","1/6"],[0.000721533502918398,0.000867196519551772,0.000944900443290856,0.00108354112247231,0.00128792065180414,0.00214103337513964,0.00761131126414164,0.0111097256828233,0.0113472880561395,0.0113472880561395],[0.0674870421545372,0.0674870421545372,0.0674870421545372,0.0674870421545372,0.0674870421545372,0.0934917907144309,0.113400007312878,0.113400007312878,0.113400007312878,0.113400007312878],["CHRNA3;CHRNA5","CHRNA3;CHRNA5","CHRNA3;CHRNA5","GRM3;CHRNA3;CHRNA5;UNC119","CHRNA3;CHRNA5","GRM3;CHRNA3;CHRNA5;UNC119","CHRNA3;CHRNA5","ALMS1;SDCCAG8","SLC25A19","CHRNA3"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-of-dynamic-genes" class="section level4">
 <h4>Enrichment analysis of dynamic genes</h4>
@@ -980,7 +688,7 @@ difference is larger than 0.5, genes are called dynamic.</p>
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["regulation of protein K63-linked ubiquitination (GO:1900044)","regulation of protein localization to cell cortex (GO:1904776)","NADH metabolic process (GO:0006734)","oxaloacetate metabolic process (GO:0006107)","malate metabolic process (GO:0006108)","cellular response to histamine (GO:0071420)","cytoskeletal anchoring at nuclear membrane (GO:0090286)","regulation of morphogenesis of an epithelium (GO:1905330)","regulation of organ morphogenesis (GO:2000027)","response to histamine (GO:0034776)"],["1/6","1/6","1/6","1/7","1/7","1/7","1/8","1/9","1/9","1/10"],[0.00359499844647963,0.00359499844647963,0.00359499844647963,0.00419301510496052,0.00419301510496052,0.00419301510496052,0.00479070309341298,0.00538806252238183,0.00538806252238183,0.00598509351248777],[0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918,0.0453744640101918],["SASH1","SAPCD2","MDH1","MDH1","MDH1","GABRB2","SYNE1","SAPCD2","SAPCD2","GABRB2"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["B cell chemotaxis (GO:0035754)","azole transport (GO:0045117)","thiamine-containing compound metabolic process (GO:0042723)","carbohydrate derivative transport (GO:1901264)","skeletal muscle cell differentiation (GO:0035914)","cellular glucan metabolic process (GO:0006073)","quinone biosynthetic process (GO:1901663)","ubiquinone metabolic process (GO:0006743)","cofactor transport (GO:0051181)","G-protein coupled glutamate receptor signaling pathway (GO:0007216)"],["1/6","1/6","1/7","1/12","1/12","1/12","1/14","1/14","1/15","1/15"],[0.00479094227501427,0.00479094227501427,0.00558734170782148,0.00956039001281181,0.00956039001281181,0.00956039001281181,0.011145440218903,0.011145440218903,0.0119370735063596,0.0119370735063596],[0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814,0.0718302878467814],["CYP7B1","SLC25A19","SLC25A19","SLC25A19","LEMD2","GBE1","COQ10B","COQ10B","SLC25A19","GRM3"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="enrichment-analysis-of-static-genes" class="section level4">
 <h4>Enrichment analysis of static genes</h4>
@@ -989,76 +697,39 @@ Parsing results... Done.</code></pre>
   Querying GO_Biological_Process_2018... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-a50efc78b4c04b4a25da" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["positive regulation of blood vessel endothelial cell migration (GO:0043536)","regulation of blood vessel endothelial cell migration (GO:0043535)","positive regulation of endothelial cell migration (GO:0010595)","plasma membrane bounded cell projection organization (GO:0120036)","protein repair (GO:0030091)","neuron development (GO:0048666)","T-helper 1 type immune response (GO:0042088)","regulation of toll-like receptor 9 signaling pathway (GO:0034163)","V(D)J recombination (GO:0033151)","regulation of dendritic cell differentiation (GO:2001198)"],["2/45","2/50","2/70","2/118","1/6","2/144","1/7","1/7","1/7","1/7"],[0.0005101666330676,0.000629902065454966,0.00123110357510169,0.0034466401799523,0.00449206839321453,0.00508327752447252,0.00523891689414434,0.00523891689414434,0.00523891689414434,0.00523891689414434],[0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521,0.0636884033875521],["HMGB1;PLCG1","HMGB1;PLCG1","HMGB1;PLCG1","HMGB1;FRY","MSRA","HMGB1;FRY","HMGB1","HMGB1","HMGB1","HMGB1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["positive regulation of cell growth (GO:0030307)","positive regulation of memory T cell differentiation (GO:0043382)","activation of transmembrane receptor protein tyrosine kinase activity (GO:0007171)","iron ion import (GO:0097286)","selenocysteine incorporation (GO:0001514)","regulation of memory T cell differentiation (GO:0043380)","adenine nucleotide transport (GO:0051503)","purine ribonucleotide transport (GO:0015868)","sequestering of extracellular ligand from receptor (GO:0035581)","peroxisome proliferator activated receptor signaling pathway (GO:0035357)"],["2/98","1/6","1/6","1/6","1/7","1/7","1/7","1/7","1/7","1/7"],[0.00515015236380818,0.00658261714792867,0.00658261714792867,0.00658261714792867,0.00767569624028282,0.00767569624028282,0.00767569624028282,0.00767569624028282,0.00767569624028282,0.00767569624028282],[0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279,0.0739266933251279],["ISLR2;DNPH1","CD46","CHRNA3","MELTF","EEFSEC","CD46","SLC25A24","SLC25A24","CD46","FAM120B"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="cell-type-specific-egenes" class="section level3">
 <h3>Cell type specific eGenes</h3>
 <p>An eGene is assigned to a cell type if over 60% of the PIP sum are
-from that cell type. Genes with higher sum of PIP are more likely to be
-cell type specific.</p>
+from that cell type. Genes withres4 higher sum of PIP are more likely to
+be cell type specific.</p>
 <pre><code>
       GABA     nmglut     npglut Unspecific 
-         4          8         11          4 </code></pre>
+         8         10         12          8 </code></pre>
 <div id="cell-type-composition-across-pip-distribution"
 class="section level4">
 <h4>Cell type composition across PIP distribution</h4>
-<p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
-Past versions of unnamed-chunk-12-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-12-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bb0d1d36b058717a68e94e56a209219706f7f7f4/docs/figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-12-1.png" target="_blank">bb0d1d3</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/CONTENT_cTWAS_SCZ.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="dynamic-egenes-in-gaba" class="section level4">
 <h4>Dynamic eGenes in GABA</h4>
-<p>GABA has 4 eGenes, 0 of them are dynamic.</p>
+<p>GABA has 8 eGenes, 2 of them are dynamic.</p>
 <div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["73","46","55","7"],["SYNRG","MSRA","ONECUT3","ARFRP1"],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0,0,0,0],[0,0,0,0],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[-0.575939045152933,-0.704123223377119,-0.947472580342486,-0.955488960056224]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["33","36","2","38","43","42","30","21"],["SLC25A19","STAM2","ALMS1","TTC12","ZNF627","ZNF365","PKD2L2","ISLR2"],[0.950500821182598,0.927848047650781,1.06293315975959,0.963525283066101,0.91505740347453,0.917461310845268,0.987184890468862,0.993739236048476],[0,0,0.387032417843009,0.877231463435237,0.91505740347453,0.917461310845268,0.987184890468862,0.993739236048476],[0.950500821182598,0.862818030380541,0.425690589909361,0.0862938196308642,0,0,0,0],[0.950500821182598,0.862818030380541,0.81272300775237,0.963525283066101,0.91505740347453,0.917461310845268,0.987184890468862,0.993739236048476],[0.950500821182598,0.862818030380541,0.038658172066352,-0.790937643804373,-0.91505740347453,-0.917461310845268,-0.987184890468862,-0.993739236048476]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render"],"jsHooks":[]}</script>
 </div>
 <div id="dynamic-egenes-in-nmglut" class="section level4">
 <h4>Dynamic eGenes in NMglut</h4>
-<p>nmglut has 8 eGenes, 5 of them are dynamic.</p>
+<p>nmglut has 10 eGenes, 5 of them are dynamic.</p>
 <div id="htmlwidget-771ad2536610c1179489" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["76","67","14","26","68","40","53","71"],["TMED8","SAPCD2","CAMK2N2","EFHB","SASH1","HLA-DMA","NT5DC1","SUMO2"],[0.999950603781023,0.66656631624976,0.736457818043706,0.642515402315624,0.547256034484603,0.76727025973925,0.549033900462452,0.566869524100816],[0,0,0,0,0,0.0970977244423139,0.309777599493364,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.44790061754008,0.11415932697426,0],[0,0,0,0,0,0,0,0],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.544998341982394,0.423936926467624,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.350802893097766,-0.195618272519104,-0.566869524100816]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["10","44","20","15","12","14","28","39","7","3"],["COQ10B","ZNF823","GRM3","EGR4","CYP7B1","EEFSEC","NCEH1","UNC119","CHADL","ARL14EP"],[0.999896948109047,0.999700555402251,0.997370204908935,0.91276697054982,0.533041166496331,0.500635917211054,0.935484730025129,0.93661120488198,0.952979118796575,0.980550968412375],[0,0,0,0,0,0,0.935484730025129,0.93661120488198,0.952979118796575,0.980550968412375],[0.999896948109047,0.999700555402251,0.997370204908935,0.91276697054982,0.533041166496331,0.342100368435659,0,0,0,0],[0.999896948109047,0.999700555402251,0.997370204908935,0.91276697054982,0.533041166496331,0.342100368435659,0.935484730025129,0.93661120488198,0.952979118796575,0.980550968412375],[0.999896948109047,0.999700555402251,0.997370204908935,0.91276697054982,0.533041166496331,0.342100368435659,-0.935484730025129,-0.93661120488198,-0.952979118796575,-0.980550968412375]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render"],"jsHooks":[]}</script>
 </div>
 <div id="dynamic-egenes-in-npglut" class="section level4">
 <h4>Dynamic eGenes in NPglut</h4>
-<p>npglut has 11 eGenes, 5 of them are dynamic.</p>
+<p>npglut has 12 eGenes, 7 of them are dynamic.</p>
 <div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["45","56","63","22","34","8","33","60","16","42","9"],["MDH1","PACS1","PRB2","DENND2A","GABRB2","ASIC2","FRY","PLCG1","CDAN1","HMGB1","ATF6B"],[0.847304518449159,0.856971490250861,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0,0,0,0.0630865859039228,0.309888484179369,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0.821854822585901,0.735317660609107,0.69923465019585,0.448626151371271,0.495524806071015,0,0,0,0,0],[0.847304518449159,0,0,0,0.184188930173295,0,0,0,0,0,0],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.569728495640643,0.185636321891646,-0.551806437187215,-0.768378514770342,-0.801020280845438,-0.839008109305283,-0.843673627906923]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["24","22","19","17","27","41","32","9","13","23","40","25"],["LEMD2","ITGB8","GBE1","FAM83H","NCAM1","ZDHHC24","SDCCAG8","CHRNA5","DNPH1","KHK","VPS9D1","MELTF"],[0.991117995982236,0.933321173711288,0.960001203243639,0.942091632544677,0.95070507208409,0.980477117686594,0.614496733983425,1.00355702125347,0.518027851925412,0.881795161631392,0.919129511113246,0.989965211340077],[0,0,0,0.0335284944950379,0,0,0,0.176452653824862,0.116742882309895,0.881795161631392,0.919129511113246,0.989965211340077],[0.991117995982236,0.933321173711288,0.898162344173986,0.207697298321169,0.54307393437085,0.705932731618121,0,0,0.180730313997997,0,0,0],[0,0,0,0.70086583972847,0.185030020030369,0,0.614496733983425,0.620911423568368,0.0373563402550493,0,0,0],[0.991117995982236,0.933321173711288,0.898162344173986,0.942091632544677,0.728103954401219,0.705932731618121,0.614496733983425,0.79736407739323,0.334829536562941,0.881795161631392,0.919129511113246,0.989965211340077],[0.991117995982236,0.933321173711288,0.898162344173986,0.875034643554601,0.728103954401219,0.705932731618121,0.614496733983425,0.444458769743506,0.101343771943151,-0.881795161631392,-0.919129511113246,-0.989965211340077]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

@@ -1,0 +1,9 @@
+INFO [2024-04-16 16:42:07] [[1]]
+INFO [2024-04-16 16:42:07] list(CONTENT = res3$genename[res3$PIP_sum > 0.5], GTEx = gtex.union)
+INFO [2024-04-16 16:42:07] 
+INFO [2024-04-16 16:42:07] [[2]]
+INFO [2024-04-16 16:42:07] [1] "docs/assets/venn_SCZ_CONTENT_vs_GTEx.png"
+INFO [2024-04-16 16:42:07] 
+INFO [2024-04-16 16:42:07] $imagetype
+INFO [2024-04-16 16:42:07] [1] "png"
+INFO [2024-04-16 16:42:07] 

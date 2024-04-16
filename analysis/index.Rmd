@@ -36,4 +36,8 @@ editor_options:
 \
 \
 [cTWAS across all cell types on Bipolar](eQTL_cTWAS_bipolar.html)
+\
+\
+[cTWAS across all cell types on Bipolar](CONTENT_cTWAS_SCZ.html)
+
 

@@ -100,7 +100,6 @@ gtex.union <- unique(unlist(GTEx.gene))
 GTEx.gene$Brain_union <- gtex.union
 shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
 names(shared) <- substr(names(shared), 7, nchar(names(shared)))
-names(shared)
 shared <- shared[order(shared, decreasing = T)]
 x <- barplot(shared, las=2, xaxt="n")
 text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
