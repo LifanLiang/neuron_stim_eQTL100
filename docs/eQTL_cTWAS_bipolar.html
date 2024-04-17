@@ -377,7 +377,7 @@ Bipolar</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -388,8 +388,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -398,13 +398,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-16
+<strong>Last updated:</strong> 2024-04-17
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -427,18 +427,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -529,15 +532,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefb3155f72e819decd19c24f378268e8be9a7517atargetblankfb3155fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree797b4f5ee5158adf061bee17d5a03ab90a17578btargetblank797b4f5a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fb3155f72e819decd19c24f378268e8be9a7517a" target="_blank">fb3155f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/797b4f5ee5158adf061bee17d5a03ab90a17578b" target="_blank">797b4f5</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefb3155f72e819decd19c24f378268e8be9a7517atargetblankfb3155fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree797b4f5ee5158adf061bee17d5a03ab90a17578btargetblank797b4f5a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -547,7 +550,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fb3155f72e819decd19c24f378268e8be9a7517a" target="_blank">fb3155f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/797b4f5ee5158adf061bee17d5a03ab90a17578b" target="_blank">797b4f5</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,6 +569,12 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/eQTL_cTWAS_depression.Rmd
+
+Unstaged changes:
+    Modified:   analysis/eQTL_cTWAS_bipolar.Rmd
 
 </code></pre>
 <p>
@@ -611,6 +620,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/797b4f5ee5158adf061bee17d5a03ab90a17578b/docs/eQTL_cTWAS_bipolar.html" target="_blank">797b4f5</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -790,10 +816,8 @@ wflow_publish(c("analysis", "docs", "data"))
 </div>
 <div id="weights" class="section level2">
 <h2>Weights</h2>
-<p>Use the same set of eGenes as previous restuls.These eGenes are the
-unions of eGenes across all cell types. CONTENT will produce
-tissue-specific weights for that gene if it has nonzeros weights in that
-certain tissue.</p>
+<p>Use top eQTLs from condition by condition fixed effect eQTLs, the
+same weights used in eQTL cTWAS for Schizophrenia.</p>
 <pre><code>
 Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>The following objects are masked from &#39;package:stats&#39;:
@@ -1015,7 +1039,7 @@ Lifan Liang
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
-<p>There are 55 egenes if the cutoff was set to PIP&gt;0.5.</p>
+<p>There are 27 egenes if the cutoff was set to PIP&gt;0.5.</p>
 <p><img src="figure/eQTL_cTWAS_bipolar.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
