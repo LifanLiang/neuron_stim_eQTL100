@@ -88,7 +88,7 @@ venn.diagram(list(depression=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene,bipola
              "docs/assets/venn_three_disease.png", imagetype = "png")
 ```
 
-![](docs/assets/venn_SCZ_vs_bipolar.png)
+![](assets/venn_three_disease.png)
 
 ### Enrichment analysis
 

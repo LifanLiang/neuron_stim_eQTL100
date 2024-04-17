@@ -38,6 +38,9 @@ editor_options:
 [cTWAS across all cell types on Bipolar](eQTL_cTWAS_bipolar.html)
 \
 \
+[cTWAS across all cell types on Depression](eQTL_cTWAS_depression.html)
+\
+\
 [cTWAS with CONTENT prediction on Schizophrenia](CONTENT_cTWAS_SCZ.html)
 
 

@@ -82,7 +82,7 @@ venn.diagram(list(CONTENT=res3$genename[res3$PIP_sum>0.5],eQTL=scz.gene),
              "docs/assets/venn_SCZ_CONTENT_vs_eQTL.png", imagetype = "png")
 ```
 
-![](docs/assets/venn_SCZ_CONTENT_vs_eQTL.png)
+![](assets/venn_SCZ_CONTENT_vs_eQTL.png)
 
 ### Comparison with GTEx eQTL results
 
@@ -106,8 +106,7 @@ x <- barplot(shared, las=2, xaxt="n")
 text(x,par("usr")[3],names(shared), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
 ```
 
-
-
+![](assets/venn_SCZ_CONTENT_vs_GTEx.png)
 
 ### Enrichment analysis regardless of cell types
 

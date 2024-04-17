@@ -80,7 +80,7 @@ venn.diagram(list(bipolar=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene),
              "docs/assets/venn_SCZ_vs_bipolar.png", imagetype = "png")
 ```
 
-![](docs/assets/venn_SCZ_vs_bipolar.png)
+![](assets/venn_SCZ_vs_bipolar.png)
 
 ### Enrichment analysis regardless of cell types
 
