@@ -15,7 +15,7 @@ This page introduces how to adapt a python package, "glimix_core", to fit the in
 
 #### Null model
 
-First, gene expression was regressed out of covariates (e.g. sex, age, disease status, 5 genotype PCs) jointly across conditions. And then we computed expression PC from the residual expression. The residual expression and  expression PCs were used to estimate model likelihood and individual random effects from the null model.
+First, gene expression PC is computed from residual expression after regressing out other covariates. Then gene expression was regressed out of all covariates (e.g. sex, age, disease status, 5 genotype PCs, 15 expression PCs) jointly across conditions. The coefficients of covariates were estimated together with the random effects. In this way, using residual expression to estimate model likelihood and individual random effects from the null model is identical to using all covariates. Regressing out all covariates speeds up the genotype scanning by around 100 times. However, using residual gene expression may underestimate genetic effects in the alternative model.
 
 $$
 y = X\mu + \epsilon 
@@ -51,6 +51,10 @@ $$
 \lambda_{LR} = 2(\ell_{alt} - \ell_{null}) \sim Chisq(1)
 $$
 
+#### P value calibration
+
+We permuted the genotypes such that gene expression in different conditions belonging to the same individual still belong to the same individual. For example, during permutation, gene expression for CD02 in all time points and cell tyeps will be linked to the genotypes of CD04.
+
 We permuted genotyeps for 500 genes with lowest individual random effects, genotypes were permuted 100 times for each gene, P values are well calibrated:
 
 ![P values with permuted genotyeps for genes with low individual random effects](assets/P_calibration_low_randeff.png)
@@ -59,23 +63,13 @@ We also performed the permutation for 1000 genes with highest individual random 
 
 ![P values with permuted genotyeps for genes with high individual random effects](assets/P_calibration_high_randeff.png)
 
+#### Gene level FDR control
 
-### Pi1 analysis comparison with single condition fixed effect eQTL
+We followed the the procedure described in FastQTL. Using the same permutation above, we obtain 1000 mininum P values from 1000 permutation with each gene. One thing to be aware is that all cis genotypes were shuffled together so that the LD structure remains. And then we fit a Beta distribution to the 1000 minimum P values with MLE. The adjusted P value would be the cumulative probability of the empirical minimum P value in the Beta distribution.
 
-We run Pi1 analysis on nominal P values from single condition matrixeQTL results and the current main effect eQTLs. 
+![Example of Beta distribution fitting](assets/glimix_beta_fitting.png)
+The number of eGenes idenitified by mixed effect is much smaller than that by aggregating conditions together and run fixed effects.
 
-```{r, echo=F}
-pi1 <- 1 - c(0.9158922, 0.9401148, 0.9080124, 0.9059326, 0.9312895, 
-         0.9019636, 0.9043789, 0.9339399, 0.8936793, 0.8210295)
-
-ct <- expand.grid(c("GABA","nmglut","npglut"), paste0(c(0,1,6),"hr"))
-names(pi1)[1:9] <- paste(ct$Var2, ct$Var1, sep="_")
-names(pi1)[10] <- "Glimix_main_effect"
-barplot(pi1, las=2, main="Pi1 for all eQTLs")
-```
-
-If I applied Storey's Pi to compute qvalues for all eQTLs and used qvalues<0.05 as a cutoff, LMM main effect eQTLs have 8730 eGenes.
-
-
+![eGene overlap between mixed effect eQTL and fixed effect eQTL.](assets/venn_limix_vs_fixed.png)
 
 
