@@ -102,12 +102,22 @@ res4 %>%
 ```
 
 
-#### Enrichment analysis of all genes together
+#### Enrichment analysis of significant genes
 
 ```{r, echo=F}
 library(enrichR)
 enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
 head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
+#### Enrichment analysis of union of genes from all three traits
+
+```{r,echo=F}
+enrich.union <- enrichr(unique(c(res4$genename, scz.gene, bip.gene)), "GO_Biological_Process_2018")
+head(enrich.union$GO_Biological_Process_2018[-c(5,6,8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
