@@ -71,6 +71,7 @@ We followed the the procedure described in FastQTL. Using the same permutation a
 The number of eGenes idenitified by mixed effect is much smaller than that by aggregating conditions together and run fixed effects.
 
 ![eGene overlap between mixed effect eQTL and fixed effect eQTL.](assets/venn_limix_vs_fixed.png)
+
 ### Estimating individual random effects with lead variant
 
 Given the lead variants for each gene from the eQTL results above, we first estimated fixed effects of covariates and individual random effects with the following model:
