@@ -90,11 +90,11 @@ Null model, alternative model, and likelihood ratio testing are identical to pre
 
 Below is the scatter plot of the adjusted P values with Beta approximation (Y axis) and empirical P values (X axis) on the scale of %-log10$. Although a little too stringent, Beta approximation is quite accurate at the tail.
 
-![](beta_calibration.png)
+![](assets/beta_calibration.png)
 
 Instead of Storey's Pi in the previous approach, we performed Benjamini-Hochberg for FDR control. Genes with FDR < 0.05 is considered eGenes. Overall we identified 8462 eGenes, around 700 eGenes more than the bulk approach.
 
-![](venn_limix_vs_fixed (1).png)
+![](assets/venn_limix_vs_fixed (1).png)
 
 
 
