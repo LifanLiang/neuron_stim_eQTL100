@@ -436,15 +436,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree01ad2dabea989bbe6012ad76cda92637955fd694targetblank01ad2daa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef1b144a2e5c67f466d7cc680a62804af5eb0028atargetblankf1b144aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/01ad2dabea989bbe6012ad76cda92637955fd694" target="_blank">01ad2da</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f1b144a2e5c67f466d7cc680a62804af5eb0028a" target="_blank">f1b144a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree01ad2dabea989bbe6012ad76cda92637955fd694targetblank01ad2daa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef1b144a2e5c67f466d7cc680a62804af5eb0028atargetblankf1b144aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +454,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/01ad2dabea989bbe6012ad76cda92637955fd694" target="_blank">01ad2da</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f1b144a2e5c67f466d7cc680a62804af5eb0028a" target="_blank">f1b144a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -518,6 +518,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/f1b144a2e5c67f466d7cc680a62804af5eb0028a/analysis/eQTL_glimix.Rmd" target="_blank">f1b144a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+wflow_publish(c("analysis", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/929b1705a3840c8e39b94e517ed06b3c4b32d2c4/docs/eQTL_glimix.html" target="_blank">929b170</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -910,9 +944,16 @@ value in the Beta distribution.</p>
 alt="Example of Beta distribution fitting" /> The number of eGenes
 idenitified by mixed effect is much smaller than that by aggregating
 conditions together and run fixed effects.</p>
-<p><img src="assets/venn_limix_vs_fixed.png"
-alt="eGene overlap between mixed effect eQTL and fixed effect eQTL." />
-### Estimating individual random effects with lead variant</p>
+<div class="figure">
+<img src="assets/venn_limix_vs_fixed.png" alt="" />
+<p class="caption">eGene overlap between mixed effect eQTL and fixed
+effect eQTL.</p>
+</div>
+</div>
+</div>
+<div id="estimating-individual-random-effects-with-lead-variant"
+class="section level3">
+<h3>Estimating individual random effects with lead variant</h3>
 <p>Given the lead variants for each gene from the eQTL results above, we
 first estimated fixed effects of covariates and individual random
 effects with the following model:</p>
@@ -930,7 +971,6 @@ and the model and fixed <span class="math inline">\(v_0\)</span> and
 time, we observed individual random effect reduced a lot compared to
 noise.</p>
 <p><img src="assets/indiv_randeff_leadSNP.png" /></p>
-</div>
 <div id="association-testing" class="section level4">
 <h4>Association testing</h4>
 <p>Null model, alternative model, and likelihood ratio testing are
