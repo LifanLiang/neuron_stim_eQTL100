@@ -96,9 +96,26 @@ All the 5 significant genes are dynamic.
 
 ```{r, echo=F}
 res4 <- res3[res3$PIP_sum>0.5,]
+sumstats <- readRDS("data/depression_ctwas_related_sumstats.RDS")
+res$tag <- paste(res$region_tag1, res$region_tag2, sep="_")
+res4 <- res3[res3$PIP_sum>0.5,]
+Pgene <- merge(res[c("id","genename","tag")], sumstats$gwas,
+               by.x="tag",by.y="Group.1",all.x=F)
+Pgene <- aggregate(Pgene$p, list(Pgene$genename), min)
+res4 <- merge(res4, Pgene, by.x="genename", by.y="Group.1", all.x=T)
+colnames(res4)[ncol(res4)] <- "GWAS_Pval_loci"
+
+maxqtl <- aggregate(sumstats$eqtl$pvalue,list(sumstats$eqtl$gene),min)
+res4 <- merge(res4, maxqtl, by.x="genename", by.y="Group.1")
+colnames(res4)[ncol(res4)] <- "eQTL_Pval"
+
+maxzgene <- aggregate(sumstats$zgene$p, list(sumstats$zgene$genename), min)
+res4 <- merge(res4, maxzgene, by.x="genename", by.y="Group.1")
+colnames(res4)[ncol(res4)] <- "Zgene_Pval"
+
 res4 %>%
   DT::datatable() %>%
-  DT::formatRound(columns=colnames(res4)[-c(1,16)], digits=3)
+  DT::formatRound(columns=colnames(res4)[-c(1,12:14,16)], digits=3)
 ```
 
 

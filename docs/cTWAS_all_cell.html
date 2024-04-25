@@ -377,7 +377,7 @@ Schizophrenia</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -388,8 +388,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -398,13 +398,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-16
+<strong>Last updated:</strong> 2024-04-24
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -427,18 +427,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -529,15 +532,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1655cdd0d6c6e48267022579b86b5f96418e3f6etargetblank1655cdda">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefef0b445aec147a03b60b005759547ea7321460ftargetblankfef0b44a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1655cdd0d6c6e48267022579b86b5f96418e3f6e" target="_blank">1655cdd</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fef0b445aec147a03b60b005759547ea7321460f" target="_blank">fef0b44</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree1655cdd0d6c6e48267022579b86b5f96418e3f6etargetblank1655cdda"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefef0b445aec147a03b60b005759547ea7321460ftargetblankfef0b44a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -547,7 +550,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/1655cdd0d6c6e48267022579b86b5f96418e3f6e" target="_blank">1655cdd</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fef0b445aec147a03b60b005759547ea7321460f" target="_blank">fef0b44</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,6 +569,14 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/SCZ_ctwas_related_sumstats.RDS
+    Untracked:  data/bipolar_ctwas_related_sumstats.RDS
+    Untracked:  data/depression_ctwas_related_sumstats.RDS
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
 
 </code></pre>
 <p>
@@ -611,6 +622,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/5530b53f8c72c7406f8b8753830c68ab3fe79e26/docs/cTWAS_all_cell.html" target="_blank">5530b53</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1595,20 +1623,23 @@ all GTEx brain genes.</p>
 <div id="the-shared-8-genes-pip-in-our-ctwas-results"
 class="section level4">
 <h4>The shared 8 genes PIP in our cTWAS results</h4>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="2%" />
+<col width="1%" />
+<col width="4%" />
 <col width="5%" />
 <col width="6%" />
 <col width="8%" />
-<col width="9%" />
-<col width="9%" />
 <col width="8%" />
-<col width="9%" />
-<col width="9%" />
+<col width="6%" />
 <col width="8%" />
-<col width="9%" />
-<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="5%" />
+<col width="5%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1624,11 +1655,14 @@ class="section level4">
 <th align="right">PIP_6hr_GABA</th>
 <th align="right">PIP_6hr_nmglut</th>
 <th align="right">PIP_6hr_npglut</th>
+<th align="right">GWAS_Pval_loci</th>
+<th align="right">eQTL_Pval</th>
+<th align="right">Zgene_Pval</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">50</td>
+<td align="left">18</td>
 <td align="left">DNAH7</td>
 <td align="right">0.7053632</td>
 <td align="right">0.0000000</td>
@@ -1640,9 +1674,12 @@ class="section level4">
 <td align="right">0.1359647</td>
 <td align="right">0.2116003</td>
 <td align="right">0.1563893</td>
+<td align="right">5.00e-07</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000327</td>
 </tr>
 <tr class="even">
-<td align="left">62</td>
+<td align="left">21</td>
 <td align="left">FOXN2</td>
 <td align="right">0.8830154</td>
 <td align="right">0.0000000</td>
@@ -1654,9 +1691,12 @@ class="section level4">
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
+<td align="right">1.00e-07</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000003</td>
 </tr>
 <tr class="odd">
-<td align="left">99</td>
+<td align="left">36</td>
 <td align="left">NPIPB2</td>
 <td align="right">0.7024961</td>
 <td align="right">0.1372745</td>
@@ -1668,9 +1708,12 @@ class="section level4">
 <td align="right">0.1361102</td>
 <td align="right">0.1262611</td>
 <td align="right">0.0000000</td>
+<td align="right">1.66e-05</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000841</td>
 </tr>
 <tr class="even">
-<td align="left">130</td>
+<td align="left">48</td>
 <td align="left">SERPINI1</td>
 <td align="right">0.7920083</td>
 <td align="right">0.0000000</td>
@@ -1682,9 +1725,12 @@ class="section level4">
 <td align="right">0.1750695</td>
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
+<td align="right">1.29e-05</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000129</td>
 </tr>
 <tr class="odd">
-<td align="left">137</td>
+<td align="left">49</td>
 <td align="left">SLF2</td>
 <td align="right">0.5159815</td>
 <td align="right">0.0000000</td>
@@ -1696,9 +1742,12 @@ class="section level4">
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.2768985</td>
+<td align="right">3.40e-05</td>
+<td align="right">0.0000003</td>
+<td align="right">0.0001630</td>
 </tr>
 <tr class="even">
-<td align="left">140</td>
+<td align="left">51</td>
 <td align="left">SNX19</td>
 <td align="right">0.6339460</td>
 <td align="right">0.0948664</td>
@@ -1710,9 +1759,12 @@ class="section level4">
 <td align="right">0.0940609</td>
 <td align="right">0.1465995</td>
 <td align="right">0.0000000</td>
+<td align="right">0.00e+00</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000003</td>
 </tr>
 <tr class="odd">
-<td align="left">146</td>
+<td align="left">53</td>
 <td align="left">TDRD6</td>
 <td align="right">0.7867461</td>
 <td align="right">0.0000000</td>
@@ -1724,9 +1776,12 @@ class="section level4">
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
 <td align="right">0.2656881</td>
+<td align="right">8.21e-05</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0001497</td>
 </tr>
 <tr class="even">
-<td align="left">161</td>
+<td align="left">60</td>
 <td align="left">ZNF823</td>
 <td align="right">0.9242300</td>
 <td align="right">0.0000000</td>
@@ -1737,6 +1792,9 @@ class="section level4">
 <td align="right">0.92423</td>
 <td align="right">0.0000000</td>
 <td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.00e+00</td>
+<td align="right">0.0003992</td>
 <td align="right">0.0000000</td>
 </tr>
 </tbody>
@@ -1774,50 +1832,6 @@ Parsing results... Done.</code></pre>
 <div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["purine ribonucleotide metabolic process (GO:0009150)","nucleic acid phosphodiester bond hydrolysis (GO:0090305)","regulation of superoxide metabolic process (GO:0090322)","glycosyl compound catabolic process (GO:1901658)","negative regulation of type I interferon-mediated signaling pathway (GO:0060339)","adenylate cyclase-inhibiting G-protein coupled acetylcholine receptor signaling pathway (GO:0007197)","negative regulation of dendritic spine development (GO:0061000)","deadenylation-independent decapping of nuclear-transcribed mRNA (GO:0031087)","B cell chemotaxis (GO:0035754)","regulation of MHC class I biosynthetic process (GO:0045343)"],["2/66","2/73","1/6","1/6","1/6","1/6","1/6","1/6","1/6","1/6"],[0.00734606342789102,0.00892341174482248,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795,0.0116444467860795],[0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859,0.169042370075859],["OLA1;CROT","XRN2;DCP1B","GCH1","NAGA","NLRC5","CHRM3","NGEF","DCP1B","CYP7B1","NLRC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
-<div id="dynamics-of-the-8-shared-genes-with-gtex"
-class="section level4">
-<h4>Dynamics of the 8 shared genes with GTEx</h4>
-<pre class="r"><code>shared &lt;- res4[res4$genename %in% gtex.union,]
-boxplot(shared$PIP_diff)</code></pre>
-<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
-Past versions of unnamed-chunk-14-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-14-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/dfe2bf5f4c931827df1fcce1597e5053eb40cfa8/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-14-1.png" target="_blank">dfe2bf5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-10
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
 <div id="enrichment-analysis-of-static-genes" class="section level4">
 <h4>Enrichment analysis of static genes</h4>
 <p>Static genes are significant genes that are not dynamic genes.</p>
@@ -1839,6 +1853,62 @@ cell type specific.</p>
 <div id="cell-type-composition-across-pip-distribution"
 class="section level4">
 <h4>Cell type composition across PIP distribution</h4>
+<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ac0bb63a17c3c144cead716a1d8cf790f2d166c7/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" target="_blank">ac0bb63</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-10
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/600a88fc701b52faa92fe43aade58146d058f3fc/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-16-1.png" target="_blank">600a88f</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-type-composition-of-gtex-shared-genes"
+class="section level4">
+<h4>Cell type composition of GTEx shared genes</h4>
+<p>Since GTEx is bulk eQTL, the cell type contribution of the shared
+genes for SCZ can only be elucidated by our joint condition cTWAS
+results.</p>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
@@ -1877,50 +1947,19 @@ Lifan Liang
 </table>
 </div>
 </div>
+<div id="distribution-of-shared-genes-across-cell-types"
+class="section level5">
+<h5>Distribution of shared genes across cell types</h5>
+<pre><code>
+    nmglut     npglut Unspecific 
+         2          2          4 </code></pre>
 </div>
-<div id="cell-type-composition-of-gtex-shared-genes"
-class="section level4">
-<h4>Cell type composition of GTEx shared genes</h4>
-<p>Since GTEx is bulk eQTL, the cell type contribution of the shared
-genes for SCZ can only be elucidated by our joint condition cTWAS
-results.</p>
-<p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
-Past versions of unnamed-chunk-18-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-18-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/dfe2bf5f4c931827df1fcce1597e5053eb40cfa8/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-18-1.png" target="_blank">dfe2bf5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-10
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div id="distribution-of-unique-genes-across-cell-types"
+class="section level5">
+<h5>Distribution of unique genes across cell types</h5>
+<pre><code>
+      GABA     nmglut     npglut Unspecific 
+        21         16         11          4 </code></pre>
 </div>
 </div>
 </div>
@@ -1934,7 +1973,7 @@ dynamic.</p>
 <h4>Dynamic eGenes in GABA</h4>
 <p>GABA has 21 eGenes, 12 of them are dynamic.</p>
 <div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["64","54","40","94","9","121","124","70","153","154","78","97","32","114","109","142","102","120","7","108","27"],["GALK2","EFHB","CROT","NDUFA6","ARL14EP","RBBP5","RCC1","GPR137","XKR4","XRN2","KCNA4","NLRC5","CHL1","PPFIA3","PCNX1","SYNGR1","NUDT22","RASA3","ANKRD39","PCDH7","CDPF1"],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.506382495498012,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0,0,0,0,0,0,0,0,0,0,0,0.20331188644087,0.52827228979762,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0.885489351807218,0,0.840067687944772,0,0.433995316689152,0.735657608968323,0,0.612057718738372,0,0.548551293787507,0.525354230688015,0.264244209801506,0.204283441083917,0,0,0,0,0,0,0],[0.937840919816047,0,0.868267869654942,0,0.813893454826733,0.330883537113793,0,0.710177091630636,0,0.572312290869186,0,0,0.201590955678396,0,0,0,0,0,0,0,0],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.262523279039032,-0.323988848713703,-0.36324645386944,-0.527051722997696,-0.603687005036302,-0.714221526355868,-0.758136462474273,-0.8229272530088,-0.924944260000973]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["23","20","15","32","4","46","47","27","56","57","28","35","12","44","41","52","37","45","2","40","11"],["GALK2","EFHB","CROT","NDUFA6","ARL14EP","RBBP5","RCC1","GPR137","XKR4","XRN2","KCNA4","NLRC5","CHL1","PPFIA3","PCNX1","SYNGR1","NUDT22","RASA3","ANKRD39","PCDH7","CDPF1"],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.506382495498012,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0,0,0,0,0,0,0,0,0,0,0,0.20331188644087,0.52827228979762,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0,0.885489351807218,0,0.840067687944772,0,0.433995316689152,0.735657608968323,0,0.612057718738372,0,0.548551293787507,0.525354230688015,0.264244209801506,0.204283441083917,0,0,0,0,0,0,0],[0.937840919816047,0,0.868267869654942,0,0.813893454826733,0.330883537113793,0,0.710177091630636,0,0.572312290869186,0,0,0.201590955678396,0,0,0,0,0,0,0,0],[1.50995031331211e-06,1.39604693761089e-06,1.69321949491931e-15,1.95464853405833e-06,1.2842249307321e-06,4.95508583243399e-06,8.25302700640605e-09,1.25335534596867e-07,7.66598542157159e-05,1.10504086302653e-05,5.71650533772564e-08,1.64716985945417e-05,3.39305828320367e-05,9.15204100639211e-12,3.30756047464246e-14,2.48096147902836e-11,2.01230075497059e-07,4.00418639677817e-07,2.15750902923861e-08,2.89080267604468e-08,7.45162866379611e-06],[8.68988488778213e-05,1.40712937340677e-06,3.13847980892573e-05,1.8136283926884e-06,3.18119534046593e-05,8.17211749182273e-07,0.000309329393999677,0.000212560516466419,2.52149392200614e-13,9.02690566887615e-06,0.000127319139988642,3.76041190297769e-05,0.000296194045402909,1.10371965272517e-05,8.14067845802323e-08,1.0834066724405e-06,8.79796620559762e-05,8.92673333267425e-07,7.87595361536556e-05,8.60693580507827e-07,0.000104262176224763],[1.50995031332779e-06,2.19562967019419e-06,1.48487205866537e-08,1.95464853407277e-06,1.28422493072232e-06,6.6262123263284e-06,9.05979653321994e-08,2.67831407628121e-06,0.000127094126937442,1.1861420731115e-05,2.87720417915742e-05,7.79661451423457e-05,0.000180983707823933,8.59152260180926e-06,2.76279577317246e-06,4.25403370003189e-09,6.83359473011684e-07,4.00418639673664e-07,3.14769548316395e-08,2.89080267606224e-08,7.45162866378538e-06],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.669147051920772,0.732555730881537,0.36324645386944,0.527051722997696,0.603687005036302,0.714221526355868,0.758136462474273,0.8229272530088,0.924944260000973],[0.937840919816047,0.885489351807218,0.868267869654942,0.840067687944772,0.813893454826733,0.764878853802945,0.735657608968323,0.710177091630636,0.612057718738372,0.572312290869186,0.548551293787507,0.525354230688015,0.262523279039032,-0.323988848713703,-0.36324645386944,-0.527051722997696,-0.603687005036302,-0.714221526355868,-0.758136462474273,-0.8229272530088,-0.924944260000973]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-gaba-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for GABA specific genes</h5>
@@ -1966,7 +2005,7 @@ Parsing results... Done.</code></pre>
 <h4>Dynamic eGenes in NMglut</h4>
 <p>nmglut has 19 eGenes, 13 of them are dynamic.</p>
 <div id="htmlwidget-7af0e23c13b7c4def9a9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7af0e23c13b7c4def9a9">{"x":{"filter":"none","vertical":false,"data":[["158","68","38","62","12","5","45","63","96","18","107","47","10","99","8","53","81","95"],["ZMYND10","GLIPR2","CPT1C","FOXN2","ATP5PO","ADAMTS2","CYP7B1","FZD4","NGEF","C17orf75","OXLD1","DCP1B","ATE1","NPIPB2","ANKRD45","DNPH1","KIAA0319","NDUFS5"],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.707817613969744,0.702496106482498,0.566994321408849,0.558263998092711,0.511527827108036,0.577652913489344],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.577652913489344],[0,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0,0.704223815145326,0.698673284675076,0,0,0.596419033075071,0.2647860752224,0.302850254309491,0.388638373605348,0.38558095805507,0.356365282890939,0],[0.940355591290139,0,0,0,0,0,0.742701508150125,0,0,0.650158345780552,0.640488813351533,0,0.185883537497403,0.126261128941732,0,0,0,0],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,0.577652913489344],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,-0.577652913489344]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-7af0e23c13b7c4def9a9">{"x":{"filter":"none","vertical":false,"data":[["59","26","14","21","6","1","16","22","34","8","39","17","5","36","3","19","29","33"],["ZMYND10","GLIPR2","CPT1C","FOXN2","ATP5PO","ADAMTS2","CYP7B1","FZD4","NGEF","C17orf75","OXLD1","DCP1B","ATE1","NPIPB2","ANKRD45","DNPH1","KIAA0319","NDUFS5"],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.707817613969744,0.702496106482498,0.566994321408849,0.558263998092711,0.511527827108036,0.577652913489344],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.577652913489344],[0,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0,0.704223815145326,0.698673284675076,0,0,0.596419033075071,0.2647860752224,0.302850254309491,0.388638373605348,0.38558095805507,0.356365282890939,0],[0.940355591290139,0,0,0,0,0,0.742701508150125,0,0,0.650158345780552,0.640488813351533,0,0.185883537497403,0.126261128941732,0,0,0,0],[1.34576949226334e-06,1.02126388188242e-08,9.15204100639211e-12,1.39068311186213e-07,7.29879300814998e-05,8.39077564402231e-05,3.12490334282285e-08,0.00032874625920371,2.16618855619588e-17,3.82254675206968e-06,6.15158869037764e-06,5.85584047510244e-22,8.66812141683158e-06,1.66405258785314e-05,1.19385711478778e-07,5.08431134370757e-08,5.35818147656712e-06,4.81487023337211e-06],[2.9873517516195e-05,1.27794732164595e-05,2.25970911292455e-10,3.8437362539544e-09,1.88617439430284e-05,3.30004206047013e-06,1.0428437016814e-05,0.000176440859348177,1.53553028974885e-05,2.53016626711147e-05,0.000117884681984426,0.000107154819951777,2.92836100722357e-10,1.16986277844321e-18,4.29159831202535e-06,3.55955348814735e-10,3.83998150228987e-12,6.35982866539809e-09],[5.49651800554382e-05,5.7995577776577e-08,2.04958193869384e-11,3.25871821343548e-07,7.29879300815934e-05,9.10799429516561e-05,9.64260673029828e-08,0.000328746259203471,3.09714353595671e-13,1.18614207310325e-05,3.34377099589438e-05,1.06866068753564e-05,0.000147658241673083,8.41345858251124e-05,2.57931390991786e-07,2.35849164195923e-07,6.96419401313566e-05,7.69902176079336e-06],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,0.577652913489344],[0.940355591290139,0.938742625633472,0.905347681624163,0.88301539876483,0.78429283206186,0.7495226687979,0.742701508150125,0.704223815145326,0.698673284675076,0.650158345780552,0.640488813351533,0.596419033075071,0.450669612719803,0.429111383251223,0.388638373605348,0.38558095805507,0.356365282890939,-0.577652913489344]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-nmglut-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for NMglut specific genes</h5>
@@ -1998,7 +2037,7 @@ Parsing results... Done.</code></pre>
 <h4>Dynamic eGenes in NPglut</h4>
 <p>npglut has 13 eGenes, 9 of them are dynamic</p>
 <div id="htmlwidget-224ae002e7acfef1f0c4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-224ae002e7acfef1f0c4">{"x":{"filter":"none","vertical":false,"data":[["147","92","161","105","111","138","65","156","33","146","112","88","15"],["THBS3","NAGA","ZNF823","OLA1","PCYT1A","SMDT1","GCH1","ZCCHC4","CHRM3","TDRD6","PDXDC1","MOB3A","BMF"],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.786746131007089,0.672211938974441,0.732585049667497,0.908743687922834],[0,0,0,0,0,0,0,0,0,0.217928009627839,0.45143416166357,0.732585049667497,0.908743687922834],[0,0,0.924230021097604,0,0,0.370719909931534,0,0,0,0,0.220777777310871,0,0],[0.958523468139702,0.952637017566327,0,0.800427559876444,0.755054652974393,0.358227510148793,0.702388865128127,0.61685713169152,0.611909983807443,0.265688052633165,0,0,0],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.483616062261004,0.672211938974441,0.732585049667497,0.908743687922834],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.047760043005326,-0.230656384352699,-0.732585049667497,-0.908743687922834]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-224ae002e7acfef1f0c4">{"x":{"filter":"none","vertical":false,"data":[["54","31","60","38","42","50","24","58","13","53","43","30","7"],["THBS3","NAGA","ZNF823","OLA1","PCYT1A","SMDT1","GCH1","ZCCHC4","CHRM3","TDRD6","PDXDC1","MOB3A","BMF"],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.786746131007089,0.672211938974441,0.732585049667497,0.908743687922834],[0,0,0,0,0,0,0,0,0,0.217928009627839,0.45143416166357,0.732585049667497,0.908743687922834],[0,0,0.924230021097604,0,0,0.370719909931534,0,0,0,0,0.220777777310871,0,0],[0.958523468139702,0.952637017566327,0,0.800427559876444,0.755054652974393,0.358227510148793,0.702388865128127,0.61685713169152,0.611909983807443,0.265688052633165,0,0,0],[1.43372935401717e-07,2.39652139016889e-14,3.52976576422236e-10,1.46071910096446e-07,3.97506217345987e-05,2.39652139016889e-14,1.4249724226616e-06,9.63543792376783e-06,1.57537294801007e-12,8.20553715310247e-05,0.000232285958663882,2.03366359412943e-06,8.29084111686257e-11],[0.000291784456214919,1.30951538053316e-05,0.000399224210219279,6.76461395411707e-05,1.03911916083748e-05,0.00024832146323647,6.55564350242665e-05,2.61404901640266e-05,0.000109458686991371,3.10872060031092e-08,5.87630312051415e-07,1.61527461333437e-05,4.25286848935953e-06],[1.43372935402604e-07,1.0408285816579e-10,3.52976576424559e-10,6.80122025500247e-06,3.97506217344012e-05,7.22475225053278e-12,2.32167902669992e-06,0.000106109298362317,9.13707186631746e-05,0.000149677344158645,0.000359413223820191,9.69988605710638e-06,1.04020873926883e-10],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.483616062261004,0.672211938974441,0.732585049667497,0.908743687922834],[0.958523468139702,0.952637017566327,0.924230021097604,0.800427559876444,0.755054652974393,0.728947420080327,0.702388865128127,0.61685713169152,0.611909983807443,0.047760043005326,-0.230656384352699,-0.732585049667497,-0.908743687922834]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
 <div id="enrichment-analysis-for-npglut-specific-genes"
 class="section level5">
 <h5>Enrichment analysis for NPglut specific genes</h5>

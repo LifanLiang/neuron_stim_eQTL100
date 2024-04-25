@@ -82,6 +82,7 @@ venn.diagram(list(bipolar=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene),
 
 ![](assets/venn_SCZ_vs_bipolar.png)
 
+
 ### Enrichment analysis regardless of cell types
 
 #### Enrichment analysis of all genes together
@@ -89,6 +90,23 @@ venn.diagram(list(bipolar=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene),
 ```{r, echo=F}
 library(enrichR)
 res4 <- res3[res3$PIP_sum>0.5,]
+sumstats <- readRDS("data/bipolar_ctwas_related_sumstats.RDS")
+res$tag <- paste(res$region_tag1, res$region_tag2, sep="_")
+res4 <- res3[res3$PIP_sum>0.5,]
+Pgene <- merge(res[c("id","genename","tag")], sumstats$gwas,
+               by.x="tag",by.y="Group.1",all.x=F)
+Pgene <- aggregate(Pgene$p, list(Pgene$genename), min)
+res4 <- merge(res4, Pgene, by.x="genename", by.y="Group.1", all.x=T)
+colnames(res4)[ncol(res4)] <- "GWAS_Pval_loci"
+
+maxqtl <- aggregate(sumstats$eqtl$pvalue,list(sumstats$eqtl$gene),min)
+res4 <- merge(res4, maxqtl, by.x="genename", by.y="Group.1")
+colnames(res4)[ncol(res4)] <- "eQTL_Pval"
+
+maxzgene <- aggregate(sumstats$zgene$p, list(sumstats$zgene$genename), min)
+res4 <- merge(res4, maxzgene, by.x="genename", by.y="Group.1")
+colnames(res4)[ncol(res4)] <- "Zgene_Pval"
+
 enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
 head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::datatable() %>%
@@ -152,7 +170,7 @@ GABA has 4 eGenes, 0 of them are dynamic.
 ```{r, echo=F}
 library(dplyr)
 res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
-res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,13,17)]
+res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12:14,16,20)]
 res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.GABA)[-1], digits=3)
@@ -163,7 +181,7 @@ res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
 nmglut has 8 eGenes, 5 of them are dynamic.
 
 ```{r, echo=F}
-res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,14,18)]
+res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,12:14,17,21)]
 res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.nmglut)[-1], digits=3)
@@ -174,7 +192,7 @@ res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
 npglut has 11 eGenes, 5 of them are dynamic.
 
 ```{r, echo=F}
-res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,15,19)]
+res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11:14,18,22)]
 res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.npglut)[-1], digits=3)

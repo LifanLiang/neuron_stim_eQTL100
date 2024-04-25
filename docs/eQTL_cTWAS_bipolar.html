@@ -377,7 +377,7 @@ Bipolar</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -388,8 +388,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -398,13 +398,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-17
+<strong>Last updated:</strong> 2024-04-24
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -427,18 +427,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -529,15 +532,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7ee413b6003dd36213a72dea0be6a44b85219f9ctargetblank7ee413ba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefef0b445aec147a03b60b005759547ea7321460ftargetblankfef0b44a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7ee413b6003dd36213a72dea0be6a44b85219f9c" target="_blank">7ee413b</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fef0b445aec147a03b60b005759547ea7321460f" target="_blank">fef0b44</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7ee413b6003dd36213a72dea0be6a44b85219f9ctargetblank7ee413ba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treefef0b445aec147a03b60b005759547ea7321460ftargetblankfef0b44a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -547,7 +550,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7ee413b6003dd36213a72dea0be6a44b85219f9c" target="_blank">7ee413b</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/fef0b445aec147a03b60b005759547ea7321460f" target="_blank">fef0b44</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,6 +569,15 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/SCZ_ctwas_related_sumstats.RDS
+    Untracked:  data/bipolar_ctwas_related_sumstats.RDS
+    Untracked:  data/depression_ctwas_related_sumstats.RDS
+
+Unstaged changes:
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/eQTL_cTWAS_bipolar.Rmd
 
 </code></pre>
 <p>
@@ -611,6 +623,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/2877f2190a166ce44c6c9d754713fee6774b4a9a/docs/eQTL_cTWAS_bipolar.html" target="_blank">2877f21</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1262,19 +1291,19 @@ Lifan Liang
 <h4>Dynamic eGenes in GABA</h4>
 <p>GABA has 4 eGenes, 0 of them are dynamic.</p>
 <div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["73","46","55","7"],["SYNRG","MSRA","ONECUT3","ARFRP1"],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0,0,0,0],[0,0,0,0],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[-0.575939045152933,-0.704123223377119,-0.947472580342486,-0.955488960056224]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["26","16","18","1"],["SYNRG","MSRA","ONECUT3","ARFRP1"],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[0,0,0,0],[0,0,0,0],[1.91476837441031e-06,3.05129102187036e-11,2.77847812781876e-06,5.72001919990593e-07],[5.30841797413261e-06,3.94080299215838e-05,0.000115470843236868,3.51683088057247e-05],[1.36009583573515e-05,7.15032060437772e-10,2.77847812781134e-06,5.72001919986308e-07],[0.575939045152933,0.704123223377119,0.947472580342486,0.955488960056224],[-0.575939045152933,-0.704123223377119,-0.947472580342486,-0.955488960056224]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_1hr_GABA<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>GABA_sum<\/th>\n      <th>GABA_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
 </div>
 <div id="dynamic-egenes-in-nmglut" class="section level4">
 <h4>Dynamic eGenes in NMglut</h4>
 <p>nmglut has 8 eGenes, 5 of them are dynamic.</p>
 <div id="htmlwidget-771ad2536610c1179489" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["76","67","14","26","68","40","53","71"],["TMED8","SAPCD2","CAMK2N2","EFHB","SASH1","HLA-DMA","NT5DC1","SUMO2"],[0.999950603781023,0.66656631624976,0.736457818043706,0.642515402315624,0.547256034484603,0.76727025973925,0.549033900462452,0.566869524100816],[0,0,0,0,0,0.0970977244423139,0.309777599493364,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.44790061754008,0.11415932697426,0],[0,0,0,0,0,0,0,0],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.544998341982394,0.423936926467624,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.350802893097766,-0.195618272519104,-0.566869524100816]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-771ad2536610c1179489">{"x":{"filter":"none","vertical":false,"data":[["27","22","5","9","23","12","17","24"],["TMED8","SAPCD2","CAMK2N2","EFHB","SASH1","HLA-DMA","NT5DC1","SUMO2"],[0.999950603781023,0.66656631624976,0.736457818043706,0.642515402315624,0.547256034484603,0.76727025973925,0.549033900462452,0.566869524100816],[0,0,0,0,0,0.0970977244423139,0.309777599493364,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.44790061754008,0.11415932697426,0],[9.41526274239347e-06,7.30116376776306e-05,9.39758435938655e-07,2.67013235958008e-05,2.9703451679284e-06,2.17478448431783e-07,1.87830028746325e-06,2.11855215091648e-07],[2.45592798063875e-11,6.65295793115135e-05,2.22513746105328e-07,1.40712937340677e-06,5.31291562270126e-07,2.45329550610174e-11,8.81686294615289e-11,0.000170663628818679],[0.00182149245302171,0.000166988570651738,2.54114943462961e-06,3.84335821208201e-05,2.70996702245911e-05,1.27343565663808e-06,6.46847330799159e-06,2.1185521509203e-07],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.544998341982394,0.423936926467624,0.566869524100816],[0.999950603781023,0.66656631624976,0.662926388409223,0.642515402315624,0.547256034484603,0.350802893097766,-0.195618272519104,-0.566869524100816]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>nmglut_sum<\/th>\n      <th>nmglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render"],"jsHooks":[]}</script>
 </div>
 <div id="dynamic-egenes-in-npglut" class="section level4">
 <h4>Dynamic eGenes in NPglut</h4>
 <p>npglut has 11 eGenes, 5 of them are dynamic.</p>
 <div id="htmlwidget-118ca324790aac282ebf" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["45","56","63","22","34","8","33","60","16","42","9"],["MDH1","PACS1","PRB2","DENND2A","GABRB2","ASIC2","FRY","PLCG1","CDAN1","HMGB1","ATF6B"],[0.847304518449159,0.856971490250861,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0,0,0,0.0630865859039228,0.309888484179369,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0.821854822585901,0.735317660609107,0.69923465019585,0.448626151371271,0.495524806071015,0,0,0,0,0],[0.847304518449159,0,0,0,0.184188930173295,0,0,0,0,0,0],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.569728495640643,0.185636321891646,-0.551806437187215,-0.768378514770342,-0.801020280845438,-0.839008109305283,-0.843673627906923]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-118ca324790aac282ebf">{"x":{"filter":"none","vertical":false,"data":[["15","19","21","7","11","2","10","20","6","14","3"],["MDH1","PACS1","PRB2","DENND2A","GABRB2","ASIC2","FRY","PLCG1","CDAN1","HMGB1","ATF6B"],[0.847304518449159,0.856971490250861,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0,0,0,0.0630865859039228,0.309888484179369,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0,0.821854822585901,0.735317660609107,0.69923465019585,0.448626151371271,0.495524806071015,0,0,0,0,0],[0.847304518449159,0,0,0,0.184188930173295,0,0,0,0,0,0],[4.5425298763926e-06,2.20837651202641e-09,0.000106151716561724,0.000111620656231479,5.65582991087331e-06,3.70411206022692e-05,5.47014856624202e-06,2.06824929137413e-05,2.57971356141818e-09,5.22664261046464e-08,3.98580469996663e-11],[7.06885501606625e-05,1.18232417529226e-07,4.23423745841582e-06,2.87597143738053e-05,4.85261210302299e-05,1.14696426034534e-05,3.37575861571289e-05,0.000260386878849262,0.000455859247575989,2.764494151262e-06,2.81134118816539e-06],[4.54252987636806e-06,5.34339175970922e-09,0.000106151716561778,0.000111620656231287,3.48822950218103e-05,4.62898680437088e-05,9.18567206661172e-06,2.06824929137073e-05,2.57971356141654e-09,5.22664261041176e-08,2.08099343267303e-09],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.695901667448489,0.805413290250384,0.551806437187215,0.768378514770342,0.801020280845438,0.839008109305283,0.843673627906923],[0.847304518449159,0.821854822585901,0.735317660609107,0.69923465019585,0.569728495640643,0.185636321891646,-0.551806437187215,-0.768378514770342,-0.801020280845438,-0.839008109305283,-0.843673627906923]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n      <th>npglut_sum<\/th>\n      <th>npglut_PIP_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
