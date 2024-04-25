@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Lifan Liang" />
 
+<meta name="date" content="2024-04-25" />
 
-<title>Home</title>
+<title>eQTL_cTWAS_ADHD</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -230,6 +235,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -237,6 +305,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -280,7 +358,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">eQTL_cTWAS_ADHD</h1>
+<h4 class="author">Lifan Liang</h4>
+<h4 class="date">2024-04-25</h4>
 
 </div>
 
@@ -313,7 +393,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span> 0
 </p>
@@ -350,6 +430,90 @@ class="panel-collapse collapse">
 <p>Great! Since the R Markdown file has been committed to the Git
 repository, you know the exact version of the code that produced these
 results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20231109code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20231109)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20231109code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20231109)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -410,10 +574,11 @@ have uncommitted changes.
 
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML
-(<code>docs/index.html</code>) files. If you’ve configured a remote Git
-repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
-in the table below to view the files as they were in that past version.
+made to the R Markdown (<code>analysis/eQTL_cTWAS_ADHD.Rmd</code>) and
+HTML (<code>docs/eQTL_cTWAS_ADHD.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -442,7 +607,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/8af94ffcde019ec0c65ca8d5e614634fb5be335e/analysis/index.Rmd" target="_blank">8af94ff</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/8af94ffcde019ec0c65ca8d5e614634fb5be335e/analysis/eQTL_cTWAS_ADHD.Rmd" target="_blank">8af94ff</a>
 </td>
 <td>
 Lifan Liang
@@ -454,550 +619,6 @@ Lifan Liang
 wflow_publish(c("analysis", "data"))
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/2877f2190a166ce44c6c9d754713fee6774b4a9a/docs/index.html" target="_blank">2877f21</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-17
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/7ee413b6003dd36213a72dea0be6a44b85219f9c/analysis/index.Rmd" target="_blank">7ee413b</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-17
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/7ee413b6003dd36213a72dea0be6a44b85219f9c/docs/index.html" target="_blank">7ee413b</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-17
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/797b4f5ee5158adf061bee17d5a03ab90a17578b/docs/index.html" target="_blank">797b4f5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/fb3155f72e819decd19c24f378268e8be9a7517a/analysis/index.Rmd" target="_blank">fb3155f</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/fb3155f72e819decd19c24f378268e8be9a7517a/docs/index.html" target="_blank">fb3155f</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/5530b53f8c72c7406f8b8753830c68ab3fe79e26/docs/index.html" target="_blank">5530b53</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/1655cdd0d6c6e48267022579b86b5f96418e3f6e/analysis/index.Rmd" target="_blank">1655cdd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-wflow_publish(c("analysis", "docs", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1655cdd0d6c6e48267022579b86b5f96418e3f6e/docs/index.html" target="_blank">1655cdd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-16
-</td>
-<td>
-wflow_publish(c("analysis", "docs", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/6c5f47d8a364c25d4c16b864a04a41a6d4e73748/docs/index.html" target="_blank">6c5f47d</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/da0110b7290ca7daa2f9040911557617e54731a8/analysis/index.Rmd" target="_blank">da0110b</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-04-11
-</td>
-<td>
-wflow_publish("analysis")
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/16cc513c896261c89a38fa217ba9a5b53f228cd8/docs/index.html" target="_blank">16cc513</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/586008310eb8456d7d545b51b0f4847a5d6e1e84/analysis/index.Rmd" target="_blank">5860083</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-wflow_publish("analysis")
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bee6c05ecbabca67f912ea1eb8cd1f2f2bce3697/docs/index.html" target="_blank">bee6c05</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/0c544d0141dc0c075444f7bcb6a6cf77ac845d57/analysis/index.Rmd" target="_blank">0c544d0</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-21
-</td>
-<td>
-wflow_publish(c("data", "analysis"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/77c61c11e53f479e9ecf0a55e0870620f9168e1e/docs/index.html" target="_blank">77c61c1</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/467f424c6868c5138e5e4bce58155e7a2032d6d6/analysis/index.Rmd" target="_blank">467f424</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/467f424c6868c5138e5e4bce58155e7a2032d6d6/docs/index.html" target="_blank">467f424</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-03-15
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/6f8a4e8b6458a665215fd5152bdf735b5d28fba5/docs/index.html" target="_blank">6f8a4e8</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ad1046797a0f8315a89d617ebfcac03c046d7550/analysis/index.Rmd" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ad1046797a0f8315a89d617ebfcac03c046d7550/docs/index.html" target="_blank">ad10467</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-20
-</td>
-<td>
-wflow_publish(c("analysis", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/eedfee5819b640e6616ca4b8aea86b52983b5b9c/docs/index.html" target="_blank">eedfee5</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/78c0cbc5d0856a39a8e12258f53088f989b9e00a/analysis/index.Rmd" target="_blank">78c0cbc</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-02-09
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/fedff992f00871e1f4a791a67ed5c2391c0f31f0/docs/index.html" target="_blank">fedff99</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/analysis/index.Rmd" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8/docs/index.html" target="_blank">9a4c4cd</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-01-12
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/1f5299991f8a988fc30a150a821bde531885f5e2/docs/index.html" target="_blank">1f52999</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/feb17830faf52041ed0ad97f06150c705aa15dcb/analysis/index.Rmd" target="_blank">feb1783</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-12-08
-</td>
-<td>
-wflow_publish(c("analysis", "data"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cf0d8df0c4013bbe3ed414e035f6805e85e476aa/docs/index.html" target="_blank">cf0d8df</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/ee193fe130edb0a02a90add90d21f60d0557f934/analysis/index.Rmd" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ee193fe130edb0a02a90add90d21f60d0557f934/docs/index.html" target="_blank">ee193fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/28e7b447dabef7c79d28e422478c82869280171a/analysis/index.Rmd" target="_blank">28e7b44</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2023-11-09
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1005,41 +626,79 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p><a href="cTWAS.html">Multigroup cTWAS results of eQTL</a><br />
-<br />
-<a href="single_cTWAS.html">Single group cTWAS results</a><br />
-<br />
-<a href="caQTL_cTWAS.html">Multigroup cTWAS results of caQTL</a><br />
-<br />
-<a href="caQTL_ASoC_shared.html">Sharing signal between caQTL (cTWAS)
-and ASoC</a><br />
-<br />
-<a href="eQTL_mapping.html">eQTL mapping (fixed effect only)</a><br />
-<br />
-<a href="eQTL_glimix.html">eQTL mapping with mixed effects</a><br />
-<br />
-<a href="eQTL_interaction.html">Interaction testing for eQTL</a><br />
-<br />
-<a href="eQTL_all_cell.html">Pseudo bulk eQTL across all cell
-types</a><br />
-<br />
-<a href="cTWAS_all_cell.html">cTWAS across all cell types on
-Schizophrenia</a><br />
-<br />
-<a href="eQTL_cTWAS_bipolar.html">cTWAS across all cell types on
-Bipolar</a><br />
-<br />
-<a href="eQTL_cTWAS_depression.html">cTWAS across all cell types on
-Depression</a><br />
-<br />
-<a href="eQTL_cTWAS_ADHD.html">cTWAS across all cell types on
-ADHD</a><br />
-<br />
-<a href="eQTL_cTWAS_neuroticism.html">cTWAS across all cell types on
-neuroticism</a><br />
-<br />
-<a href="CONTENT_cTWAS_SCZ.html">cTWAS with CONTENT prediction on
-Schizophrenia</a></p>
+<div id="weights" class="section level2">
+<h2>Weights</h2>
+<p>The same eQTL derived weights as other cTWAS results</p>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>       SNP   0hr_GABA 0hr_nmglut 0hr_npglut   1hr_GABA 1hr_nmglut 1hr_npglut 
+   6676290       3898       2395       4796       3963       2404       4876 
+  6hr_GABA 6hr_nmglut 6hr_npglut 
+      3985       2406       4915 </code></pre>
+</div>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="prior-for-each-context" class="section level3">
+<h3>Prior for each context</h3>
+<p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="pve-for-each-context" class="section level3">
+<h3>PVE for each context</h3>
+<p>Total PVE from all eGenes in all contexts is 9.6%.</p>
+<p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] dplyr_1.0.7     workflowr_1.7.0
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
+ [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
+ [9] yaml_2.2.2       utf8_1.2.2       rlang_1.0.0      jquerylib_0.1.4 
+[13] later_1.3.0      pillar_1.7.0     glue_1.6.1       DBI_1.1.2       
+[17] lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0    gtable_0.3.0    
+[21] evaluate_0.14    knitr_1.37       callr_3.7.0      fastmap_1.1.0   
+[25] httpuv_1.6.5     ps_1.6.0         fansi_1.0.2      highr_0.9       
+[29] Rcpp_1.0.11      promises_1.2.0.1 scales_1.1.1     jsonlite_1.7.3  
+[33] fs_1.5.2         ggplot2_3.3.5    digest_0.6.29    stringi_1.7.6   
+[37] processx_3.5.2   getPass_0.2-2    rprojroot_2.0.2  grid_4.1.2      
+[41] cowplot_1.1.1    cli_3.1.1        tools_4.1.2      magrittr_2.0.2  
+[45] sass_0.4.1       tibble_3.1.6     crayon_1.4.2     whisker_0.4     
+[49] pkgconfig_2.0.3  ellipsis_0.3.2   assertthat_0.2.1 rmarkdown_2.11  
+[53] httr_1.4.2       rstudioapi_0.13  R6_2.5.1         git2r_0.29.0    
+[57] compiler_4.1.2  </code></pre>
+</div>
+</div>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -1057,6 +716,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -1089,6 +750,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
