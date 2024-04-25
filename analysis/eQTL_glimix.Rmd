@@ -86,9 +86,9 @@ Then we regressed out covariates based on the fixed effect estimated and the mod
 
 #### Association testing
 
-Null model, alternative model, and likelihood ratio testing are identical to previous precedure except the the ratio of the random effects are fixed beforehand. We continue to use Beta approaximation to obtain adjusted P values for each gene.
+Null model, alternative model, and likelihood ratio testing are identical to previous precedure except the the ratio of the random effects are fixed beforehand. We continue to use Beta approximation to obtain adjusted P values for each gene.
 
-Below is the QQ plot between Beta P values and empirical P values. Although a little too stringent, Beta approximation is quite accurate in the tail.
+Below is the scatter plot of the adjusted P values with Beta approximation (Y axis) and empirical P values (X axis) on the scale of %-log10$. Although a little too stringent, Beta approximation is quite accurate at the tail.
 
 ![](beta_calibration.png)
 
