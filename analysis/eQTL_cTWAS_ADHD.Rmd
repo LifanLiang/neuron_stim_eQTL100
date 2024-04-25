@@ -1,0 +1,48 @@
+---
+title: "eQTL_cTWAS_ADHD"
+author: "Lifan Liang"
+date: "2024-04-25"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Weights
+
+The same eQTL derived weights as other cTWAS results
+
+```{r, echo=F}
+library(dplyr)
+ctwas.params <- readRDS("data/ADHD_cTWAS_params.rds")
+ctwas.params$group_size[c(1,2,5,8,3,6,9,4,7,10)]
+```
+
+## Parameters
+
+```{r, echo=F}
+ctwas.params$convergence_plot
+```
+
+### Prior for each context
+
+```{r, echo=F}
+barplot(ctwas.params$group_prior,las=2,col=c("grey",rep("red",3), rep("green",3), rep("blue",3)))
+```
+
+### PVE for each context
+
+Total PVE from all eGenes in all contexts is 9.6%.
+
+```{r, echo=F}
+perc <- ctwas.params$group_pve / ctwas.params$total_pve
+pie(perc)
+```
+
+```{r, echo=F}
+barplot(perc[-1], las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
+```
+
+
+
+
+

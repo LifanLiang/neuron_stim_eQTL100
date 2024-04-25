@@ -41,6 +41,12 @@ editor_options:
 [cTWAS across all cell types on Depression](eQTL_cTWAS_depression.html)
 \
 \
+[cTWAS across all cell types on ADHD](eQTL_cTWAS_ADHD.html)
+\
+\
+[cTWAS across all cell types on neuroticism](eQTL_cTWAS_neuroticism.html)
+\
+\
 [cTWAS with CONTENT prediction on Schizophrenia](CONTENT_cTWAS_SCZ.html)
 
 
