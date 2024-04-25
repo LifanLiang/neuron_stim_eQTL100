@@ -18,10 +18,10 @@ This page introduces how to adapt a python package, "glimix_core", to fit the in
 First, gene expression PC is computed from residual expression after regressing out other covariates. Then gene expression was regressed out of all covariates (e.g. sex, age, disease status, 5 genotype PCs, 15 expression PCs) jointly across conditions. The coefficients of covariates were estimated together with the random effects. In this way, using residual expression to estimate model likelihood and individual random effects from the null model is identical to using all covariates. Regressing out all covariates speeds up the genotype scanning by around 100 times. However, using residual gene expression may underestimate genetic effects in the alternative model.
 
 $$
-y = X\mu + \epsilon 
+y = C\mu + \epsilon 
 $$
 
-where $X$ is 15 expression PCs and a vector of 1 since all other covariates have been regressed out beforehand, $\mu$ indicates coefficients for the expression PCs plus the intercept term, and $\epsilon$ was sampled from a multivariate Normal with forms below:
+where $X$ is a vector of 1 since all other covariates have been regressed out beforehand, $\mu$ is the intercept term, and $\epsilon$ was sampled from a multivariate Normal with forms below:
 
 $$
 \epsilon \sim MVN(0, S(v_0 \cdot Z + v_1 \cdot I))
@@ -71,5 +71,34 @@ We followed the the procedure described in FastQTL. Using the same permutation a
 The number of eGenes idenitified by mixed effect is much smaller than that by aggregating conditions together and run fixed effects.
 
 ![eGene overlap between mixed effect eQTL and fixed effect eQTL.](assets/venn_limix_vs_fixed.png)
+### Estimating individual random effects with lead variant
+
+Given the lead variants for each gene from the eQTL results above, we first estimated fixed effects of covariates and individual random effects with the following model:
+
+$$
+y = G\beta + X\mu+ \epsilon
+$$
+where $G$ is the genotype of the corresponding lead variant. $X$ includes all the covariates and the offset, $\mu$ is the fixed effects, and $\epsilon$ follows the same definition as in the section above.
+
+Then we regressed out covariates based on the fixed effect estimated and the model and fixed $v_0$ and $v_1$ estimated from the model. This time, we observed individual random effect reduced a lot compared to noise.
+
+![](assets/indiv_randeff_leadSNP.png)
+
+#### Association testing
+
+Null model, alternative model, and likelihood ratio testing are identical to previous precedure except the the ratio of the random effects are fixed beforehand. We continue to use Beta approaximation to obtain adjusted P values for each gene.
+
+Below is the QQ plot between Beta P values and empirical P values. Although a little too stringent, Beta approximation is quite accurate in the tail.
+
+![](beta_calibration.png)
+
+Instead of Storey's Pi in the previous approach, we performed Benjamini-Hochberg for FDR control. Genes with FDR < 0.05 is considered eGenes. Overall we identified 8462 eGenes, around 700 eGenes more than the bulk approach.
+
+![](venn_limix_vs_fixed (1).png)
+
+
+
+
+
 
 
