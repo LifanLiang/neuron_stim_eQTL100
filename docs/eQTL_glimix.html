@@ -436,15 +436,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treedf91c6d6cd71cc9a7fedb0976fac0d8e93089b94targetblankdf91c6da">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree6904664ed75c09b14e38f1c4b5f61c0bc33e3284targetblank6904664a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/df91c6d6cd71cc9a7fedb0976fac0d8e93089b94" target="_blank">df91c6d</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/6904664ed75c09b14e38f1c4b5f61c0bc33e3284" target="_blank">6904664</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treedf91c6d6cd71cc9a7fedb0976fac0d8e93089b94targetblankdf91c6da"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree6904664ed75c09b14e38f1c4b5f61c0bc33e3284targetblank6904664a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +454,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/df91c6d6cd71cc9a7fedb0976fac0d8e93089b94" target="_blank">df91c6d</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/6904664ed75c09b14e38f1c4b5f61c0bc33e3284" target="_blank">6904664</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -518,6 +518,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/6904664ed75c09b14e38f1c4b5f61c0bc33e3284/analysis/eQTL_glimix.Rmd" target="_blank">6904664</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+wflow_publish(c("analysis", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/01fabbcc312bbae1a90ea499ff6e6dbc616d4f09/docs/eQTL_glimix.html" target="_blank">01fabbc</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -867,11 +901,12 @@ noise.</p>
 <h4>Association testing</h4>
 <p>Null model, alternative model, and likelihood ratio testing are
 identical to previous precedure except the the ratio of the random
-effects are fixed beforehand. We continue to use Beta approaximation to
+effects are fixed beforehand. We continue to use Beta approximation to
 obtain adjusted P values for each gene.</p>
-<p>Below is the QQ plot between Beta P values and empirical P values.
-Although a little too stringent, Beta approximation is quite accurate in
-the tail.</p>
+<p>Below is the scatter plot of the adjusted P values with Beta
+approximation (Y axis) and empirical P values (X axis) on the scale of
+%-log10$. Although a little too stringent, Beta approximation is quite
+accurate at the tail.</p>
 <p><img src="beta_calibration.png" /></p>
 <p>Instead of Storey’s Pi in the previous approach, we performed
 Benjamini-Hochberg for FDR control. Genes with FDR &lt; 0.05 is
