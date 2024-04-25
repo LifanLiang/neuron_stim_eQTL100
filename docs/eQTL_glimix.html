@@ -389,7 +389,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-17
+<strong>Last updated:</strong> 2024-04-25
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -436,15 +436,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree55ff8e46b8e34e0af4dd176483eb7560ca4a49actargetblank55ff8e4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treedf91c6d6cd71cc9a7fedb0976fac0d8e93089b94targetblankdf91c6da">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/55ff8e46b8e34e0af4dd176483eb7560ca4a49ac" target="_blank">55ff8e4</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/df91c6d6cd71cc9a7fedb0976fac0d8e93089b94" target="_blank">df91c6d</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree55ff8e46b8e34e0af4dd176483eb7560ca4a49actargetblank55ff8e4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treedf91c6d6cd71cc9a7fedb0976fac0d8e93089b94targetblankdf91c6da"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +454,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/55ff8e46b8e34e0af4dd176483eb7560ca4a49ac" target="_blank">55ff8e4</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/df91c6d6cd71cc9a7fedb0976fac0d8e93089b94" target="_blank">df91c6d</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -518,6 +518,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/df91c6d6cd71cc9a7fedb0976fac0d8e93089b94/analysis/eQTL_glimix.Rmd" target="_blank">df91c6d</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+wflow_publish(c("analysis", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/c57a15cc3f72ca9ac721de045c6393a9208d91a4/docs/eQTL_glimix.html" target="_blank">c57a15c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -717,12 +751,11 @@ Regressing out all covariates speeds up the genotype scanning by around
 100 times. However, using residual gene expression may underestimate
 genetic effects in the alternative model.</p>
 <p><span class="math display">\[
-y = X\mu + \epsilon
+y = C\mu + \epsilon
 \]</span></p>
-<p>where <span class="math inline">\(X\)</span> is 15 expression PCs and
-a vector of 1 since all other covariates have been regressed out
-beforehand, <span class="math inline">\(\mu\)</span> indicates
-coefficients for the expression PCs plus the intercept term, and <span
+<p>where <span class="math inline">\(X\)</span> is a vector of 1 since
+all other covariates have been regressed out beforehand, <span
+class="math inline">\(\mu\)</span> is the intercept term, and <span
 class="math inline">\(\epsilon\)</span> was sampled from a multivariate
 Normal with forms below:</p>
 <p><span class="math display">\[
@@ -809,11 +842,42 @@ value in the Beta distribution.</p>
 alt="Example of Beta distribution fitting" /> The number of eGenes
 idenitified by mixed effect is much smaller than that by aggregating
 conditions together and run fixed effects.</p>
-<div class="figure">
-<img src="assets/venn_limix_vs_fixed.png" alt="" />
-<p class="caption">eGene overlap between mixed effect eQTL and fixed
-effect eQTL.</p>
+<p><img src="assets/venn_limix_vs_fixed.png"
+alt="eGene overlap between mixed effect eQTL and fixed effect eQTL." />
+### Estimating individual random effects with lead variant</p>
+<p>Given the lead variants for each gene from the eQTL results above, we
+first estimated fixed effects of covariates and individual random
+effects with the following model:</p>
+<p><span class="math display">\[
+y = G\beta + X\mu+ \epsilon
+\]</span> where <span class="math inline">\(G\)</span> is the genotype
+of the corresponding lead variant. <span
+class="math inline">\(X\)</span> includes all the covariates and the
+offset, <span class="math inline">\(\mu\)</span> is the fixed effects,
+and <span class="math inline">\(\epsilon\)</span> follows the same
+definition as in the section above.</p>
+<p>Then we regressed out covariates based on the fixed effect estimated
+and the model and fixed <span class="math inline">\(v_0\)</span> and
+<span class="math inline">\(v_1\)</span> estimated from the model. This
+time, we observed individual random effect reduced a lot compared to
+noise.</p>
+<p><img src="assets/indiv_randeff_leadSNP.png" /></p>
 </div>
+<div id="association-testing" class="section level4">
+<h4>Association testing</h4>
+<p>Null model, alternative model, and likelihood ratio testing are
+identical to previous precedure except the the ratio of the random
+effects are fixed beforehand. We continue to use Beta approaximation to
+obtain adjusted P values for each gene.</p>
+<p>Below is the QQ plot between Beta P values and empirical P values.
+Although a little too stringent, Beta approximation is quite accurate in
+the tail.</p>
+<p><img src="beta_calibration.png" /></p>
+<p>Instead of Storey’s Pi in the previous approach, we performed
+Benjamini-Hochberg for FDR control. Genes with FDR &lt; 0.05 is
+considered eGenes. Overall we identified 8462 eGenes, around 700 eGenes
+more than the bulk approach.</p>
+<p><img src="venn_limix_vs_fixed%20(1).png" /></p>
 </div>
 </div>
 
