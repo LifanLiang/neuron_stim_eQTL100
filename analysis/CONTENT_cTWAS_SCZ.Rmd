@@ -17,6 +17,16 @@ ctwas.params <- readRDS("data/CONTENT_SCZ_cTWAS_params.rds")
 ctwas.params$group_size[c(1,2,5,8,3,6,9,4,7,10)]
 ```
 
+## Z score of genes
+
+Overall, Z scores imputed with eQTL has higher scale. But both approaches have some genes missed by the other method.
+
+![](assets/CONTENT_vs_eQTL_boxplot.png)
+
+![](assets/CONTENT_vs_eQTL_scatter.png)
+
+
+
 ## Parameters
 
 ```{r, echo=F}
