@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-25
+<strong>Last updated:</strong> 2024-04-29
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,33 +418,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef1b144a2e5c67f466d7cc680a62804af5eb0028atargetblankf1b144aa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7eef9271b6b07d247ea4ecbe5d1746e513de5b4btargetblank7eef927a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f1b144a2e5c67f466d7cc680a62804af5eb0028a" target="_blank">f1b144a</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7eef9271b6b07d247ea4ecbe5d1746e513de5b4b" target="_blank">7eef927</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef1b144a2e5c67f466d7cc680a62804af5eb0028atargetblankf1b144aa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7eef9271b6b07d247ea4ecbe5d1746e513de5b4btargetblank7eef927a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +457,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f1b144a2e5c67f466d7cc680a62804af5eb0028a" target="_blank">f1b144a</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7eef9271b6b07d247ea4ecbe5d1746e513de5b4b" target="_blank">7eef927</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -473,6 +476,13 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/ADHD_cover9_noSNP_ctwas.RDS
+    Untracked:  data/neuroticism_cover9_noSNP_ctwas.RDS
+
+Unstaged changes:
+    Modified:   analysis/eQTL_glimix.Rmd
 
 </code></pre>
 <p>
@@ -518,6 +528,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/7eef9271b6b07d247ea4ecbe5d1746e513de5b4b/docs/eQTL_glimix.html" target="_blank">7eef927</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -987,7 +1014,34 @@ Benjamini-Hochberg for FDR control. Genes with FDR &lt; 0.05 is
 considered eGenes. Overall we identified 8462 eGenes, around 700 eGenes
 more than the bulk approach.</p>
 <p><img src="assets/venn_limix_vs_fixed%20(1).png" /></p>
+<p>The scatter plot of P values shows linear mixed model has higher
+power than bulk.</p>
+<p><img src="assets/bulk_vs_leadSNP_scatter.png" /></p>
 </div>
+</div>
+<div id="comparing-with-fixed-effect-model" class="section level3">
+<h3>Comparing with fixed effect model</h3>
+<p>We used the same normalized expression and covariates as input for
+matrixeQTL, so as to investigate the role of individual random effects.
+It seems individual random effect is competing with genetic effects. The
+increased power compared to bulk is due to the increased sample size by
+stacking all conditions.</p>
+<p><img src="assets/IRE_egenes_venn.png" /></p>
+<p>For genes with less than 1% individual random effects. Mixed effect
+model and fixed effect model have highly correlated nominal P
+values.</p>
+<p><img src="assets/noIRE_leadSNP_vs_mateqtl.png" /></p>
+<p>For genes with more than 1% individual random effects. Mixed effect
+model has lower nominal P values than fixed effect model. It seems by
+pretending we have 824 independent samples, power would be greatly
+increased. However, correlattion caused by repeated measurement of the
+same individuals would confound genetic effects. Although most repeated
+measurement correlation are already captured by genotype PCs and
+expression PCs.</p>
+<p><img src="assets/IRE_leadSNP_vs_mateqtl.png" /></p>
+<p>Another minor issue could be that permutation in matrixeQTL did not
+preserve individual structrure. Hence FDR is not stringent enough.</p>
+<p><img src="assets/noIRE_FDR_leadSNP_vs_mateqtl.png" /></p>
 </div>
 
 

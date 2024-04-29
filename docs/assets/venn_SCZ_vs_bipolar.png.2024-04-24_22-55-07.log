@@ -1,9 +1,0 @@
-INFO [2024-04-24 22:55:07] [[1]]
-INFO [2024-04-24 22:55:07] list(bipolar = res3$genename[res3$PIP_sum > 0.5], SCZ = scz.gene)
-INFO [2024-04-24 22:55:07] 
-INFO [2024-04-24 22:55:07] [[2]]
-INFO [2024-04-24 22:55:07] [1] "docs/assets/venn_SCZ_vs_bipolar.png"
-INFO [2024-04-24 22:55:07] 
-INFO [2024-04-24 22:55:07] $imagetype
-INFO [2024-04-24 22:55:07] [1] "png"
-INFO [2024-04-24 22:55:07] 

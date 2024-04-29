@@ -97,9 +97,25 @@ Instead of Storey's Pi in the previous approach, we performed Benjamini-Hochberg
 
 ![](assets/venn_limix_vs_fixed (1).png)
 
+The scatter plot of P values shows linear mixed model has higher power than bulk.
 
+![](assets/bulk_vs_leadSNP_scatter.png)
 
+### Comparing with fixed effect model
 
+We used the same normalized expression and covariates as input for matrixeQTL, so as to investigate the role of individual random effects. It seems individual random effect is competing with genetic effects. The increased power compared to bulk is due to the increased sample size by stacking all conditions.
 
+![](assets/IRE_egenes_venn.png)
 
+For genes with less than 1% individual random effects. Mixed effect model and fixed effect model have highly correlated nominal P values. 
+
+![](assets/noIRE_leadSNP_vs_mateqtl.png)
+
+For genes with more than 1% individual random effects. Mixed effect model has lower nominal P values than fixed effect model. It seems by pretending we have 824 independent samples, power would be greatly increased. However, correlattion caused by repeated measurement of the same individuals would confound genetic effects. Although most repeated measurement correlation are already captured by genotype PCs and expression PCs.
+
+![](assets/IRE_leadSNP_vs_mateqtl.png)
+
+Another minor issue could be that permutation in matrixeQTL did not preserve individual structrure. Hence FDR is not stringent enough.
+
+![](assets/noIRE_FDR_leadSNP_vs_mateqtl.png)
 
