@@ -78,7 +78,7 @@ cond <- names(table(scz$type))
 scz$genename <- sapply(strsplit(scz$id, "\\|"), function(x) {x[1]})
 scz2 <- aggregate(scz$susie_pip, list(scz$genename), sum)
 scz.gene <- scz2$Group.1[scz2$x>0.5]
-venn.diagram(list(depression=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene), 
+venn.diagram(list(ADHD=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene), 
              "docs/assets/venn_adhd_vs_scz.png", imagetype = "png")
 ```
 
