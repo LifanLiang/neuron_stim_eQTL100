@@ -68,7 +68,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], labels=T, ylim = c(0, 21),
 
 ### Comparison with Schizophrenia cTWAS results
 
-Only 1 gene overlap with schizophrenia
+Only 1 gene overlap with schizophrenia: GGNBP2.
 
 ```{r,echo=F}
 library(VennDiagram)
