@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,9 +401,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,21 +426,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -531,15 +528,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef3ff2d007584ecec6a62c3f4750d5f4601455301targetblankf3ff2d0a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treed8f18556a075dc85dabe8636f459eda77c11bf39targetblankd8f1855a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f3ff2d007584ecec6a62c3f4750d5f4601455301" target="_blank">f3ff2d0</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/d8f18556a075dc85dabe8636f459eda77c11bf39" target="_blank">d8f1855</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treef3ff2d007584ecec6a62c3f4750d5f4601455301targetblankf3ff2d0a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treed8f18556a075dc85dabe8636f459eda77c11bf39targetblankd8f1855a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -549,7 +546,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/f3ff2d007584ecec6a62c3f4750d5f4601455301" target="_blank">f3ff2d0</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/d8f18556a075dc85dabe8636f459eda77c11bf39" target="_blank">d8f1855</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -568,15 +565,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
-
-Untracked files:
-    Untracked:  data/ADHD_cover9_noSNP_ctwas.RDS
-    Untracked:  data/ADHD_ctwas_related_sumstats.RDS
-    Untracked:  data/neuroticism_cover9_noSNP_ctwas.RDS
-
-Unstaged changes:
-    Modified:   analysis/eQTL_cTWAS_ADHD.Rmd
-    Modified:   analysis/eQTL_glimix.Rmd
 
 </code></pre>
 <p>
@@ -622,6 +610,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/d8f18556a075dc85dabe8636f459eda77c11bf39/analysis/eQTL_cTWAS_ADHD.Rmd" target="_blank">d8f1855</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-16
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/d8f18556a075dc85dabe8636f459eda77c11bf39/docs/eQTL_cTWAS_ADHD.html" target="_blank">d8f1855</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-16
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -845,6 +867,43 @@ Lifan Liang
 <h2>Results</h2>
 <p>There are 19 eGenes if the cutoff was set to PIP&gt;0.5.</p>
 <p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/d8f18556a075dc85dabe8636f459eda77c11bf39/docs/figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-6-1.png" target="_blank">d8f1855</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="comparison-with-schizophrenia-ctwas-results"
 class="section level3">
 <h3>Comparison with Schizophrenia cTWAS results</h3>
@@ -889,6 +948,43 @@ cell type specific.</p>
 class="section level4">
 <h4>Cell type composition across PIP distribution</h4>
 <p><img src="figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/d8f18556a075dc85dabe8636f459eda77c11bf39/docs/figure/eQTL_cTWAS_ADHD.Rmd/unnamed-chunk-11-1.png" target="_blank">d8f1855</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
