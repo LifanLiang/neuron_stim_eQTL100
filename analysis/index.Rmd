@@ -29,6 +29,9 @@ editor_options:
 [Interaction testing for eQTL](eQTL_interaction.html)
 \
 \
+[eQTL effect sharing across conditions (MASH)](mashr_analysis.html)
+\
+\
 [Pseudo bulk eQTL across all cell types](eQTL_all_cell.html)
 \
 \
@@ -48,5 +51,7 @@ editor_options:
 \
 \
 [cTWAS with CONTENT prediction on Schizophrenia](CONTENT_cTWAS_SCZ.html)
+\
+\
 
 

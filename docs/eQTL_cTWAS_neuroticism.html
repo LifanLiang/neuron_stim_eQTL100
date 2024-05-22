@@ -37,6 +37,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.26/datatables.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -368,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-25
+<strong>Last updated:</strong> 2024-05-22
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8af94ffcde019ec0c65ca8d5e614634fb5be335etargetblank8af94ffa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee5bd03b7b0fe55d7937783703d175c7c5a417601targetblanke5bd03ba">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8af94ffcde019ec0c65ca8d5e614634fb5be335e" target="_blank">8af94ff</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e5bd03b7b0fe55d7937783703d175c7c5a417601" target="_blank">e5bd03b</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8af94ffcde019ec0c65ca8d5e614634fb5be335etargetblank8af94ffa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee5bd03b7b0fe55d7937783703d175c7c5a417601targetblanke5bd03ba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8af94ffcde019ec0c65ca8d5e614634fb5be335e" target="_blank">8af94ff</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e5bd03b7b0fe55d7937783703d175c7c5a417601" target="_blank">e5bd03b</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -554,9 +565,19 @@ were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .RData
     Ignored:    .Rhistory
+    Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/mashr_analysis.Rmd
+    Untracked:  data/neuroticism_ctwas_related_sumstats.RDS
+
+Unstaged changes:
+    Modified:   analysis/eQTL_cTWAS_neuroticism.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -605,6 +626,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/589729ed049573491ec2b0557c790fcf79eb0649/docs/eQTL_cTWAS_neuroticism.html" target="_blank">589729e</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -646,15 +684,213 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 <div id="parameters" class="section level2">
 <h2>Parameters</h2>
 <p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/589729ed049573491ec2b0557c790fcf79eb0649/docs/figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-2-1.png" target="_blank">589729e</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="prior-for-each-context" class="section level3">
 <h3>Prior for each context</h3>
 <p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/589729ed049573491ec2b0557c790fcf79eb0649/docs/figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-3-1.png" target="_blank">589729e</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="pve-for-each-context" class="section level3">
 <h3>PVE for each context</h3>
 <p>Total PVE from all eGenes in all contexts is 5.1%.</p>
 <p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/589729ed049573491ec2b0557c790fcf79eb0649/docs/figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-4-1.png" target="_blank">589729e</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/589729ed049573491ec2b0557c790fcf79eb0649/docs/figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-5-1.png" target="_blank">589729e</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-04-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>There are 13 eGenes if the cutoff was set to PIP&gt;0.5.</p>
+<p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="comparison-with-schizophrenia-ctwas-results"
+class="section level3">
+<h3>Comparison with Schizophrenia cTWAS results</h3>
+<p>Only 1 gene overlap with schizophrenia: GGNBP2.</p>
+<pre><code>Loading required package: grid</code></pre>
+<pre><code>Loading required package: futile.logger</code></pre>
+<pre><code>[1] 1</code></pre>
+<p><img src="assets/venn_adhd_vs_scz.png" /></p>
+</div>
+<div id="enrichment-analysis" class="section level3">
+<h3>Enrichment analysis</h3>
+<p>All the 13 significant genes are dynamic.</p>
+<div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["ATP6V0C","BAP1","BCR","CSNK1G1","DCLRE1A","FIGN","FKBP8","GRIK3","INTS5","KLF11","NEK4","NMT2","ORC4"],[0.774341225302845,0.832946362343716,0.558484196385027,0.501891455549769,0.610326847804907,0.9003710670602,0.728786064763849,0.634967801871133,0.866376198773671,0.596115437960101,0.766365321039595,0.76053605745166,0.58449324599757],[0.774341225302845,0,0.558484196385027,0,0,0,0,0,0,0,0,0,0.036351859450842],[0,0,0,0,0.610326847804907,0,0,0,0,0,0,0,0.0869239861621769],[0,0.832946362343716,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0.0520106327684407,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0.596115437960101,0,0.0945550919556989,0],[0,0,0,0.314537764491532,0,0.9003710670602,0,0,0,0,0,0,0],[0,0,0,0.135343058289796,0,0,0,0,0,0,0,0,0.408347100212602],[0,0,0,0,0,0,0.728786064763849,0.634967801871133,0.866376198773671,0,0.766365321039595,0.665980965495961,0.0528703001719496],[8.99221346752983e-05,2.06559960392078e-06,5.8294149416811e-06,2.576513973651e-06,1.99366022317653e-06,1.91593676750689e-05,8.85613967862508e-06,5.22083495204511e-11,0.00013208118682605,2.42181230580534e-07,2.06559960392078e-06,1.59328153660693e-06,7.34841453279196e-13],[8.41457765292614e-05,0.000268571329077953,8.53836085067298e-07,6.14055554855207e-09,6.01569014588364e-05,5.75875394315605e-07,5.2938912218475e-05,8.4561404799507e-05,0.000316979224117693,0.00012826942976498,0.000156876789323688,4.90296605357956e-05,2.35107584726033e-07],[0.000362138345837446,0.002164336540061,0.000137404751363338,2.57651397367564e-06,1.84700324839607e-05,1.91593676751295e-05,9.30489532072913e-06,5.93959561211207e-11,0.00017427778790182,3.30722193750068e-07,3.9179804344465e-05,3.04877445595906e-06,7.34841453276416e-13]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genename<\/th>\n      <th>PIP_sum<\/th>\n      <th>PIP_0hr_GABA<\/th>\n      <th>PIP_0hr_nmglut<\/th>\n      <th>PIP_0hr_npglut<\/th>\n      <th>PIP_1hr_nmglut<\/th>\n      <th>PIP_1hr_npglut<\/th>\n      <th>PIP_6hr_GABA<\/th>\n      <th>PIP_6hr_nmglut<\/th>\n      <th>PIP_6hr_npglut<\/th>\n      <th>GWAS_Pval_loci<\/th>\n      <th>eQTL_Pval<\/th>\n      <th>Zgene_Pval<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.columnDefs.7.render","options.columnDefs.8.render"],"jsHooks":[]}</script>
+<div id="enrichment-analysis-of-significant-genes"
+class="section level4">
+<h4>Enrichment analysis of significant genes</h4>
+<pre><code>Welcome to enrichR
+Checking connection ... </code></pre>
+<pre><code>Enrichr ... Connection is Live!
+FlyEnrichr ... Connection is Live!
+WormEnrichr ... Connection is Live!
+YeastEnrichr ... Connection is Live!
+FishEnrichr ... Connection is Live!
+OxEnrichr ... Connection is Live!</code></pre>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2018... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["G1/S transition of mitotic cell cycle (GO:0000082)","protein phosphorylation (GO:0006468)","monoubiquitinated protein deubiquitination (GO:0035520)","lysosomal lumen acidification (GO:0007042)","protection from non-homologous end joining at telomere (GO:0031848)","negative regulation of synaptic transmission, glutamatergic (GO:0051967)","telomere maintenance in response to DNA damage (GO:0043247)","regulation of lysosomal lumen pH (GO:0035751)","regulation of cell cycle (GO:0051726)","regulation of cell aging (GO:0090342)"],["2/105","3/470","1/6","1/7","1/7","1/9","1/10","1/10","2/215","1/13"],[0.00205055515983006,0.00309395236291924,0.00389409648539669,0.00454175360916762,0.00454175360916762,0.00583590295074904,0.00648239549203707,0.00648239549203707,0.00829865325988433,0.00841954675722165],[0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165,0.0823644925278165],["KLF11;ORC4","BCR;NEK4;CSNK1G1","BAP1","ATP6V0C","DCLRE1A","GRIK3","DCLRE1A","ATP6V0C","NEK4;BAP1","NEK4"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="cell-type-specific-egenes" class="section level3">
+<h3>Cell type specific eGenes</h3>
+<p>An eGene is assigned to a cell type if over 60% of the PIP sum are
+from that cell type. In the case of neuroticism, most genes are shared
+across cell types.</p>
+<pre><code>
+      GABA     npglut Unspecific 
+         3          2          8 </code></pre>
+<div id="cell-type-composition-across-pip-distribution"
+class="section level4">
+<h4>Cell type composition across PIP distribution</h4>
+<p><img src="figure/eQTL_cTWAS_neuroticism.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -676,27 +912,38 @@ locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
 
 other attached packages:
-[1] dplyr_1.0.7     workflowr_1.7.0
+[1] ggplot2_3.3.5       enrichR_3.2         VennDiagram_1.7.1  
+[4] futile.logger_1.4.3 dplyr_1.0.7         workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
- [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
- [9] yaml_2.2.2       utf8_1.2.2       rlang_1.0.0      jquerylib_0.1.4 
-[13] later_1.3.0      pillar_1.7.0     glue_1.6.1       DBI_1.1.2       
-[17] lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0    gtable_0.3.0    
-[21] evaluate_0.14    knitr_1.37       callr_3.7.0      fastmap_1.1.0   
-[25] httpuv_1.6.5     ps_1.6.0         fansi_1.0.2      highr_0.9       
-[29] Rcpp_1.0.11      promises_1.2.0.1 scales_1.1.1     jsonlite_1.7.3  
-[33] fs_1.5.2         ggplot2_3.3.5    digest_0.6.29    stringi_1.7.6   
-[37] processx_3.5.2   getPass_0.2-2    rprojroot_2.0.2  grid_4.1.2      
-[41] cowplot_1.1.1    cli_3.1.1        tools_4.1.2      magrittr_2.0.2  
-[45] sass_0.4.1       tibble_3.1.6     crayon_1.4.2     whisker_0.4     
-[49] pkgconfig_2.0.3  ellipsis_0.3.2   assertthat_0.2.1 rmarkdown_2.11  
-[53] httr_1.4.2       rstudioapi_0.13  R6_2.5.1         git2r_0.29.0    
-[57] compiler_4.1.2  </code></pre>
+ [1] Rcpp_1.0.11          getPass_0.2-2        ps_1.6.0            
+ [4] assertthat_0.2.1     rprojroot_2.0.2      digest_0.6.29       
+ [7] utf8_1.2.2           R6_2.5.1             futile.options_1.0.1
+[10] WriteXLS_6.4.0       evaluate_0.14        httr_1.4.2          
+[13] highr_0.9            pillar_1.7.0         rlang_1.0.0         
+[16] curl_4.3.2           rstudioapi_0.13      whisker_0.4         
+[19] callr_3.7.0          jquerylib_0.1.4      DT_0.26             
+[22] rmarkdown_2.11       labeling_0.4.2       stringr_1.4.0       
+[25] htmlwidgets_1.5.4    munsell_0.5.0        compiler_4.1.2      
+[28] httpuv_1.6.5         xfun_0.29            pkgconfig_2.0.3     
+[31] htmltools_0.5.2      tidyselect_1.1.1     tibble_3.1.6        
+[34] fansi_1.0.2          crayon_1.4.2         withr_2.4.3         
+[37] later_1.3.0          jsonlite_1.7.3       gtable_0.3.0        
+[40] lifecycle_1.0.1      DBI_1.1.2            git2r_0.29.0        
+[43] magrittr_2.0.2       formatR_1.11         scales_1.1.1        
+[46] cli_3.1.1            stringi_1.7.6        farver_2.1.0        
+[49] fs_1.5.2             promises_1.2.0.1     bslib_0.3.1         
+[52] ellipsis_0.3.2       generics_0.1.2       vctrs_0.3.8         
+[55] cowplot_1.1.1        rjson_0.2.21         lambda.r_1.2.4      
+[58] tools_4.1.2          glue_1.6.1           purrr_0.3.4         
+[61] crosstalk_1.2.0      processx_3.5.2       fastmap_1.1.0       
+[64] yaml_2.2.2           colorspace_2.0-2     knitr_1.37          
+[67] sass_0.4.1          </code></pre>
+</div>
 </div>
 </div>
 </div>

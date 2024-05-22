@@ -1,0 +1,71 @@
+---
+title: "Genetic effect sharing by MASH"
+author: "Lifan Liang"
+date: "2024-05-22"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Condition-specific eQTL with shared individual random effects and covariates fixed effects
+
+We previously attempted to use MASH to analyze effect sharing pattern from condition by condition eQTLs. It results in highly inflated posterior estimates due to the correlation of individual effect. To address this issue, we pooled the 9 conditions together to estimate individual variation as an individual random effect (IRE). For details of the analysis, please visit [this page](assets/eQTL_glimix.html).
+
+With the estimation of IRE controlling for the persistent effect of lead variant, we run a model with 9 condition-specific genetic effect:
+
+$$
+Y= (G\times C)\beta + X\mu + \epsilon
+$$
+
+where $G\times C$ is the interaction term between genotypes and the 9 conditions, while other terms are the same as the model described in [the mixed effect model](eQTL_glimix.html). Please note that we reuse the estimation of $v0$ and $v1$ from previous results. For convienient, eQTLs computed from this method is called interaction eQTL (ieQTL).
+
+## Comparison with seperately estimated eQTLs
+
+We compared the Z scores of ieQTLs with those of eQTLs computed condition by condition. They are highly concordant. But ieQTLs have higher z scores in all conditions. Note that we only compared the 12272 gene-SNP pairs selected as the strong subset in the next section.
+
+![](assets/eQTL_zscore_shared_vs_seperate.png)
+
+## MASH analysis with lead eQTLs in persistent effect model
+
+We basically followed the [tutorial](https://stephenslab.github.io/mashr/articles/eQTL_outline.html) of MASH for eQTL. 
+
+1. Randomly sampled 4 SNPs per gene as the null to learn correlation structure.
+2. Selected lead variants for each gene with FDR>0.2 in the persistent effect across all conditions. There are 12272 lead eQTLs in total within this strong subset.
+3. Learned data-driven covariance matrices using the strong subset.
+4. Fit all sharing patterns to the random subsets to learn mixture weights and scaling coefficients.
+5. Compute posterior for the strong subset with the fitted model.
+
+Distribution of the posterior weights are shown below:
+
+![](assets/dist_sharing_strong.png)
+
+PCA_1 and tPCA are very similar to equal effects. Below is the heatmap for PCA1 covariance matrix.
+
+![](assets/PCA1_strong.png)
+
+The first eigen vector (>99% PVE) of this covariance matrix also indicates equal sharing.
+
+![](assets/PCA1_eigen_strong.png)
+
+Therefore, 90% of genetic effects are shared across all conditions. At first, I suspected the individual effect is still strong. If that's the case, the random subset should exhibit similar effect sharing. However, the posterior distribution of the random subset only has around 45% effects shared across conditions.
+
+![](assets/dist_sharing_random.png)
+
+## Persistent effect is biased towards universal sharing
+
+Persistent effects are strong when the genetic effect is consistent across contexts. Hence lead variants in persistent effects tend to be shared across conditions. To verify this hypothesis, I divided the lead eQTLs into two subsets: one with >80% posterior weights in universal sharing (including PCA1, tPCA, and equal_effects) and the rest. As shown in the box plot below, eQTLs with high universal sharing have much smaller FDR than those with lower sharing.
+
+![](assets/main_effect_bias.png)
+
+## Extract SNP-gene pairs from condition by condition eQTLs
+
+To avoid the bias of persistent effects, we selected the union of lead eQTLs per gene per context as the cadidate for the strong subset. FDR threshold is 0.2. However, lead eQTLs for the same gene may be in high LD and over-represent certain sharing patterns.
+
+Therefore, for each gene, we computed $R^2$ among the lead variants based on genotypes of the 100 cell lines. SNP pairs with $R^2>0.5$ were pruned. After pruning, we obtained 57398 SNP-gene pairs.
+
+These SNP-gene pairs were utilized as the strong subset for MASH analysis and we rerun the previous procedure.
+
+
+
+
+
