@@ -29,6 +29,9 @@ editor_options:
 [Interaction testing for eQTL](eQTL_interaction.html)
 \
 \
+[Interaction testing with mixed effect](cellregmap.html)
+\
+\
 [eQTL effect sharing across conditions (MASH)](mashr_analysis.html)
 \
 \

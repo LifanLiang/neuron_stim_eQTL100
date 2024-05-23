@@ -1,0 +1,51 @@
+---
+title: "Interaction testing with mixed effect"
+author: "Lifan Liang"
+date: "2024-05-23"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Mixed effect model
+
+CellRegMap was used for the purpose of interaction testing. Given around 95 cell lines' transcriptome measured for 3 cell types and 3 time points, the model to perform interaction testing is:
+
+$$
+y = G\beta + G\gamma + W\psi + \mu + \epsilon
+$$
+
+where $y$ is gene expression jointly normalized across 9 conditions, $G$ is genotype, $W$ are covariates, $\mu$ is individual random effect, $\epsilon$ is iid error, and $\beta$ and $\psi$ are corresponding fixed effects. The focus of the model is $\gamma$, the random slope for genotypes.
+
+$$
+\gamma \sim MVN(0,\sigma Z)
+$$
+
+where $Z$ is the design matrix for the 9 conditions. Elements within the same condition are 1, otherwise 0. $\sigma$ dictates the effect size of $\gamma$. CellRegMap follows StructLMM's idea of using Rao's score test to evaluate the null hypothesis that $\sigma$ is 0. According to CellRegMap, this is the highest power test when many contexts were jointly tested.
+
+## P value calibration.
+
+We permuted the 9 conditions for each individual while preserving the fixed effect of genotypes and conditions. Permutation P values show that the calibration of P values are unstable, it can be inflated or deflated depending on the gene tested.
+
+![](assets/ADAM10_interaction_permP.png)
+![](assets/TSNK9_interaction_permP.png)
+
+## Results
+
+We tested the dynamic effects on all the top eQTLs from [mixed effect eQTL mapping](eQTL_glimix.html). And applied Storey's q value for multiple testing correction. There are 805 significant eQTLs. 
+
+By visualizing the eQTL, it seems most significant results are cell type specific eQTLs. Some are dynamic eQTL shared across cell types. We need to construct the context differently to detect cell type specific dynamic eQTL.
+
+### Cell type specific eQTL
+
+![](assets/SYK_9cond.png)
+
+![](assets/GNAT3_9cond.png)
+![](assets/SMAD3_9cond.png)
+
+### Dynamic eQTL shared across cell types
+
+![](assets/ADAM10_9cond.png)
+
+
+
