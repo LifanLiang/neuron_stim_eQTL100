@@ -47,5 +47,52 @@ By visualizing the eQTL, it seems most significant results are cell type specifi
 
 ![](assets/ADAM10_9cond.png)
 
+### Compared with heuristic approach
+
+The heuristic approach identified dynamic eQTLs with FDR<0.05 in 1/6 hours and nominal p value > 0.1 in 0 hour. Somehow it identifies more eQTLs than any interaction testing I tried. After checking the interaction testing results of heuristic eQTL. The cause is two folds:
+
+#### Testing in 9 conditions reduce power for cell type specific dynamic eQTL
+
+This is one example of GABA specific dynamic eQTL.
+
+![](assets/example_celltype_specific_dynamic.png)
+
+```{r,echo=F}
+dat <- read.table("data/SLC18A2_rs142285028_9cond.txt")
+knitr::kable(dat)
+```
+
+Changing the design matrix Z and input datawould help with the testing.
+
+```{r,echo=F}
+dat <- data.frame(`Testing approach`=c("time point testing across 9 conditions",
+                                       "GABA time point testing across 9 condition",
+                                       "Time point testing within GABA samples"),
+           Pval=c(0.0027,1.4780449107929132e-09,2.3327454922149987e-15))
+dat$Pval <- format(dat$Pval, digits=3)
+knitr::kable(dat)
+```
+
+
+
+
+
+#### Heuristic dynamic eQTL may have similar betas but different SE
+
+Some heuristic dynamic eQTLs are not significant in any interaction testing. They usually have similar effect size. But one condition has a smaller standard error, resulting in borderline significant P value and FDR.
+
+![](assets/example_smallSE.png)
+
+```{r,echo=F}
+dat <- read.table("data/STXBP5_rs2818867_9cond.txt")
+knitr::kable(dat)
+```
+
+
+#### FDR distribution of top dynamic eQTL
+
+![](assets/heuristic_dynamic_FDR_hist.png)
+
+
 
 

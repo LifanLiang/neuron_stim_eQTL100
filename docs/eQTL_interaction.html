@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-01-12
+<strong>Last updated:</strong> 2024-06-06
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +418,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,15 +523,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8targetblank9a4c4cda">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree90bd1d4b5d25293bdddd657d85a4201d601f507atargetblank90bd1d4a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8" target="_blank">9a4c4cd</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/90bd1d4b5d25293bdddd657d85a4201d601f507a" target="_blank">90bd1d4</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8targetblank9a4c4cda"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree90bd1d4b5d25293bdddd657d85a4201d601f507atargetblank90bd1d4a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9a4c4cd70be62ed4069a65ab3bae0f119ecd34f8" target="_blank">9a4c4cd</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/90bd1d4b5d25293bdddd657d85a4201d601f507a" target="_blank">90bd1d4</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -554,9 +557,20 @@ were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .RData
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  data/SLC18A2_rs142285028_9cond.txt
+    Untracked:  data/STXBP5_rs2818867_9cond.txt
+    Untracked:  data/dynamic_eGene_beta_filtered.RDS
+    Untracked:  data/neuroticism_ctwas_related_sumstats.RDS
+
+Unstaged changes:
+    Modified:   analysis/cellregmap.Rmd
+    Modified:   analysis/eQTL_interaction.Rmd
 
 </code></pre>
 <p>
@@ -602,6 +616,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/fedff992f00871e1f4a791a67ed5c2391c0f31f0/docs/eQTL_interaction.html" target="_blank">fedff99</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-01-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1308,6 +1339,273 @@ example with high FDR and plausible time point-specific effect.</p>
 <p class="caption">Interaction eQTL with FDR&gt;0.99 but
 Qvalue&lt;0.05</p>
 </div>
+</div>
+<div id="clustering-dynamic-eqtl" class="section level3">
+<h3>Clustering dynamic eQTL</h3>
+<p>FDR threshold was relaxed to 20%. Remove the eQTL if the maximum Z
+score was less 3. Effect size was set to 0 if Z score was less than 2.
+Positive eQTL directions were the most common direction.</p>
+<pre class="r"><code>library(enrichR)</code></pre>
+<pre><code>Welcome to enrichR
+Checking connection ... </code></pre>
+<pre><code>Enrichr ... Connection is Live!
+FlyEnrichr ... Connection is Live!
+WormEnrichr ... Connection is Live!
+YeastEnrichr ... Connection is Live!
+FishEnrichr ... Connection is Live!
+OxEnrichr ... Connection is Live!</code></pre>
+<pre class="r"><code>clust &lt;- readRDS(&quot;data/dynamic_eGene_beta_filtered.RDS&quot;)
+clust$gene &lt;- sapply(strsplit(rownames(clust), &quot;\\|&quot;), function(x){x[1]})
+enrich.res &lt;- list()
+for(i in 1:10) {
+  enrich.res[[i]] &lt;- enrichr(clust$gene[clust$cluster==i], &quot;GO_Biological_Process_2023&quot;)
+}</code></pre>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.
+Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.</code></pre>
+<pre class="r"><code>kableExtra::kable(head(enrich.res[[9]][[1]]))</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Term
+</th>
+<th style="text-align:left;">
+Overlap
+</th>
+<th style="text-align:right;">
+P.value
+</th>
+<th style="text-align:right;">
+Adjusted.P.value
+</th>
+<th style="text-align:right;">
+Old.P.value
+</th>
+<th style="text-align:right;">
+Old.Adjusted.P.value
+</th>
+<th style="text-align:right;">
+Odds.Ratio
+</th>
+<th style="text-align:right;">
+Combined.Score
+</th>
+<th style="text-align:left;">
+Genes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Phagocytosis, Engulfment (<a href="GO:0006911"
+class="uri">GO:0006911</a>)
+</td>
+<td style="text-align:left;">
+2/30
+</td>
+<td style="text-align:right;">
+0.0020687
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+33.101329
+</td>
+<td style="text-align:right;">
+204.59384
+</td>
+<td style="text-align:left;">
+CD36;XKR4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regulation Of Response To External Stimulus (<a href="GO:0032101"
+class="uri">GO:0032101</a>)
+</td>
+<td style="text-align:left;">
+3/127
+</td>
+<td style="text-align:right;">
+0.0029207
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.423387
+</td>
+<td style="text-align:right;">
+66.66605
+</td>
+<td style="text-align:left;">
+CELF1;GRK4;CD36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Receptor Internalization (<a href="GO:0031623"
+class="uri">GO:0031623</a>)
+</td>
+<td style="text-align:left;">
+2/51
+</td>
+<td style="text-align:right;">
+0.0058845
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+18.895111
+</td>
+<td style="text-align:right;">
+97.03460
+</td>
+<td style="text-align:left;">
+GRK4;CD36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regulation Of Signal Transduction (<a href="GO:0009966"
+class="uri">GO:0009966</a>)
+</td>
+<td style="text-align:left;">
+3/193
+</td>
+<td style="text-align:right;">
+0.0093240
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7.430451
+</td>
+<td style="text-align:right;">
+34.73854
+</td>
+<td style="text-align:left;">
+KCTD8;GRK4;CD36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neuropeptide Signaling Pathway (<a href="GO:0007218"
+class="uri">GO:0007218</a>)
+</td>
+<td style="text-align:left;">
+2/68
+</td>
+<td style="text-align:right;">
+0.0102624
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14.016209
+</td>
+<td style="text-align:right;">
+64.18395
+</td>
+<td style="text-align:left;">
+NTS;HCRTR2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regulation Of G Protein-Coupled Receptor Signaling Pathway (<a
+href="GO:0008277" class="uri">GO:0008277</a>)
+</td>
+<td style="text-align:left;">
+2/70
+</td>
+<td style="text-align:right;">
+0.0108487
+</td>
+<td style="text-align:right;">
+0.1626653
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+13.602599
+</td>
+<td style="text-align:right;">
+61.53415
+</td>
+<td style="text-align:left;">
+KCTD8;GRK4
+</td>
+</tr>
+</tbody>
+</table>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1333,25 +1631,27 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] gap_1.2.3-6        gap.datasets_0.0.5 ggvenn_0.1.10      ggplot2_3.3.5     
-[5] dplyr_1.0.7        workflowr_1.7.0   
+[1] enrichR_3.2        gap_1.2.3-6        gap.datasets_0.0.5 ggvenn_0.1.10     
+[5] ggplot2_3.3.5      dplyr_1.0.7        workflowr_1.7.0   
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
- [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
- [9] yaml_2.2.2       utf8_1.2.2       rlang_1.0.0      jquerylib_0.1.4 
-[13] later_1.3.0      pillar_1.7.0     withr_2.4.3      glue_1.6.1      
-[17] DBI_1.1.2        lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
-[21] gtable_0.3.0     evaluate_0.14    labeling_0.4.2   knitr_1.37      
-[25] callr_3.7.0      fastmap_1.1.0    httpuv_1.6.5     ps_1.6.0        
-[29] fansi_1.0.2      highr_0.9        Rcpp_1.0.11      promises_1.2.0.1
-[33] scales_1.1.1     jsonlite_1.7.3   farver_2.1.0     fs_1.5.2        
-[37] digest_0.6.29    stringi_1.7.6    processx_3.5.2   getPass_0.2-2   
-[41] rprojroot_2.0.2  cli_3.1.1        tools_4.1.2      magrittr_2.0.2  
-[45] sass_0.4.1       tibble_3.1.6     crayon_1.4.2     whisker_0.4     
-[49] pkgconfig_2.0.3  ellipsis_0.3.2   assertthat_0.2.1 rmarkdown_2.11  
-[53] httr_1.4.2       rstudioapi_0.13  R6_2.5.1         git2r_0.29.0    
-[57] compiler_4.1.2  </code></pre>
+ [1] Rcpp_1.0.11       svglite_2.1.0     getPass_0.2-2     ps_1.6.0         
+ [5] assertthat_0.2.1  rprojroot_2.0.2   digest_0.6.29     utf8_1.2.2       
+ [9] R6_2.5.1          WriteXLS_6.4.0    evaluate_0.14     httr_1.4.2       
+[13] highr_0.9         pillar_1.7.0      rlang_1.0.0       curl_4.3.2       
+[17] rstudioapi_0.13   whisker_0.4       callr_3.7.0       jquerylib_0.1.4  
+[21] rmarkdown_2.11    labeling_0.4.2    webshot_0.5.5     stringr_1.4.0    
+[25] munsell_0.5.0     compiler_4.1.2    httpuv_1.6.5      xfun_0.29        
+[29] pkgconfig_2.0.3   systemfonts_1.0.4 htmltools_0.5.2   tidyselect_1.1.1 
+[33] tibble_3.1.6      viridisLite_0.4.0 fansi_1.0.2       crayon_1.4.2     
+[37] withr_2.4.3       later_1.3.0       jsonlite_1.7.3    gtable_0.3.0     
+[41] lifecycle_1.0.1   DBI_1.1.2         git2r_0.29.0      magrittr_2.0.2   
+[45] scales_1.1.1      cli_3.1.1         stringi_1.7.6     farver_2.1.0     
+[49] fs_1.5.2          promises_1.2.0.1  xml2_1.3.3        bslib_0.3.1      
+[53] ellipsis_0.3.2    generics_0.1.2    vctrs_0.3.8       kableExtra_1.3.4 
+[57] rjson_0.2.21      tools_4.1.2       glue_1.6.1        purrr_0.3.4      
+[61] processx_3.5.2    fastmap_1.1.0     yaml_2.2.2        colorspace_2.0-2 
+[65] rvest_1.0.2       knitr_1.37        sass_0.4.1       </code></pre>
 </div>
 </div>
 </div>

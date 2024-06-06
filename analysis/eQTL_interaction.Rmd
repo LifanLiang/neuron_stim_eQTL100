@@ -92,3 +92,27 @@ Most interaction eQTL actually has opposite effect direction, as shown by the fi
 In addition, BH correction may be too stringent. Figure below is an example with high FDR and plausible time point-specific effect.
 
 ![Interaction eQTL with FDR>0.99 but Qvalue<0.05](assets/SELENOK_6v0.png)
+
+### Clustering dynamic eQTL
+
+FDR threshold was relaxed to 20%. Remove the eQTL if the maximum Z score was less 3. Effect size was set to 0 if Z score was less than 2. Positive eQTL directions were the most common direction.
+
+
+
+```{r, }
+library(enrichR)
+
+clust <- readRDS("data/dynamic_eGene_beta_filtered.RDS")
+clust$gene <- sapply(strsplit(rownames(clust), "\\|"), function(x){x[1]})
+enrich.res <- list()
+for(i in 1:10) {
+  enrich.res[[i]] <- enrichr(clust$gene[clust$cluster==i], "GO_Biological_Process_2023")
+}
+
+kableExtra::kable(head(enrich.res[[9]][[1]]))
+
+```
+
+
+
+
