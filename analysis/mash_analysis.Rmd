@@ -1,0 +1,15 @@
+---
+title: "mash_analysis"
+author: "Lifan Liang"
+date: "2024-06-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r}
+
+```
+

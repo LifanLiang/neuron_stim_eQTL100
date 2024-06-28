@@ -1,0 +1,81 @@
+---
+title: "eqtl_cluster"
+author: "Lifan Liang"
+date: "2024-06-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+This section describes the procedure to collect the set of dynamic eQTL and cluster them to identify patterns of dynamic genetic effects related stimulation response.
+
+### Candidate gene-SNP pairs for dynamic eQTL testing
+
+The candidate gene-SNP pairs for testing come from the union of top eQTLs from fixed effect eQTL mapping for each condition. The union of top eQTLs were further LD pruned. For each gene, pairwise $R^2$ among the set of top eQTLs (9 at maximum) based on the 100 cell lines were computed. When $R^2$ is above 0.1, the SNP with higher nominal P values in [main effect eQTLs](eQTL_glimix.html) were removed.
+
+It results in 15247 gene-SNP pairs with 9880 unique genes.
+
+### Hypothesis testing
+
+We used [CellRegMap](cellregmap.html) to test six different hypothesis with the candidate set. The first three utilized samples across 9 conditions altogether, while hypothesis 4-6 were tested with 3 conditions respectively.
+
+1. Condition specific genetic effects across 9 conditions;
+2. Cell type specific genetic effects across 9 conditions;
+3. Shared time point specific genetic effects across 9 conditions;
+4. Time point specific effects within GABA cells;
+5. Time point specific effects within NMglut cells;
+6. Time point specific effects within NPglut cells.
+
+After obtaining nominal P values from CellRegMap, we used Storey's Q value for FDR correction across the cadidates, ignoring weak LD within genes. Q value < 0.05 is the significant threshold. 
+
+```{r,echo=F}
+dat <- c(9384, 3651, 1319, 777, 303, 1276)
+names(dat) <- c("condition","cell_type", "time_point",
+                "GABA", "NPglut", "NMglut")
+dat
+```
+
+
+The Venn diagram for eQTLs discovered from hypothesis 4-6 suggest higher cell type specificity than previous results in fixed effect interaction. It could be due to the LD pruning for the current results.
+
+![](assets/cellregmap_celltype_venn.png)
+
+## Clustering dynamic eQTLs
+
+We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 9664 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). 
+
+The positive effect direction is the most common direction for the gene-SNP pairs across 9 conditions. Effect size would be set to zero if the Z score is less than 1. The whole gene-SNP pair was removed if the maximum Z score across 9 conditions is less than 1. After filtering, there are 7378 gene-SNP pairs for clustering. Dynamic eQTL patterns are quite clear for any one time point.
+
+![](assets/Dynamic_eQTL_clustering.png)
+
+### Enrichment analysis
+
+Cluster 9 and 14 are more related to neural systems. Other cluster points to calcium channel, inflammation, or cellular energy consumption.
+
+```{r, echo=F, eval=F}
+clust <- readRDS("data/dynami_beta_cluster.RDS")
+clust$gene <- sapply(strsplit(rownames(clust),"\\|"), function(x) {x[1]})
+library(enrichR)
+
+ress <- list()
+for(i in unique(clust$cluster)) {
+  ress[[i]] <- enrichr(unique(clust$gene[clust$cluster==i]),"GO_Biological_Process_2023")
+}
+saveRDS(ress, "data/dynamic_beta_cluster_enrichment_GO.RDS")
+```
+
+```{r,echo=F}
+ress1 <- readRDS("data/dynamic_beta_cluster_enrichment_GO.RDS")
+DT::datatable(ress1[[9]][[1]][1:10,c(1:4,9)])
+```
+
+```{r,echo=F}
+DT::datatable(ress1[[14]][[1]][1:10,c(1:4,9)])
+```
+
+
+
+
+

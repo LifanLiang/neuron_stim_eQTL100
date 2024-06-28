@@ -115,7 +115,7 @@ For genes with more than 1% individual random effects. Mixed effect model has lo
 
 ![](assets/IRE_leadSNP_vs_mateqtl.png)
 
-Another minor issue could be thdgffdsggat permutation in matrixeQTL did not preserve individual structrure. Hence FDR is not stringent enough.
+Another minor issue could be the permutation in matrixeQTL did not preserve individual structrure. Hence FDR is not stringent enough.
 
 ![](assets/noIRE_FDR_leadSNP_vs_mateqtl.png)
 

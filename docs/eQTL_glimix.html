@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-05-16
+<strong>Last updated:</strong> 2024-06-27
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,33 +418,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treed8f18556a075dc85dabe8636f459eda77c11bf39targetblankd8f1855a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee4e6354ea146f318f7308cc1d778dd727c73fe8ctargetblanke4e6354a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/d8f18556a075dc85dabe8636f459eda77c11bf39" target="_blank">d8f1855</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e4e6354ea146f318f7308cc1d778dd727c73fe8c" target="_blank">e4e6354</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treed8f18556a075dc85dabe8636f459eda77c11bf39targetblankd8f1855a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee4e6354ea146f318f7308cc1d778dd727c73fe8ctargetblanke4e6354a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +457,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/d8f18556a075dc85dabe8636f459eda77c11bf39" target="_blank">d8f1855</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e4e6354ea146f318f7308cc1d778dd727c73fe8c" target="_blank">e4e6354</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -470,9 +473,20 @@ were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .RData
     Ignored:    .Rhistory
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/eqtl_cluster.Rmd
+    Untracked:  analysis/mash_analysis.Rmd
+    Untracked:  data/dynami_beta_cluster.RDS
+    Untracked:  data/dynamic_beta_cluster_enrichment_GO.RDS
+
+Unstaged changes:
+    Modified:   analysis/eQTL_glimix.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -518,6 +532,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/abd45a30a1f6e211574ed9920e8622dd79db539c/docs/eQTL_glimix.html" target="_blank">abd45a3</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1114,9 +1145,8 @@ same individuals would confound genetic effects. Although most repeated
 measurement correlation are already captured by genotype PCs and
 expression PCs.</p>
 <p><img src="assets/IRE_leadSNP_vs_mateqtl.png" /></p>
-<p>Another minor issue could be thdgffdsggat permutation in matrixeQTL
-did not preserve individual structrure. Hence FDR is not stringent
-enough.</p>
+<p>Another minor issue could be the permutation in matrixeQTL did not
+preserve individual structrure. Hence FDR is not stringent enough.</p>
 <p><img src="assets/noIRE_FDR_leadSNP_vs_mateqtl.png" /></p>
 </div>
 
