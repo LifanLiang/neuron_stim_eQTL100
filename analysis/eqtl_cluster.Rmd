@@ -19,7 +19,7 @@ It results in 15247 gene-SNP pairs with 9880 unique genes.
 
 ### Hypothesis testing
 
-We used [CellRegMap](cellregmap.html) to test six different hypothesis with the candidate set. The first three utilized samples across 9 conditions altogether, while hypothesis 4-6 were tested with 3 conditions respectively.
+We used [CellRegMap](cellregmap.html) to test six different hypothesis with the candidate set. The first three utilized samples across 9 conditions altogether, while hypothesis 4-6 were tested with 3 conditions respectively. The major difference among these hypothesis is how the design matrix of 
 
 1. Condition specific genetic effects across 9 conditions;
 2. Cell type specific genetic effects across 9 conditions;
@@ -44,7 +44,9 @@ The Venn diagram for eQTLs discovered from hypothesis 4-6 suggest higher cell ty
 
 ## Clustering dynamic eQTLs
 
-We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 9664 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). 
+We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 9664 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). Z scores are consistent with condition by condition (CxC) eQTL in general.
+
+![](assets/interaction_vs_CXC.png)
 
 The positive effect direction is the most common direction for the gene-SNP pairs across 9 conditions. Effect size would be set to zero if the Z score is less than 1. The whole gene-SNP pair was removed if the maximum Z score across 9 conditions is less than 1. After filtering, there are 7378 gene-SNP pairs for clustering. Dynamic eQTL patterns are quite clear for any one time point.
 
