@@ -19,19 +19,19 @@ It results in 15247 gene-SNP pairs with 9880 unique genes.
 
 ### Hypothesis testing
 
-We used [CellRegMap](cellregmap.html) to test six different hypothesis with the candidate set. The first three utilized samples across 9 conditions altogether, while hypothesis 4-6 were tested with 3 conditions respectively. The major difference among these hypothesis is how the design matrix of 
+We used [CellRegMap](cellregmap.html) to test six different hypothesis with the candidate set. The first three utilized samples across 9 conditions altogether, while hypothesis 4-6 were tested with 3 conditions respectively. The major difference among these hypothesis is the design matrix for the random slope. 
 
-1. Condition specific genetic effects across 9 conditions;
-2. Cell type specific genetic effects across 9 conditions;
-3. Shared time point specific genetic effects across 9 conditions;
-4. Time point specific effects within GABA cells;
-5. Time point specific effects within NMglut cells;
-6. Time point specific effects within NPglut cells.
+1. Condition specific genetic effects across 9 conditions. This model includes all 9 conditions. In the design matrix, elements (samples) within the same condition have 1, otherwise 0.
+2. Cell type specific genetic effects across 9 conditions. This model includes all 9 conditions. In the design matrix, elements within the same cell type have 1, otherwise 0.
+3. Shared time point specific genetic effects across 9 conditions. This model includes all 9 conditions. In the design matrix, elements within the same time point have 1, otherwise 0.
+4. Time point specific effects within GABA cells. This model includes the three conditions within the GABA cell type. In the design matrix, elements within the same time point have 1, otherwise 0.
+5. Time point specific effects within NMglut cells; This model includes the three conditions within the NMglut cell type. In the design matrix, elements within the same time point have 1, otherwise 0.
+6. Time point specific effects within NPglut cells. This model includes the three conditions within the NPglut cell type. In the design matrix, elements within the same time point have 1, otherwise 0.
 
 After obtaining nominal P values from CellRegMap, we used Storey's Q value for FDR correction across the cadidates, ignoring weak LD within genes. Q value < 0.05 is the significant threshold. 
 
 ```{r,echo=F}
-dat <- c(9384, 3651, 1319, 777, 303, 1276)
+dat <- c(2434,2082,822,530,660,227)
 names(dat) <- c("condition","cell_type", "time_point",
                 "GABA", "NPglut", "NMglut")
 dat
@@ -44,17 +44,17 @@ The Venn diagram for eQTLs discovered from hypothesis 4-6 suggest higher cell ty
 
 ## Clustering dynamic eQTLs
 
-We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 9664 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). Z scores are consistent with condition by condition (CxC) eQTL in general.
+We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 3928 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). Z scores are consistent with condition by condition (CxC) eQTL in general.
 
 ![](assets/interaction_vs_CXC.png)
 
-The positive effect direction is the most common direction for the gene-SNP pairs across 9 conditions. Effect size would be set to zero if the Z score is less than 1. The whole gene-SNP pair was removed if the maximum Z score across 9 conditions is less than 1. After filtering, there are 7378 gene-SNP pairs for clustering. Dynamic eQTL patterns are quite clear for any one time point.
+The positive effect direction is the most common direction for the gene-SNP pairs across 9 conditions. Effect size would be set to zero if the absolute Z score is less than 2. The whole gene-SNP pair was removed if the maximum absolute Z score across 9 conditions is less than 1. After filtering, there are 3452 gene-SNP pairs for clustering. Dynamic eQTL patterns are quite clear for any one time point.
 
 ![](assets/Dynamic_eQTL_clustering.png)
 
 ### Enrichment analysis
 
-Cluster 9 and 14 are more related to neural systems. Other cluster points to calcium channel, inflammation, or cellular energy consumption.
+Enrichment analysis with 2023 GO biological process. Each row is the top enrichment term corresponding to each cluster.
 
 ```{r, echo=F, eval=F}
 clust <- readRDS("data/dynami_beta_cluster.RDS")
@@ -70,11 +70,10 @@ saveRDS(ress, "data/dynamic_beta_cluster_enrichment_GO.RDS")
 
 ```{r,echo=F}
 ress1 <- readRDS("data/dynamic_beta_cluster_enrichment_GO.RDS")
-DT::datatable(ress1[[9]][[1]][1:10,c(1:4,9)])
-```
-
-```{r,echo=F}
-DT::datatable(ress1[[14]][[1]][1:10,c(1:4,9)])
+ress2 <- lapply(ress1, function(x){x[[1]][1,c(1:4,9)]})
+ress2 <- do.call(rbind, ress2)
+ress2$cluster <- 1:15
+DT::datatable(ress2)
 ```
 
 

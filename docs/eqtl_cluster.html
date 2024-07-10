@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-07-02
+<strong>Last updated:</strong> 2024-07-10
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9ef346f850e489b6fa1cade218b8b0f76e8fcbf7targetblank9ef346fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebd24196f3d1095878c2e49beb0eee805677ad0eftargetblankbd24196a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9ef346f850e489b6fa1cade218b8b0f76e8fcbf7" target="_blank">9ef346f</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bd24196f3d1095878c2e49beb0eee805677ad0ef" target="_blank">bd24196</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9ef346f850e489b6fa1cade218b8b0f76e8fcbf7targetblank9ef346fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebd24196f3d1095878c2e49beb0eee805677ad0eftargetblankbd24196a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9ef346f850e489b6fa1cade218b8b0f76e8fcbf7" target="_blank">9ef346f</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bd24196f3d1095878c2e49beb0eee805677ad0ef" target="_blank">bd24196</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -569,6 +572,11 @@ Ignored files:
 
 Untracked files:
     Untracked:  data/ISLRv2_corrected_June_2023.pdf
+
+Unstaged changes:
+    Modified:   analysis/eqtl_cluster.Rmd
+    Modified:   data/dynami_beta_cluster.RDS
+    Modified:   data/dynamic_beta_cluster_enrichment_GO.RDS
 
 </code></pre>
 <p>
@@ -614,6 +622,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bd24196f3d1095878c2e49beb0eee805677ad0ef/docs/eqtl_cluster.html" target="_blank">bd24196</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-07-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -730,20 +755,32 @@ were removed.</p>
 different hypothesis with the candidate set. The first three utilized
 samples across 9 conditions altogether, while hypothesis 4-6 were tested
 with 3 conditions respectively. The major difference among these
-hypothesis is how the design matrix of</p>
+hypothesis is the design matrix for the random slope.</p>
 <ol style="list-style-type: decimal">
-<li>Condition specific genetic effects across 9 conditions;</li>
-<li>Cell type specific genetic effects across 9 conditions;</li>
-<li>Shared time point specific genetic effects across 9 conditions;</li>
-<li>Time point specific effects within GABA cells;</li>
-<li>Time point specific effects within NMglut cells;</li>
-<li>Time point specific effects within NPglut cells.</li>
+<li>Condition specific genetic effects across 9 conditions. This model
+includes all 9 conditions. In the design matrix, elements (samples)
+within the same condition have 1, otherwise 0.</li>
+<li>Cell type specific genetic effects across 9 conditions. This model
+includes all 9 conditions. In the design matrix, elements within the
+same cell type have 1, otherwise 0.</li>
+<li>Shared time point specific genetic effects across 9 conditions. This
+model includes all 9 conditions. In the design matrix, elements within
+the same time point have 1, otherwise 0.</li>
+<li>Time point specific effects within GABA cells. This model includes
+the three conditions within the GABA cell type. In the design matrix,
+elements within the same time point have 1, otherwise 0.</li>
+<li>Time point specific effects within NMglut cells; This model includes
+the three conditions within the NMglut cell type. In the design matrix,
+elements within the same time point have 1, otherwise 0.</li>
+<li>Time point specific effects within NPglut cells. This model includes
+the three conditions within the NPglut cell type. In the design matrix,
+elements within the same time point have 1, otherwise 0.</li>
 </ol>
 <p>After obtaining nominal P values from CellRegMap, we used Storey’s Q
 value for FDR correction across the cadidates, ignoring weak LD within
 genes. Q value &lt; 0.05 is the significant threshold.</p>
 <pre><code> condition  cell_type time_point       GABA     NPglut     NMglut 
-      9384       3651       1319        777        303       1276 </code></pre>
+      2434       2082        822        530        660        227 </code></pre>
 <p>The Venn diagram for eQTLs discovered from hypothesis 4-6 suggest
 higher cell type specificity than previous results in fixed effect
 interaction. It could be due to the LD pruning for the current
@@ -754,7 +791,7 @@ results.</p>
 <div id="clustering-dynamic-eqtls" class="section level2">
 <h2>Clustering dynamic eQTLs</h2>
 <p>We used the union of significant gene-SNP pairs described above for
-hierarchical clustering.There are 9664 pairs in total. Due to the
+hierarchical clustering.There are 3928 pairs in total. Due to the
 residual correlation caused by repeated measurement / individual random
 effects, we used effect size and standard error from the interaction
 only mixed linear model described in <a href="mashr_analysis.html">MASH
@@ -763,20 +800,17 @@ eQTL in general.</p>
 <p><img src="assets/interaction_vs_CXC.png" /></p>
 <p>The positive effect direction is the most common direction for the
 gene-SNP pairs across 9 conditions. Effect size would be set to zero if
-the Z score is less than 1. The whole gene-SNP pair was removed if the
-maximum Z score across 9 conditions is less than 1. After filtering,
-there are 7378 gene-SNP pairs for clustering. Dynamic eQTL patterns are
-quite clear for any one time point.</p>
+the absolute Z score is less than 2. The whole gene-SNP pair was removed
+if the maximum absolute Z score across 9 conditions is less than 1.
+After filtering, there are 3452 gene-SNP pairs for clustering. Dynamic
+eQTL patterns are quite clear for any one time point.</p>
 <p><img src="assets/Dynamic_eQTL_clustering.png" /></p>
 <div id="enrichment-analysis" class="section level3">
 <h3>Enrichment analysis</h3>
-<p>Cluster 9 and 14 are more related to neural systems. Other cluster
-points to calcium channel, inflammation, or cellular energy
-consumption.</p>
+<p>Enrichment analysis with 2023 GO biological process. Each row is the
+top enrichment term corresponding to each cluster.</p>
 <div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Nervous System Development (GO:0007399)","Response To Calcium Ion (GO:0051592)","Activation Of Protein Kinase B Activity (GO:0032148)","Neuron Projection Morphogenesis (GO:0048812)","Regulation Of Postsynaptic Neurotransmitter Receptor Activity (GO:0098962)","Axon Guidance (GO:0007411)","Calcium Ion Transmembrane Transport (GO:0070588)","Plasma Membrane Bounded Cell Projection Morphogenesis (GO:0120039)","Negative Regulation Of Glial Cell Proliferation (GO:0060253)","Positive Regulation Of Focal Adhesion Disassembly (GO:0120183)"],["42/433","16/106","7/25","19/146","4/9","18/149","12/80","9/50","3/5","3/5"],[0.000111441514727545,0.000136033066612495,0.000232873781142361,0.000251631446975836,0.00078618860525062,0.00088824484823078,0.000958578802608497,0.00109072481742722,0.0013544769474153,0.0013544769474153],[0.204890905700074,0.204890905700074,0.204890905700074,0.204890905700074,0.309976413314946,0.309976413314946,0.309976413314946,0.309976413314946,0.309976413314946,0.309976413314946],["ROBO2;NCKAP1;CHRM3;GPM6A;PPP1R17;GMFB;NRSN1;NRXN1;ADAM22;STMN3;WDR62;GBA2;ZDHHC2;ATXN1;DPYSL4;PDGFC;ADORA1;HES1;NPTX1;IGF2BP2;BRINP3;CDON;CHST8;FARP1;RBFOX1;JAG1;FZD5;PSPN;GSS;CRIM1;SOX11;NRG1;BTBD6;NAV2;GFRA2;DCLK1;DNM3;FGF14;GDNF;AXL;LHX1;DCHS1","MEF2A;PRKAA2;TRPC3;WNT5A;AKR1C3;IQGAP1;SYT9;RYR3;CRHBP;STIM1;NEDD4;KCNMB2;ITPKA;KCNMB3;D2HGDH;SLC25A13","PINK1;NTRK3;WNT5A;NRG1;FGF1;ADRA2C;GAS6","MEF2A;NCKAP1;EPHA4;GPM6A;CNTNAP2;FARP1;CTNND2;DCDC2;IQGAP1;BAIAP2;DCLK1;MYO16;PAK1;CTTN;TAOK3;PARD3;CTNNB1;DIP2A;TNIK","DLGAP1;NPTX1;NPTX2;CACNG5","ROBO2;EPHA4;EPHA6;UNC5B;NRXN1;SEMA4B;WNT5A;NRXN3;PTPRM;UNC5C;NELL2;GAP43;EFNA2;GDNF;LHX1;PLXNC1;EMB;EPHA3","SMDT1;TRPC3;ATP2B4;TRPV2;ATP2A2;MICU2;TRPV1;GAS6;GRIN2B;RYR3;TRPM3;GRIN1","CNTNAP2;NCKAP1;GPM6A;PAK1;CTTN;TAOK3;TNIK;DCLK1;MYO16","SKI;HES1;SOX11","IQSEC1;PIK3R1;MAPRE2"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<div id="htmlwidget-427ea3e24281aa554de8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-427ea3e24281aa554de8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Dopamine Metabolic Process (GO:0042417)","Norepinephrine Metabolic Process (GO:0042415)","Cellular Response To Catecholamine Stimulus (GO:0071870)","Regulation Of Fibroblast Migration (GO:0010762)","Regulation Of Necroptotic Process (GO:0060544)","Positive Regulation Of Autophagy Of Mitochondrion (GO:1903599)","Catecholamine Biosynthetic Process (GO:0042423)","Post-Transcriptional Gene Silencing (GO:0016441)","Positive Regulation Of Canonical Wnt Signaling Pathway (GO:0090263)","Negative Regulation Of Binding (GO:0051100)"],["5/19","3/7","4/19","4/20","4/20","3/10","3/11","3/11","8/85","8/86"],[0.000179720612780878,0.000814034159999423,0.00202863660324151,0.00247733456303698,0.00247733456303698,0.00261228241519092,0.00351376889068451,0.00351376889068451,0.0035539806986674,0.00381999475141961],[0.426297293516242,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654,0.709515134547654],["PRKN;MOXD1;TH;DBH;SNCAIP","MOXD1;TH;DBH","PRKN;NR4A3;GNB1;ATP2B4","ITGB1;HAS1;GNA12;DDR2","PRKN;CASP6;CFLAR;SLC25A4","PRKN;FBXO7;SLC25A4","MOXD1;TH;DBH","HEXIM1;DHX9;HELZ","JRK;TBL1XR1;UBR5;NRARP;CSNK1D;LGR6;EGFR;DACT1","ILRUN;LRPAP1;SUMO3;SUMO4;EFHB;IFIT1;PEX14;DACT1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],["Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)","Small GTPase Mediated Signal Transduction (GO:0007264)","Positive Regulation Of Vascular Endothelial Growth Factor Signaling Pathway (GO:1900748)","Negative Regulation Of Binding (GO:0051100)","rRNA Processing (GO:0006364)","Positive Regulation Of Cell Projection Organization (GO:0031346)","Positive Regulation Of Small GTPase Mediated Signal Transduction (GO:0051057)","Positive Regulation Of Lipopolysaccharide-Mediated Signaling Pathway (GO:0031666)","Regulation Of Plasma Membrane Bounded Cell Projection Assembly (GO:0120032)","Regulation Of Peptidyl-Cysteine S-nitrosylation (GO:2000169)","DNA Damage Response (GO:0006974)","Chemical Synaptic Transmission (GO:0007268)","Neurotrophin Signaling Pathway (GO:0038179)","Regulation Of Adenylate Cyclase Activity (GO:0045761)","Regulation Of cAMP-mediated Signaling (GO:0043949)"],["6/21","8/112","2/7","6/86","9/101","8/118","4/17","2/6","5/75","2/5","7/384","9/273","3/15","3/17","3/18"],[0.000100309836312528,9.27386064013692e-06,0.00146665597181593,0.000518428812721563,2.97037834095938e-05,2.07132793903162e-05,7.75046127682903e-05,0.00106581848444788,0.000328657573492068,0.000500539984616602,0.00236642327031853,0.00128351707345751,0.000301220179291295,0.000275902173828237,0.00052104852825584],[0.253783885870695,0.0106742135967976,0.415191049884098,0.462783561621038,0.0472884231880734,0.0256016133264309,0.12966521716135,0.373908755791144,0.122814311912314,0.202564991085168,0.29815473972833,0.351004089698251,0.172296793469256,0.270108228177844,0.362662133033816],["ERAP1;HLA-B;HLA-C;HLA-A;HLA-DRB1;ULBP3","TIAM2;DIRAS3;RASGEF1B;DOK6;RASGRF2;RASGRF1;RAB38;RIN2","SMOC2;ROBO1","LRPAP1;IFI16;CAV1;SUMO4;EFHB;AURKA","EBNA1BP2;EXOSC10;DDX47;NVL;MAK16;NOLC1;RIOK2;RIOK1;DDX52","CHODL;PTPRD;NLGN1;TENM3;FBXW8;FUT9;PLXNC1;SCN1B","NTRK1;NOTCH1;SRC;ITGAV","PRKCA;SASH1","P2RX4;PODXL;TBC1D14;RAC1;TBC1D22A","ATP2B4;TXN","MSH6;RFC2;XRCC2;NFATC2;KMT5B;HDGFL2;REXO4","CNP;SYT1;RPS6KA2;CHRNA7;GAD2;LIN7A;SEPTIN9;CPLX1;GABRG1","NTRK1;DDIT4;RAPGEF1","STIM1;NF1;CRHR1","PEX5L;PDE3B;RAPGEF2"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n      <th>cluster<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
