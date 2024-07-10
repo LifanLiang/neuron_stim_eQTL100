@@ -44,17 +44,25 @@ The Venn diagram for eQTLs discovered from hypothesis 4-6 suggest higher cell ty
 
 ## Clustering dynamic eQTLs
 
+### eQTL input for clustering
+
 We used the union of significant gene-SNP pairs described above for hierarchical clustering.There are 3928 pairs in total. Due to the residual correlation caused by repeated measurement / individual random effects, we used effect size and standard error from the interaction only mixed linear model described in [MASH analysis](mashr_analysis.html). Z scores are consistent with condition by condition (CxC) eQTL in general.
 
 ![](assets/interaction_vs_CXC.png)
+
+### Preprocessing for clustering
 
 The positive effect direction is the most common direction for the gene-SNP pairs across 9 conditions. Effect size would be set to zero if the absolute Z score is less than 2. The whole gene-SNP pair was removed if the maximum absolute Z score across 9 conditions is less than 1. After filtering, there are 3452 gene-SNP pairs for clustering. Dynamic eQTL patterns are quite clear for any one time point.
 
 ![](assets/Dynamic_eQTL_clustering.png)
 
+We also tried to retain eQTL effects size without setting any to zero. There are still similar dynamic patterns in the heatmap but not so obvious due to too much noise.
+
+![](assets/Dynamic_eQTL_clustering_nonzero.png)
+
 ### Enrichment analysis
 
-Enrichment analysis with 2023 GO biological process. Each row is the top enrichment term corresponding to each cluster.
+Enrichment analysis with 2023 GO biological process. Each row is the top GO term corresponding to each cluster.
 
 ```{r, echo=F, eval=F}
 clust <- readRDS("data/dynami_beta_cluster.RDS")
