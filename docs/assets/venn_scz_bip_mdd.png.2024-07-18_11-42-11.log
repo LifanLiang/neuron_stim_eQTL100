@@ -1,0 +1,10 @@
+INFO [2024-07-18 11:42:11] [[1]]
+INFO [2024-07-18 11:42:11] list(depression = res3$genename[res3$PIP_sum > 0.5], SCZ = scz.gene, 
+INFO [2024-07-18 11:42:11]     bipolar = bip.gene)
+INFO [2024-07-18 11:42:11] 
+INFO [2024-07-18 11:42:11] [[2]]
+INFO [2024-07-18 11:42:11] [1] "docs/assets/venn_scz_bip_mdd.png"
+INFO [2024-07-18 11:42:11] 
+INFO [2024-07-18 11:42:11] $imagetype
+INFO [2024-07-18 11:42:11] [1] "png"
+INFO [2024-07-18 11:42:11] 

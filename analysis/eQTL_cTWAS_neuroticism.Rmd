@@ -90,7 +90,7 @@ venn.diagram(list(neuroticism=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene, bipo
              "docs/assets/venn_scz_bip_neuro_res3.png", imagetype = "png")
 ```
 
-![](assets/venn_adhd_vs_scz.png)
+![](assets/venn_scz_bip_neuro_res3.png)
 
 ### Enrichment analysis
 

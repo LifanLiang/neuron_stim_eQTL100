@@ -1,0 +1,10 @@
+INFO [2024-07-18 11:42:22] [[1]]
+INFO [2024-07-18 11:42:22] list(neuroticism = res3$genename[res3$PIP_sum > 0.5], SCZ = scz.gene, 
+INFO [2024-07-18 11:42:22]     bipolar = bip.gene)
+INFO [2024-07-18 11:42:22] 
+INFO [2024-07-18 11:42:22] [[2]]
+INFO [2024-07-18 11:42:22] [1] "docs/assets/venn_scz_bip_neuro_res3.png"
+INFO [2024-07-18 11:42:22] 
+INFO [2024-07-18 11:42:22] $imagetype
+INFO [2024-07-18 11:42:22] [1] "png"
+INFO [2024-07-18 11:42:22] 
