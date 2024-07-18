@@ -85,10 +85,10 @@ bip$genename <- sapply(strsplit(bip$id, "\\|"), function(x) {x[1]})
 bip2 <- aggregate(bip$susie_pip, list(bip$genename), sum)
 bip.gene <- bip2$Group.1[bip2$x>0.5]
 venn.diagram(list(depression=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene,bipolar=bip.gene), 
-             "docs/assets/venn_three_disease.png", imagetype = "png")
+             "docs/assets/venn_scz_bip_mdd.png", imagetype = "png")
 ```
 
-![](assets/venn_three_disease.png)
+![](assets/venn_scz_bip_mdd.png)
 
 ### Enrichment analysis
 
@@ -123,8 +123,8 @@ res4 %>%
 
 ```{r, echo=F}
 library(enrichR)
-enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
-head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2023")
+head(enrich.total$GO_Biological_Process_2023[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```

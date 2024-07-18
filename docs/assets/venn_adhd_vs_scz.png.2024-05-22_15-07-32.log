@@ -1,9 +1,0 @@
-INFO [2024-05-22 15:07:32] [[1]]
-INFO [2024-05-22 15:07:32] list(ADHD = res3$genename[res3$PIP_sum > 0.5], SCZ = scz.gene)
-INFO [2024-05-22 15:07:32] 
-INFO [2024-05-22 15:07:32] [[2]]
-INFO [2024-05-22 15:07:32] [1] "docs/assets/venn_adhd_vs_scz.png"
-INFO [2024-05-22 15:07:32] 
-INFO [2024-05-22 15:07:32] $imagetype
-INFO [2024-05-22 15:07:32] [1] "png"
-INFO [2024-05-22 15:07:32] 

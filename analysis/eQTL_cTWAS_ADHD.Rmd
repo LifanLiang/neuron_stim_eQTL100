@@ -92,7 +92,6 @@ All the 19 significant genes are dynamic.
 res4 <- res3[res3$PIP_sum>0.5,]
 sumstats <- readRDS("data/ADHD_ctwas_related_sumstats.RDS")
 res$tag <- paste(res$region_tag1, res$region_tag2, sep="_")
-res4 <- res3[res3$PIP_sum>0.5,]
 Pgene <- merge(res[c("id","genename","tag")], sumstats$gwas,
                by.x="tag",by.y="Group.1",all.x=F)
 Pgene <- aggregate(Pgene$p, list(Pgene$genename), min)
@@ -117,8 +116,8 @@ res4 %>%
 
 ```{r, echo=F}
 library(enrichR)
-enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
-head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2023")
+head(enrich.total$GO_Biological_Process_2023[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```

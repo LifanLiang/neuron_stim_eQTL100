@@ -70,7 +70,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], labels=T, ylim = c(0, 21),
 
 ### Comparison with Schizophrenia cTWAS results
 
-Only 1 gene overlap with schizophrenia: GGNBP2.
+Neuroticism score has no overlap with Schizophrennia or Bipolar disorder
 
 ```{r,echo=F}
 library(VennDiagram)
@@ -80,8 +80,14 @@ cond <- names(table(scz$type))
 scz$genename <- sapply(strsplit(scz$id, "\\|"), function(x) {x[1]})
 scz2 <- aggregate(scz$susie_pip, list(scz$genename), sum)
 scz.gene <- scz2$Group.1[scz2$x>0.5]
-venn.diagram(list(ADHD=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene), 
-             "docs/assets/venn_adhd_vs_scz.png", imagetype = "png")
+bip <- readRDS("data/bipolar_cover8_noSNP_ctwas.RDS")
+bip <- bip[bip$cs_index>0,]
+cond <- names(table(bip$type))
+bip$genename <- sapply(strsplit(bip$id, "\\|"), function(x) {x[1]})
+bip2 <- aggregate(bip$susie_pip, list(bip$genename), sum)
+bip.gene <- bip2$Group.1[bip2$x>0.5]
+venn.diagram(list(neuroticism=res3$genename[res3$PIP_sum>0.5],SCZ=scz.gene, bipolar=bip.gene), 
+             "docs/assets/venn_scz_bip_neuro_res3.png", imagetype = "png")
 ```
 
 ![](assets/venn_adhd_vs_scz.png)
@@ -119,8 +125,8 @@ res4 %>%
 
 ```{r, echo=F}
 library(enrichR)
-enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2018")
-head(enrich.total$GO_Biological_Process_2018[-(5:8)],10) %>%
+enrich.total <- enrichr(res4$genename, "GO_Biological_Process_2023")
+head(enrich.total$GO_Biological_Process_2023[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
