@@ -170,6 +170,7 @@ GABA has 4 eGenes, 0 of them are dynamic.
 ```{r, echo=F}
 library(dplyr)
 res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
+saveRDS(res4,"data/processed_bipolar_res4.rds")
 res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12:14,16,20)]
 res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%

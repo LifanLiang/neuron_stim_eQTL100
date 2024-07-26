@@ -257,6 +257,7 @@ GABA has 7 eGenes, 5 of them are dynamic.
 ```{r, echo=F}
 library(dplyr)
 res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
+saveRDS(res4,"data/processed_SCZ_res4.rds")
 res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12:14,16,20)]
 res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
@@ -355,6 +356,6 @@ head(enrich.npglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
 
 ![TWAS locus plot for THBS3](assets/cTWAS_allcell_THBS3.png)
 
-
+### 
 
 

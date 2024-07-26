@@ -74,7 +74,7 @@ Neuroticism score has no overlap with Schizophrennia or Bipolar disorder
 
 ```{r,echo=F}
 library(VennDiagram)
-scz <- readRDS("data/allcell_cover6_noSNP_ctwas.RDS")
+scz <- readRDS("data/scz_cover8_noSNP_ctwas.RDS")
 scz <- scz[scz$cs_index>0,]
 cond <- names(table(scz$type))
 scz$genename <- sapply(strsplit(scz$id, "\\|"), function(x) {x[1]})
@@ -144,6 +144,7 @@ ctperc <- res4[c("GABA_sum","nmglut_sum","npglut_sum")] / res4$PIP_sum
 res4$celltype <- "Unspecific"
 ind <- which(ctperc>0.6, arr.ind=1)
 res4[ind[,1],"celltype"] <- substr(colnames(ctperc),1,nchar(colnames(ctperc))-4)[ind[,2]]
+saveRDS(res4,"data/processed_neuroticism_res4.rds")
 table(res4$celltype)
 ```
 

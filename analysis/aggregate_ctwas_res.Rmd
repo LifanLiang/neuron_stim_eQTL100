@@ -1,0 +1,55 @@
+---
+title: "Aggregation of cTWAS results"
+author: "Lifan Liang"
+date: "2024-07-24"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+Aggregate cTWAS results from NPD traits and investigate sharing
+
+```{r,echo=F}
+scz <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
+bip <- readRDS("data/bipolar_cover8_noSNP_ctwas.RDS")
+depr <- readRDS("data/depression_cover9_noSNP_ctwas.RDS")
+neur <- readRDS("data/neuroticism_cover9_noSNP_ctwas.RDS")
+adhd <- readRDS("data/ADHD_cover9_noSNP_ctwas.RDS")
+
+groupbygene <- function(res) {
+  res <- res[res$cs_index>0,]
+  cond <- names(table(res$type))
+  res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+  res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+  res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                   by.x="Group.1", by.y="genename",all.x = T)
+  colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+  for(i in 2:length(cond)) {
+    res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                      by="genename",all.x = T)
+    colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+  }
+  res3[is.na(res3)] <- 0
+  res3
+}
+```
+
+
+```{r,echo=F}
+scz1 <- groupbygene(scz)
+bip1 <- groupbygene(bip)
+depr1 <- groupbygene(depr)
+neur1 <- groupbygene(neur)
+adhd1 <- groupbygene(adhd)
+```
+
+
+## Cell type distribution of significant genes
+
+```{r, echo=F}
+data.frame()
+```
+
+

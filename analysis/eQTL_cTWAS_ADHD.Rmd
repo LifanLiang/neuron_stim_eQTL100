@@ -131,6 +131,7 @@ An eGene is assigned to a cell type if over 60% of the PIP sum are from that cel
 res4$GABA_sum <- rowSums(res4[,c(3,5)])
 res4$nmglut_sum <- res4[,6]
 res4$npglut_sum <- rowSums(res4[,c(4,7)])
+saveRDS(res4,"data/processed_adhd_res4.rds")
 ctperc <- res4[c("GABA_sum","nmglut_sum","npglut_sum")] / res4$PIP_sum
 res4$celltype <- "Unspecific"
 ind <- which(ctperc>0.6, arr.ind=1)
