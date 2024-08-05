@@ -61,11 +61,24 @@ Persistent effects are strong when the genetic effect is consistent across conte
 
 To avoid the bias of persistent effects, we selected the union of lead eQTLs per gene per context as the cadidate for the strong subset. FDR threshold is 0.2. However, lead eQTLs for the same gene may be in high LD and over-represent certain sharing patterns.
 
-Therefore, for each gene, we computed $R^2$ among the lead variants based on genotypes of the 100 cell lines. SNP pairs with $R^2>0.5$ were pruned. After pruning, we obtained 57398 SNP-gene pairs.
+Therefore, for each gene, we computed $R^2$ among the lead variants based on genotypes of the 100 cell lines. SNP pairs with $R^2>0.1$ were pruned. After pruning, we obtained 57398 SNP-gene pairs.
 
-These SNP-gene pairs were utilized as the strong subset for MASH analysis and we rerun the previous procedure.
+These SNP-gene pairs were utilized as the strong subset for MASH analysis and we rerun the previous procedure. But ED was replaced by ultimate deconvolution (UD). And we included FLASH results to the starting point.
 
+We removed gene-SNP pairs with posterior of being NULL (point mass at zero) above 80%. As shown in the figure below, most eQTLs are shared across all conditions (equal effects and FLASH_nonneg_2). Around 17% of eQTLs were outside the all sharing pattern.
 
+![](assets/MASH/posterior_weight.png)
 
+We also computed pairwise sharing among tissues with the posterior effect sizes. Correlation was mostly above 0.95.
+
+![](assets/MASH/all_sharing.png)
+
+One of the patterns, PCA_5, shows shared dynamic effects although it only has 1% posterior weight.
+
+![](assets/MASH/PCA5_cov.png)
+
+Its first Eigen vector is:
+
+![](assets/MASH/PCA5_eigen1.png)
 
 

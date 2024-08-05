@@ -37,6 +37,21 @@ names(samples.size) <- names(ctwas.params$group_prior)[c(2,5,8,3,6,9,4,7,10)]
 barplot(samples.size,las=2,main="sample size for eQTL")
 ```
 
+### Enrichment 
+
+```{r}
+library(ggplot2)
+dat <- data.frame(enrichment=ctwas.params$enrichment,
+                  pve=ctwas.params$group_pve[-1]/ctwas.params$total_pve)
+temp <- strsplit(rownames(dat),"_")
+dat$celltype <- sapply(temp,function(x){x[2]})
+dat$timepoint <- sapply(temp,function(x){x[1]})
+ggplot(dat,aes(x=celltype,y=timepoint)) + 
+  geom_count(aes(size=pve, color=enrichment)) + 
+  theme_classic()
+```
+
+
 ### PVE for each context
 
 Total PVE from all eGenes in all contexts is 11.0%.
@@ -66,7 +81,7 @@ text(x = p, y = egenes + 2.5, labels = egenes)
 
 ## Results
 
-There are 60 egenes if the cutoff was set to PIP>0.5.
+There are 45 \]egenes if the cutoff was set to PIP>0.5.
 
 ```{r, echo=F}
 res <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
@@ -99,7 +114,7 @@ library(VennDiagram)
 #library(RColorBrewer)
 sumstats <- readRDS("data/SCZ_ctwas_related_sumstats.RDS")
 res$tag <- paste(res$region_tag1, res$region_tag2, sep="_")
-res4 <- res3[res3$PIP_sum>0.8,]
+res4 <- res3[res3$PIP_sum>0.5,]
 Pgene <- merge(res[c("id","genename","tag")], sumstats$gwas,
                by.x="tag",by.y="Group.1",all.x=F)
 Pgene <- aggregate(Pgene$p, list(Pgene$genename), min)
@@ -133,8 +148,22 @@ x <- barplot(gtex.total, las=2, xaxt="n")
 text(x,par("usr")[3],names(gtex.total), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd = TRUE, cex=0.6)
 ```
 
+
 #### Venn diagram between our cTWAS genes and GTEx brain tissues
 Venn diagram showed the intersection of our results and the union of all GTEx brain genes.
+
+```{r,echo=F}
+library(VennDiagram)
+library(RColorBrewer)
+myCol <- brewer.pal(3, "Pastel2")
+venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename,
+                  GTEX_prefrontal_cortex=GTEx.gene[["Brain_Frontal_Cortex_BA9"]]),
+             lwd = 2, fill = myCol,
+             cex = 2, fontface = "bold",fontfamily = "sans",
+             imagetype = "png", filename = "GTEx_vs_SCZ.png")
+
+```
+
 
 ![](assets/venn_GTEx.png)
 
@@ -245,6 +274,28 @@ table(shared$celltype)
 table(notshared$celltype)
 ```
 
+### Time point specific genes
+
+```{r,echo=F}
+res4$PIP_0hr <- rowSums(res4[,c(3,6,9)])
+res4$PIP_1hr <- rowSums(res4[,c(4,7,10)])
+res4$PIP_6hr <- rowSums(res4[,c(5,8,11)])
+tpperc <- res4[c("PIP_0hr","PIP_1hr","PIP_6hr")] / res4$PIP_sum
+res4$timepoint <- "Unspecific"
+ind <- which(tpperc>0.6, arr.ind=1)
+res4[ind[,1],"timepoint"] <- substr(colnames(tpperc),1,nchar(colnames(ctperc))-4)[ind[,2]]
+table(res4$timepoint)
+```
+
+#### Time point composition of gene PIPs
+
+Since GTEx is bulk eQTL, the cell type contribution of the shared genes for SCZ can only be elucidated by our joint condition cTWAS results.
+
+```{r, echo=F}
+library(ggplot2)
+
+ggplot(res4[c("PIP_sum","timepoint")], aes(PIP_sum, fill=timepoint)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
+```
 
 ### Dynamic eGenes
 
@@ -257,8 +308,9 @@ GABA has 7 eGenes, 5 of them are dynamic.
 ```{r, echo=F}
 library(dplyr)
 res4[c("GABA_PIP_diff","nmglut_PIP_diff","npglut_PIP_diff")] <- res4[,6:8] + res4[9:11] - res4[3:5]
-saveRDS(res4,"data/processed_SCZ_res4.rds")
-res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12:14,16,20)]
+#saveRDS(res4,"data/processed_SCZ_res4.rds")
+res4.GABA <- res4[res4$celltype=="GABA",c(1,2,3,6,9,12:14,16,24)]
+#res4.GABA$GABA_PIP_diff <- res4.GABA$PIP_6hr_GABA + res4.GABA$PIP_1hr_GABA - res4.GABA$PIP_0hr_GABA
 res4.GABA[order(res4.GABA$GABA_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.GABA)[-1], digits=3)
@@ -295,7 +347,7 @@ head(enrich.GABA1$GO_Biological_Process_2023[-(5:8)],10) %>%
 nmglut has 6 eGenes, all of them are dynamic.
 
 ```{r, echo=F}
-res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,12:14,17,21)]
+res4.nmglut <- res4[res4$celltype=="nmglut",c(1,2,4,7,10,12:14,17,25)]
 res4.nmglut[order(res4.nmglut$nmglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.nmglut)[-1], digits=3)
@@ -328,7 +380,7 @@ head(enrich.nmglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
 npglut has 5 eGenes, 4 of them are dynamic
 
 ```{r, echo=F}
-res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,12:14,18,22)]
+res4.npglut <- res4[res4$celltype=="npglut",c(1,2,5,8,11,12:14,18,26)]
 res4.npglut[order(res4.npglut$npglut_PIP_diff, decreasing = T),] %>%
   DT::datatable() %>%
   DT::formatRound(columns=colnames(res4.npglut)[-1], digits=3)
@@ -355,7 +407,5 @@ head(enrich.npglut1$GO_Biological_Process_2018[-(5:8)],10) %>%
 ![cTWAS locus plot for NAGA](assets/cTWAS_allcell_NAGA.png)
 
 ![TWAS locus plot for THBS3](assets/cTWAS_allcell_THBS3.png)
-
-### 
 
 

@@ -37,6 +37,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.26/datatables.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -368,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-07-26
+<strong>Last updated:</strong> 2024-08-05
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0e6b329808a511fe04b48403d8411059366b4852targetblank0e6b329a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree3242ba61bacd56b9877476b60953ef2ed8055ef0targetblank3242ba6a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0e6b329808a511fe04b48403d8411059366b4852" target="_blank">0e6b329</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/3242ba61bacd56b9877476b60953ef2ed8055ef0" target="_blank">3242ba6</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0e6b329808a511fe04b48403d8411059366b4852targetblank0e6b329a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree3242ba61bacd56b9877476b60953ef2ed8055ef0targetblank3242ba6a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0e6b329808a511fe04b48403d8411059366b4852" target="_blank">0e6b329</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/3242ba61bacd56b9877476b60953ef2ed8055ef0" target="_blank">3242ba6</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -559,6 +570,19 @@ Ignored files:
     Ignored:    analysis/figure/
     Ignored:    data/.DS_Store
     Ignored:    data/single_group_ctwas/.DS_Store
+
+Untracked files:
+    Untracked:  GTEx_vs_SCZ.png
+    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-02-45.log
+    Untracked:  data/processed_neuroticism_res4.rds
+
+Unstaged changes:
+    Modified:   analysis/aggregate_ctwas_res.Rmd
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/eQTL_cTWAS_ADHD.Rmd
+    Modified:   analysis/mashr_analysis.Rmd
+    Modified:   data/processed_SCZ_res4.rds
+    Modified:   data/processed_adhd_res4.rds
 
 </code></pre>
 <p>
@@ -606,6 +630,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/3242ba61bacd56b9877476b60953ef2ed8055ef0/docs/aggregate_ctwas_res.html" target="_blank">3242ba6</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-07-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -635,7 +676,45 @@ wflow_publish(c("analysis", "data", "docs"))
 <div id="cell-type-distribution-of-significant-genes"
 class="section level2">
 <h2>Cell type distribution of significant genes</h2>
-<pre><code>data frame with 0 columns and 0 rows</code></pre>
+<p><img src="figure/aggregate_ctwas_res.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="dynamic-gene-counts-across-cell-types" class="section level2">
+<h2>Dynamic gene counts across cell types</h2>
+<p><img src="figure/aggregate_ctwas_res.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/aggregate_ctwas_res.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="significant-gene-distribution-across-the-five-traits"
+class="section level2">
+<h2>Significant gene distribution across the five traits</h2>
+<p>Not much sharing among traits.</p>
+<p><img src="figure/aggregate_ctwas_res.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="enrichment-analysis" class="section level2">
+<h2>Enrichment analysis</h2>
+<pre><code>Welcome to enrichR
+Checking connection ... </code></pre>
+<pre><code>Enrichr ... Connection is Live!
+FlyEnrichr ... Connection is Live!
+WormEnrichr ... Connection is Live!
+YeastEnrichr ... Connection is Live!
+FishEnrichr ... Connection is Live!
+OxEnrichr ... Connection is Live!
+
+Attaching package: &#39;dplyr&#39;
+
+The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag
+
+The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Amino-Acid Betaine Metabolic Process (GO:0006577)","Carnitine Metabolic Process (GO:0009437)","Peripheral Nervous System Development (GO:0007422)","ATP Metabolic Process (GO:0046034)","Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)","Proton Motive Force-Driven ATP Synthesis (GO:0015986)","Oxidative Phosphorylation (GO:0006119)","Aerobic Electron Transport Chain (GO:0019646)","Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)","CD4-positive, Alpha-Beta T Cell Activation (GO:0035710)"],["2/6","2/9","2/20","2/34","2/53","2/60","2/63","2/68","2/70","1/5"],[3.94366106007641e-05,9.43556191887987e-05,0.000492368756376956,0.00143294779119222,0.00345159183773702,0.00440165995846702,0.0048417898534301,0.00561856855441298,0.00594424495063399,0.00822354796912648],[0.0110816875788147,0.0132569644960262,0.0461185401806415,0.100664582331253,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646],["CROT;CPT1C","CROT;CPT1C","SERPINI1;ASIC2","OLA1;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;COX6A1","NDUFA6;COX6A1","HMGB1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<p><img src="figure/aggregate_ctwas_res.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -660,20 +739,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.7.0
+[1] dplyr_1.0.7     enrichR_3.2     pheatmap_1.0.12 ggplot2_3.3.5  
+[5] workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11      bslib_0.3.1      compiler_4.1.2   pillar_1.7.0    
- [5] later_1.3.0      git2r_0.29.0     jquerylib_0.1.4  tools_4.1.2     
- [9] getPass_0.2-2    digest_0.6.29    jsonlite_1.7.3   evaluate_0.14   
-[13] tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3  rlang_1.0.0     
-[17] cli_3.1.1        rstudioapi_0.13  yaml_2.2.2       xfun_0.29       
-[21] fastmap_1.1.0    httr_1.4.2       stringr_1.4.0    knitr_1.37      
-[25] sass_0.4.1       fs_1.5.2         vctrs_0.3.8      rprojroot_2.0.2 
-[29] glue_1.6.1       R6_2.5.1         processx_3.5.2   fansi_1.0.2     
-[33] rmarkdown_2.11   callr_3.7.0      magrittr_2.0.2   whisker_0.4     
-[37] ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2  ellipsis_0.3.2  
-[41] httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6    crayon_1.4.2    </code></pre>
+ [1] tidyselect_1.1.1   xfun_0.29          bslib_0.3.1        purrr_0.3.4       
+ [5] colorspace_2.0-2   vctrs_0.3.8        generics_0.1.2     htmltools_0.5.2   
+ [9] yaml_2.2.2         utf8_1.2.2         rlang_1.0.0        jquerylib_0.1.4   
+[13] later_1.3.0        pillar_1.7.0       glue_1.6.1         withr_2.4.3       
+[17] DBI_1.1.2          RColorBrewer_1.1-2 lifecycle_1.0.1    stringr_1.4.0     
+[21] munsell_0.5.0      gtable_0.3.0       htmlwidgets_1.5.4  evaluate_0.14     
+[25] WriteXLS_6.4.0     labeling_0.4.2     knitr_1.37         callr_3.7.0       
+[29] fastmap_1.1.0      crosstalk_1.2.0    httpuv_1.6.5       ps_1.6.0          
+[33] curl_4.3.2         fansi_1.0.2        highr_0.9          Rcpp_1.0.11       
+[37] DT_0.26            promises_1.2.0.1   scales_1.1.1       jsonlite_1.7.3    
+[41] farver_2.1.0       fs_1.5.2           rjson_0.2.21       digest_0.6.29     
+[45] stringi_1.7.6      processx_3.5.2     getPass_0.2-2      rprojroot_2.0.2   
+[49] grid_4.1.2         cli_3.1.1          tools_4.1.2        magrittr_2.0.2    
+[53] sass_0.4.1         tibble_3.1.6       crayon_1.4.2       whisker_0.4       
+[57] pkgconfig_2.0.3    ellipsis_0.3.2     assertthat_0.2.1   rmarkdown_2.11    
+[61] httr_1.4.2         rstudioapi_0.13    R6_2.5.1           git2r_0.29.0      
+[65] compiler_4.1.2    </code></pre>
 </div>
 </div>
 
