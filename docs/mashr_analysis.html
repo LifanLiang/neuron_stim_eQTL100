@@ -389,7 +389,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-05-22
+<strong>Last updated:</strong> 2024-08-05
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -436,15 +436,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree05be4447b1a46f5e02dedb8e8510a17bfc7997abtargetblank05be444a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7d70d1a246cfdd0f983b820d2eff381cf7ecdd8etargetblank7d70d1aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/05be4447b1a46f5e02dedb8e8510a17bfc7997ab" target="_blank">05be444</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7d70d1a246cfdd0f983b820d2eff381cf7ecdd8e" target="_blank">7d70d1a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree05be4447b1a46f5e02dedb8e8510a17bfc7997abtargetblank05be444a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7d70d1a246cfdd0f983b820d2eff381cf7ecdd8etargetblank7d70d1aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +454,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/05be4447b1a46f5e02dedb8e8510a17bfc7997ab" target="_blank">05be444</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7d70d1a246cfdd0f983b820d2eff381cf7ecdd8e" target="_blank">7d70d1a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -476,7 +476,16 @@ Ignored files:
     Ignored:    data/single_group_ctwas/.DS_Store
 
 Untracked files:
-    Untracked:  data/neuroticism_ctwas_related_sumstats.RDS
+    Untracked:  GTEx_vs_SCZ.png
+    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-02-45.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-21-32.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-23-14.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-30-00.log
+    Untracked:  data/processed_neuroticism_res4.rds
+
+Unstaged changes:
+    Modified:   data/processed_SCZ_res4.rds
+    Modified:   data/processed_adhd_res4.rds
 
 </code></pre>
 <p>
@@ -522,6 +531,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/7d70d1a246cfdd0f983b820d2eff381cf7ecdd8e/analysis/mashr_analysis.Rmd" target="_blank">7d70d1a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+<td>
+wflow_publish(c("analysis", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/ec426279fdc06572fd82e4697ef37e4c4c472527/docs/mashr_analysis.html" target="_blank">ec42627</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-05-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -654,10 +697,25 @@ high LD and over-represent certain sharing patterns.</p>
 <p>Therefore, for each gene, we computed <span
 class="math inline">\(R^2\)</span> among the lead variants based on
 genotypes of the 100 cell lines. SNP pairs with <span
-class="math inline">\(R^2&gt;0.5\)</span> were pruned. After pruning, we
+class="math inline">\(R^2&gt;0.1\)</span> were pruned. After pruning, we
 obtained 57398 SNP-gene pairs.</p>
 <p>These SNP-gene pairs were utilized as the strong subset for MASH
-analysis and we rerun the previous procedure.</p>
+analysis and we rerun the previous procedure. But ED was replaced by
+ultimate deconvolution (UD). And we included FLASH results to the
+starting point.</p>
+<p>We removed gene-SNP pairs with posterior of being NULL (point mass at
+zero) above 80%. As shown in the figure below, most eQTLs are shared
+across all conditions (equal effects and FLASH_nonneg_2). Around 17% of
+eQTLs were outside the all sharing pattern.</p>
+<p><img src="assets/MASH/posterior_weight.png" /></p>
+<p>We also computed pairwise sharing among tissues with the posterior
+effect sizes. Correlation was mostly above 0.95.</p>
+<p><img src="assets/MASH/all_sharing.png" /></p>
+<p>One of the patterns, PCA_5, shows shared dynamic effects although it
+only has 1% posterior weight.</p>
+<p><img src="assets/MASH/PCA5_cov.png" /></p>
+<p>Its first Eigen vector is:</p>
+<p><img src="assets/MASH/PCA5_eigen1.png" /></p>
 </div>
 
 
