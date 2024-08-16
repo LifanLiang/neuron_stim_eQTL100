@@ -1,0 +1,25 @@
+---
+title: "TORUS enrichment analysis of eQTL"
+author: "Lifan Liang"
+date: "2024-08-13"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Enrichment analysis with genomic features
+
+We used TORUS 1.0.4 to evaluate the enrichment of eQTL in genomic features and ASoCs.
+
+![Genomic features](assets/eQTL_enrich_genomic_features.pdf){width=90%}.
+
+## Enrichment analysis with ASOCs
+
+![Allelic specific open chromatins](assets/eQTL_enrich_ASoC_TORUS.pdf){width=90%}.
+
+## Enrichment analysis comparing dynamic and static eQTLs
+
+We previously performed interaction testing over the LD-pruned top eQTLs from each time point within cell types ([ref](cellregmap.html)). For 1 hour and 6 hour in each cell type, we divided eQTL summary statistics into genes that contain dynamic eQTLs and genes that don't. Only 1 hour glutamatergic cells have higher enrichment in the dynamic set.
+
+![Dynamic eGenes vs. static eGenes](assets/dynamic_vs_static_egene.png)
+

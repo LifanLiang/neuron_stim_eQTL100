@@ -22,6 +22,28 @@ for(f in fs) {
 ```
 
 
+```{r,echo=F}
+fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")
+params <- list()
+for(i in seq_along(fs1)) {
+  params[[fs[i]]] <- readRDS(paste0("data/",fs1[i],"_cTWAS_params.rds"))
+}
+```
+
+```{r,echo=F}
+library(ggplot2)
+pves <- lapply(params, function(x) {x$group_pve[-1]/x$total_pve})
+enrichment <- lapply(params, function(x) {x$enrichment})
+dat <- as.data.frame(cbind(do.call(c,pves),do.call(c,enrichment)))
+colnames(dat) <- c("PVE", "enrichment")
+dat$condition <- sapply(strsplit(rownames(dat),"\\."), function(x){x[2]})
+dat$condition <- factor(dat$condition, levels = c(paste0(c(0,1,6),"hr_GABA"),
+                                          paste0(c(0,1,6),"hr_nmglut"),
+                                          paste0(c(0,1,6),"hr_npglut")))
+dat$trait <- sapply(strsplit(rownames(dat),"\\."), function(x){x[1]})
+
+ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = PVE, size=enrichment)) +guides(color = 'legend') + theme_minimal() 
+```
 
 
 ## Cell type distribution of significant genes
@@ -140,3 +162,65 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
+
+## Analysis of three genes enriched in lipid metabolism
+
+### CPT1C
+
+CPT1C was a top gene in SCZ with a high PIP in 1hr_NMglut.
+
+```{r,echo=F}
+CPT1C.summary <- readRDS("data/CPT1C_investigation.RDS")
+DT::datatable(CPT1C.summary$gene_PIP)
+```
+
+The SNP related to CPT1C in 1 hour NMglut was 50K bps away from the other two SNPs. Looking into this gene-SNP pair, 1hr_nmglut is the only condition with FDR < 0.1.
+
+```{r,echo=F}
+plot(x=-log10(CPT1C.summary$CPT1C_eqtl$pvalue), y=abs(CPT1C.summary$CPT1C_eqtl$beta),
+     xlab="-log10 nominal P value", ylab="absolute effect size (beta)", 
+     ylim=c(0,0.6), xlim=c(0,3.5))
+text(-log10(CPT1C.summary$CPT1C_eqtl$pvalue), abs(CPT1C.summary$CPT1C_eqtl$beta),
+     labels=rownames(CPT1C.summary$CPT1C_eqtl), cex= 0.7, pos=3)
+```
+
+The SNP, rs12104272, has a nominal P value around $10^{-8}$ in SCZ GWAS. It was mapped to SCAF1 in (another study)[https://pubmed.ncbi.nlm.nih.gov/31740837/]. However, in our dataset, this gene-SNP pair was not significant in any conditions.
+
+```{r,echo=F}
+DT::datatable(CPT1C.summary$SCAF1_eqtl)
+```
+
+### CROT
+
+CROT has PIP=0.87 in SCZ.The corresponding SNP was rs13233308
+
+```{r,echo=F}
+CROT.summary <- readRDS("data/CROT_investigation.RDS")
+DT::datatable(CROT.summary$gene_PIP)
+```
+
+```{r,echo=F}
+plot(x=-log10(CROT.summary$CROT_eqtl$pvalue), y=CROT.summary$CROT_eqtl$beta,
+     xlab="-log10 nominal P value", ylab="absolute effect size (beta)", 
+     ylim=c(0,0.6), xlim=c(0,3.5))
+text(-log10(CROT.summary$CROT_eqtl$pvalue), CROT.summary$CROT_eqtl$beta,
+     labels=rownames(CROT.summary$CROT_eqtl), cex= 0.7, pos=3)
+```
+
+### ACADM
+
+ACADM has PIP=0.61 in 6 hour NMglut for the trait 
+
+```{r,echo=F}
+ACADM.summary <- readRDS("data/ACADM_investigation.RDS")
+DT::datatable(ACADM.summary$gene_PIP)
+```
+
+```{r,echo=F}
+plot(x=-log10(ACADM.summary$ACADM_eqtl$pvalue), y=ACADM.summary$ACADM_eqtl$beta,
+     xlab="-log10 nominal P value", ylab="absolute effect size (beta)", 
+     ylim=c(0,0.8), xlim=c(0,3.5))
+text(-log10(ACADM.summary$ACADM_eqtl$pvalue), ACADM.summary$ACADM_eqtl$beta,
+     labels=rownames(ACADM.summary$ACADM_eqtl), cex= 0.7, pos=3)
+```
+
