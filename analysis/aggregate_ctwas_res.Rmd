@@ -200,10 +200,10 @@ DT::datatable(CROT.summary$gene_PIP)
 ```
 
 ```{r,echo=F}
-plot(x=-log10(CROT.summary$CROT_eqtl$pvalue), y=CROT.summary$CROT_eqtl$beta,
-     xlab="-log10 nominal P value", ylab="absolute effect size (beta)", 
-     ylim=c(0,0.6), xlim=c(0,3.5))
-text(-log10(CROT.summary$CROT_eqtl$pvalue), CROT.summary$CROT_eqtl$beta,
+plot(x=-log10(CROT.summary$CROT_eqtl$pvalue), y=abs(CROT.summary$CROT_eqtl$beta),
+     xlab="-log10 nominal P value", ylab="absolute effect size (beta)",
+     ylim=c(0,0.6),xlim=c(0,5))
+text(-log10(CROT.summary$CROT_eqtl$pvalue), abs(CROT.summary$CROT_eqtl$beta),
      labels=rownames(CROT.summary$CROT_eqtl), cex= 0.7, pos=3)
 ```
 
@@ -217,10 +217,10 @@ DT::datatable(ACADM.summary$gene_PIP)
 ```
 
 ```{r,echo=F}
-plot(x=-log10(ACADM.summary$ACADM_eqtl$pvalue), y=ACADM.summary$ACADM_eqtl$beta,
+plot(x=-log10(ACADM.summary$ACADM_eqtl$pvalue), y=abs(ACADM.summary$ACADM_eqtl$beta),
      xlab="-log10 nominal P value", ylab="absolute effect size (beta)", 
-     ylim=c(0,0.8), xlim=c(0,3.5))
-text(-log10(ACADM.summary$ACADM_eqtl$pvalue), ACADM.summary$ACADM_eqtl$beta,
+     ylim=c(0,0.7), xlim=c(0,6))
+text(-log10(ACADM.summary$ACADM_eqtl$pvalue), abs(ACADM.summary$ACADM_eqtl$beta),
      labels=rownames(ACADM.summary$ACADM_eqtl), cex= 0.7, pos=3)
 ```
 
