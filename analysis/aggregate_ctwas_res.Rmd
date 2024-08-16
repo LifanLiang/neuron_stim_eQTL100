@@ -213,7 +213,7 @@ ACADM has PIP=0.61 in 6 hour NMglut for the trait
 
 ```{r,echo=F}
 ACADM.summary <- readRDS("data/ACADM_investigation.RDS")
-DT::datatable(ACADM.summary$gene_PIP)
+DT::datatable(ACADM.summary$dep_PIP)
 ```
 
 ```{r,echo=F}
