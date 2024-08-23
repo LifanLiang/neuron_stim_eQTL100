@@ -45,6 +45,15 @@ dat$trait <- sapply(strsplit(rownames(dat),"\\."), function(x){x[1]})
 ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = PVE, size=enrichment)) +guides(color = 'legend') + theme_minimal() 
 ```
 
+### Time point distribution of enrichment
+
+```{r}
+enrich1 <- as.data.frame(enrichment)
+dat.tp <- data.frame(enrichment=c(unlist(enrich1[1:3,]),unlist(enrich1[4:6,]),unlist(enrich1[7:9,])), timepoint=c(rep("0hr",15), rep("1hr",15),rep("6hr",15)))
+boxplot(enrichment~timepoint,dat.tp)
+```
+
+
 
 ## Cell type distribution of significant genes
 
@@ -102,7 +111,7 @@ ggplot(count2,aes(x=disease, y=gene_count, fill=type)) +
 
 ## Significant gene distribution across the five traits
 
-Not much sharing among traits.
+Below is a heatmap of genes over PIP>50% in at least one trait. It shows not many shared genes among traits.
 
 ```{r, echo=F}
 library(pheatmap)
@@ -116,6 +125,14 @@ for(n in names(ress)) {
 }
 pheatmap(dat1, cluster_rows = F, cluster_cols = F)
 ```
+
+```{r, echo=F}
+library(dplyr)
+dat1[rowSums(dat1>0)>1,] %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=colnames(dat1), digits=3)
+```
+
 
 ## Enrichment analysis
 
@@ -190,6 +207,14 @@ The SNP, rs12104272, has a nominal P value around $10^{-8}$ in SCZ GWAS. It was 
 DT::datatable(CPT1C.summary$SCAF1_eqtl)
 ```
 
+#### eQTL plots
+
+![](assets/CPT1C_rs12104272_nmglut.png)
+
+#### LD across top eQTLs input
+
+![](assets/CPT1C_ctwas_LD.png)
+
 ### CROT
 
 CROT has PIP=0.87 in SCZ.The corresponding SNP was rs13233308
@@ -207,6 +232,14 @@ text(-log10(CROT.summary$CROT_eqtl$pvalue), abs(CROT.summary$CROT_eqtl$beta),
      labels=rownames(CROT.summary$CROT_eqtl), cex= 0.7, pos=3)
 ```
 
+#### eQTL plots
+
+![](assets/CROT_rs13233308_GABA.png)
+
+#### LD across top eQTLs input
+
+![](assets/CROT_ctwas_LD.png)
+
 ### ACADM
 
 ACADM has PIP=0.61 in 6 hour NMglut for the trait 
@@ -223,4 +256,13 @@ plot(x=-log10(ACADM.summary$ACADM_eqtl$pvalue), y=abs(ACADM.summary$ACADM_eqtl$b
 text(-log10(ACADM.summary$ACADM_eqtl$pvalue), abs(ACADM.summary$ACADM_eqtl$beta),
      labels=rownames(ACADM.summary$ACADM_eqtl), cex= 0.7, pos=3)
 ```
+
+#### eQTL plots
+
+![](assets/ACADM_rs211745_nmglut.png)
+
+#### LD across top eQTLs input
+
+![](assets/ACADM_ctwas_LD.png)
+
 
