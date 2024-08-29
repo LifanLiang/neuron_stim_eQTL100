@@ -377,7 +377,7 @@ Schizophrenia</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -388,8 +388,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -398,13 +398,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-08-05
+<strong>Last updated:</strong> 2024-08-29
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -427,18 +427,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -529,15 +532,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7d70d1a246cfdd0f983b820d2eff381cf7ecdd8etargetblank7d70d1aa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0b2f14d5edf33464d3d68c104808b3b2893fbf8atargetblank0b2f14da">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7d70d1a246cfdd0f983b820d2eff381cf7ecdd8e" target="_blank">7d70d1a</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0b2f14d5edf33464d3d68c104808b3b2893fbf8a" target="_blank">0b2f14d</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree7d70d1a246cfdd0f983b820d2eff381cf7ecdd8etargetblank7d70d1aa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0b2f14d5edf33464d3d68c104808b3b2893fbf8atargetblank0b2f14da"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -547,7 +550,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/7d70d1a246cfdd0f983b820d2eff381cf7ecdd8e" target="_blank">7d70d1a</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0b2f14d5edf33464d3d68c104808b3b2893fbf8a" target="_blank">0b2f14d</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -569,15 +572,23 @@ Ignored files:
     Ignored:    data/single_group_ctwas/.DS_Store
 
 Untracked files:
+    Untracked:  GTEx_vs_SCZ.pdf.2024-08-26_21-04-15.log
     Untracked:  GTEx_vs_SCZ.png
-    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-02-45.log
-    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-21-32.log
-    Untracked:  GTEx_vs_SCZ.png.2024-08-05_13-23-14.log
-    Untracked:  data/processed_neuroticism_res4.rds
+    Untracked:  GTEx_vs_SCZ.png.2024-08-26_13-44-01.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-26_20-30-40.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-26_20-51-18.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-26_20-59-28.log
+    Untracked:  GTEx_vs_SCZ.png.2024-08-26_21-03-42.log
+    Untracked:  GTEx_vs_SCZ.tiff
+    Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
+    Untracked:  analysis/ctwas_caQTL_ASOC.Rmd
+    Untracked:  data/caQTL_ASOC_SCZ_noSNP_res.RDS
+    Untracked:  data/joint_caQTL_ASOC_SCZ_params.RDS
+    Untracked:  geneMapping.rds
 
 Unstaged changes:
-    Modified:   data/processed_SCZ_res4.rds
-    Modified:   data/processed_adhd_res4.rds
+    Modified:   analysis/cTWAS_all_cell.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -623,6 +634,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/c255b081903658d8cfe9666eba4458b290d79939/docs/cTWAS_all_cell.html" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1486,6 +1514,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-5-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-5-1.png" target="_blank">af94514</a>
 </td>
 <td>
@@ -1539,6 +1578,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-6-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bee6c05ecbabca67f912ea1eb8cd1f2f2bce3697/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-6-1.png" target="_blank">bee6c05</a>
 </td>
 <td>
@@ -1575,6 +1625,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-7-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/435d87d5d7a74d1891cb7c0362b33234bcfdc575/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-7-1.png" target="_blank">435d87d</a>
@@ -1630,6 +1691,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-8-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-8-1.png" target="_blank">af94514</a>
@@ -1695,6 +1767,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-9-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-9-1.png" target="_blank">af94514</a>
@@ -1776,6 +1859,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-10-1.png" target="_blank">af94514</a>
@@ -1864,6 +1958,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/1b438e1d554ef95f811eea1359fcb80f409691b3/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-11-1.png" target="_blank">1b438e1</a>
 </td>
 <td>
@@ -1917,7 +2022,7 @@ class="section level4">
 <p>Venn diagram showed the intersection of our results and the union of
 all GTEx brain genes.</p>
 <pre><code>[1] 1</code></pre>
-<p><img src="assets/venn_GTEx.png" /></p>
+<p><img src="assets/GTEx_vs_SCZ.tiff" /></p>
 </div>
 <div id="the-shared-8-genes-pip-in-our-ctwas-results"
 class="section level4">
@@ -2123,6 +2228,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-18-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-18-1.png" target="_blank">af94514</a>
 </td>
 <td>
@@ -2185,6 +2301,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-19-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/af945140e0908343089287046f6bf7b725961213/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-19-1.png" target="_blank">af94514</a>
 </td>
 <td>
@@ -2202,6 +2329,43 @@ Lifan Liang
 class="section level4">
 <h4>Cell type composition across PIP distribution</h4>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-20-1">
+Past versions of unnamed-chunk-20-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-20-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-20-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="cell-type-composition-of-gtex-shared-genes"
 class="section level4">
@@ -2210,6 +2374,43 @@ class="section level4">
 genes for SCZ can only be elucidated by our joint condition cTWAS
 results.</p>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-21-1">
+Past versions of unnamed-chunk-21-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-21-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-21-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="distribution-of-shared-genes-across-cell-types"
 class="section level5">
 <h5>Distribution of shared genes across cell types</h5>
@@ -2237,6 +2438,43 @@ class="section level5">
 genes for SCZ can only be elucidated by our joint condition cTWAS
 results.</p>
 <p><img src="figure/cTWAS_all_cell.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-25-1">
+Past versions of unnamed-chunk-25-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-25-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c255b081903658d8cfe9666eba4458b290d79939/docs/figure/cTWAS_all_cell.Rmd/unnamed-chunk-25-1.png" target="_blank">c255b08</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-08-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="dynamic-egenes" class="section level3">
@@ -2364,9 +2602,9 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] pheatmap_1.0.12     enrichR_3.2         RColorBrewer_1.1-2 
-[4] VennDiagram_1.7.1   futile.logger_1.4.3 ggplot2_3.3.5      
-[7] dplyr_1.0.7         workflowr_1.7.0    
+[1] dichromat_2.0-0     pheatmap_1.0.12     enrichR_3.2        
+[4] RColorBrewer_1.1-2  VennDiagram_1.7.1   futile.logger_1.4.3
+[7] ggplot2_3.3.5       dplyr_1.0.7         workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.11          getPass_0.2-2        ps_1.6.0            

@@ -1,0 +1,109 @@
+---
+title: "ctwas analysis with caQTL and ASOC jointly"
+author: "Lifan Liang"
+date: "2024-08-29"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Merging caQTL and ASOC
+
+I got top caQTL per peak per condition, first I took the union of caQTLs FDR<5% within the same cell type and removed caQTLs with nominal P value > 0.1. The allelic specific open chromatin (ASOC) was processed the same way. Then these two sets were merged together. If an ASOC was within a peak with a caQTL. The one with smaller nominal P value would be included into the merged set.
+
+```{r, echo=F}
+conds <- paste0(rep(c(0,1,6),each=3),"hr_",c("GABA","npglut","nmglut"))
+conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","npglut","nmglut"),each=3))
+
+N_asoc <- c(11297,5573,11370,18252,9259,22207,21118,10116,21846)
+names(N_asoc) <- conds
+
+N_asoc1 <- c(17428,23678,25789,8860,12376,12892,18466,27961,27897)
+names(N_asoc1) <- conds
+
+N_caqtl <- c(4318,8954,10504,1802,4435,6017,4957,10497,11622)
+names(N_caqtl) <- conds1
+
+N_caqtl1 <- c(13520,14082,14164,7475,7757,7835,15352,15895,15918)
+names(N_caqtl1) <- conds1
+
+uni <- c(27730,33110,34944,15186,18380,18824,30126,38137,38078)
+names(uni) <- conds1
+
+dat <- rbind(N_asoc,N_asoc1,N_caqtl,N_caqtl1,uni)
+rownames(dat) <- c("ASOC","processed_ASOC",
+                   "caQTL","processed_caQTL",
+                   "Union")
+knitr::kable(dat)
+```
+
+## Parameter extimation
+
+```{r,echo=F}
+library(ggplot2)
+params <- readRDS("data/joint_caQTL_ASOC_SCZ_params.RDS")
+```
+
+![](assets/joint_caqtl_asoc_params.png)
+### PVE
+
+Overall, total PVE across all condition was 28.6%.
+
+```{r, echo=F}
+perc <- params$group_pve / params$total_pve
+pie(perc)
+```
+
+
+```{r, echo=F}
+barplot(perc[c(1,4,7,2,5,8,3,6,9)+1], las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
+```
+
+### Enrichment
+
+```{r,echo=F}
+enri <- params$enrichment[c(1,4,7,2,5,8,3,6,9)]
+barplot(enri, las=2, col=c(rep("red",3), rep("yellow",3), rep("blue",3)))
+```
+
+## Significant peaks
+
+There are 59 peaks/ASOCs if the cutoff was set to PIP>0.5.
+
+```{r, echo=F}
+res <- readRDS("data/caQTL_ASOC_SCZ_noSNP_res.RDS")
+res <- res[res$cs_index>0,]
+cond <- names(table(res$type))
+res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+for(i in 2:length(cond)) {
+  res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                    by="genename",all.x = T)
+  colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+}
+res3[is.na(res3)] <- 0
+
+hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
+     xlab="sum of PIP", main="# of peaks/ASOCs in different PIP intervals")
+```
+
+### PIP distribution across conditions
+
+For these 19 peaks/ASOCs with PIP>0.8,
+
+```{r,echo=F}
+library(pheatmap)
+
+res4 <- res3[res3$PIP_sum>0.8,]
+rownames(res4) <- res4$genename
+res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
+colnames(res4) <- substr(colnames(res4),5,nchar(res4))
+pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
+```
+
+
+
+

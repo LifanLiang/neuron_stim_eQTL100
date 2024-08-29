@@ -109,6 +109,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:10/10, labels=T, ylim = c(0, 21),
 Compare the cTWAS results of 13 GTEx tissues with our results. Each GTEx tissue was analyzed with single group cTWAS ones. GTEx genes were selected with PIP > 0.5. Histogram below showed the number of overlapped genes with each GTEx brain tissue.
 
 #### Shared with each GTEx brain tissue
+
 ```{r, echo=F}
 library(VennDiagram)
 #library(RColorBrewer)
@@ -156,16 +157,16 @@ Venn diagram showed the intersection of our results and the union of all GTEx br
 library(VennDiagram)
 library(RColorBrewer)
 myCol <- brewer.pal(3, "Pastel2")
-venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename,
+venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8],
                   GTEX_prefrontal_cortex=GTEx.gene[["Brain_Frontal_Cortex_BA9"]]),
              lwd = 2, fill = myCol,
              cex = 2, fontface = "bold",fontfamily = "sans",
-             imagetype = "png", filename = "GTEx_vs_SCZ.png")
+             imagetype = "tiff", filename = "docs/assets/GTEx_vs_SCZ.tiff")
 
 ```
 
 
-![](assets/venn_GTEx.png)
+![](assets/GTEx_vs_SCZ.tiff)
 
 #### The shared 8 genes PIP in our cTWAS results
 
@@ -240,9 +241,18 @@ Heatmap shows most the significant genes are both cell type specific and time po
 
 ```{r,echo=F}
 library(pheatmap)
+library(dichromat)
+
+
 rownames(res4) <- res4$genename
-pheatmap(res4[,3:11],cluster_rows=F, cluster_cols=F)
+res40 <- res4
+temp <- strsplit(colnames(res40)[3:11],"_")
+colnames(res40)[3:11] <- paste0(sapply(temp,function(x){x[3]}), "_",sapply(temp,function(x){x[2]}))
+pheatmap(res40[res40$PIP_sum>0.8,c(3,6,9,4,7,10,5,8,11)],cluster_rows=F, cluster_cols=F,
+         color = colorRampPalette(c("white","red"))(100))
 ```
+
+
 
 #### Cell type composition across PIP distribution
 
