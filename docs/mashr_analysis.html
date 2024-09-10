@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,21 +418,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -523,15 +520,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treea5a77fe7bd6dda2e04e5fbfdc807f0f31031d4aftargetblanka5a77fea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee9d5e77500d023697c7e98da5d6f85caa04942b4targetblanke9d5e77a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/a5a77fe7bd6dda2e04e5fbfdc807f0f31031d4af" target="_blank">a5a77fe</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e9d5e77500d023697c7e98da5d6f85caa04942b4" target="_blank">e9d5e77</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treea5a77fe7bd6dda2e04e5fbfdc807f0f31031d4aftargetblanka5a77fea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee9d5e77500d023697c7e98da5d6f85caa04942b4targetblanke9d5e77a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -541,7 +538,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/a5a77fe7bd6dda2e04e5fbfdc807f0f31031d4af" target="_blank">a5a77fe</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e9d5e77500d023697c7e98da5d6f85caa04942b4" target="_blank">e9d5e77</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -572,12 +569,7 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.png.2024-08-26_21-03-42.log
     Untracked:  GTEx_vs_SCZ.tiff
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
-    Untracked:  data/mateqtl4mash_udr_noNull.rds
     Untracked:  geneMapping.rds
-
-Unstaged changes:
-    Modified:   analysis/ctwas_caQTL_ASOC.Rmd
-    Modified:   analysis/mashr_analysis.Rmd
 
 </code></pre>
 <p>
@@ -623,6 +615,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/analysis/mashr_analysis.Rmd" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/mashr_analysis.html" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -835,35 +861,405 @@ effect model has much higher sharing. To identify more diverse genetic
 effect sharing pattern, we decided to use the summary statistics of
 fixed effect model instead.</p>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-1-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="the-flash_nonneg_1-24.57-weights-focus-on-gaba-and-npglut"
 class="section level3">
 <h3>The flash_nonneg_1 (24.57% weights) focus on GABA and NPglut</h3>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-2-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-3-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Eigen vector of 84.28% PVE</p>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-4-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Eigen vector of 7.09% PVE</p>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-5-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Eigen vector of 4.85% PVE</p>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-6-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="the-tflash_nonneg-15.65-is-similar-to-the-first."
 class="section level3">
 <h3>The tFLASH_nonneg (15.65%) is similar to the first.</h3>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-7-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="pca_2-1.99-focus-on-gaba-cell-type" class="section level3">
 <h3>PCA_2 (1.99%) focus on GABA cell type</h3>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-8-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="pca_5-1.11-focus-on-1-hour-time-point-sharing"
 class="section level3">
 <h3>PCA_5 (1.11%) focus on 1 hour time point sharing</h3>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-9-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="pca_3-0.83-focus-on-npglut-cell-type" class="section level3">
 <h3>PCA_3 (0.83%) focus on NPglut cell type</h3>
 <p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/figure/mashr_analysis.Rmd/unnamed-chunk-10-1.png" target="_blank">e9d5e77</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
