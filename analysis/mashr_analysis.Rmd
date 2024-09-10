@@ -81,4 +81,85 @@ Its first Eigen vector is:
 
 ![](assets/MASH/PCA5_eigen1.png)
 
+## Using condition-separate fixed effect eQTL mapping instead
 
+Although effect sizes in mixed effect interaction are highly correlated with condition-separate fixed-effect, somehow the mixed effect model has much higher sharing. To identify more diverse genetic effect sharing pattern, we decided to use the summary statistics of fixed effect model instead.
+
+```{r,echo=F}
+res <- readRDS("data/mateqtl4mash_udr_noNull.rds")
+pattern <- sapply(strsplit(colnames(res$posterior_weights),"\\."), function(x){x[1]})
+post.sum <- colSums(res$posterior_weights)
+post.sum <- aggregate(post.sum, list(pattern), sum)
+post.sum$x <- post.sum$x / sum(post.sum$x)
+post.sum <- post.sum[order(post.sum$x,decreasing = F),]
+barplot(post.sum$x,horiz = T,names.arg = post.sum$Group.1,las=2)
+```
+
+### The flash_nonneg_1 (24.57% weights) focus on GABA and NPglut
+```{r,echo=F}
+library(pheatmap)
+library(dichromat)
+inds <- c(1,4,7,2,5,8,3,6,9)
+pat <- res$fitted_g$Ulist$FLASH_non_neg_1[inds,inds]
+pheatmap(pat,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```
+
+```{r,echo=F}
+eigen.res <- eigen(pat)
+barplot(eigen.res$values/sum(eigen.res$values))
+```
+
+Eigen vector of 84.28% PVE
+
+```{r,echo=F}
+barplot(eigen.res$vectors[,1],names.arg = rownames(pat),las=2)
+```
+
+Eigen vector of 7.09% PVE
+
+```{r,echo=F}
+barplot(eigen.res$vectors[,2],names.arg = rownames(pat),las=2)
+```
+
+Eigen vector of 4.85% PVE
+
+```{r,echo=F}
+barplot(eigen.res$vectors[,3],names.arg = rownames(pat),las=2)
+```
+
+### The tFLASH_nonneg (15.65%) is similar to the first.
+
+```{r,echo=F}
+inds <- c(1,4,7,2,5,8,3,6,9)
+pat <- res$fitted_g$Ulist$tFLASH_non_neg[inds,inds]
+pheatmap(pat,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```
+
+### PCA_2 (1.99%) focus on GABA cell type
+
+```{r,echo=F}
+inds <- c(1,4,7,2,5,8,3,6,9)
+pat <- res$fitted_g$Ulist$PCA_2[inds,inds]
+pheatmap(pat,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```
+
+### PCA_5 (1.11%) focus on 1 hour time point sharing
+
+```{r,echo=F}
+inds <- c(1,4,7,2,5,8,3,6,9)
+pat <- res$fitted_g$Ulist$PCA_5[inds,inds]
+pheatmap(pat,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```
+
+### PCA_3 (0.83%) focus on NPglut cell type
+
+```{r,echo=F}
+inds <- c(1,4,7,2,5,8,3,6,9)
+pat <- res$fitted_g$Ulist$PCA_3[inds,inds]
+pheatmap(pat,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```

@@ -30,7 +30,7 @@ names(N_caqtl1) <- conds1
 uni <- c(27730,33110,34944,15186,18380,18824,30126,38137,38078)
 names(uni) <- conds1
 
-dat <- rbind(N_asoc,N_asoc1,N_caqtl,N_caqtl1,uni)
+dat <- rbind(N_asoc[conds1],N_asoc1[conds1],N_caqtl,N_caqtl1,uni)
 rownames(dat) <- c("ASOC","processed_ASOC",
                    "caQTL","processed_caQTL",
                    "Union")
