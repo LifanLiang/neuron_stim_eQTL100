@@ -1,0 +1,137 @@
+---
+title: "Figures for manuscript"
+author: "Lifan Liang"
+date: "2024-09-16"
+output: 
+  workflowr::wflow_html:
+    fig_caption: true
+editor_options:
+  chunk_output_type: console
+---
+
+## eQTL mapping
+
+### eQTL summary
+
+```{r,echo=F,fig.cap="Number of eGenes for each condition."}
+topqtl <- readRDS("data/lead_eQTL_by_context.RDS")
+N_egene <- sapply(topqtl,nrow)[c(1,4,7,2,5,8,3,6,9)]
+barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
+```
+
+<br><br>
+
+![Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
+
+<br><br>
+
+![Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
+
+![Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/direction_proportion_cerebellum_vs_blood.png)
+
+
+### Dynamic eQTL mapping
+
+![Venn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
+
+<br>
+
+![Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
+
+<br>
+
+![Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
+
+<br>
+
+![Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
+
+<br>
+
+![Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
+
+<br>
+
+![Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
+
+<br>
+
+![TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks](assets/dynamic_vs_static_egene.png)
+
+<br>
+
+![TORUS enrichment analysis of dynamic eGenes and static eGenes over enhancers in 1 hour NMglut](assets/nmglut_1hr_dynamic_vs_static.png)
+
+
+## caQTL and ASoC
+
+![TORUS analysis of enrichment of ASoC in eQTL](assets/TORUS_eQTL_ASoC.png)
+
+<br>
+
+![TORUS analysis of enrichment of genomic features in eQTL](assets/TORUS_eQTL_genomic_features.png)
+
+<br>
+
+![Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
+
+## cTWAS with eQTLs
+
+![PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
+
+<br>
+
+![Genes with PIP>80% in 5 NPD traits. Genes are dynamic if their 1 hour and 6 hour PIP minus 0 hour is larger than 0.5](assets/Dyanmic_genes.png)
+
+<br>
+
+![Locus plot of Schizophrenia cTWAS of neuron stimulation eQTL](assets/SCZ_ctwas_locus_plot.png)
+
+<br>
+
+![PIPs of significant genes in SCZ cTWAS](assets/SCZ_gene_PIP.png)
+
+<br>
+
+![Genes with PIP>50% in SCZ cTWAS categorized as static or dynamic.](assets/SCZ_gene_PIP_by_dynamic.png)
+
+### Comparison with GTEx cTWAS
+
+![All top genes shared with GTEx are static while most unique top genes are dynamic](assets/dym_vs_stat_with_GTEx.png)
+
+### Enrichment analysis of high PIP genes
+
+We take the union of top genes (PIP>80%) from three NPD traits (SCZ, bipolar, and depression).
+
+```{r, echo=F}
+library(enrichR)
+library(dplyr)
+
+fs <- c("SCZ","Bipolar","Depression","Neuroticism","ADHD")
+ress <- list()
+for(f in fs) {
+  temp <- readRDS(paste0("data/processed_",f,"_res4.rds"))
+  rownames(temp) <- temp$genename
+  ress[[f]] <- temp#[temp$PIP_sum>0.8,]
+}
+
+gene.univ <- unique(do.call(c, lapply(ress[1:3], function(x){x$genename[x$PIP_sum>0.8]})))
+enrich.res <- enrichr(gene.univ, "GO_Biological_Process_2023")
+head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+### Highlighting CPT1C
+
+![SCZ cTWAS locus plot centering CPT1C](assets/CPT1C_locus_plot.png)
+
+<br>
+
+![eQTL plot for CPT1C in NMglut](assets/CPT1C_rs12104272_nmglut.png)
+
+## SCZ cTWAS with ASoC and caQTL
+
+
+
+

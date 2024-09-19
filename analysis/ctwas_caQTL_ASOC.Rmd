@@ -97,7 +97,7 @@ For these 19 peaks/ASOCs with PIP>0.8,
 ```{r,echo=F}
 library(pheatmap)
 
-res4 <- res3[res3$PIP_sum>0.8,]
+res4 <- res3[res3$PIP_sum>0.5,]
 rownames(res4) <- res4$genename
 res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
 colnames(res4) <- substr(colnames(res4),5,nchar(res4))

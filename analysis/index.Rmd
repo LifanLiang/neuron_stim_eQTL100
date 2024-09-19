@@ -66,3 +66,6 @@ editor_options:
 \
 \
 [TORUS enrichment analysis of eQTL](torus_eqtl.html)
+\
+\
+[Display items for neuron stimulation](display.html)

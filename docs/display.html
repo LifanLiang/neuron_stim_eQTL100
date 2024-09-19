@@ -11,9 +11,9 @@
 
 <meta name="author" content="Lifan Liang" />
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2024-09-16" />
 
-<title>ctwas analysis with caQTL and ASOC jointly</title>
+<title>Figures for manuscript</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -37,6 +37,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.26/datatables.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -358,10 +366,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">ctwas analysis with caQTL and ASOC
-jointly</h1>
+<h1 class="title toc-ignore">Figures for manuscript</h1>
 <h4 class="author">Lifan Liang</h4>
-<h4 class="date">2024-08-29</h4>
+<h4 class="date">2024-09-16</h4>
 
 </div>
 
@@ -390,7 +397,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-09-16
+<strong>Last updated:</strong> 2024-09-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -428,10 +435,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -575,11 +582,13 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
     Untracked:  analysis/display.Rmd
     Untracked:  data/lead_eQTL_by_context.rds
-    Untracked:  data/leadeQTL.RDS
     Untracked:  geneMapping.rds
 
 Unstaged changes:
+    Modified:   analysis/aggregate_ctwas_res.Rmd
+    Modified:   analysis/cTWAS_all_cell.Rmd
     Modified:   analysis/ctwas_caQTL_ASOC.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -594,449 +603,190 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/ctwas_caQTL_ASOC.Rmd</code>) and
-HTML (<code>docs/ctwas_caQTL_ASOC.html</code>) files. If you’ve
-configured a remote Git repository (see <code>?wflow_git_remote</code>),
-click on the hyperlinks in the table below to view the files as they
-were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cd29898491e8efe18a5f89de4e4336a6425727c6/docs/ctwas_caQTL_ASOC.html" target="_blank">cd29898</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-09-10
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/e9d5e77500d023697c7e98da5d6f85caa04942b4/analysis/ctwas_caQTL_ASOC.Rmd" target="_blank">e9d5e77</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-09-10
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/e9d5e77500d023697c7e98da5d6f85caa04942b4/docs/ctwas_caQTL_ASOC.html" target="_blank">e9d5e77</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-09-10
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/a5a77fe7bd6dda2e04e5fbfdc807f0f31031d4af/docs/ctwas_caQTL_ASOC.html" target="_blank">a5a77fe</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/analysis/ctwas_caQTL_ASOC.Rmd" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/ctwas_caQTL_ASOC.html" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-<td>
-wflow_publish(c("analysis", "data", "docs"))
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<div id="merging-caqtl-and-asoc" class="section level2">
-<h2>Merging caQTL and ASOC</h2>
-<p>I got top caQTL per peak per condition, first I took the union of
-caQTLs FDR&lt;5% within the same cell type and removed caQTLs with
-nominal P value &gt; 0.1. The allelic specific open chromatin (ASOC) was
-processed the same way. Then these two sets were merged together. If an
-ASOC was within a peak with a caQTL. The one with smaller nominal P
-value would be included into the merged set.</p>
-<table style="width:100%;">
-<colgroup>
-<col width="14%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">0hr_GABA</th>
-<th align="right">1hr_GABA</th>
-<th align="right">6hr_GABA</th>
-<th align="right">0hr_npglut</th>
-<th align="right">1hr_npglut</th>
-<th align="right">6hr_npglut</th>
-<th align="right">0hr_nmglut</th>
-<th align="right">1hr_nmglut</th>
-<th align="right">6hr_nmglut</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">ASOC</td>
-<td align="right">11297</td>
-<td align="right">18252</td>
-<td align="right">21118</td>
-<td align="right">5573</td>
-<td align="right">9259</td>
-<td align="right">10116</td>
-<td align="right">11370</td>
-<td align="right">22207</td>
-<td align="right">21846</td>
-</tr>
-<tr class="even">
-<td align="left">processed_ASOC</td>
-<td align="right">17428</td>
-<td align="right">8860</td>
-<td align="right">18466</td>
-<td align="right">23678</td>
-<td align="right">12376</td>
-<td align="right">27961</td>
-<td align="right">25789</td>
-<td align="right">12892</td>
-<td align="right">27897</td>
-</tr>
-<tr class="odd">
-<td align="left">caQTL</td>
-<td align="right">4318</td>
-<td align="right">8954</td>
-<td align="right">10504</td>
-<td align="right">1802</td>
-<td align="right">4435</td>
-<td align="right">6017</td>
-<td align="right">4957</td>
-<td align="right">10497</td>
-<td align="right">11622</td>
-</tr>
-<tr class="even">
-<td align="left">processed_caQTL</td>
-<td align="right">13520</td>
-<td align="right">14082</td>
-<td align="right">14164</td>
-<td align="right">7475</td>
-<td align="right">7757</td>
-<td align="right">7835</td>
-<td align="right">15352</td>
-<td align="right">15895</td>
-<td align="right">15918</td>
-</tr>
-<tr class="odd">
-<td align="left">Union</td>
-<td align="right">27730</td>
-<td align="right">33110</td>
-<td align="right">34944</td>
-<td align="right">15186</td>
-<td align="right">18380</td>
-<td align="right">18824</td>
-<td align="right">30126</td>
-<td align="right">38137</td>
-<td align="right">38078</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="parameter-extimation" class="section level2">
-<h2>Parameter extimation</h2>
-<p><img src="assets/joint_caqtl_asoc_params.png" /> ### PVE</p>
-<p>Overall, total PVE across all condition was 28.6%.</p>
-<p><img src="figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
+<div id="eqtl-mapping" class="section level2">
+<h2>eQTL mapping</h2>
+<div id="eqtl-summary" class="section level3">
+<h3>eQTL summary</h3>
+<div class="figure" style="text-align: center">
+<img src="figure/display.Rmd/unnamed-chunk-1-1.png" alt="Number of eGenes for each condition." width="672" />
+<p class="caption">
+Number of eGenes for each condition.
 </p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-3-1.png" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-</tr>
-</tbody>
-</table>
+</div>
+<p><br><br></p>
+<div class="figure">
+<img src="assets/beta_corr_nocombat_cerebellum.png" alt="" />
+<p class="caption">Effect size correlation with GTEx cerebellum</p>
+</div>
+<p><br><br></p>
+<div class="figure">
+<img src="assets/beta_corr_nocombat_wholeblood.png" alt="" />
+<p class="caption">Effect size correlation with GTEx whole blood</p>
+</div>
+<div class="figure">
+<img src="assets/direction_proportion_cerebellum_vs_blood.png" alt="" />
+<p class="caption">Concordance of eQTL effect direction between our
+eQTLs and GTEx cerebellum / whole blood tissue</p>
 </div>
 </div>
-<p><img src="figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
-Past versions of unnamed-chunk-4-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-4-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-4-1.png" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-</tr>
-</tbody>
-</table>
+<div id="dynamic-eqtl-mapping" class="section level3">
+<h3>Dynamic eQTL mapping</h3>
+<div class="figure">
+<img src="assets/venn_0hr_eGene.png" alt="" />
+<p class="caption">Venn diagram of eGenes at resting condition (0 hours)
+across cell types</p>
 </div>
+<p><br></p>
+<div class="figure">
+<img src="assets/venn_dymgene.png" alt="" />
+<p class="caption">Venn diagram of dynamic eGenes across cell types</p>
 </div>
-<div id="enrichment" class="section level3">
-<h3>Enrichment</h3>
-<p><img src="figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
-Past versions of unnamed-chunk-5-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-5-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-5-1.png" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
+<div class="figure">
+<img src="assets/CROT_rs13233308_GABA.png" alt="" />
+<p class="caption">Examples with GABA dynamic eGenes: CROT eQTL in 6
+hour GABA</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/PPM1H_rs4763045_npglut.png" alt="" />
+<p class="caption">Examples with NPglut dynamic eGenes: PPM1H eQTL in 6
+hour NPglut</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/ADAM10_rs6494026_nmglut.png" alt="" />
+<p class="caption">Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1
+hour NPglut</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/upset_dym_sv_static.png" alt="" />
+<p class="caption">Upset plot comparing sharing across cell types
+between static eGenes and dynamic eGenes</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/dynamic_vs_static_egene.png" alt="" />
+<p class="caption">TORUS enrichment analysis of dynamic eGenes and
+static eGenes over differentially accessible peaks</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/nmglut_1hr_dynamic_vs_static.png" alt="" />
+<p class="caption">TORUS enrichment analysis of dynamic eGenes and
+static eGenes over enhancers in 1 hour NMglut</p>
 </div>
 </div>
 </div>
+<div id="caqtl-and-asoc" class="section level2">
+<h2>caQTL and ASoC</h2>
+<div class="figure">
+<img src="assets/TORUS_eQTL_ASoC.png" alt="" />
+<p class="caption">TORUS analysis of enrichment of ASoC in eQTL</p>
 </div>
-<div id="significant-peaks" class="section level2">
-<h2>Significant peaks</h2>
-<p>There are 59 peaks/ASOCs if the cutoff was set to PIP&gt;0.5.</p>
-<p><img src="figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
-Past versions of unnamed-chunk-6-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-6-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-6-1.png" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
+<div class="figure">
+<img src="assets/TORUS_eQTL_genomic_features.png" alt="" />
+<p class="caption">TORUS analysis of enrichment of genomic features in
+eQTL</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/pi1_ASOC_eQTL.png" alt="" />
+<p class="caption">Pi1 analysis ascertaining eQTL pvalues of ASoC</p>
 </div>
 </div>
-<div id="pip-distribution-across-conditions" class="section level3">
-<h3>PIP distribution across conditions</h3>
-<p>For these 19 peaks/ASOCs with PIP&gt;0.8,</p>
-<p><img src="figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
-Past versions of unnamed-chunk-7-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-7-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3dd8c95045af26bd6cf49083edf0dbaec57c1574/docs/figure/ctwas_caQTL_ASOC.Rmd/unnamed-chunk-7-1.png" target="_blank">3dd8c95</a>
-</td>
-<td>
-Lifan Liang
-</td>
-<td>
-2024-08-29
-</td>
-</tr>
-</tbody>
-</table>
+<div id="ctwas-with-eqtls" class="section level2">
+<h2>cTWAS with eQTLs</h2>
+<div class="figure">
+<img src="assets/PVE_enrichment_npd.png" alt="" />
+<p class="caption">PVE and enrichment for the 9 conditions across 5 NPD
+traits</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/Dyanmic_genes.png" alt="" />
+<p class="caption">Genes with PIP&gt;80% in 5 NPD traits. Genes are
+dynamic if their 1 hour and 6 hour PIP minus 0 hour is larger than
+0.5</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/SCZ_ctwas_locus_plot.png" alt="" />
+<p class="caption">Locus plot of Schizophrenia cTWAS of neuron
+stimulation eQTL</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/SCZ_gene_PIP.png" alt="" />
+<p class="caption">PIPs of significant genes in SCZ cTWAS</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/SCZ_gene_PIP_by_dynamic.png" alt="" />
+<p class="caption">Genes with PIP&gt;50% in SCZ cTWAS categorized as
+static or dynamic.</p>
+</div>
+<div id="comparison-with-gtex-ctwas" class="section level3">
+<h3>Comparison with GTEx cTWAS</h3>
+<div class="figure">
+<img src="assets/dym_vs_stat_with_GTEx.png" alt="" />
+<p class="caption">All top genes shared with GTEx are static while most
+unique top genes are dynamic</p>
 </div>
 </div>
+<div id="enrichment-analysis-of-high-pip-genes" class="section level3">
+<h3>Enrichment analysis of high PIP genes</h3>
+<p>We take the union of top genes (PIP&gt;80%) from three NPD traits
+(SCZ, bipolar, and depression).</p>
+<pre><code>Welcome to enrichR
+Checking connection ... </code></pre>
+<pre><code>Enrichr ... Connection is Live!
+FlyEnrichr ... Connection is Live!
+WormEnrichr ... Connection is Live!
+YeastEnrichr ... Connection is Live!
+FishEnrichr ... Connection is Live!
+OxEnrichr ... Connection is Live!
+
+Attaching package: &#39;dplyr&#39;
+
+The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag
+
+The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>Uploading data to Enrichr... Done.
+  Querying GO_Biological_Process_2023... Done.
+Parsing results... Done.</code></pre>
+<div id="htmlwidget-7657cc3e42637b46d6e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7657cc3e42637b46d6e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Amino-Acid Betaine Metabolic Process (GO:0006577)","Carnitine Metabolic Process (GO:0009437)","Peripheral Nervous System Development (GO:0007422)","ATP Metabolic Process (GO:0046034)","Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)","Proton Motive Force-Driven ATP Synthesis (GO:0015986)","Oxidative Phosphorylation (GO:0006119)","Aerobic Electron Transport Chain (GO:0019646)","Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)","CD4-positive, Alpha-Beta T Cell Activation (GO:0035710)"],["2/6","2/9","2/20","2/34","2/53","2/60","2/63","2/68","2/70","1/5"],[3.94366106007641e-05,9.43556191887987e-05,0.000492368756376956,0.00143294779119222,0.00345159183773702,0.00440165995846702,0.0048417898534301,0.00561856855441298,0.00594424495063399,0.00822354796912648],[0.0110816875788147,0.0132569644960262,0.0461185401806415,0.100664582331253,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646],["CROT;CPT1C","CROT;CPT1C","SERPINI1;ASIC2","OLA1;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;COX6A1","NDUFA6;COX6A1","HMGB1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+<div id="highlighting-cpt1c" class="section level3">
+<h3>Highlighting CPT1C</h3>
+<div class="figure">
+<img src="assets/CPT1C_locus_plot.png" alt="" />
+<p class="caption">SCZ cTWAS locus plot centering CPT1C</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/CPT1C_rs12104272_nmglut.png" alt="" />
+<p class="caption">eQTL plot for CPT1C in NMglut</p>
+</div>
+</div>
+</div>
+<div id="scz-ctwas-with-asoc-and-caqtl" class="section level2">
+<h2>SCZ cTWAS with ASoC and caQTL</h2>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1061,25 +811,25 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] pheatmap_1.0.12 ggplot2_3.3.5   workflowr_1.7.0
+[1] dplyr_1.0.7     enrichR_3.2     workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1   xfun_0.29          bslib_0.3.1        purrr_0.3.4       
- [5] colorspace_2.0-2   vctrs_0.3.8        generics_0.1.2     htmltools_0.5.2   
- [9] yaml_2.2.2         utf8_1.2.2         rlang_1.0.0        jquerylib_0.1.4   
-[13] later_1.3.0        pillar_1.7.0       withr_2.4.3        glue_1.6.1        
-[17] DBI_1.1.2          RColorBrewer_1.1-2 lifecycle_1.0.1    stringr_1.4.0     
-[21] munsell_0.5.0      gtable_0.3.0       evaluate_0.14      knitr_1.37        
-[25] callr_3.7.0        fastmap_1.1.0      httpuv_1.6.5       ps_1.6.0          
-[29] fansi_1.0.2        highr_0.9          Rcpp_1.0.11        promises_1.2.0.1  
-[33] scales_1.1.1       jsonlite_1.7.3     fs_1.5.2           digest_0.6.29     
-[37] stringi_1.7.6      processx_3.5.2     dplyr_1.0.7        getPass_0.2-2     
-[41] cowplot_1.1.1      rprojroot_2.0.2    grid_4.1.2         cli_3.1.1         
-[45] tools_4.1.2        magrittr_2.0.2     sass_0.4.1         tibble_3.1.6      
-[49] crayon_1.4.2       whisker_0.4        pkgconfig_2.0.3    ellipsis_0.3.2    
-[53] assertthat_0.2.1   rmarkdown_2.11     httr_1.4.2         rstudioapi_0.13   
-[57] R6_2.5.1           git2r_0.29.0       compiler_4.1.2    </code></pre>
-</div>
+ [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
+ [5] colorspace_2.0-2  vctrs_0.3.8       generics_0.1.2    htmltools_0.5.2  
+ [9] yaml_2.2.2        utf8_1.2.2        rlang_1.0.0       jquerylib_0.1.4  
+[13] later_1.3.0       pillar_1.7.0      DBI_1.1.2         glue_1.6.1       
+[17] lifecycle_1.0.1   stringr_1.4.0     munsell_0.5.0     gtable_0.3.0     
+[21] htmlwidgets_1.5.4 evaluate_0.14     knitr_1.37        WriteXLS_6.4.0   
+[25] callr_3.7.0       fastmap_1.1.0     crosstalk_1.2.0   httpuv_1.6.5     
+[29] ps_1.6.0          curl_4.3.2        fansi_1.0.2       highr_0.9        
+[33] Rcpp_1.0.11       DT_0.26           promises_1.2.0.1  scales_1.1.1     
+[37] jsonlite_1.7.3    fs_1.5.2          rjson_0.2.21      ggplot2_3.3.5    
+[41] digest_0.6.29     stringi_1.7.6     processx_3.5.2    getPass_0.2-2    
+[45] rprojroot_2.0.2   grid_4.1.2        cli_3.1.1         tools_4.1.2      
+[49] magrittr_2.0.2    sass_0.4.1        tibble_3.1.6      crayon_1.4.2     
+[53] whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.2    assertthat_0.2.1 
+[57] rmarkdown_2.11    httr_1.4.2        rstudioapi_0.13   R6_2.5.1         
+[61] git2r_0.29.0      compiler_4.1.2   </code></pre>
 </div>
 </div>
 

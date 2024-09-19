@@ -168,6 +168,10 @@ venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8],
 
 ![](assets/GTEx_vs_SCZ.tiff)
 
+
+
+
+
 #### The shared 8 genes PIP in our cTWAS results
 
 ```{r,echo=F}
@@ -213,6 +217,22 @@ head(enrich.static$GO_Biological_Process_2018[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
+
+#### Overlap of dynamic genes vs static genes in GTEx
+
+```{r,echo=F}
+scz.gene <- res4$genename[res4$PIP_sum>0.8]
+gtex.gene <- gtex.union
+shared.gene <- scz.gene[scz.gene %in% gtex.gene]
+unique.gene <- scz.gene[!(scz.gene %in% gtex.gene)]
+shared.dynamic <- shared.gene[shared.gene %in% res4$genename[res4$PIP_diff<=0.5]]
+unique.static<- unique.gene[unique.gene %in% res4$genename[res4$PIP_diff<=0.5]]
+unique.dynamic<- unique.gene[!(unique.gene %in% res4$genename[res4$PIP_diff<=0.5])]
+dat <- data.frame(count=c(length(unique.dynamic),length(unique.static),0,length(shared.gene)),
+           dynamic=c(T,F,T,F), shared_with_GTEx=c("unique","unique","shared","shared"))
+ggplot(dat,aes(y=count,x=shared_with_GTEx,fill=dynamic)) + geom_bar(stat="identity",position = "dodge") + geom_text(aes(label = count), vjust = -0.2, position = position_dodge(.9)) + theme_bw()
+```
+
 
 
 ### Cell type specific eGenes
@@ -297,6 +317,14 @@ res4[ind[,1],"timepoint"] <- substr(colnames(tpperc),1,nchar(colnames(ctperc))-4
 table(res4$timepoint)
 ```
 
+```{r,echo=F}
+res4$timepoint <- "Static"
+res4$timepoint[res4$PIP_diff>0.5] <- "dCynamic"
+ind <- which(tpperc>0.6, arr.ind=1)
+res4[ind[,1],"timepoint"] <- substr(colnames(tpperc),1,nchar(colnames(ctperc))-4)[ind[,2]]
+table(res4$timepoint)
+```
+
 #### Time point composition of gene PIPs
 
 Since GTEx is bulk eQTL, the cell type contribution of the shared genes for SCZ can only be elucidated by our joint condition cTWAS results.
@@ -304,6 +332,13 @@ Since GTEx is bulk eQTL, the cell type contribution of the shared genes for SCZ 
 ```{r, echo=F}
 library(ggplot2)
 
+ggplot(res4[c("PIP_sum","timepoint")], aes(PIP_sum, fill=timepoint)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
+```
+
+
+```{r,echo=F}
+res4$timepoint <- "Static"
+res4$timepoint[res4$PIP_diff>0.5] <- "Dynamic"
 ggplot(res4[c("PIP_sum","timepoint")], aes(PIP_sum, fill=timepoint)) + geom_histogram(binwidth = 0.1, center=0.55) + theme_bw()
 ```
 
