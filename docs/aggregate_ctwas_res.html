@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,9 +401,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,21 +426,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -531,15 +528,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treecd29898491e8efe18a5f89de4e4336a6425727c6targetblankcd29898a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treec693b4cae6b42a429e5f5f88059e9231760a890btargetblankc693b4ca">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/cd29898491e8efe18a5f89de4e4336a6425727c6" target="_blank">cd29898</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/c693b4cae6b42a429e5f5f88059e9231760a890b" target="_blank">c693b4c</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treecd29898491e8efe18a5f89de4e4336a6425727c6targetblankcd29898a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treec693b4cae6b42a429e5f5f88059e9231760a890btargetblankc693b4ca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -549,7 +546,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/cd29898491e8efe18a5f89de4e4336a6425727c6" target="_blank">cd29898</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/c693b4cae6b42a429e5f5f88059e9231760a890b" target="_blank">c693b4c</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -580,15 +577,7 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.png.2024-08-26_21-03-42.log
     Untracked:  GTEx_vs_SCZ.tiff
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
-    Untracked:  analysis/display.Rmd
-    Untracked:  data/lead_eQTL_by_context.rds
     Untracked:  geneMapping.rds
-
-Unstaged changes:
-    Modified:   analysis/aggregate_ctwas_res.Rmd
-    Modified:   analysis/cTWAS_all_cell.Rmd
-    Modified:   analysis/ctwas_caQTL_ASOC.Rmd
-    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -634,6 +623,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c693b4cae6b42a429e5f5f88059e9231760a890b/analysis/aggregate_ctwas_res.Rmd" target="_blank">c693b4c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-19
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/c693b4cae6b42a429e5f5f88059e9231760a890b/docs/aggregate_ctwas_res.html" target="_blank">c693b4c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-19
+</td>
+<td>
+wflow_publish(c("analysis", "data", "docs"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -939,6 +962,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/c693b4cae6b42a429e5f5f88059e9231760a890b/docs/figure/aggregate_ctwas_res.Rmd/unnamed-chunk-3-1.png" target="_blank">c693b4c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/6d74a6484602335f7cf0d459871dc2520fcadc4d/docs/figure/aggregate_ctwas_res.Rmd/unnamed-chunk-3-1.png" target="_blank">6d74a64</a>
@@ -1297,7 +1331,7 @@ Parsing results... Done.</code></pre>
   Querying GO_Biological_Process_2023... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-a50efc78b4c04b4a25da" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Amino-Acid Betaine Metabolic Process (GO:0006577)","Carnitine Metabolic Process (GO:0009437)","Peripheral Nervous System Development (GO:0007422)","ATP Metabolic Process (GO:0046034)","Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)","Proton Motive Force-Driven ATP Synthesis (GO:0015986)","Oxidative Phosphorylation (GO:0006119)","Aerobic Electron Transport Chain (GO:0019646)","Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)","CD4-positive, Alpha-Beta T Cell Activation (GO:0035710)"],["2/6","2/9","2/20","2/34","2/53","2/60","2/63","2/68","2/70","1/5"],[3.94366106007641e-05,9.43556191887987e-05,0.000492368756376956,0.00143294779119222,0.00345159183773702,0.00440165995846702,0.0048417898534301,0.00561856855441298,0.00594424495063399,0.00822354796912648],[0.0110816875788147,0.0132569644960262,0.0461185401806415,0.100664582331253,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646],["CROT;CPT1C","CROT;CPT1C","SERPINI1;ASIC2","OLA1;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;COX6A1","NDUFA6;COX6A1","HMGB1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-a50efc78b4c04b4a25da">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Carnitine Metabolic Process (GO:0009437)","Amino-Acid Betaine Metabolic Process (GO:0006577)","Regulation Of Epithelial Cell Migration (GO:0010632)","Positive Regulation Of Vascular Endothelial Cell Proliferation (GO:1905564)","Regulation Of Short-Term Neuronal Synaptic Plasticity (GO:0048172)","Medium-Chain Fatty Acid Metabolic Process (GO:0051791)","Regulation Of Vascular Endothelial Cell Proliferation (GO:1905562)","Peripheral Nervous System Development (GO:0007422)","Positive Regulation Of Endothelial Cell Migration (GO:0010595)","Positive Regulation Of Epithelial Cell Migration (GO:0010634)"],["3/9","2/6","3/50","2/12","2/13","2/14","2/18","2/20","3/85","3/95"],[3.85734015179127e-06,0.000195244178380358,0.000808433297178678,0.000846975672272765,0.000998609271392631,0.00116229560690684,0.00193582387025167,0.00239264952259941,0.00371891270272777,0.00507805693336443],[0.0021639678251549,0.0547659920356905,0.108674639245789,0.108674639245789,0.108674639245789,0.108674639245789,0.155142455887313,0.167784547772284,0.218225202515805,0.218225202515805],["ACADM;CROT;CPT1C","CROT;CPT1C","GLIPR2;PLCG1;SASH1","HMGB1;PLCG1","SYNGR1;PPFIA3","CROT;ACADM","HMGB1;PLCG1","SERPINI1;ASIC2","HMGB1;PLCG1;SASH1","GLIPR2;PLCG1;SASH1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="five-traits-with-pip0.8" class="section level3">
 <h3>Five traits with PIP&gt;0.8</h3>
@@ -1305,7 +1339,7 @@ Parsing results... Done.</code></pre>
   Querying GO_Biological_Process_2023... Done.
 Parsing results... Done.</code></pre>
 <div id="htmlwidget-1c14e9d616c779d1b646" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Amino-Acid Betaine Metabolic Process (GO:0006577)","Carnitine Metabolic Process (GO:0009437)","Peripheral Nervous System Development (GO:0007422)","ATP Metabolic Process (GO:0046034)","Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)","Proton Motive Force-Driven ATP Synthesis (GO:0015986)","Oxidative Phosphorylation (GO:0006119)","Aerobic Electron Transport Chain (GO:0019646)","Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)","CD4-positive, Alpha-Beta T Cell Activation (GO:0035710)"],["2/6","2/9","2/20","2/34","2/53","2/60","2/63","2/68","2/70","1/5"],[3.94366106007641e-05,9.43556191887987e-05,0.000492368756376956,0.00143294779119222,0.00345159183773702,0.00440165995846702,0.0048417898534301,0.00561856855441298,0.00594424495063399,0.00822354796912648],[0.0110816875788147,0.0132569644960262,0.0461185401806415,0.100664582331253,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646,0.110300921091646],["CROT;CPT1C","CROT;CPT1C","SERPINI1;ASIC2","OLA1;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;COX6A1","NDUFA6;COX6A1","HMGB1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1c14e9d616c779d1b646">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Amino-Acid Betaine Metabolic Process (GO:0006577)","Carnitine Metabolic Process (GO:0009437)","Peripheral Nervous System Development (GO:0007422)","Glycolipid Metabolic Process (GO:0006664)","ATP Metabolic Process (GO:0046034)","Carbohydrate Catabolic Process (GO:0016052)","Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)","Proton Motive Force-Driven ATP Synthesis (GO:0015986)","Oxidative Phosphorylation (GO:0006119)","Aerobic Electron Transport Chain (GO:0019646)"],["2/6","2/9","2/20","2/33","2/34","2/41","2/53","2/60","2/63","2/68"],[8.40830343007814e-05,0.000200874522869349,0.00104246932126757,0.00283997218471025,0.00301286650472966,0.00435704185537844,0.00718928839712134,0.0091365975216285,0.0100353541509005,0.0116167597830402],[0.0275792352506563,0.0329434217505732,0.113976645791921,0.159178915442007,0.159178915442007,0.159178915442007,0.159178915442007,0.159178915442007,0.159178915442007,0.159178915442007],["CROT;CPT1C","CROT;CPT1C","SERPINI1;ASIC2","GLB1;NAGA","OLA1;ATP5PO","NAGA;ENO4","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;ATP5PO","NDUFA6;COX6A1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Term<\/th>\n      <th>Overlap<\/th>\n      <th>P.value<\/th>\n      <th>Adjusted.P.value<\/th>\n      <th>Genes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 <div id="five-traits-with-pip0.5" class="section level3">
 <h3>Five traits with PIP&gt;0.5</h3>
