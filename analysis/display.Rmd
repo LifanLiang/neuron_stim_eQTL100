@@ -69,7 +69,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Fig 5H. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks](assets/dynamic_vs_static_egene.png)
+![Fig 5H. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks (upregulated only)](assets/dynamic_vs_static_diffpeak.png)
 
 <br>
 
