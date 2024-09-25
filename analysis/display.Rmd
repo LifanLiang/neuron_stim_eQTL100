@@ -60,6 +60,15 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 <br>
 
+```{r,echo=F,fig.cap="Fig 5G. Storey's Pi analysis of dynamic eQTL in GTEx braint tissues"}
+library(pheatmap)
+dym.pi1 <- read.table("data/pi1_dym_GTEx.txt")
+pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
+```
+
+
+<br>
+
 ![Fig 5H. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks](assets/dynamic_vs_static_egene.png)
 
 <br>
