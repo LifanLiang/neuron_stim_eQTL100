@@ -13,7 +13,7 @@ editor_options:
 
 ### eQTL summary
 
-```{r,echo=F,fig.cap="Number of eGenes for each condition."}
+```{r,echo=F,fig.cap="Fig 5A. Number of eGenes for each context."}
 topqtl <- readRDS("data/lead_eQTL_by_context.RDS")
 N_egene <- sapply(topqtl,nrow)[c(1,4,7,2,5,8,3,6,9)]
 barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
@@ -21,51 +21,63 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 <br><br>
 
-![Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
+![Fig S. Storey's Pi analysis of our eQTL in GTEx brain tissues.](assets/Pi1_GTEx_brain.png)
 
 <br><br>
 
-![Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
+![Fig 5B. Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
 
-![Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/direction_proportion_cerebellum_vs_blood.png)
+<br><br>
+
+![Fig 5B. Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
+
+![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/direction_proportion_cerebellum_vs_blood.png)
 
 
 ### Dynamic eQTL mapping
 
-![Venn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
+![FigVenn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
 
 <br>
 
-![Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
+![Fig 5D. Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
 
 <br>
 
-![Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
+![Fig 5E. Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
 
 <br>
 
-![Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
+![Fig 5E. Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
 
 <br>
 
-![Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
+![Fig 5E. Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
 
 <br>
 
-![Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
+![Fig 5F. Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
 
 <br>
 
-![TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks](assets/dynamic_vs_static_egene.png)
+![Fig 5H. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks](assets/dynamic_vs_static_egene.png)
 
 <br>
 
-![TORUS enrichment analysis of dynamic eGenes and static eGenes over enhancers in 1 hour NMglut](assets/nmglut_1hr_dynamic_vs_static.png)
+![TORUS enrichment analysis of dynamic eGenes and static eGenes in promoter regions.](assets/Promoter_dynamic_vs_static.png)
+
+<br>
+
+![TORUS enrichment analysis of dynamic eGenes and static eGenes in enhancer regions.](assets/Enhancer_dynamic_vs_static.png)
+
+<br>
+
+![TORUS enrichment analysis of dynamic eGenes and static eGenes over enhancers in 1 hour NMglut. Somehow only enh.w1 is significantly enriched.](assets/nmglut_1hr_dynamic_vs_static.png)
 
 
 ## caQTL and ASoC
 
-![TORUS analysis of enrichment of ASoC in eQTL](assets/TORUS_eQTL_ASoC.png)
+![Fig 6D. TORUS analysis of enrichment of ASoC in eQTL](assets/TORUS_eQTL_ASoC.png)
 
 <br>
 
@@ -77,11 +89,19 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 ## cTWAS with eQTLs
 
-![PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
+![Fig 7A. PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
 
 <br>
 
-![Genes with PIP>80% in 5 NPD traits. Genes are dynamic if their 1 hour and 6 hour PIP minus 0 hour is larger than 0.5](assets/Dyanmic_genes.png)
+![Fig 7A. Total PVE across 5 NPD traits](assets/total_h2g_ctwas.png)
+
+<br>
+
+![Fig 7B. Gene counts across 5 NPD traits](assets/sig_gene_counts_ctwas.png)
+
+<br>
+
+![Genes with PIP>50% in 5 NPD traits. Genes are dynamic if their 1 hour and 6 hour PIP minus 0 hour is larger than 0.5](assets/Dyanmic_genes.png)
 
 <br>
 
@@ -89,7 +109,11 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 <br>
 
-![PIPs of significant genes in SCZ cTWAS](assets/SCZ_gene_PIP.png)
+![Fig 7C. PIPs of high confidence genes in SCZ cTWAS](assets/SCZ_gene_PIP.png)
+
+<br>
+
+
 
 <br>
 
@@ -97,7 +121,9 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 ### Comparison with GTEx cTWAS
 
-![All top genes shared with GTEx are static while most unique top genes are dynamic](assets/dym_vs_stat_with_GTEx.png)
+![Fig 7D. Venn diagram between our cTWAS genes GTEx brain tissues.](assets/ctwas_GTEx_vs_neuron_stim.png)
+
+![Supplementary. All top genes shared with GTEx are static while most unique top genes are dynamic](assets/dym_vs_stat_with_GTEx.png)
 
 ### Enrichment analysis of high PIP genes
 
@@ -124,7 +150,7 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
 
 ### Highlighting CPT1C
 
-![SCZ cTWAS locus plot centering CPT1C](assets/CPT1C_locus_plot.png)
+![Fig 7E. SCZ cTWAS locus plot centering CPT1C](assets/CPT1C_locus_plot.png)
 
 <br>
 
@@ -132,6 +158,7 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
 
 ## SCZ cTWAS with ASoC and caQTL
 
+Supplementary table. Counts of ASoCs and caQTLs as input for cTWAS
 ```{r, echo=F}
 conds <- paste0(rep(c(0,1,6),each=3),"hr_",c("GABA","npglut","nmglut"))
 conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","npglut","nmglut"),each=3))
@@ -163,14 +190,14 @@ knitr::kable(dat)
 params <- readRDS("data/params_joint_caQTL_ASoC_SCZ_09112024.RDS")
 ```
 
-```{r,echo=F}
+```{r,echo=F,fig.cap="Fig 8A. Percentage of H2G across 9 conditions"}
 pve <- (params$group_pve/params$total_pve)[c(2,5,8,3,6,9,4,7,10)]
-barplot(pve,col=rep(c("red","yellow","blue"),each=3))
+barplot(pve,col=rep(c("red","yellow","blue"),each=3),las=2)
 ```
 
-```{r,echo=F}
+```{r,echo=F,fig.cap="Enrichment across 9 conditions"}
 enrichment <- params$enrichment[c(2,5,8,3,6,9,4,7,10)-1]
-barplot(enrichment,col=rep(c("red","yellow","blue"),each=3))
+barplot(enrichment,col=rep(c("red","yellow","blue"),each=3),las=2)
 ```
 
 58 peaks with sum of PIP>50%. 16 peaks have sum of PIP>80%.
@@ -195,7 +222,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
      xlab="sum of PIP", main="# of peaks/ASOCs in different PIP intervals")
 ```
 
-```{r,echo=F}
+```{r,echo=F,fig.cap="Heatmap of PIPs for plausible peaks."}
 library(pheatmap)
 
 res4 <- res3[res3$PIP_sum>0.5,]

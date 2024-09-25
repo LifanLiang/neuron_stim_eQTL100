@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-09-23
+<strong>Last updated:</strong> 2024-09-25
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree79de6fb3ea50d9fe5c0adee846ba11b5c2736c1ftargetblank79de6fba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9d8539a82915a7d81a3ce2cdf82320739dd51d34targetblank9d8539aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/79de6fb3ea50d9fe5c0adee846ba11b5c2736c1f" target="_blank">79de6fb</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9d8539a82915a7d81a3ce2cdf82320739dd51d34" target="_blank">9d8539a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree79de6fb3ea50d9fe5c0adee846ba11b5c2736c1ftargetblank79de6fba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree9d8539a82915a7d81a3ce2cdf82320739dd51d34targetblank9d8539aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/79de6fb3ea50d9fe5c0adee846ba11b5c2736c1f" target="_blank">79de6fb</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/9d8539a82915a7d81a3ce2cdf82320739dd51d34" target="_blank">9d8539a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -578,6 +581,10 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.tiff
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
     Untracked:  geneMapping.rds
+
+Unstaged changes:
+    Modified:   analysis/aggregate_ctwas_res.Rmd
+    Modified:   analysis/display.Rmd
 
 </code></pre>
 <p>
@@ -623,6 +630,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/9d8539a82915a7d81a3ce2cdf82320739dd51d34/docs/display.html" target="_blank">9d8539a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -703,9 +727,9 @@ wflow_publish(c("analysis", "data", "docs"))
 <div id="eqtl-summary" class="section level3">
 <h3>eQTL summary</h3>
 <div class="figure" style="text-align: center">
-<img src="figure/display.Rmd/unnamed-chunk-1-1.png" alt="Number of eGenes for each condition." width="672" />
+<img src="figure/display.Rmd/unnamed-chunk-1-1.png" alt="Fig 5A. Number of eGenes for each context." width="672" />
 <p class="caption">
-Number of eGenes for each condition.
+Fig 5A. Number of eGenes for each context.
 </p>
 </div>
 <p>
@@ -747,67 +771,89 @@ Lifan Liang
 </div>
 <p><br><br></p>
 <div class="figure">
+<img src="assets/Pi1_GTEx_brain.png" alt="" />
+<p class="caption">Fig S. Storey’s Pi analysis of our eQTL in GTEx brain
+tissues.</p>
+</div>
+<p><br><br></p>
+<div class="figure">
 <img src="assets/beta_corr_nocombat_cerebellum.png" alt="" />
-<p class="caption">Effect size correlation with GTEx cerebellum</p>
+<p class="caption">Fig 5B. Effect size correlation with GTEx
+cerebellum</p>
 </div>
 <p><br><br></p>
 <div class="figure">
 <img src="assets/beta_corr_nocombat_wholeblood.png" alt="" />
-<p class="caption">Effect size correlation with GTEx whole blood</p>
+<p class="caption">Fig 5B. Effect size correlation with GTEx whole
+blood</p>
 </div>
 <div class="figure">
 <img src="assets/direction_proportion_cerebellum_vs_blood.png" alt="" />
-<p class="caption">Concordance of eQTL effect direction between our
-eQTLs and GTEx cerebellum / whole blood tissue</p>
+<p class="caption">Fig 5C. Concordance of eQTL effect direction between
+our eQTLs and GTEx cerebellum / whole blood tissue</p>
 </div>
 </div>
 <div id="dynamic-eqtl-mapping" class="section level3">
 <h3>Dynamic eQTL mapping</h3>
 <div class="figure">
 <img src="assets/venn_0hr_eGene.png" alt="" />
-<p class="caption">Venn diagram of eGenes at resting condition (0 hours)
-across cell types</p>
+<p class="caption">FigVenn diagram of eGenes at resting condition (0
+hours) across cell types</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/venn_dymgene.png" alt="" />
-<p class="caption">Venn diagram of dynamic eGenes across cell types</p>
+<p class="caption">Fig 5D. Venn diagram of dynamic eGenes across cell
+types</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/CROT_rs13233308_GABA.png" alt="" />
-<p class="caption">Examples with GABA dynamic eGenes: CROT eQTL in 6
-hour GABA</p>
+<p class="caption">Fig 5E. Examples with GABA dynamic eGenes: CROT eQTL
+in 6 hour GABA</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/PPM1H_rs4763045_npglut.png" alt="" />
-<p class="caption">Examples with NPglut dynamic eGenes: PPM1H eQTL in 6
-hour NPglut</p>
+<p class="caption">Fig 5E. Examples with NPglut dynamic eGenes: PPM1H
+eQTL in 6 hour NPglut</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/ADAM10_rs6494026_nmglut.png" alt="" />
-<p class="caption">Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1
-hour NPglut</p>
+<p class="caption">Fig 5E. Examples with NMglut dynamic eGenes: ADAM10
+eQTL in 1 hour NPglut</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/upset_dym_sv_static.png" alt="" />
-<p class="caption">Upset plot comparing sharing across cell types
-between static eGenes and dynamic eGenes</p>
+<p class="caption">Fig 5F. Upset plot comparing sharing across cell
+types between static eGenes and dynamic eGenes</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/dynamic_vs_static_egene.png" alt="" />
+<p class="caption">Fig 5H. TORUS enrichment analysis of dynamic eGenes
+and static eGenes over differentially accessible peaks</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/Promoter_dynamic_vs_static.png" alt="" />
 <p class="caption">TORUS enrichment analysis of dynamic eGenes and
-static eGenes over differentially accessible peaks</p>
+static eGenes in promoter regions.</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/Enhancer_dynamic_vs_static.png" alt="" />
+<p class="caption">TORUS enrichment analysis of dynamic eGenes and
+static eGenes in enhancer regions.</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/nmglut_1hr_dynamic_vs_static.png" alt="" />
 <p class="caption">TORUS enrichment analysis of dynamic eGenes and
-static eGenes over enhancers in 1 hour NMglut</p>
+static eGenes over enhancers in 1 hour NMglut. Somehow only enh.w1 is
+significantly enriched.</p>
 </div>
 </div>
 </div>
@@ -815,7 +861,8 @@ static eGenes over enhancers in 1 hour NMglut</p>
 <h2>caQTL and ASoC</h2>
 <div class="figure">
 <img src="assets/TORUS_eQTL_ASoC.png" alt="" />
-<p class="caption">TORUS analysis of enrichment of ASoC in eQTL</p>
+<p class="caption">Fig 6D. TORUS analysis of enrichment of ASoC in
+eQTL</p>
 </div>
 <p><br></p>
 <div class="figure">
@@ -833,13 +880,23 @@ eQTL</p>
 <h2>cTWAS with eQTLs</h2>
 <div class="figure">
 <img src="assets/PVE_enrichment_npd.png" alt="" />
-<p class="caption">PVE and enrichment for the 9 conditions across 5 NPD
-traits</p>
+<p class="caption">Fig 7A. PVE and enrichment for the 9 conditions
+across 5 NPD traits</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/total_h2g_ctwas.png" alt="" />
+<p class="caption">Fig 7A. Total PVE across 5 NPD traits</p>
+</div>
+<p><br></p>
+<div class="figure">
+<img src="assets/sig_gene_counts_ctwas.png" alt="" />
+<p class="caption">Fig 7B. Gene counts across 5 NPD traits</p>
 </div>
 <p><br></p>
 <div class="figure">
 <img src="assets/Dyanmic_genes.png" alt="" />
-<p class="caption">Genes with PIP&gt;80% in 5 NPD traits. Genes are
+<p class="caption">Genes with PIP&gt;50% in 5 NPD traits. Genes are
 dynamic if their 1 hour and 6 hour PIP minus 0 hour is larger than
 0.5</p>
 </div>
@@ -852,8 +909,10 @@ stimulation eQTL</p>
 <p><br></p>
 <div class="figure">
 <img src="assets/SCZ_gene_PIP.png" alt="" />
-<p class="caption">PIPs of significant genes in SCZ cTWAS</p>
+<p class="caption">Fig 7C. PIPs of high confidence genes in SCZ
+cTWAS</p>
 </div>
+<p><br></p>
 <p><br></p>
 <div class="figure">
 <img src="assets/SCZ_gene_PIP_by_dynamic.png" alt="" />
@@ -863,9 +922,14 @@ static or dynamic.</p>
 <div id="comparison-with-gtex-ctwas" class="section level3">
 <h3>Comparison with GTEx cTWAS</h3>
 <div class="figure">
+<img src="assets/ctwas_GTEx_vs_neuron_stim.png" alt="" />
+<p class="caption">Fig 7D. Venn diagram between our cTWAS genes GTEx
+brain tissues.</p>
+</div>
+<div class="figure">
 <img src="assets/dym_vs_stat_with_GTEx.png" alt="" />
-<p class="caption">All top genes shared with GTEx are static while most
-unique top genes are dynamic</p>
+<p class="caption">Supplementary. All top genes shared with GTEx are
+static while most unique top genes are dynamic</p>
 </div>
 </div>
 <div id="enrichment-analysis-of-high-pip-genes" class="section level3">
@@ -900,7 +964,7 @@ Parsing results... Done.</code></pre>
 <h3>Highlighting CPT1C</h3>
 <div class="figure">
 <img src="assets/CPT1C_locus_plot.png" alt="" />
-<p class="caption">SCZ cTWAS locus plot centering CPT1C</p>
+<p class="caption">Fig 7E. SCZ cTWAS locus plot centering CPT1C</p>
 </div>
 <p><br></p>
 <div class="figure">
@@ -911,6 +975,8 @@ Parsing results... Done.</code></pre>
 </div>
 <div id="scz-ctwas-with-asoc-and-caqtl" class="section level2">
 <h2>SCZ cTWAS with ASoC and caQTL</h2>
+<p>Supplementary table. Counts of ASoCs and caQTLs as input for
+cTWAS</p>
 <table style="width:100%;">
 <colgroup>
 <col width="14%" />
@@ -1001,11 +1067,169 @@ Parsing results... Done.</code></pre>
 </tr>
 </tbody>
 </table>
-<p><img src="figure/display.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="figure/display.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center">
+<img src="figure/display.Rmd/unnamed-chunk-5-1.png" alt="Fig 8A. Percentage of H2G across 9 conditions" width="672" />
+<p class="caption">
+Fig 8A. Percentage of H2G across 9 conditions
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9d8539a82915a7d81a3ce2cdf82320739dd51d34/docs/figure/display.Rmd/unnamed-chunk-5-1.png" target="_blank">9d8539a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="figure/display.Rmd/unnamed-chunk-6-1.png" alt="Enrichment across 9 conditions" width="672" />
+<p class="caption">
+Enrichment across 9 conditions
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9d8539a82915a7d81a3ce2cdf82320739dd51d34/docs/figure/display.Rmd/unnamed-chunk-6-1.png" target="_blank">9d8539a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>58 peaks with sum of PIP&gt;50%. 16 peaks have sum of PIP&gt;80%.</p>
 <p><img src="figure/display.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9d8539a82915a7d81a3ce2cdf82320739dd51d34/docs/figure/display.Rmd/unnamed-chunk-7-1.png" target="_blank">9d8539a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/display.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/9d8539a82915a7d81a3ce2cdf82320739dd51d34/docs/figure/display.Rmd/unnamed-chunk-8-1.png" target="_blank">9d8539a</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="likely-target-genes" class="section level3">
 <h3>Likely target genes</h3>
 <br>
