@@ -1,0 +1,88 @@
+---
+title: "aggregate_peak_ctwas_res"
+author: "Lifan Liang"
+date: "2024-10-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r,echo=F}
+paramfs <- c("data/joint_caQTL_ASoC_depression_params.rds",
+             "data/joint_caQTL_ASoC_neuroticism_params.rds",
+             "data/params_joint_caQTL_ASoC_SCZ_09112024.RDS",
+             "data/joint_caQTL_ASoC_bipolar_params.rds",
+             "data/joint_caQTL_ASoC_ADHD_params.rds",
+             "data/joint_caQTL_ASoC_ldl_params.rds")
+names(paramfs) <- c("depression","neuroticism","schizophrenia",
+                    "bipolar","ADHD","ldl")
+params <- list()
+for(n in names(paramfs)) {
+  params[[n]] <- readRDS(paramfs[n])
+}
+```
+
+### H2G across traits
+
+```{r,echo=F}
+pves <- sapply(params, function(x){sum((x$group_pve/x$total_pve)[-1])})
+pves <- pves[order(pves,decreasing = T)]
+barplot(pves,las=2,col="sky blue")
+```
+
+
+### Enrichemnt
+
+```{r,echo=F}
+library(ggplot2)
+
+enrichment <- unlist(lapply(params, function(x){x$enrichment}))
+pve <- unlist(lapply(params, function(x){(x$group_pve/x$total_pve)[-1]}))
+trait <- factor(sapply(strsplit(names(pve),"\\."), function(x){x[1]}), 
+                levels=c("schizophrenia","bipolar","depression","ADHD","neuroticism","ldl"))
+condition <- factor(sapply(strsplit(names(pve),"\\."), function(x){x[2]}),
+                    levels=paste0(rep(c(0,1,6),3), "hr_", rep(c("GABA","npglut","nmglut"),each=3)))
+dat <- data.frame(enrichment=enrichment,pve=pve,trait=trait,condition=condition)
+ggplot(dat,aes(x=trait,y=condition,size=pve,color=enrichment)) + geom_point() + 
+  scale_size(name="h2g",range=c(1,10)) + theme_bw() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+  
+```
+
+
+```{r,echo=F}
+process_res <- function(file) {
+  res <- readRDS(file)
+  res <- res[res$cs_index>0,]
+  cond <- names(table(res$type))
+  res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+  res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+  res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                   by.x="Group.1", by.y="genename",all.x = T)
+  colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+  for(i in 2:length(cond)) {
+    res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                      by="genename",all.x = T)
+    colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+  }
+  res3[is.na(res3)] <- 0
+  res3
+}
+resfs <- c("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS",
+           "data/joint_caQTL_ASoC_ADHD_res.rds",
+           "data/joint_caQTL_ASoC_bipolar_res.rds",
+           "data/joint_caQTL_ASoC_depression_res.rds",
+           "data/joint_caQTL_ASoC_neuroticism_res.rds",
+           "data/joint_caQTL_ASoC_ldl_res.rds")
+names(resfs) <- c("SCZ","ADHD","bipolar","depression","neuroticism","LDL")
+ress <- list()
+for(n in names(resfs)) {
+  if(n=="SCZ") {ress[[n]] <- process_res(resfs[n]); next}
+  ress[[n]] <- readRDS(resfs[n])
+}
+counts <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
+barplot(counts,las=2)
+```
+
