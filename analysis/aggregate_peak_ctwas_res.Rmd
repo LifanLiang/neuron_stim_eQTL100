@@ -51,6 +51,7 @@ ggplot(dat,aes(x=trait,y=condition,size=pve,color=enrichment)) + geom_point() +
   
 ```
 
+### Number of genes with PIP>80%
 
 ```{r,echo=F}
 process_res <- function(file) {
