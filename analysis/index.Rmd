@@ -65,7 +65,7 @@ editor_options:
 [cTWAS results with caQTL and ASOC on Schizophrenia](ctwas_caQTL_ASOC.html)
 \
 \
-[cTWAS results with caQTL and ASOC on 5 NPD traits](ctwas_caQTL_ASOC.html)
+[cTWAS results with caQTL and ASOC on 5 NPD traits](aggregate_peak_ctwas_res.html)
 \
 \
 [TORUS enrichment analysis of eQTL](torus_eqtl.html)
