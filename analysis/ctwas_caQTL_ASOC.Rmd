@@ -112,7 +112,7 @@ Co-activation and eQTL agreed with each other on two ASoCs. One is rs12741781 ta
 
 Please note that I don't have peak information for ASoCs. So I simply extended ASoCs by 250bps downstream and upstream as the peak.
 
-```{r,echo=F}
+```{r,echo=F,message=F}
 library(dplyr)
 res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene.rds")
 res5[res5=="NA"] <- ""
