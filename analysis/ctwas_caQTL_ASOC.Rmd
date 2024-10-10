@@ -104,6 +104,23 @@ colnames(res4) <- substr(colnames(res4),5,nchar(res4))
 pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
 ```
 
+### Likely target genes
+
+We haven't computed the ABC score. But I still tried three approaches to identify target genes: (1) check the eQTL with FDR<20%. Possible candidate genes are shown in the column "eqtl.gene"; (2) check the co-activation between peaks accessibility and gene expression computed by Zicheng. Cut off is FDR<20%. The column "p2g.gene" is showing the results; (3) Check which genes have overlapped with the peak, shown in the column "overlap.gene".
+
+Co-activation and eQTL agreed with each other on two ASoCs. One is rs12741781 targeting CEP170 and SDCCAG8. Another is rs215759 targeting TCF20.
+
+Please note that I don't have peak information for ASoCs. So I simply extended ASoCs by 250bps downstream and upstream as the peak.
+
+```{r,echo=F}
+library(dplyr)
+res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene.rds")
+res5[res5=="NA"] <- ""
+res5[,c(1,2,13,15,14,16,17)] %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('PIP_sum'), digits=3)
+```
+
 
 
 
