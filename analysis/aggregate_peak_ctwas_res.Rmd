@@ -87,3 +87,27 @@ counts <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
 barplot(counts,las=2)
 ```
 
+### More detailed results for ADHD
+
+Somehow ADHD has many more significant genes. More results about ADHD parameters were shown here
+
+![](assets/adhd_params.png)
+
+Many peaks with low Z-scores have high PIPs.
+
+![](assets/adhd_zscore_vs_pip.png)
+
+This the heatmap of the significant peaks in ADHD cTWAS
+
+```{r,echo=T}
+library(pheatmap)
+adhd.sig <- ress[["ADHD"]]
+adhd.sig <- adhd.sig[adhd.sig$PIP_sum>0.8,]
+adhd.sig <- adhd.sig[,c(3,6,9,4,7,10,5,8,11)]
+colnames(adhd.sig) <- substr(colnames(adhd.sig),5,nchar(adhd.sig))
+pheatmap(adhd.sig,cluster_rows = F,cluster_cols = F, 
+         color = colorRampPalette(c("white","red"))(100),)
+
+```
+
+
