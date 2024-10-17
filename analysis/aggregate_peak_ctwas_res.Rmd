@@ -99,7 +99,7 @@ Many peaks with low Z-scores have high PIPs.
 
 This the heatmap of the significant peaks in ADHD cTWAS
 
-```{r,echo=T}
+```{r,echo=F}
 library(pheatmap)
 adhd.sig <- ress[["ADHD"]]
 adhd.sig <- adhd.sig[adhd.sig$PIP_sum>0.8,]
