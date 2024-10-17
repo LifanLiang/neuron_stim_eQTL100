@@ -121,6 +121,57 @@ res5[,c(1,2,13,15,14,16,17)] %>%
   DT::formatRound(columns=c('PIP_sum'), digits=3)
 ```
 
+### Connection to eQTL cTWAS
 
+I tried to make Miami plot to visualize regional overlap between caQTL cTWAS and the eQTL cTWAS. But the correlation is not obvious.The bottom plot is setting all PIPs to 0 if their credible set index is 0 and genes/peaks with PIP>50% were colored as red.
+
+![](assets/ctwas_SCZ_eqtl_vs_caqtl.png)
+
+![](assets/ctwas_SCZ_eqtl_vs_caqtl_filtercs.png)
+
+To align the significant peaks to the significant genes in the cTWAS results, we check QTL distance between the two. Given that each peak/gene has 9 QTLs included at maximum, I used the QTL with the highest PIP for the corresponding peak/gene. There 17 peaks close to a gene (distance<500K bps) in the cTWAS results. One SNP is shared by an ASOC and the gene ZNF823.
+
+```{r,echo=F,message=F,warning=F}
+library(GenomicRanges)
+eres <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
+eres <- eres[eres$cs_index>0,]
+cond <- names(table(eres$type))
+eres$genename <- sapply(strsplit(eres$id, "\\|"), function(x) {x[1]})
+eres2 <- aggregate(eres$susie_pip, list(eres$genename), sum)
+eres3 <- merge(eres2, eres[eres$type==cond[1],c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(eres3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+for(i in 2:length(cond)) {
+  eres3 <- merge(eres3, eres[eres$type==cond[i],c("genename","susie_pip")], 
+                    by="genename",all.x = T)
+  colnames(eres3)[i+2] <- paste0("PIP_",cond[i])
+}
+eres3[is.na(eres3)] <- 0
+eres4 <- eres3[eres3$PIP_sum>0.5,]
+
+
+max.cond <- colnames(eres4[3:11])[apply(as.matrix(eres4[,3:11]),1,which.max)]
+max.cond <- sapply(strsplit(max.cond,"_"), function(x){paste0(x[2],"_",x[3])})
+cand <- paste0(eres4$genename,"|",max.cond)
+eqtl.range <- makeGRangesFromDataFrame(eres[eres$id %in% cand,1:3], 
+                                       seqnames.field = "chrom",
+                                       start.field = "pos",
+                                       end.field = "pos")
+
+
+max.cond <- colnames(res4)[apply(as.matrix(res4),1,which.max)]
+cand <- paste0(rownames(res4),"|",max.cond)
+peak.range <- makeGRangesFromDataFrame(res[res$id %in% cand,1:3], 
+                                       seqnames.field = "chrom",
+                                       start.field = "pos",
+                                       end.field = "pos")
+
+dist2eqtl <- distanceToNearest(peak.range, eqtl.range)
+ctwas.match <- data.frame(peak=res[names(peak.range),"genename"], gene="---", distance=Inf)
+ctwas.match[dist2eqtl@from,"gene"] <- eres[names(eqtl.range),"genename"][dist2eqtl@to]
+ctwas.match[dist2eqtl@from,"distance"] <- dist2eqtl@elementMetadata$distance
+
+DT::datatable(ctwas.match[order(ctwas.match$distance),])
+```
 
 
