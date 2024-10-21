@@ -84,7 +84,8 @@ for(n in names(resfs)) {
   ress[[n]] <- readRDS(resfs[n])
 }
 counts <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
-barplot(counts,las=2)
+p <- barplot(counts,las=2,ylim=c(0,max(counts)+20))
+text(x =p, y = counts + 5, labels = counts)
 ```
 
 ### More detailed results for ADHD
