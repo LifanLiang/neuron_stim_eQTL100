@@ -48,6 +48,15 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 
 ![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/direction_proportion_cerebellum_vs_blood.png)
 
+![eGene sharing with PsyENCODE2.]
+
+```{r,echo=F}
+dat <- read.table("data/egene_sharing_with_psychencode2.txt")
+pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(100),
+         display_numbers = round(dat,2))
+```
+
 
 ### Dynamic eQTL mapping
 
