@@ -72,7 +72,7 @@ process_res <- function(file) {
   res3
 }
 resfs <- c("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS",
-           "data/joint_caQTL_ASoC_ADHD_res.rds",
+           "data/joint_caQTL_ASoC_ADHD_L=1_res.rds",
            "data/joint_caQTL_ASoC_bipolar_res.rds",
            "data/joint_caQTL_ASoC_depression_res.rds",
            "data/joint_caQTL_ASoC_neuroticism_res.rds",
@@ -84,9 +84,13 @@ for(n in names(resfs)) {
   ress[[n]] <- readRDS(resfs[n])
 }
 counts <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
-p <- barplot(counts,las=2,ylim=c(0,max(counts)+20))
-text(x =p, y = counts + 5, labels = counts)
+dat <- counts[order(counts, decreasing = T)]
+p <- barplot(dat,las=2,ylim=c(0,max(dat)+20))
+text(x =p, y = dat + 5, labels = dat)
 ```
+
+
+
 
 ### More detailed results for ADHD
 

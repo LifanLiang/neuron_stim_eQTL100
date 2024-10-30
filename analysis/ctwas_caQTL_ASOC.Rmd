@@ -114,9 +114,9 @@ Please note that I don't have peak information for ASoCs. So I simply extended A
 
 ```{r,echo=F,message=F}
 library(dplyr)
-res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene.rds")
+res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
 res5[res5=="NA"] <- ""
-res5[,c(1,2,13,15,14,16,17)] %>%
+res5[,c(1,13,15,2,14,16,18,19,20)] %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('PIP_sum'), digits=3)
 ```
@@ -127,7 +127,7 @@ I tried to make Miami plot to visualize regional overlap between caQTL cTWAS and
 
 ![](assets/ctwas_SCZ_eqtl_vs_caqtl.png)
 
-![](assets/ctwas_SCZ_eqtl_vs_caqtl_filtercs.png)
+<br>
 
 To align the significant peaks to the significant genes in the cTWAS results, we check QTL distance between the two. Given that each peak/gene has 9 QTLs included at maximum, I used the QTL with the highest PIP for the corresponding peak/gene. There 17 peaks close to a gene (distance<500K bps) in the cTWAS results. One SNP is shared by an ASOC and the gene ZNF823.
 
@@ -153,25 +153,41 @@ eres4 <- eres3[eres3$PIP_sum>0.5,]
 max.cond <- colnames(eres4[3:11])[apply(as.matrix(eres4[,3:11]),1,which.max)]
 max.cond <- sapply(strsplit(max.cond,"_"), function(x){paste0(x[2],"_",x[3])})
 cand <- paste0(eres4$genename,"|",max.cond)
-eqtl.range <- makeGRangesFromDataFrame(eres[eres$id %in% cand,1:3], 
+eqtl.range <- makeGRangesFromDataFrame(eres[eres$id %in% cand,c(1:3,8,10)], 
                                        seqnames.field = "chrom",
                                        start.field = "pos",
-                                       end.field = "pos")
+                                       end.field = "pos",
+                                       keep.extra.columns = T)
 
 
 max.cond <- colnames(res4)[apply(as.matrix(res4),1,which.max)]
 cand <- paste0(rownames(res4),"|",max.cond)
-peak.range <- makeGRangesFromDataFrame(res[res$id %in% cand,1:3], 
+peak.range <- makeGRangesFromDataFrame(res[res$id %in% cand,c(1:3,8,10)], 
                                        seqnames.field = "chrom",
                                        start.field = "pos",
-                                       end.field = "pos")
+                                       end.field = "pos",
+                                       keep.extra.columns = T)
 
 dist2eqtl <- distanceToNearest(peak.range, eqtl.range)
 ctwas.match <- data.frame(peak=res[names(peak.range),"genename"], gene="---", distance=Inf)
 ctwas.match[dist2eqtl@from,"gene"] <- eres[names(eqtl.range),"genename"][dist2eqtl@to]
+ctwas.match[dist2eqtl@from,"gene_PIP"] <- eqtl.range$susie_pip[dist2eqtl@to]
 ctwas.match[dist2eqtl@from,"distance"] <- dist2eqtl@elementMetadata$distance
 
 DT::datatable(ctwas.match[order(ctwas.match$distance),])
 ```
 
+Venn diagram below showed the overlap between cPeaks and genes with PIP>50%.
 
+```{r,echo=F,message=F}
+library(VennDiagram)
+library(RColorBrewer)
+myCol <- brewer.pal(3, "Pastel2")[c(1,2)]
+peaks <- ctwas.match$peak
+peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
+venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
+             filename="docs/assets/ctwas_peaks_vs_gene.png",
+             imagetype = "png",lty="blank")
+```
+
+![](assets/ctwas_peaks_vs_gene.png)
