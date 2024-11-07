@@ -355,10 +355,10 @@ ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
 
 ```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
 library(pheatmap)
-res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
-res5[res5=="NA"] <- ""
-res5 <- res5[res5$PIP_sum>0.8,]
-res5 <- res5[,c(1,13,15,2,14,18)]
+#res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
+#res5[res5=="NA"] <- ""
+#res5 <- res5[res5$PIP_sum>0.8,]
+#res5 <- res5[,c(1,13,15,2,14,18)]
 
 res4 <- res3[res3$PIP_sum>0.8,]
 rownames(res4) <- res4$genename
