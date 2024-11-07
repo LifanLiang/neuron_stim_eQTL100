@@ -389,7 +389,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-09-10
+<strong>Last updated:</strong> 2024-11-06
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -520,15 +520,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee9d5e77500d023697c7e98da5d6f85caa04942b4targetblanke9d5e77a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treecebe60cfbbe71a9cdb2826f2adc05746104109aftargetblankcebe60ca">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e9d5e77500d023697c7e98da5d6f85caa04942b4" target="_blank">e9d5e77</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/cebe60cfbbe71a9cdb2826f2adc05746104109af" target="_blank">cebe60c</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treee9d5e77500d023697c7e98da5d6f85caa04942b4targetblanke9d5e77a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treecebe60cfbbe71a9cdb2826f2adc05746104109aftargetblankcebe60ca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +538,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/e9d5e77500d023697c7e98da5d6f85caa04942b4" target="_blank">e9d5e77</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/cebe60cfbbe71a9cdb2826f2adc05746104109af" target="_blank">cebe60c</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -569,6 +569,7 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.png.2024-08-26_21-03-42.log
     Untracked:  GTEx_vs_SCZ.tiff
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
+    Untracked:  Rplot.png
     Untracked:  geneMapping.rds
 
 </code></pre>
@@ -615,6 +616,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/cebe60cfbbe71a9cdb2826f2adc05746104109af/analysis/mashr_analysis.Rmd" target="_blank">cebe60c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-11-06
+</td>
+<td>
+wflow_publish(c("analysis", "data"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/cd29898491e8efe18a5f89de4e4336a6425727c6/docs/mashr_analysis.html" target="_blank">cd29898</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-09-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1260,6 +1295,18 @@ Lifan Liang
 </table>
 </div>
 </div>
+</div>
+<div id="overall-sharing" class="section level3">
+<h3>Overall sharing</h3>
+<p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="sharing-of-posterior-effects" class="section level3">
+<h3>Sharing of posterior effects</h3>
+<pre class="r"><code>library(ComplexUpset)
+lfsr &lt;- res$result$lfsr[rowSums(res$result$lfsr&lt;0.05)&gt;0,][,c(1,4,7,2,5,8,3,6,9)]
+upset(as.data.frame(lfsr&lt;0.05),colnames(lfsr),name=&quot;context&quot;,
+      width_ratio = 0.1,min_size=50)</code></pre>
+<p><img src="figure/mashr_analysis.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1284,22 +1331,25 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] dichromat_2.0-0 pheatmap_1.0.12 workflowr_1.7.0
+[1] ComplexUpset_1.3.3 dichromat_2.0-0    pheatmap_1.0.12    workflowr_1.7.0   
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11        RColorBrewer_1.1-2 highr_0.9          bslib_0.3.1       
- [5] compiler_4.1.2     pillar_1.7.0       later_1.3.0        git2r_0.29.0      
- [9] jquerylib_0.1.4    tools_4.1.2        getPass_0.2-2      digest_0.6.29     
-[13] gtable_0.3.0       jsonlite_1.7.3     evaluate_0.14      tibble_3.1.6      
-[17] lifecycle_1.0.1    pkgconfig_2.0.3    rlang_1.0.0        cli_3.1.1         
-[21] rstudioapi_0.13    yaml_2.2.2         xfun_0.29          fastmap_1.1.0     
-[25] httr_1.4.2         stringr_1.4.0      knitr_1.37         sass_0.4.1        
-[29] fs_1.5.2           vctrs_0.3.8        grid_4.1.2         rprojroot_2.0.2   
-[33] glue_1.6.1         R6_2.5.1           processx_3.5.2     fansi_1.0.2       
-[37] rmarkdown_2.11     callr_3.7.0        magrittr_2.0.2     whisker_0.4       
-[41] scales_1.1.1       ps_1.6.0           promises_1.2.0.1   htmltools_0.5.2   
-[45] ellipsis_0.3.2     colorspace_2.0-2   httpuv_1.6.5       utf8_1.2.2        
-[49] stringi_1.7.6      munsell_0.5.0      crayon_1.4.2      </code></pre>
+ [1] tidyselect_1.1.1   xfun_0.29          bslib_0.3.1        purrr_0.3.4       
+ [5] colorspace_2.0-2   vctrs_0.3.8        generics_0.1.2     htmltools_0.5.2   
+ [9] yaml_2.2.2         utf8_1.2.2         rlang_1.0.0        jquerylib_0.1.4   
+[13] later_1.3.0        pillar_1.7.0       DBI_1.1.2          glue_1.6.1        
+[17] RColorBrewer_1.1-2 lifecycle_1.0.1    stringr_1.4.0      munsell_0.5.0     
+[21] gtable_0.3.0       evaluate_0.14      labeling_0.4.2     knitr_1.37        
+[25] callr_3.7.0        fastmap_1.1.0      httpuv_1.6.5       ps_1.6.0          
+[29] fansi_1.0.2        highr_0.9          Rcpp_1.0.11        promises_1.2.0.1  
+[33] scales_1.1.1       jsonlite_1.7.3     farver_2.1.0       fs_1.5.2          
+[37] ggplot2_3.3.5      digest_0.6.29      stringi_1.7.6      processx_3.5.2    
+[41] dplyr_1.0.7        getPass_0.2-2      rprojroot_2.0.2    grid_4.1.2        
+[45] cli_3.1.1          tools_4.1.2        magrittr_2.0.2     sass_0.4.1        
+[49] patchwork_1.1.1    tibble_3.1.6       crayon_1.4.2       whisker_0.4       
+[53] pkgconfig_2.0.3    ellipsis_0.3.2     assertthat_0.2.1   rmarkdown_2.11    
+[57] httr_1.4.2         rstudioapi_0.13    R6_2.5.1           git2r_0.29.0      
+[61] compiler_4.1.2    </code></pre>
 </div>
 </div>
 </div>
