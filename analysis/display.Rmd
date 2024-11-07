@@ -308,6 +308,7 @@ dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])
                   type=rep(c("eQTL","caQTL & ASoC"),each=5))
 ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
   geom_bar(stat="identity",position="dodge") + theme_bw() +
+  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=1),vjust=-0.5) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 ```
