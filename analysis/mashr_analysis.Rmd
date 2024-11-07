@@ -92,7 +92,8 @@ post.sum <- colSums(res$posterior_weights)
 post.sum <- aggregate(post.sum, list(pattern), sum)
 post.sum$x <- post.sum$x / sum(post.sum$x)
 post.sum <- post.sum[order(post.sum$x,decreasing = F),]
-barplot(post.sum$x,horiz = T,names.arg = post.sum$Group.1,las=2)
+par(mar=c(5.1, 9 ,1.5 ,2.1))
+barplot(post.sum$x,horiz = T,names.arg = post.sum$Group.1,las=2, col=3)
 ```
 
 ### The flash_nonneg_1 (24.57% weights) focus on GABA and NPglut
@@ -113,13 +114,13 @@ barplot(eigen.res$values/sum(eigen.res$values))
 Eigen vector of 84.28% PVE
 
 ```{r,echo=F}
-barplot(eigen.res$vectors[,1],names.arg = rownames(pat),las=2)
+barplot(eigen.res$vectors[,1],names.arg = rownames(pat),las=2,col=rep(2:4,each=3))
 ```
 
 Eigen vector of 7.09% PVE
 
 ```{r,echo=F}
-barplot(eigen.res$vectors[,2],names.arg = rownames(pat),las=2)
+barplot(eigen.res$vectors[,2],names.arg = rownames(pat),las=2,col=rep(2:4,each=3))
 ```
 
 Eigen vector of 4.85% PVE
@@ -163,3 +164,23 @@ pat <- res$fitted_g$Ulist$PCA_3[inds,inds]
 pheatmap(pat,cluster_rows = F,cluster_cols = F,
          color = colorRampPalette(c("white", "red"))(30))
 ```
+
+### Overall sharing
+
+```{r,echo=F}
+betas <- res$result$PosteriorMean[rowSums(res$result$lfsr<0.05)>0,]
+cor.beta <- cor(betas[,c(1,4,7,2,5,8,3,6,9)])
+pheatmap(cor.beta,cluster_rows = F,cluster_cols = F,
+         color = colorRampPalette(c("white", "red"))(30))
+```
+
+### Sharing of posterior effects
+
+```{r}
+library(ComplexUpset)
+lfsr <- res$result$lfsr[rowSums(res$result$lfsr<0.05)>0,][,c(1,4,7,2,5,8,3,6,9)]
+upset(as.data.frame(lfsr<0.05),colnames(lfsr),name="context",
+      width_ratio = 0.1,min_size=50)
+```
+
+

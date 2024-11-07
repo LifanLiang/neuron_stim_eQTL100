@@ -259,32 +259,17 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
      xlab="sum of PIP", main="# of peaks/ASOCs in different PIP intervals")
 ```
 
-```{r,echo=F,fig.cap="Fig 8A. Heatmap of PIPs for plausible peaks.",fig.height=8}
-library(pheatmap)
 
-res4 <- res3[res3$PIP_sum>0.5,]
-rownames(res4) <- res4$genename
-res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
-colnames(res4) <- substr(colnames(res4),5,nchar(res4))
-pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
-```
-
-```{r,echo=F,fig.cap="Supplementary figure. Barplots of enrichment across conditions in SCZ cTWAS with caQTL and ASoC."}
+```{r,echo=F,fig.cap="Discarded. Barplots of enrichment across conditions in SCZ cTWAS with caQTL and ASoC."}
 params <- readRDS("data/joint_caQTL_ASOC_SCZ_params.RDS")
 dat <- params$enrichment[c(1,4,7,2,5,8,3,6,9)]
 p<-barplot(dat,las=2,col=rep(1:3,each=3),ylim=c(0,max(dat)+4))
 text(p,y=dat+1.5,labels = sprintf("%.1f",dat))
 ```
 
-```{r,echo=F,fig.cap="Supplementary figure. Barplots of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
+```{r, echo=F, fig.cap="Figure 8A. Bubble plots of enrichment and PVE for caQTL cTWAS across 5 NPD traits."}
 
 library(ggplot2)
-
-fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")
-params.e <- list()
-for(i in seq_along(fs1)) {
-  params.e[[fs[i]]] <- readRDS(paste0("data/",fs1[i],"_cTWAS_params.rds"))
-}
 
 paramfs <- c("data/joint_caQTL_ASoC_depression_params.rds",
              "data/joint_caQTL_ASoC_neuroticism_params.rds",
@@ -297,14 +282,92 @@ for(n in names(paramfs)) {
   params.c[[n]] <- readRDS(paramfs[n])
 }
 
+dat <- data.frame(h2g=c(sapply(params.c, function(x){x$attributable_pve[-1]})),
+                  enrichment=c(sapply(params.c, function(x){x$enrichment})),
+                  trait=rep(names(params.c),each=9),
+                  context=rep(names(params.c[[1]]$enrichment),5))
+dat$context <- factor(dat$context,levels=unique(dat$context)[c(1,4,7,2,5,8,3,6,9)])
+ggplot(dat, aes(y=trait,x=context,size=enrichment,color=h2g)) + 
+  geom_point() + theme_bw() + scale_size(range=c(.1,20)) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
+
+```{r,echo=F,fig.cap="Figure 8B. Barplots of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
+
+fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")
+params.e <- list()
+for(i in seq_along(fs1)) {
+  params.e[[fs[i]]] <- readRDS(paste0("data/",fs1[i],"_cTWAS_params.rds"))
+}
+
+
+
 dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])}),
                     sapply(params.c, function(x){sum(x$attributable_pve[-1])})),
                   trait=c(names(params.e),names(params.c)),
                   type=rep(c("eQTL","caQTL & ASoC"),each=5))
-ggplot(dat,aes(x=trait,y=h2g,fill=type)) + 
-  geom_bar(stat="identity",position="dodge") +
-  theme_bw() +
+ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
+  geom_bar(stat="identity",position="dodge") + theme_bw() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 ```
+
+```{r,echo=F,fig.cap="Fig 8C. Number of candidate risk genes across 5 NPD traits."}
+library(ggplot2)
+process_res <- function(file) {
+  res <- readRDS(file)
+  res <- res[res$cs_index>0,]
+  cond <- names(table(res$type))
+  res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+  res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+  res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                   by.x="Group.1", by.y="genename",all.x = T)
+  colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+  for(i in 2:length(cond)) {
+    res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                      by="genename",all.x = T)
+    colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+  }
+  res3[is.na(res3)] <- 0
+  res3
+}
+resfs <- c("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS",
+           "data/joint_caQTL_ASoC_ADHD_L=1_res.rds",
+           "data/joint_caQTL_ASoC_bipolar_res.rds",
+           "data/joint_caQTL_ASoC_depression_res.rds",
+           "data/joint_caQTL_ASoC_neuroticism_res.rds")
+#           "data/joint_caQTL_ASoC_ldl_res.rds")
+names(resfs) <- c("SCZ","ADHD","bipolar","depression","neuroticism")
+ress <- list()
+for(n in names(resfs)) {
+  if(n=="SCZ") {ress[[n]] <- process_res(resfs[n]); next}
+  ress[[n]] <- readRDS(resfs[n])
+}
+count1 <- sapply(ress,function(x){sum((x$PIP_sum>0.5)&(x$PIP_sum<0.8))})
+count2 <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
+dat <- data.frame(count=c(count2,count1),trait=rep(names(ress),2),
+                  type=rep(c("High confidence","Plausible"),each=5))
+ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
+  theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
+
+```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
+library(pheatmap)
+res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
+res5[res5=="NA"] <- ""
+res5 <- res5[res5$PIP_sum>0.8,]
+res5 <- res5[,c(1,13,15,2,14,18)]
+
+res4 <- res3[res3$PIP_sum>0.8,]
+rownames(res4) <- res4$genename
+res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
+colnames(res4) <- substr(colnames(res4),5,nchar(res4))
+pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
+```
+
+![Fig 8E. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ.](assets/ctwas_peaks_vs_gene.png)
+
 

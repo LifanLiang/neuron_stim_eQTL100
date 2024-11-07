@@ -116,6 +116,7 @@ Please note that I don't have peak information for ASoCs. So I simply extended A
 library(dplyr)
 res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
 res5[res5=="NA"] <- ""
+res5 <- res5[res5$PIP_sum>0.5,]
 res5[,c(1,13,15,2,14,16,18,19,20)] %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('PIP_sum'), digits=3)
@@ -133,6 +134,8 @@ To align the significant peaks to the significant genes in the cTWAS results, we
 
 ```{r,echo=F,message=F,warning=F}
 library(GenomicRanges)
+library(dplyr)
+
 eres <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
 eres <- eres[eres$cs_index>0,]
 cond <- names(table(eres$type))
@@ -173,8 +176,10 @@ ctwas.match <- data.frame(peak=res[names(peak.range),"genename"], gene="---", di
 ctwas.match[dist2eqtl@from,"gene"] <- eres[names(eqtl.range),"genename"][dist2eqtl@to]
 ctwas.match[dist2eqtl@from,"gene_PIP"] <- eqtl.range$susie_pip[dist2eqtl@to]
 ctwas.match[dist2eqtl@from,"distance"] <- dist2eqtl@elementMetadata$distance
-
-DT::datatable(ctwas.match[order(ctwas.match$distance),])
+dat1 <- ctwas.match[ctwas.match$gene_PIP>0.7,]
+dat1[order(dat1$distance),] %>% 
+  DT::datatable() %>%
+  DT::formatRound(columns=c("gene_PIP"), digits=3)
 ```
 
 Venn diagram below showed the overlap between cPeaks and genes with PIP>50%.
@@ -187,7 +192,7 @@ peaks <- ctwas.match$peak
 peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
 venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
              filename="docs/assets/ctwas_peaks_vs_gene.png",
-             imagetype = "png",lty="blank")
+             imagetype = "png",lty="blank",cex=3.5)
 ```
 
 ![](assets/ctwas_peaks_vs_gene.png)

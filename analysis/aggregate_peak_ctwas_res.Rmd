@@ -75,9 +75,9 @@ resfs <- c("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS",
            "data/joint_caQTL_ASoC_ADHD_L=1_res.rds",
            "data/joint_caQTL_ASoC_bipolar_res.rds",
            "data/joint_caQTL_ASoC_depression_res.rds",
-           "data/joint_caQTL_ASoC_neuroticism_res.rds",
-           "data/joint_caQTL_ASoC_ldl_res.rds")
-names(resfs) <- c("SCZ","ADHD","bipolar","depression","neuroticism","LDL")
+           "data/joint_caQTL_ASoC_neuroticism_res.rds")
+#           "data/joint_caQTL_ASoC_ldl_res.rds")
+names(resfs) <- c("SCZ","ADHD","bipolar","depression","neuroticism")
 ress <- list()
 for(n in names(resfs)) {
   if(n=="SCZ") {ress[[n]] <- process_res(resfs[n]); next}
@@ -85,7 +85,7 @@ for(n in names(resfs)) {
 }
 counts <- sapply(ress,function(x){sum(x$PIP_sum>0.8)})
 dat <- counts[order(counts, decreasing = T)]
-p <- barplot(dat,las=2,ylim=c(0,max(dat)+20))
+p <- barplot(dat,las=2, ylim=c(0,max(dat)+20), col = 2)
 text(x =p, y = dat + 5, labels = dat)
 ```
 
