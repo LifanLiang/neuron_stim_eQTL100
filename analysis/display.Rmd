@@ -223,23 +223,21 @@ knitr::kable(dat)
 ```
 
 
-```{r,echo=F}
+```{r,echo=F,eval=F}
+## Percentage of H2G across 9 conditions
 params <- readRDS("data/params_joint_caQTL_ASoC_SCZ_09112024.RDS")
-```
-
-```{r,echo=F,fig.cap="Fig 8A. Percentage of H2G across 9 conditions"}
 pve <- (params$group_pve/params$total_pve)[c(2,5,8,3,6,9,4,7,10)]
 barplot(pve,col=rep(c("red","yellow","blue"),each=3),las=2)
 ```
 
-```{r,echo=F,fig.cap="Enrichment across 9 conditions"}
+```{r,echo=F,eval=F}
+## Enrichment across 9 conditions
 enrichment <- params$enrichment[c(2,5,8,3,6,9,4,7,10)-1]
 barplot(enrichment,col=rep(c("red","yellow","blue"),each=3),las=2)
 ```
 
-58 peaks with sum of PIP>50%. 16 peaks have sum of PIP>80%.
-
 ```{r,echo=F}
+
 res <- readRDS("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS")
 res <- res[res$cs_index>0,]
 cond <- names(table(res$type))
@@ -254,13 +252,14 @@ for(i in 2:length(cond)) {
   colnames(res3)[i+2] <- paste0("PIP_",cond[i])
 }
 res3[is.na(res3)] <- 0
-
-hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
-     xlab="sum of PIP", main="# of peaks/ASOCs in different PIP intervals")
+## Count of risk peaks by PIP intervals
+#hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
+#     xlab="sum of PIP", main="# of peaks/ASOCs in different PIP intervals")
 ```
 
 
-```{r,echo=F,fig.cap="Discarded. Barplots of enrichment across conditions in SCZ cTWAS with caQTL and ASoC."}
+```{r,echo=F,eval=F}
+## Barplots of enrichment across conditions in SCZ cTWAS with caQTL and ASoC.
 params <- readRDS("data/joint_caQTL_ASOC_SCZ_params.RDS")
 dat <- params$enrichment[c(1,4,7,2,5,8,3,6,9)]
 p<-barplot(dat,las=2,col=rep(1:3,each=3),ylim=c(0,max(dat)+4))
