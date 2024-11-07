@@ -312,6 +312,18 @@ ggplot(dat, aes(x=trait,y=h2g,fill=type)) +
 
 ```
 
+```{r,echo=F,fig.cap="FigS. H2G of caQTL cTWAS with and without controlling for eQTL"}
+params.ce <- readRDS("data/joint_eqtl_caqtl_ctwas_5_traits_h2g.RDS")
+dat <- data.frame(h2g=c(sapply(params.ce, function(x){sum(x[2:10])}),
+                    sapply(params.c, function(x){sum(x$attributable_pve[-1])})),
+                  trait=c(names(params.ce),names(params.c)),
+                  type=rep(c("With eQTL","Without eQTL"),each=5))
+ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
+  geom_bar(stat="identity",position="dodge") + theme_bw() +
+  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=1),vjust=-0.5) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+```
+
 ```{r,echo=F,fig.cap="Fig 8C. Number of candidate risk genes across 5 NPD traits."}
 library(ggplot2)
 process_res <- function(file) {
@@ -353,6 +365,7 @@ ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
 ```
 
 
+
 ```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
 library(pheatmap)
 #res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
@@ -367,6 +380,21 @@ colnames(res4) <- substr(colnames(res4),5,nchar(res4))
 pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
 ```
 
-![Fig 8E. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ.](assets/ctwas_peaks_vs_gene.png)
+```{r,echo=F,fig.cap="Fig S. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
+library(pheatmap)
+#res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
+#res5[res5=="NA"] <- ""
+#res5 <- res5[res5$PIP_sum>0.8,]
+#res5 <- res5[,c(1,13,15,2,14,18)]
+
+res4 <- res3[res3$PIP_sum>0.8,]
+rownames(res4) <- res4$genename
+res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
+colnames(res4) <- substr(colnames(res4),5,nchar(res4))
+pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
+```
+
+
+![Fig 8E. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ. Both cTWAS results were filtered with PIP>80%.](assets/ctwas_peaks_vs_gene.png)
 
 

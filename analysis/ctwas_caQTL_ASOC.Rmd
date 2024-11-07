@@ -97,7 +97,7 @@ For these 19 peaks/ASOCs with PIP>0.8,
 ```{r,echo=F}
 library(pheatmap)
 
-res4 <- res3[res3$PIP_sum>0.5,]
+res4 <- res3[res3$PIP_sum>0.8,]
 rownames(res4) <- res4$genename
 res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
 colnames(res4) <- substr(colnames(res4),5,nchar(res4))
@@ -150,7 +150,7 @@ for(i in 2:length(cond)) {
   colnames(eres3)[i+2] <- paste0("PIP_",cond[i])
 }
 eres3[is.na(eres3)] <- 0
-eres4 <- eres3[eres3$PIP_sum>0.5,]
+eres4 <- eres3[eres3$PIP_sum>0.8,]
 
 
 max.cond <- colnames(eres4[3:11])[apply(as.matrix(eres4[,3:11]),1,which.max)]
@@ -176,7 +176,7 @@ ctwas.match <- data.frame(peak=res[names(peak.range),"genename"], gene="---", di
 ctwas.match[dist2eqtl@from,"gene"] <- eres[names(eqtl.range),"genename"][dist2eqtl@to]
 ctwas.match[dist2eqtl@from,"gene_PIP"] <- eqtl.range$susie_pip[dist2eqtl@to]
 ctwas.match[dist2eqtl@from,"distance"] <- dist2eqtl@elementMetadata$distance
-dat1 <- ctwas.match[ctwas.match$gene_PIP>0.7,]
+dat1 <- ctwas.match[ctwas.match$gene_PIP>0.8,]
 dat1[order(dat1$distance),] %>% 
   DT::datatable() %>%
   DT::formatRound(columns=c("gene_PIP"), digits=3)
