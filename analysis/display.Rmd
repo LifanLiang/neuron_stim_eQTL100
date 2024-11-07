@@ -50,7 +50,7 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 
 ![eGene sharing with PsyENCODE2.]
 
-```{r,echo=F}
+```{r,echo=F,fig.cap="eGene sharing with PsyENCODE2. tri1: the first trimester; tri2: the second trimester; all: all fetal brain in European ancestry."}
 dat <- read.table("data/egene_sharing_with_psychencode2.txt")
 pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
          color = colorRampPalette(c("white", "red"))(100),
@@ -60,31 +60,31 @@ pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
 
 ### Dynamic eQTL mapping
 
-![FigVenn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
+![Fig S. Venn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
 
 <br>
 
-![Fig 5D. Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
+![Fig S. Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
 
 <br>
 
-![Fig 5E. Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
+![Fig 5D. Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
 
 <br>
 
-![Fig 5E. Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
+![Fig 5D. Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
 
 <br>
 
-![Fig 5E. Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
+![Fig 5D. Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
 
 <br>
 
-![Fig 5F. Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
+![Fig 5E. Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
 
 <br>
 
-```{r,echo=F,fig.cap="Fig 5G. Storey's Pi analysis of dynamic eQTL in GTEx braint tissues"}
+```{r,echo=F,fig.cap="Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx braint tissues"}
 library(pheatmap)
 dym.pi1 <- read.table("data/pi1_dym_GTEx.txt")
 pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
@@ -93,7 +93,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Fig 5H. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks (upregulated only)](assets/dynamic_vs_static_diffpeak.png)
+![Fig 5G. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks (upregulated only)](assets/dynamic_vs_static_diffpeak.png)
 
 <br>
 
