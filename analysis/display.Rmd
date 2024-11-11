@@ -366,22 +366,40 @@ ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
 ```
 
 
-
-```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
-library(pheatmap)
-#res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
-#res5[res5=="NA"] <- ""
-#res5 <- res5[res5$PIP_sum>0.8,]
-#res5 <- res5[,c(1,13,15,2,14,18)]
-
-res4 <- res3[res3$PIP_sum>0.8,]
-rownames(res4) <- res4$genename
-res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
-colnames(res4) <- substr(colnames(res4),5,nchar(res4))
-pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
+```{r,echo=F,fig.cap="Fig S. Distribution of high confidence (PIP>80%) risk peaks by cell types."}
+for(i in names(ress)) {
+  ress[[i]]$GABA_pip <- rowSums(ress[[i]][,c(3,6,9)])/ress[[i]]$PIP_sum
+  ress[[i]]$nmglut_pip <- rowSums(ress[[i]][,c(4,7,10)])/ress[[i]]$PIP_sum
+  ress[[i]]$npglut_pip <- rowSums(ress[[i]][,c(5,8,11)])/ress[[i]]$PIP_sum
+}
+ress1 <- lapply(ress, function(x){x[x$PIP_sum>0.8,]})
+count.GABA <- sapply(ress1,function(x){sum(x$GABA_pip>0.6)})
+count.nmglut <- sapply(ress1,function(x){sum(x$nmglut_pip>0.6)})
+count.npglut <- sapply(ress1,function(x){sum(x$npglut_pip>0.6)})
+dat <- data.frame(count=c(count.GABA,count.nmglut,count.npglut),trait=rep(names(ress),3),
+                  celltype=rep(c("GABA","nmglut","npglut"),each=5))
+ggplot(dat,aes(x=trait,y=count,fill=celltype)) + geom_bar(stat="identity") +
+  theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
 ```
 
-```{r,echo=F,fig.cap="Fig S. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
+
+```{r,echo=F,fig.cap="Fig S. Number of high confidence (PIP>80%) risk peaks stratified by static/dynamic."}
+for(i in names(ress)) {
+  ress[[i]]$PIP_diff <- rowSums(ress[[i]][,6:11]) - rowSums(ress[[i]][,3:5])
+}
+ress1 <- lapply(ress, function(x){x[x$PIP_sum>0.8,]})
+count.dynamic <- sapply(ress1,function(x){sum(x$PIP_diff<0.5)})
+count.static <- sapply(ress1,function(x){sum(x$PIP_diff>=0.5)})
+dat <- data.frame(count=c(count.dynamic,count.static),trait=rep(names(ress),2),
+                  type=rep(c("Dynamic","Static"),each=5))
+ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
+  theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
+
+```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
 library(pheatmap)
 #res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
 #res5[res5=="NA"] <- ""
