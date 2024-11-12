@@ -378,6 +378,7 @@ count.nmglut <- sapply(ress1,function(x){sum(x$nmglut_pip>0.6)})
 count.npglut <- sapply(ress1,function(x){sum(x$npglut_pip>0.6)})
 dat <- data.frame(count=c(count.GABA,count.nmglut,count.npglut),trait=rep(names(ress),3),
                   celltype=rep(c("GABA","nmglut","npglut"),each=5))
+dat <- dat[dat$count>0,]
 ggplot(dat,aes(x=trait,y=count,fill=celltype)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
