@@ -47,8 +47,8 @@ dat$condition <- factor(dat$condition, levels = c(paste0(c(0,1,6),"hr_GABA"),
                                           paste0(c(0,1,6),"hr_nmglut"),
                                           paste0(c(0,1,6),"hr_npglut")))
 dat$trait <- sapply(strsplit(rownames(dat),"\\."), function(x){x[1]})
-
-ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = PVE, size=enrichment)) +guides(color = 'legend') + theme_minimal() + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+colnames(dat)[1] <- "h2g"
+ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = h2g, size=enrichment)) +guides(color = 'legend') + theme_minimal() + scale_size(range=c(.1,20)) + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 ```
 
 ### Time point distribution of enrichment

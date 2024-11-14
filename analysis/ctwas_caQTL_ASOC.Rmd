@@ -114,7 +114,7 @@ Please note that I don't have peak information for ASoCs. So I simply extended A
 
 ```{r,echo=F,message=F}
 library(dplyr)
-res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
+res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC_filterTSSgenes.rds")
 res5[res5=="NA"] <- ""
 res5 <- res5[res5$PIP_sum>0.5,]
 res5[,c(1,13,15,2,14,16,18,19,20)] %>%
@@ -130,7 +130,7 @@ I tried to make Miami plot to visualize regional overlap between caQTL cTWAS and
 
 <br>
 
-To align the significant peaks to the significant genes in the cTWAS results, we check QTL distance between the two. Given that each peak/gene has 9 QTLs included at maximum, I used the QTL with the highest PIP for the corresponding peak/gene. There 17 peaks close to a gene (distance<500K bps) in the cTWAS results. One SNP is shared by an ASOC and the gene ZNF823.
+To align the significant peaks to the significant genes in the cTWAS results, we check QTL distance between the two. Given that each peak/gene has 9 QTLs included at maximum, I used the QTL with the highest PIP for the corresponding peak/gene. There are 2 peaks close to a gene (distance<500K bps) in the cTWAS results. One SNP is shared by an ASOC and the gene ZNF823.
 
 ```{r,echo=F,message=F,warning=F}
 library(GenomicRanges)
