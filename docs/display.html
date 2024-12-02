@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-11-19
+<strong>Last updated:</strong> 2024-12-02
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,21 +426,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -531,15 +528,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0b7c47df4abb9161a62d0ec216fe07b7d03e9c2btargetblank0b7c47da">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8b6a42541343ef50f737f1c40ae22ffa1a21fcb0targetblank8b6a425a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0b7c47df4abb9161a62d0ec216fe07b7d03e9c2b" target="_blank">0b7c47d</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0" target="_blank">8b6a425</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree0b7c47df4abb9161a62d0ec216fe07b7d03e9c2btargetblank0b7c47da"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8b6a42541343ef50f737f1c40ae22ffa1a21fcb0targetblank8b6a425a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -549,7 +546,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/0b7c47df4abb9161a62d0ec216fe07b7d03e9c2b" target="_blank">0b7c47d</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0" target="_blank">8b6a425</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -571,6 +568,7 @@ Ignored files:
     Ignored:    data/single_group_ctwas/.DS_Store
 
 Untracked files:
+    Untracked:  Fig15SE_dynamic_count_eqtl_ctwas.pdf
     Untracked:  GTEx_vs_SCZ.pdf.2024-08-26_21-04-15.log
     Untracked:  GTEx_vs_SCZ.png
     Untracked:  GTEx_vs_SCZ.png.2024-08-26_13-44-01.log
@@ -581,10 +579,24 @@ Untracked files:
     Untracked:  GTEx_vs_SCZ.tiff
     Untracked:  GTEx_vs_SCZ.tiff.2024-08-26_21-04-43.log
     Untracked:  Rplot.png
+    Untracked:  VennDiagram.2024-11-25_20-24-05.log
+    Untracked:  VennDiagram.2024-11-26_18-20-35.log
+    Untracked:  VennDiagram.2024-11-26_18-20-48.log
+    Untracked:  VennDiagram.2024-11-26_18-22-10.log
+    Untracked:  VennDiagram.2024-11-26_18-22-33.log
+    Untracked:  VennDiagram.2024-11-26_18-22-46.log
+    Untracked:  VennDiagram.2024-11-26_18-22-52.log
+    Untracked:  VennDiagram.2024-11-26_18-26-20.log
+    Untracked:  VennDiagram.2024-11-26_18-26-38.log
+    Untracked:  VennDiagram.2024-11-26_18-27-07.log
+    Untracked:  VennDiagram.2024-11-26_18-27-29.log
+    Untracked:  VennDiagram.2024-11-26_18-27-49.log
+    Untracked:  VennDiagram.2024-11-26_18-28-03.log
+    Untracked:  VennDiagram.2024-11-26_18-28-09.log
+    Untracked:  VennDiagram.2024-11-26_18-28-25.log
+    Untracked:  VennDiagram.2024-12-02_13-09-38.log
     Untracked:  geneMapping.rds
-
-Unstaged changes:
-    Modified:   analysis/display.Rmd
+    Untracked:  plot4pdf.R
 
 </code></pre>
 <p>
@@ -630,6 +642,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0/analysis/display.Rmd" target="_blank">8b6a425</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+<td>
+wflow_publish(c("analysis", "docs", "data"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0/docs/display.html" target="_blank">8b6a425</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+<td>
+wflow_publish(c("analysis", "docs", "data"))
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1689,10 +1735,11 @@ eQTL</p>
 eQTL</p>
 </div>
 <p><br></p>
-<div class="figure">
-<img src="assets/pi1_ASOC_eQTL.png" alt="" />
-<p class="caption">Pi1 analysis ascertaining eQTL pvalues of ASoC</p>
-</div>
+<p><img src="assets/pi1_ASOC_eQTL.png"
+alt="Pi1 analysis ascertaining eQTL pvalues of ASoC" /> [Fig. S. Pi1
+analysis ascertaining neuron stimulation eQTLs in each other. An element
+in the ith row and the jth column indicates we used the P values from
+the jth condition and the eQTL from the ith condition.]</p>
 </div>
 <div id="ctwas-with-eqtls" class="section level2">
 <h2>cTWAS with eQTLs</h2>
@@ -1727,8 +1774,7 @@ stimulation eQTL</p>
 <p><br></p>
 <div class="figure">
 <img src="assets/SCZ_gene_PIP.png" alt="" />
-<p class="caption">Fig 7C. PIPs of high confidence genes in SCZ
-cTWAS</p>
+<p class="caption">Fig 7C. PIPs of high confidence genes in SZ cTWAS</p>
 </div>
 <p><br></p>
 <p><br></p>
