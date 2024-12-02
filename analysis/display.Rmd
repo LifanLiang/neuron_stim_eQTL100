@@ -23,6 +23,9 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 ![Fig S. Storey's Pi analysis of our eQTL in GTEx brain tissues.](assets/Pi1_GTEx_brain.png)
 
+![Fig. S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.](assets/pi1_heatmap_png.png)
+
+
 <br><br>
 
 ```{r,echo=F,fig.cap="Fig S. Percentages of eGenes in our eQTL that are shared with GTEx."}
@@ -123,7 +126,6 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 <br>
 
 ![Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
-![Fig. S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.]
 
 
 ## cTWAS with eQTLs

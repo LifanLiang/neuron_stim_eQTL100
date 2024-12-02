@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,9 +401,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -426,18 +426,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -528,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8b6a42541343ef50f737f1c40ae22ffa1a21fcb0targetblank8b6a425a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8targetblank93fda5ca">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0" target="_blank">8b6a425</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8" target="_blank">93fda5c</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree8b6a42541343ef50f737f1c40ae22ffa1a21fcb0targetblank8b6a425a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8targetblank93fda5ca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -546,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/8b6a42541343ef50f737f1c40ae22ffa1a21fcb0" target="_blank">8b6a425</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8" target="_blank">93fda5c</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -598,6 +601,9 @@ Untracked files:
     Untracked:  geneMapping.rds
     Untracked:  plot4pdf.R
 
+Unstaged changes:
+    Modified:   analysis/display.Rmd
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not
@@ -642,6 +648,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/display.html" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1399,6 +1422,13 @@ Lifan Liang
 <p class="caption">Fig S. Storey’s Pi analysis of our eQTL in GTEx brain
 tissues.</p>
 </div>
+<div class="figure">
+<img src="assets/pi1_heatmap_png.png" alt="" />
+<p class="caption">Fig. S. Pi1 analysis ascertaining neuron stimulation
+eQTLs in each other. An element in the ith row and the jth column
+indicates we used the P values from the jth condition and the eQTL from
+the ith condition.</p>
+</div>
 <p><br><br></p>
 <div class="figure" style="text-align: center">
 <img src="figure/display.Rmd/unnamed-chunk-2-1.png" alt="Fig S. Percentages of eGenes in our eQTL that are shared with GTEx." width="672" />
@@ -1428,6 +1458,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/figure/display.Rmd/unnamed-chunk-2-1.png" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/3593765baef7f6b6174659a81ffc8dfd9b0181b1/docs/figure/display.Rmd/unnamed-chunk-2-1.png" target="_blank">3593765</a>
@@ -1735,11 +1776,10 @@ eQTL</p>
 eQTL</p>
 </div>
 <p><br></p>
-<p><img src="assets/pi1_ASOC_eQTL.png"
-alt="Pi1 analysis ascertaining eQTL pvalues of ASoC" /> [Fig. S. Pi1
-analysis ascertaining neuron stimulation eQTLs in each other. An element
-in the ith row and the jth column indicates we used the P values from
-the jth condition and the eQTL from the ith condition.]</p>
+<div class="figure">
+<img src="assets/pi1_ASOC_eQTL.png" alt="" />
+<p class="caption">Pi1 analysis ascertaining eQTL pvalues of ASoC</p>
+</div>
 </div>
 <div id="ctwas-with-eqtls" class="section level2">
 <h2>cTWAS with eQTLs</h2>
@@ -1944,6 +1984,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/figure/display.Rmd/unnamed-chunk-12-1.png" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/16e21361c31a714c34aa38b6724b4efb7755cf3b/docs/figure/display.Rmd/unnamed-chunk-12-1.png" target="_blank">16e2136</a>
 </td>
 <td>
@@ -2030,6 +2081,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/figure/display.Rmd/unnamed-chunk-13-1.png" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bd574b4fc65c9233505ad7e15bc81d1da5ffa6be/docs/figure/display.Rmd/unnamed-chunk-13-1.png" target="_blank">bd574b4</a>
@@ -2119,6 +2181,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/figure/display.Rmd/unnamed-chunk-14-1.png" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/5ac4dae2f5793266861a47026c3c1948bc7d66a6/docs/figure/display.Rmd/unnamed-chunk-14-1.png" target="_blank">5ac4dae</a>
 </td>
 <td>
@@ -2182,6 +2255,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/93fda5cd9a4ec04dc65bc3813ba90cba7e713fa8/docs/figure/display.Rmd/unnamed-chunk-15-1.png" target="_blank">93fda5c</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2024-12-02
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/5ac4dae2f5793266861a47026c3c1948bc7d66a6/docs/figure/display.Rmd/unnamed-chunk-15-1.png" target="_blank">5ac4dae</a>
