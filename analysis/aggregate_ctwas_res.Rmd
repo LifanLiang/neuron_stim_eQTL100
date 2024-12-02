@@ -31,8 +31,11 @@ for(i in seq_along(fs1)) {
 ```
 
 ```{r,echo=F}
-barplot(sapply(params,function(x){sum(x$group_pve[-1])/x$total_pve}),las=2
-        ,ylab="Total proportion of H2G",col="deepskyblue")
+names(params)[1] <- "SZ"
+dat <- sapply(params,function(x){sum(x$group_pve[-1])/x$total_pve})
+dat1 <- sort(dat,decreasing = T)
+p <- barplot(dat1,las=2,ylab="Total proportion of H2G",col=4, ylim = c(0,max(dat1)+0.01))
+text(p,dat1+0.005,sprintf("%.3f",dat1))
 ```
 
 
@@ -47,8 +50,10 @@ dat$condition <- factor(dat$condition, levels = c(paste0(c(0,1,6),"hr_GABA"),
                                           paste0(c(0,1,6),"hr_nmglut"),
                                           paste0(c(0,1,6),"hr_npglut")))
 dat$trait <- sapply(strsplit(rownames(dat),"\\."), function(x){x[1]})
+dat$trait[dat$trait=="SCZ"] <- "SZ"
 colnames(dat)[1] <- "h2g"
-ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = h2g, size=enrichment)) +guides(color = 'legend') + theme_minimal() + scale_size(range=c(.1,20)) + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = h2g, size=enrichment)) +guides(color = 'legend') + theme_minimal() + scale_size(range=c(.1,6.5)) + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig6A_eQTL_ctwas_params.pdf",width=4,height = 3.,units="in")
 ```
 
 ### Time point distribution of enrichment
@@ -88,12 +93,16 @@ ress[[5]]$PIP_diff <- rowSums(ress[[5]][,3:7])
 dymcount = sapply(ress, function(x){sum(x$PIP_diff>0.5)})
 statcount = sapply(ress, function(x){sum(x$PIP_diff<0.5)})
 count2 <- data.frame(gene_count=c(dymcount,statcount), 
-           disease=c(names(dymcount),names(statcount)),
+           trait=c(names(dymcount),names(statcount)),
            type=c(rep("dynamic",length(dymcount)), rep("static",length(statcount))))
-
-ggplot(count2,aes(x=disease, y=gene_count, fill=type)) + 
-  geom_bar(position="stack", stat="identity") + 
+count2$trait[count2$trait=="SCZ"] <- "SZ"
+count2$trait <- factor(count2$trait, levels=c("SZ","Bipolar","ADHD","Neuroticism","Depression"))
+count2 <- count2[count2$gene_count>0,]
+ggplot(count2,aes(x=trait, y=gene_count, fill=type)) + 
+  geom_bar(position="stack", stat="identity") + theme_bw() +
+  geom_text(aes(label = gene_count), size = 3, hjust = 0.5, vjust = 1.5, position = "stack")+ 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+#ggsave("../Documents/neuron_stim/figure_pdf/FigS15E_dynamic_count_eqtl_ctwas.pdf",height=3,width=3,units="in")
 ```
 
 ```{r, echo=F}
@@ -112,7 +121,7 @@ count2 <- data.frame(gene_count=c(dymcount,statcount),
 ggplot(count2,aes(x=disease, y=gene_count, fill=type)) + 
   geom_bar(position="stack", stat="identity") + 
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),legend.position = "top") 
 ```
 
 ### High confidence and plausible gene counts across traits
@@ -122,10 +131,14 @@ hc <- sapply(ress,function(x){sum(x$PIP_sum>=0.8)})
 pl <- sapply(ress,function(x){sum((x$PIP_sum<0.8)&(x$PIP_sum>=0.5))})
 dat <- data.frame(count=c(hc,pl),trait=c(names(hc),names(pl)),
            type=rep(c("High confidence","Plausible"),each=5))
+dat$trait[dat$trait=="SCZ"] <- "SZ"
+dat$trait <- factor(dat$trait,levels=c("SZ","Bipolar","ADHD","Neuroticism","Depression"))
 ggplot(dat,aes(x=trait,y=count,fill=type))+geom_bar(stat="identity") +
   geom_text(aes(label = count), size = 3, hjust = 0.5, vjust = 1.5, position = "stack")+ 
   theme_classic() + 
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = "top")
+ggsave("../Documents/neuron_stim/figure_pdf/Fig6B_risk_gene_count.pdf",height=4,width=3.2,units="in")
 ```
 
 

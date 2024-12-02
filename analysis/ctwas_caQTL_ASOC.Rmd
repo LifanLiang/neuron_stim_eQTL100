@@ -193,6 +193,12 @@ peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
 venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
              filename="docs/assets/ctwas_peaks_vs_gene.png",
              imagetype = "png",lty="blank",cex=3.5)
+pdf(file="../Documents/neuron_stim/figure_pdf/Fig8G_venn_ctwas_caqtl_vs_eqtl.pdf",height = 3,width=3)
+p <- venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
+             filename=NULL,lty="blank",cex=3.5,cat.pos=c(150,-150))
+grid.newpage()
+grid.draw(p)
+dev.off()
 ```
 
 ![](assets/ctwas_peaks_vs_gene.png)

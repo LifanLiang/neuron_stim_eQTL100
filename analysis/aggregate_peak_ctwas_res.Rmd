@@ -45,10 +45,12 @@ trait <- factor(sapply(strsplit(names(pve),"\\."), function(x){x[1]}),
 condition <- factor(sapply(strsplit(names(pve),"\\."), function(x){x[2]}),
                     levels=paste0(rep(c(0,1,6),3), "hr_", rep(c("GABA","npglut","nmglut"),each=3)))
 dat <- data.frame(enrichment=enrichment,pve=pve,trait=trait,condition=condition)
-ggplot(dat,aes(x=trait,y=condition,size=pve,color=enrichment)) + geom_point() + 
-  scale_size(name="h2g",range=c(1,10)) + theme_bw() + 
+dat <- dat[dat$trait!="ldl",]
+ggplot(dat,aes(y=trait,x=condition,size=pve,color=enrichment)) + geom_point() + 
+  scale_size(name="h2g",range=c(1,7)) + theme_bw() + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
-  
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig8C_peak_ctwas_params.pdf",
+#       height=3.8, width=5, units="in")
 ```
 
 ### Number of genes with PIP>80%

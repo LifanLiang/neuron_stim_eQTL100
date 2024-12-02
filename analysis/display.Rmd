@@ -29,7 +29,7 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 library(pheatmap)
 egene.share <- read.table("data/shared_egenes_with_GTex.txt")
 pheatmap(egene.share[c(1,4,7,2,5,8,3,6,9),],cluster_rows = F, cluster_cols = F, 
-         color = colorRampPalette(c("white", "red"))(100))
+         color = colorRampPalette(c("white", "red"))(100), angle_col = 315)
 ```
 
 ```{r,echo=F,fig.cap="Fig S. Same information as the heatmap above but only use cerebellum"}
@@ -123,6 +123,8 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 <br>
 
 ![Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
+![Fig. S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.]
+
 
 ## cTWAS with eQTLs
 
@@ -146,7 +148,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Fig 7C. PIPs of high confidence genes in SCZ cTWAS](assets/SCZ_gene_PIP.png)
+![Fig 7C. PIPs of high confidence genes in SZ cTWAS](assets/SCZ_gene_PIP.png)
 
 <br>
 
@@ -191,7 +193,7 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
 
 <br>
 
-![eQTL plot for CPT1C in NMglut](assets/CPT1C_rs12104272_nmglut.png)
+![Fig S. eQTL plot for CPT1C in NMglut](assets/CPT1C_eqtl.png)
 
 ## SCZ cTWAS with ASoC and caQTL
 
@@ -287,7 +289,7 @@ dat <- data.frame(h2g=c(sapply(params.c, function(x){x$attributable_pve[-1]})),
                   context=rep(names(params.c[[1]]$enrichment),5))
 dat$context <- factor(dat$context,levels=unique(dat$context)[c(1,4,7,2,5,8,3,6,9)])
 ggplot(dat, aes(y=trait,x=context,size=h2g,color=enrichment)) + 
-  geom_point() + theme_bw() + scale_size(range=c(.1,20)) + 
+  geom_point() + theme_bw() + scale_size(range=c(.1,7)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
 ```
 
@@ -308,9 +310,9 @@ dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])
                   type=rep(c("eQTL","caQTL & ASoC"),each=5))
 ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
   geom_bar(stat="identity",position="dodge") + theme_bw() +
-  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=1),vjust=-0.5) + 
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
-
+  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=0.5),vjust=-0.5) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1), legend.position = "top")
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig8D_h2g_ctwas.pdf", height=5.2,width=3.5,units="in")
 ```
 
 ```{r,echo=F,fig.cap="FigS. H2G of caQTL cTWAS with and without controlling for eQTL"}
@@ -322,7 +324,9 @@ dat <- data.frame(h2g=c(sapply(params.ce, function(x){sum(x[2:10])}),
 ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
   geom_bar(stat="identity",position="dodge") + theme_bw() +
   geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=1),vjust=-0.5) + 
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position = "top", text = element_text(size = 20))
+ggsave("../Documents/neuron_stim/figure_pdf/FigS19A_h2g_control_for_eqtl.pdf",height=5.5,width=5,units="in")
 ```
 
 ```{r,echo=F,fig.cap="Fig 8C. Number of candidate risk genes across 5 NPD traits."}
@@ -360,9 +364,11 @@ count1 <- sapply(ress,function(x){sum((x$PIP_sum>0.5)&(x$PIP_sum<0.8))})
 count2 <- sapply(ress,function(x){sum(x$PIP_sum>=0.8)})
 dat <- data.frame(count=c(count2,count1),trait=rep(names(ress),2),
                   type=rep(c("High confidence","Plausible"),each=5))
+dat$trait[dat$trait=="SCZ"] <- "SZ"
 ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+ggsave("../Documents/neuron_stim/figure_pdf/Fig8E_peak_count_ctwas.pdf",height=3.5,width=3.5,units="in")
 ```
 
 
@@ -384,6 +390,7 @@ dat <- dat[dat$count>0,]
 ggplot(dat,aes(x=trait,y=count,fill=celltype)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+ggsave("../Documents/neuron_stim/figure_pdf/FigS19C_peak_celltype_ctwas.pdf",height=3,width=2.8,units="in")
 ```
 
 
@@ -399,6 +406,7 @@ dat <- data.frame(count=c(count.dynamic,count.static),trait=rep(names(ress1),2),
 ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+#ggsave("../Documents/neuron_stim/figure_pdf/FigS19B_peak_count_dynamic_ctwas.pdf",height=3,width=2.7,units="in")
 ```
 
 
