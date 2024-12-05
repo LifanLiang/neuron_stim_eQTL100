@@ -21,9 +21,9 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 <br><br>
 
-![Fig S. Storey's Pi analysis of our eQTL in GTEx brain tissues.](assets/Pi1_GTEx_brain.png)
+![Fig 5B. Storey's Pi analysis of our eQTL in GTEx brain tissues.](assets/Pi1_GTEx_brain.png)
 
-![Fig. S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.](assets/pi1_heatmap_png.png)
+![Fig S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.](assets/pi1_heatmap_png.png)
 
 
 <br><br>
@@ -43,13 +43,15 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 ```
 
 
-![Fig 5B. Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
+![Fig S. Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
 
 <br><br>
 
-![Fig 5B. Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
+![Fig 5. Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
 
-![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/direction_proportion_cerebellum_vs_blood.png)
+![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/update_screenshot/Fig5C_bulk_vs_GTEx.png)
+
+(assets/direction_proportion_cerebellum_vs_blood.png)
 
 ![eGene sharing with PsyENCODE2.]
 
@@ -87,7 +89,7 @@ pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
 
 <br>
 
-```{r,echo=F,fig.cap="Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx braint tissues"}
+```{r,echo=F,fig.cap="Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues"}
 library(pheatmap)
 dym.pi1 <- read.table("data/pi1_dym_GTEx.txt")
 pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
@@ -111,13 +113,6 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 ![TORUS enrichment analysis of dynamic eGenes and static eGenes over enhancers in 1 hour NMglut. Somehow only enh.w1 is significantly enriched.](assets/nmglut_1hr_dynamic_vs_static.png)
 
 
-## caQTL and ASoC
-
-![Fig 6A. Number of cPeaks in 9 conditions](assets/caQTL_N_cpeaks.png)
-
-![Fig 6C. Effect size correlation between caQTL and ASoC.](assets/caQTL_vs_ASoC.webp)
-
-![Fig 6D. TORUS analysis of enrichment of ASoC in eQTL](assets/TORUS_eQTL_ASoC.png)
 
 <br>
 
@@ -130,15 +125,19 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 ## cTWAS with eQTLs
 
-![Fig 7A. PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
+![Fig 6A. PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
 
 <br>
 
-![Fig 7A. Total PVE across 5 NPD traits](assets/total_h2g_ctwas.png)
+![Fig S15D. Total percent of h2g across 5 NPD traits](assets/update_screenshot/FigS15D_h2g_eqtl_ctwas)
 
 <br>
 
-![Fig 7B. Gene counts across 5 NPD traits](assets/sig_gene_counts_ctwas.png)
+![Fig S15E. Manhattan plots for risk genes.](assets/update_screenshot/FigS15E_manhattan_eqtl_ctwas.png)
+
+![Fig 6B. Gene counts across 5 NPD traits](assets/update_screenshot/Fig6B_risk_gene_count.png)
+
+(assets/sig_gene_counts_ctwas.png)
 
 <br>
 
@@ -150,7 +149,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Fig 7C. PIPs of high confidence genes in SZ cTWAS](assets/SCZ_gene_PIP.png)
+![Fig 6C. PIPs of high confidence genes in SZ cTWAS](assets/update_screenshot/Fig6C_gene_PIP_heatmap.png)
 
 <br>
 
@@ -162,7 +161,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 ### Comparison with GTEx cTWAS
 
-![Fig 7D. Venn diagram between our cTWAS genes GTEx brain tissues.](assets/ctwas_GTEx_vs_neuron_stim.png)
+![Fig 6D. Venn diagram between our cTWAS genes GTEx brain tissues.](assets/ctwas_GTEx_vs_neuron_stim.png)
 
 ![Supplementary. All top genes shared with GTEx are static while most unique top genes are dynamic](assets/dym_vs_stat_with_GTEx.png)
 
@@ -191,18 +190,38 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
 
 ### Highlighting CPT1C
 
-![Fig 7E. SCZ cTWAS locus plot centering CPT1C](assets/CPT1C_locus_plot.png)
+![Fig 6E. SCZ cTWAS locus plot centering CPT1C](assets/CPT1C_locus_plot.png)
 
 <br>
 
-![Fig S. eQTL plot for CPT1C in NMglut](assets/CPT1C_eqtl.png)
+![Fig 6F. eQTL plot for CPT1C in NMglut](assets/update_screenshot/Fig6F_CPT1C_eqtl_plot.png)
+
+## caQTL and ASoC
+
+```{r,echo=F,fig.cap="Fig 7A. The number of cPeaks across contexts."}
+library(ggplot2)
+conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","nmglut","npglut"),each=3))
+N_caqtl <- c(4318,8954,10504,1802,4435,6017,4957,10497,11622)
+names(N_caqtl) <- conds1
+dat <-data.frame(N=N_caqtl, 
+           timepoint=sapply(strsplit(names(N_caqtl),"_"),function(x){x[1]}),
+           celltype=sapply(strsplit(names(N_caqtl),"_"),function(x){x[2]}))
+ggplot(dat, aes(y=N,x=celltype,fill=timepoint)) + geom_bar(stat="identity",position="dodge") +
+  theme_bw() + ylab("# of cPeaks")
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig8A_count_cPeaks.pdf",width=3.2,height=2.8,units="in")
+```
+
+![Fig 7C. Effect size correlation between caQTL and ASoC.](assets/caQTL_vs_ASoC.webp)
+
+![Fig 7D. TORUS analysis of enrichment of ASoC in eQTL](assets/update_screenshot/Fig7D_torus_ASoC_eQTL.png
+
 
 ## SCZ cTWAS with ASoC and caQTL
 
 Supplementary table. Counts of ASoCs and caQTLs as input for cTWAS
 ```{r, echo=F}
 conds <- paste0(rep(c(0,1,6),each=3),"hr_",c("GABA","npglut","nmglut"))
-conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","npglut","nmglut"),each=3))
+conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","nmglut","npglut"),each=3))
 
 N_asoc <- c(11297,5573,11370,18252,9259,22207,21118,10116,21846)
 names(N_asoc) <- conds
@@ -225,6 +244,8 @@ rownames(dat) <- c("ASOC","processed_ASOC",
                    "Union")
 knitr::kable(dat)
 ```
+
+
 
 
 ```{r,echo=F,eval=F}
@@ -270,7 +291,7 @@ p<-barplot(dat,las=2,col=rep(1:3,each=3),ylim=c(0,max(dat)+4))
 text(p,y=dat+1.5,labels = sprintf("%.1f",dat))
 ```
 
-```{r, echo=F, fig.cap="Figure 8A. Bubble plots of enrichment and PVE for caQTL cTWAS across 5 NPD traits."}
+```{r, echo=F, fig.cap="Figure 8C. Bubble plots of enrichment and PVE for caQTL cTWAS across 5 NPD traits."}
 
 library(ggplot2)
 
@@ -296,15 +317,13 @@ ggplot(dat, aes(y=trait,x=context,size=h2g,color=enrichment)) +
 ```
 
 
-```{r,echo=F,fig.cap="Figure 8B. Barplots of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
+```{r,echo=F,fig.cap="Figure 8D. Barplots of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
 
 fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")
 params.e <- list()
 for(i in seq_along(fs1)) {
   params.e[[fs[i]]] <- readRDS(paste0("data/",fs1[i],"_cTWAS_params.rds"))
 }
-
-
 
 dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])}),
                     sapply(params.c, function(x){sum(x$attributable_pve[-1])})),
@@ -331,7 +350,7 @@ ggplot(dat, aes(x=trait,y=h2g,fill=type)) +
 ggsave("../Documents/neuron_stim/figure_pdf/FigS19A_h2g_control_for_eqtl.pdf",height=5.5,width=5,units="in")
 ```
 
-```{r,echo=F,fig.cap="Fig 8C. Number of candidate risk genes across 5 NPD traits."}
+```{r,echo=F,fig.cap="Fig 8E. Number of candidate risk genes across 5 NPD traits."}
 library(ggplot2)
 process_res <- function(file) {
   res <- readRDS(file)
@@ -356,17 +375,16 @@ resfs <- c("data/caQTL_ASOC_SCZ_noSNP_09112024_res.RDS",
            "data/joint_caQTL_ASoC_depression_res.rds",
            "data/joint_caQTL_ASoC_neuroticism_res.rds")
 #           "data/joint_caQTL_ASoC_ldl_res.rds")
-names(resfs) <- c("SCZ","ADHD","bipolar","depression","neuroticism")
+names(resfs) <- c("SZ","ADHD","bipolar","depression","neuroticism")
 ress <- list()
 for(n in names(resfs)) {
-  if(n=="SCZ") {ress[[n]] <- process_res(resfs[n]); next}
+  if(n=="SZ") {ress[[n]] <- process_res(resfs[n]); next}
   ress[[n]] <- readRDS(resfs[n])
 }
 count1 <- sapply(ress,function(x){sum((x$PIP_sum>0.5)&(x$PIP_sum<0.8))})
 count2 <- sapply(ress,function(x){sum(x$PIP_sum>=0.8)})
 dat <- data.frame(count=c(count2,count1),trait=rep(names(ress),2),
-                  type=rep(c("High confidence","Plausible"),each=5))
-dat$trait[dat$trait=="SCZ"] <- "SZ"
+                  type=factor(rep(c("PIP>0.8","0.8>PIP>0.5"),each=5)),levels=c("0.8>PIP>0.5","PIP>0.8"))
 ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
@@ -412,7 +430,7 @@ ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
 ```
 
 
-```{r,echo=F,fig.cap="Fig 8D. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
+```{r,echo=F,fig.cap="Fig 8F. Heatmap of PIPs for high confidence risk peaks.",fig.height=5}
 library(pheatmap)
 #res5 <- readRDS("data/SCZ_cTWAS_peak_target_gene_withABC.rds")
 #res5[res5=="NA"] <- ""
@@ -427,6 +445,6 @@ pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("whi
 ```
 
 
-![Fig 8E. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ. Both cTWAS results were filtered with PIP>80%.](assets/ctwas_peaks_vs_gene.png)
+![Fig 8G. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ. Both cTWAS results were filtered with PIP>80%.](assets/update_screenshot/Fig8G_venn_ctwas_caqtl_vs_eqtl.png)
 
 

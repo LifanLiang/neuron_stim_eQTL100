@@ -91,6 +91,11 @@ p <- barplot(dat,las=2, ylim=c(0,max(dat)+20), col = 2)
 text(x =p, y = dat + 5, labels = dat)
 ```
 
+```{r, eval=F, echo=F}
+for(n in names(ress)) {
+  write.table(ress[[n]],paste0("/Users/lifanliang/Documents/neuron_stim/supp_table/TableS31_caqtl_asoc_ctwas_results_",n,".txt"),quote=F)
+}
+```
 
 
 

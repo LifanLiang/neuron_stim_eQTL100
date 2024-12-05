@@ -153,7 +153,7 @@ text(x,par("usr")[3],names(gtex.total), xpd=TRUE, srt=45,adj = c(1.1,1.1), xpd =
 #### Venn diagram between our cTWAS genes and GTEx brain tissues
 Venn diagram showed the intersection of our results and the union of all GTEx brain genes.
 
-```{r,echo=F}
+```{r,echo=F,eval=F}
 library(VennDiagram)
 library(RColorBrewer)
 myCol <- brewer.pal(3, "Pastel2")
@@ -162,16 +162,16 @@ p <- venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8]
              lwd = 2, fill = myCol,
              cex = 2, fontface = "bold",fontfamily = "sans",
              imagetype = "svg", filename = "docs/assets/GTEx_vs_SCZ.svg")
-# library(grDevices)
-# library(grid)
-# p <- venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8],
-#                   GTEX_prefrontal_cortex=GTEx.gene[["Brain_Frontal_Cortex_BA9"]]),
-#              lwd = 2, fill = myCol,
-#              cex = 2, fontface = "bold",fontfamily = "sans",
-#              filename = NULL)
-# pdf(file="../Documents/neuron_stim/figure_pdf/Fig6D.pdf")
-#     grid.draw(p)
-# dev.off()
+library(grDevices)
+library(grid)
+p <- venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8],
+                  GTEX_prefrontal_cortex=GTEx.gene[["Brain_Frontal_Cortex_BA9"]]),
+             lwd = 2, fill = myCol,
+             cex = 2, fontface = "bold",fontfamily = "sans",
+             filename = NULL)
+pdf(file="../Documents/neuron_stim/figure_pdf/Fig6D.pdf")
+    grid.draw(p)
+dev.off()
 
 ```
 
@@ -277,11 +277,24 @@ library(dichromat)
 
 
 rownames(res4) <- res4$genename
-res40 <- res4
+res40 <- res4[order(res4$PIP_sum,decreasing = T),]
 temp <- strsplit(colnames(res40)[3:11],"_")
-colnames(res40)[3:11] <- paste0(sapply(temp,function(x){x[3]}), "_",sapply(temp,function(x){x[2]}))
+res4$timepoint <- "Static"
+res4$timepoint[res4$PIP_diff>0.5] <- "dynamic"
+colnames(res40)[3:11] <- paste0(sapply(temp,function(x){x[2]}), "_",sapply(temp,function(x){x[3]}))
+cols.tp <- 5:6
+names(cols.tp) <- unique(res4$timepoint)
+cols.ct <- 4:1
+names(cols.ct) <- unique(res4$celltype)
+cols <- list(timepoint=cols.tp, celltype=cols.ct)
+#pheatmap(res40[res40$PIP_sum>0.8,c(3,6,9,4,7,10,5,8,11)],cluster_rows=F, cluster_cols=F,
+#         color = colorRampPalette(c("white","red"))(100))
+pdf("docs/assets/Gene_PIP_heatmap.pdf",height = 4.2, width=4.2)
 pheatmap(res40[res40$PIP_sum>0.8,c(3,6,9,4,7,10,5,8,11)],cluster_rows=F, cluster_cols=F,
-         color = colorRampPalette(c("white","red"))(100))
+         color = colorRampPalette(c("white","red"))(100), 
+         annotation_row=res4[rownames(res40),c("timepoint","celltype")],
+         annotation_colors = cols)
+dev.off()
 ```
 
 
