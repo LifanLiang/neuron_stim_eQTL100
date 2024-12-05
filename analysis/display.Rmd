@@ -25,7 +25,6 @@ barplot(N_egene,las=2,col=rep(c("red","green","blue"),each=3))
 
 ![Fig S. Pi1 analysis ascertaining neuron stimulation eQTLs in each other. An element in the ith row and the jth column indicates we used the P values from the jth condition and the eQTL from the ith condition.](assets/pi1_heatmap_png.png)
 
-
 <br><br>
 
 ```{r,echo=F,fig.cap="Fig S. Percentages of eGenes in our eQTL that are shared with GTEx."}
@@ -51,7 +50,6 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 
 ![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/update_screenshot/Fig5C_bulk_vs_GTEx.png)
 
-(assets/direction_proportion_cerebellum_vs_blood.png)
 
 ![eGene sharing with PsyENCODE2.]
 
@@ -73,32 +71,34 @@ pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
 
 <br>
 
-![Fig 5D. Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/CROT_rs13233308_GABA.png)
+![Fig 5D. Examples with GABA dynamic eGenes: CROT eQTL in 6 hour GABA](assets/update_screenshot/Fig5D_CROT_GABA.png)
 
 <br>
 
-![Fig 5D. Examples with NPglut dynamic eGenes: PPM1H eQTL in 6 hour NPglut](assets/PPM1H_rs4763045_npglut.png)
+<br>
+
+![Fig 5D. Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/update_screenshot/Fig5D_ADAM10_npglut.png)
 
 <br>
 
-![Fig 5D. Examples with NMglut dynamic eGenes: ADAM10 eQTL in 1 hour NPglut](assets/ADAM10_rs6494026_nmglut.png)
+![Fig 5E. Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/update_screenshot/Fig5E_upset_plot.png)
 
 <br>
 
-![Fig 5E. Upset plot comparing sharing across cell types between static eGenes and dynamic eGenes](assets/upset_dym_sv_static.png)
-
-<br>
-
-```{r,echo=F,fig.cap="Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues"}
+```{r,eval=F,echo=F,fig.cap="Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues"}
 library(pheatmap)
 dym.pi1 <- read.table("data/pi1_dym_GTEx.txt")
 pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 ```
 
+![Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues compared to 0hr eGenes.](assets/update_screenshot/Fig5F_Pi1_dynamic_GTEx.png)
+<br>
+
+![Fig 5G. TORUS analysis of enrichment of ASoC in eQTL.](assets/update_screenshot/Fig5G_ASoC_enrichment_eQTL.png)
 
 <br>
 
-![Fig 5G. TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks (upregulated only)](assets/dynamic_vs_static_diffpeak.png)
+![TORUS enrichment analysis of dynamic eGenes and static eGenes over differentially accessible peaks (upregulated only)](assets/dynamic_vs_static_diffpeak.png)
 
 <br>
 
