@@ -211,7 +211,7 @@ ggplot(dat, aes(y=N,x=celltype,fill=timepoint)) + geom_bar(stat="identity",posit
 
 ![Fig 7E. TORUS analysis of enrichment of ASoC in eQTL](assets/update_screenshot/Fig7E_ASoC_enrichment_eQTL.png)
 
-![Fig 7F. Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
+![Fig 7F. Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/update_screenshot/Fig7F_Pi1_ASoC_eQTL.png.png)
 
 
 ## SCZ cTWAS with ASoC and caQTL
