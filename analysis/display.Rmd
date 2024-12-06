@@ -48,7 +48,7 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 
 ![Old plot. 9 panels of effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
 
-![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/update_screenshot/Fig5C_bulk_vs_GTEx.png)
+![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/update_screenshot/Fig5C_nmglut_vs_GTEx_cerebellum.png)
 
 
 ![eGene sharing with PsyENCODE2.]
@@ -92,6 +92,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 ```
 
 ![Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues compared to 0hr eGenes.](assets/update_screenshot/Fig5F_Pi1_dynamic_GTEx.png)
+
 <br>
 
 ![Fig 5G. TORUS analysis of enrichment of ASoC in eQTL.](assets/update_screenshot/Fig5G_torus_eqtl_via_uppeaks.png)
@@ -129,7 +130,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Fig S15D. Total percent of h2g across 5 NPD traits](assets/update_screenshot/FigS15D_h2g_eqtl_ctwas)
+![Fig S15D. Total percent of h2g across 5 NPD traits](assets/update_screenshot/FigS15D_h2g_eqtl_ctwas.png)
 
 <br>
 
