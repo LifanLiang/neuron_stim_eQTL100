@@ -42,11 +42,11 @@ text(p,y=dat+0.02,labels=sprintf("%.2f",dat))
 ```
 
 
-![Fig S. Effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
+![Old plot. 9 panels of effect size correlation with GTEx cerebellum](assets/beta_corr_nocombat_cerebellum.png)
 
 <br><br>
 
-![Fig 5. Effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
+![Old plot. 9 panels of effect size correlation with GTEx whole blood](assets/beta_corr_nocombat_wholeblood.png)
 
 ![Fig 5C. Concordance of eQTL effect direction between our eQTLs and GTEx cerebellum / whole blood tissue](assets/update_screenshot/Fig5C_bulk_vs_GTEx.png)
 
@@ -120,7 +120,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
+
 
 
 ## cTWAS with eQTLs
@@ -210,6 +210,9 @@ ggplot(dat, aes(y=N,x=celltype,fill=timepoint)) + geom_bar(stat="identity",posit
 ![Fig 7C. Effect size correlation between caQTL and ASoC.](assets/caQTL_vs_ASoC.webp)
 
 ![Fig 7E. TORUS analysis of enrichment of ASoC in eQTL](assets/update_screenshot/Fig7E_ASoC_enrichment_eQTL.png)
+
+![Fig 7F. Pi1 analysis ascertaining eQTL pvalues of ASoC](assets/pi1_ASOC_eQTL.png)
+
 
 ## SCZ cTWAS with ASoC and caQTL
 
@@ -434,7 +437,8 @@ library(pheatmap)
 
 res4 <- res3[res3$PIP_sum>0.8,]
 rownames(res4) <- res4$genename
-
+target <- read.table("data/TableS31_caqtl_ctwas_SCZ_target.tsv",sep="\t",header=T)
+rownames(target) <- target$genename
 # Take the middle point for cPeak intervals
 temp <- rownames(res4)[startsWith(rownames(res4),"cPeak")]
 left <- as.integer(sapply(strsplit(temp,"_"),function(x){x[3]}))
@@ -445,8 +449,11 @@ for(i in seq_along(mid)) {
   temp1[i] <- paste0(c(strsplit(temp1[3],"_")[[1]][1:2],mid[i]),collapse="_")
 }
 rownames(res4)[startsWith(rownames(res4),"cPeak")] <- temp1
-
-res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
+target$tgene <- target$tss.gene
+target$tgene[target$eqtl.gene!=""] <- paste0(target$tgene[target$eqtl.gene!=""]," (eQTL:",
+                                      target$eqtl.gene[target$eqtl.gene!=""],")")
+rownames(res4) <- paste0(rownames(res4)," -> ",target[res4$genename,"tgene"])
+res4 <- res4[order(res4$PIP_sum,decreasing = T),c(3,6,9,4,7,10,5,8,11)]
 colnames(res4) <- substr(colnames(res4),5,nchar(res4))
 pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
 ```
@@ -454,4 +461,4 @@ pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("whi
 
 ![Fig 8G. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ. Both cTWAS results were filtered with PIP>80%.](assets/update_screenshot/Fig8G_venn_ctwas_caqtl_vs_eqtl.png)
 
-
+![Fig S.Same comparison as above but PIP threshold changed to 50%.](assets/update_screenshot/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.png)

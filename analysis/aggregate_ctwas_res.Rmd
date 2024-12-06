@@ -23,7 +23,7 @@ for(f in fs) {
 
 ```{r, eval=F, echo=F}
 for(n in names(ress)) {
-  write.table(ress[[n]],paste0("/Users/lifanliang/Documents/neuron_stim/supp_table/TableS23_ctwas_",n,".txt"),quote=F)
+  write.table(ress[[n]],paste0("/Users/lifanliang/Documents/neuron_stim/supp_table/TableS23_eqtl_ctwas_",n,".txt"),quote=F)
 }
 ```
 
@@ -138,7 +138,7 @@ pl <- sapply(ress,function(x){sum((x$PIP_sum<0.8)&(x$PIP_sum>=0.5))})
 dat <- data.frame(count=c(hc,pl),trait=c(names(hc),names(pl)),
            type=factor(rep(c("PIP>0.8","0.5<PIP<0.8"),each=5),levels=c("PIP>0.8","0.5<PIP<0.8")))
 dat$trait[dat$trait=="SCZ"] <- "SZ"
-dat$trait <- factor(dat$trait,levels=c("SZ","Bipolar","ADHD","Neuroticism","Depression"))
+dat$trait <- factor(dat$trait,levels=c("SZ","bipolar","ADHD","Neuroticism","Depression"))
 ggplot(dat,aes(x=trait,y=count,fill=type))+geom_bar(stat="identity") +
   geom_text(aes(label = count), size = 3, hjust = 0.5, vjust = 1.5, position = "stack")+ 
   theme_classic() + 

@@ -155,11 +155,11 @@ eres <- eres[eres$cs_index>0,]
 cond <- names(table(eres$type))
 eres$genename <- sapply(strsplit(eres$id, "\\|"), function(x) {x[1]})
 eres2 <- aggregate(eres$susie_pip, list(eres$genename), sum)
-eres3 <- merge(eres2, eres[eres$type==cond[1],c("genename","susie_pip")], 
+eres3 <- merge(eres2, eres[eres$type==cond[1],c("genename","susie_pip")],
                  by.x="Group.1", by.y="genename",all.x = T)
 colnames(eres3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
 for(i in 2:length(cond)) {
-  eres3 <- merge(eres3, eres[eres$type==cond[i],c("genename","susie_pip")], 
+  eres3 <- merge(eres3, eres[eres$type==cond[i],c("genename","susie_pip")],
                     by="genename",all.x = T)
   colnames(eres3)[i+2] <- paste0("PIP_",cond[i])
 }
@@ -206,18 +206,19 @@ peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
 venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
              filename="docs/assets/ctwas_peaks_vs_gene.png",
              imagetype = "png",lty="blank",cex=3.5)
-pdf(file="../Documents/neuron_stim/figure_pdf/Fig8G_venn_ctwas_caqtl_vs_eqtl.pdf",height = 2.,width=2.)
+#pdf(file="../Documents/neuron_stim/figure_pdf/Fig8G_venn_ctwas_caqtl_vs_eqtl.pdf",height = 2.,width=2.)
 p <- venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
-             filename=NULL,lty="blank",cex=1.8,cat.pos=c(150,-150))
+             filename=NULL,lty="blank",cex=1.8,cat.pos=c(0,-0))
 grid.newpage()
 grid.draw(p)
-dev.off()
+#dev.off()
 ```
 
 Alternative with PIP threshold of 50%.
 
 ```{r,echo=F,message=F}
 eres5 <- eres3[eres3$PIP_sum>0.5,]
+eres5 <- eres5[eres5$genename!="DISP3",]
 res5 <- res3[res3$PIP_sum>0.5,]
 rownames(res5) <- res5$genename
 res5 <- res5[,c(3,6,9,4,7,10,5,8,11)]
@@ -253,11 +254,11 @@ peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
 venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
              filename="docs/assets/ctwas_peaks_vs_gene.png",
              imagetype = "png",lty="blank",cex=3.5)
-#pdf(file="../Documents/neuron_stim/figure_pdf/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.pdf",height = 3,width=3)
-p <- venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
-             filename=NULL,lty="blank",cex=3.5,cat.pos=c(150,-150))
+pdf(file="../Documents/neuron_stim/figure_pdf/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.pdf",height = 3,width=3)
+p <- venn.diagram(list(cPeaks=peaks,eQTL=eres5$genename),fill=myCol,alpha=0.8,
+             filename=NULL,lty="blank",cex=3.5,cat.pos=c(0,0))
 grid.newpage()
 grid.draw(p)
-#dev.off()
+dev.off()
 ```
 
