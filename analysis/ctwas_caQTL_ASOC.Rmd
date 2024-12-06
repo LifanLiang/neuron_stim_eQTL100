@@ -13,7 +13,7 @@ I got top caQTL per peak per condition, first I took the union of caQTLs FDR<5% 
 
 ```{r, echo=F}
 conds <- paste0(rep(c(0,1,6),each=3),"hr_",c("GABA","npglut","nmglut"))
-conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","npglut","nmglut"),each=3))
+conds1 <- paste0(c(0,1,6),"hr_",rep(c("GABA","nmglut","npglut"),each=3))
 
 N_asoc <- c(11297,5573,11370,18252,9259,22207,21118,10116,21846)
 names(N_asoc) <- conds
@@ -36,6 +36,20 @@ rownames(dat) <- c("ASOC","processed_ASOC",
                    "Union")
 knitr::kable(dat)
 ```
+
+
+```{r,eval=F}
+library(ggplot2)
+dat <- data.frame(N_caqtl)
+dat$timepoint <- sapply(strsplit(rownames(dat),"_"),function(x){x[1]})
+dat$celltype <- sapply(strsplit(rownames(dat),"_"),function(x){x[2]})
+ggplot(dat,aes(y=N_caqtl,x=celltype,fill=timepoint)) + 
+  geom_bar(stat="identity",position="dodge") + 
+  theme_bw() + ylab("# of cPeaks")
+ggsave("../Documents/neuron_stim/figure_pdf/Fig7A_count_cpeaks.pdf",
+       height=2.2,width=3,units="in")
+```
+
 
 ## Parameter extimation
 

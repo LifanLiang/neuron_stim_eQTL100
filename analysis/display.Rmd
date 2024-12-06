@@ -94,7 +94,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 ![Fig 5F. Storey's Pi analysis of dynamic eQTL in GTEx brain tissues compared to 0hr eGenes.](assets/update_screenshot/Fig5F_Pi1_dynamic_GTEx.png)
 <br>
 
-![Fig 5G. TORUS analysis of enrichment of ASoC in eQTL.](assets/update_screenshot/Fig5G_ASoC_enrichment_eQTL.png)
+![Fig 5G. TORUS analysis of enrichment of ASoC in eQTL.](assets/update_screenshot/Fig5G_torus_eqtl_via_uppeaks.png)
 
 <br>
 
@@ -125,7 +125,7 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 ## cTWAS with eQTLs
 
-![Fig 6A. PVE and enrichment for the 9 conditions across 5 NPD traits](assets/PVE_enrichment_npd.png)
+![Fig 6A. h2g and enrichment for the 9 conditions across 5 NPD traits](assets/update_screenshot/Fig6A_eQTL_ctwas_params.png)
 
 <br>
 
@@ -145,15 +145,11 @@ pheatmap(dym.pi1, cluster_cols = F, cluster_rows = F)
 
 <br>
 
-![Locus plot of Schizophrenia cTWAS of neuron stimulation eQTL](assets/SCZ_ctwas_locus_plot.png)
-
 <br>
 
 ![Fig 6C. PIPs of high confidence genes in SZ cTWAS](assets/update_screenshot/Fig6C_gene_PIP_heatmap.png)
 
 <br>
-
-
 
 <br>
 
@@ -213,8 +209,7 @@ ggplot(dat, aes(y=N,x=celltype,fill=timepoint)) + geom_bar(stat="identity",posit
 
 ![Fig 7C. Effect size correlation between caQTL and ASoC.](assets/caQTL_vs_ASoC.webp)
 
-![Fig 7D. TORUS analysis of enrichment of ASoC in eQTL](assets/update_screenshot/Fig7D_torus_ASoC_eQTL.png
-
+![Fig 7E. TORUS analysis of enrichment of ASoC in eQTL](assets/update_screenshot/Fig7E_ASoC_enrichment_eQTL.png)
 
 ## SCZ cTWAS with ASoC and caQTL
 
@@ -347,7 +342,7 @@ ggplot(dat, aes(x=trait,y=h2g,fill=type)) +
   geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=1),vjust=-0.5) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
         legend.position = "top", text = element_text(size = 20))
-ggsave("../Documents/neuron_stim/figure_pdf/FigS19A_h2g_control_for_eqtl.pdf",height=5.5,width=5,units="in")
+#ggsave("../Documents/neuron_stim/figure_pdf/FigS19A_h2g_control_for_eqtl.pdf",height=5.5,width=5,units="in")
 ```
 
 ```{r,echo=F,fig.cap="Fig 8E. Number of candidate risk genes across 5 NPD traits."}
@@ -388,7 +383,7 @@ dat <- data.frame(count=c(count2,count1),trait=rep(names(ress),2),
 ggplot(dat,aes(x=trait,y=count,fill=type)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
-ggsave("../Documents/neuron_stim/figure_pdf/Fig8E_peak_count_ctwas.pdf",height=3.5,width=3.5,units="in")
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig8E_peak_count_ctwas.pdf",height=3.5,width=3.5,units="in")
 ```
 
 
@@ -410,7 +405,7 @@ dat <- dat[dat$count>0,]
 ggplot(dat,aes(x=trait,y=count,fill=celltype)) + geom_bar(stat="identity") +
   theme_bw() + geom_text(aes(label=count),position = position_stack(vjust=0.5)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
-ggsave("../Documents/neuron_stim/figure_pdf/FigS19C_peak_celltype_ctwas.pdf",height=3,width=2.8,units="in")
+#ggsave("../Documents/neuron_stim/figure_pdf/FigS19C_peak_celltype_ctwas.pdf",height=3,width=2.8,units="in")
 ```
 
 
@@ -439,6 +434,18 @@ library(pheatmap)
 
 res4 <- res3[res3$PIP_sum>0.8,]
 rownames(res4) <- res4$genename
+
+# Take the middle point for cPeak intervals
+temp <- rownames(res4)[startsWith(rownames(res4),"cPeak")]
+left <- as.integer(sapply(strsplit(temp,"_"),function(x){x[3]}))
+right <- as.integer(sapply(strsplit(temp,"_"),function(x){x[4]}))
+mid <- (left+right)/2
+temp1 <- temp
+for(i in seq_along(mid)) {
+  temp1[i] <- paste0(c(strsplit(temp1[3],"_")[[1]][1:2],mid[i]),collapse="_")
+}
+rownames(res4)[startsWith(rownames(res4),"cPeak")] <- temp1
+
 res4 <- res4[,c(3,6,9,4,7,10,5,8,11)]
 colnames(res4) <- substr(colnames(res4),5,nchar(res4))
 pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
