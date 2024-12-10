@@ -63,11 +63,11 @@ pheatmap(dat[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F,
 
 ### Dynamic eQTL mapping
 
-![Fig S. Venn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
+![Fig S15xx. Venn diagram of eGenes at resting condition (0 hours) across cell types](assets/venn_0hr_eGene.png)
 
 <br>
 
-![Fig S. Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
+![Fig S15xx. Venn diagram of dynamic eGenes across cell types](assets/venn_dymgene.png)
 
 <br>
 
@@ -469,3 +469,5 @@ dev.off()
 ![Fig 8G. Venn diagram between caQTL cTWAS results and eQTL cTWAS results on the trait of SCZ. Both cTWAS results were filtered with PIP>80%.](assets/update_screenshot/Fig8G_venn_ctwas_caqtl_vs_eqtl.png)
 
 ![Fig S.Same comparison as above but PIP threshold changed to 50%.](assets/update_screenshot/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.png)
+
+![Fig 8H. Examples of caQTL overlapping with eQTL of MAD1L1.](assets/update_screenshot/Fig8H_MAD1L1_caqtl.png.png)

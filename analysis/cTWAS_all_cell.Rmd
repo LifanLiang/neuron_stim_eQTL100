@@ -292,10 +292,10 @@ colnames(res40)[c(19,20)] <- c("cell type","time point")
 colnames(res40)[3:11] <- substr(colnames(res40)[3:11], 5, nchar(colnames(res40)[3:11]))
 #pheatmap(res40[res40$PIP_sum>0.8,c(3,6,9,4,7,10,5,8,11)],cluster_rows=F, cluster_cols=F,
 #         color = colorRampPalette(c("white","red"))(100))
-pdf("docs/assets/Fig_6C_Gene_PIP_heatmap.pdf",height = 4.2, width=4.2)
+pdf("docs/assets/Fig_6C_Gene_PIP_heatmap.pdf",height = 4.2, width=4)
 pheatmap(res40[res40$PIP_sum>0.8,c(3,6,9,4,7,10,5,8,11)],cluster_rows=F, cluster_cols=F,
          color = colorRampPalette(c("white","red"))(100), 
-         annotation_row=res40[rownames(res40),c("time point","cell type")],
+         annotation_row=res40[rownames(res40),"time point",drop=F],
          annotation_colors = cols)
 dev.off()
 ```
