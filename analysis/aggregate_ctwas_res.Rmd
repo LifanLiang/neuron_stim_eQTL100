@@ -40,8 +40,10 @@ for(i in seq_along(fs1)) {
 names(params)[1] <- "SZ"
 dat <- sapply(params,function(x){sum(x$group_pve[-1])/x$total_pve})
 dat1 <- sort(dat,decreasing = T)
-p <- barplot(dat1,las=2,ylab="Total proportion of H2G",col=4, ylim = c(0,max(dat1)+0.01))
-text(p,dat1+0.005,sprintf("%.3f",dat1))
+pdf("../Documents/neuron_stim/figure_pdf/FigS15D_h2g_eqtl_ctwas.pdf",height=4.2,width=3.5)
+p <- barplot(dat1,las=2,ylab="Total proportion of h2g",col=4, ylim = c(0,max(dat1)+0.01))
+text(p,dat1+0.006,sprintf("%.3f",dat1))
+dev.off()
 ```
 
 
@@ -57,8 +59,8 @@ dat$condition <- factor(dat$condition, levels = c(paste0(c(0,1,6),"hr_GABA"),
                                           paste0(c(0,1,6),"hr_npglut")))
 dat$trait <- sapply(strsplit(rownames(dat),"\\."), function(x){x[1]})
 dat$trait[dat$trait=="SCZ"] <- "SZ"
-colnames(dat)[1] <- "h2g"
-ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = h2g, size=enrichment)) +guides(color = 'legend') + theme_minimal() + scale_size(range=c(.1,6.5)) + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+colnames(dat)[1] <- "Percent of h2g"
+ggplot(dat,aes(x=condition,y=trait)) + geom_count(aes(color = `Percent of h2g`, size=enrichment)) +guides(color = 'legend') + theme_minimal() + scale_size(range=c(.1,6.5)) + theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 #ggsave("../Documents/neuron_stim/figure_pdf/Fig6A_eQTL_ctwas_params.pdf",width=4,height = 3.,units="in")
 ```
 
@@ -138,13 +140,13 @@ pl <- sapply(ress,function(x){sum((x$PIP_sum<0.8)&(x$PIP_sum>=0.5))})
 dat <- data.frame(count=c(hc,pl),trait=c(names(hc),names(pl)),
            type=factor(rep(c("PIP>0.8","0.5<PIP<0.8"),each=5),levels=c("PIP>0.8","0.5<PIP<0.8")))
 dat$trait[dat$trait=="SCZ"] <- "SZ"
-dat$trait <- factor(dat$trait,levels=c("SZ","bipolar","ADHD","Neuroticism","Depression"))
+dat$trait <- factor(dat$trait,levels=c("SZ","Bipolar","ADHD","Neuroticism","Depression"))
 ggplot(dat,aes(x=trait,y=count,fill=type))+geom_bar(stat="identity") +
   geom_text(aes(label = count), size = 3, hjust = 0.5, vjust = 1.5, position = "stack")+ 
   theme_classic() + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
-        legend.position = "top")
-#ggsave("../Documents/neuron_stim/figure_pdf/Fig6B_risk_gene_count.pdf",height=4,width=3.2,units="in")
+        legend.position = "top",legend.title = element_blank())
+ggsave("../Documents/neuron_stim/figure_pdf/Fig6B_risk_gene_count.pdf",height=4,width=3.2,units="in")
 ```
 
 
@@ -182,9 +184,10 @@ library(enrichR)
 library(dplyr)
 gene.univ <- unique(do.call(c, lapply(ress[1:3], function(x){x$genename[x$PIP_sum>0.8]})))
 enrich.res <- enrichr(gene.univ, "GO_Biological_Process_2023")
-head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
+head(enrich.res$GO_Biological_Process_2023[-c(5,6,8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+#write.table(enrich.res$GO_Biological_Process_2023[-c(5,6,8)],"")
 ```
 
 ### Three traits with PIP>0.5

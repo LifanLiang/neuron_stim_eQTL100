@@ -310,13 +310,15 @@ dat <- data.frame(h2g=c(sapply(params.c, function(x){x$attributable_pve[-1]})),
                   trait=rep(names(params.c),each=9),
                   context=rep(names(params.c[[1]]$enrichment),5))
 dat$context <- factor(dat$context,levels=unique(dat$context)[c(1,4,7,2,5,8,3,6,9)])
-ggplot(dat, aes(y=trait,x=context,size=h2g,color=enrichment)) + 
-  geom_point() + theme_bw() + scale_size(range=c(.1,7)) + 
+colnames(dat)[1] <- "percent of h2g"
+ggplot(dat, aes(y=trait,x=context,size=`percent of h2g`,color=enrichment)) + 
+  geom_point() + theme_bw() + scale_size(range=c(.1,8)) + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+#ggsave("../Documents/neuron_stim/figure_pdf/Fig8C_peak_ctwas_params.pdf", height=3.8,width=4.5,units="in")
 ```
 
 
-```{r,echo=F,fig.cap="Figure 8D. Barplots of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
+```{r,echo=F,fig.cap="Figure 8D. Barplots of % of h2g comparing caQTL cTWAS and eQTL cTWAS across 5 NPD traits."}
 
 fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")
 params.e <- list()
@@ -330,12 +332,12 @@ dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])
                   type=rep(c("eQTL","caQTL & ASoC"),each=5))
 ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
   geom_bar(stat="identity",position="dodge") + theme_bw() +
-  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=0.5),vjust=-0.5) + 
+  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=0.5),vjust=-0.5) + ylab("Percent of h2g") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1), legend.position = "top")
-#ggsave("../Documents/neuron_stim/figure_pdf/Fig8D_h2g_ctwas.pdf", height=5.2,width=3.5,units="in")
+ggsave("../Documents/neuron_stim/figure_pdf/Fig8D_h2g_ctwas.pdf", height=5.2,width=3.5,units="in")
 ```
 
-```{r,echo=F,fig.cap="FigS. H2G of caQTL cTWAS with and without controlling for eQTL"}
+```{r,echo=F,fig.cap="FigS. % of h2g of caQTL cTWAS with and without controlling for eQTL"}
 params.ce <- readRDS("data/joint_eqtl_caqtl_ctwas_5_traits_h2g.RDS")
 dat <- data.frame(h2g=c(sapply(params.ce, function(x){sum(x[2:10])}),
                     sapply(params.c, function(x){sum(x$attributable_pve[-1])})),
@@ -451,12 +453,16 @@ for(i in seq_along(mid)) {
 }
 rownames(res4)[startsWith(rownames(res4),"cPeak")] <- temp1
 target$tgene <- target$tss.gene
-target$tgene[target$eqtl.gene!=""] <- paste0(target$tgene[target$eqtl.gene!=""]," (eQTL:",
-                                      target$eqtl.gene[target$eqtl.gene!=""],")")
-rownames(res4) <- paste0(rownames(res4)," -> ",target[res4$genename,"tgene"])
+#target$tgene[target$eqtl.gene!=""] <- paste0(target$tgene[target$eqtl.gene!=""]," (eQTL:",
+#                                      target$eqtl.gene[target$eqtl.gene!=""],")")
+target$tgene[target$eqtl.gene!=""] <- paste0(target$tgene[target$eqtl.gene!=""],
+                                             ",",target$eqtl.gene[target$eqtl.gene!=""])
+rownames(res4) <- paste0(rownames(res4)," (",target[res4$genename,"tgene"],")")
 res4 <- res4[order(res4$PIP_sum,decreasing = T),c(3,6,9,4,7,10,5,8,11)]
 colnames(res4) <- substr(colnames(res4),5,nchar(res4))
+pdf("../Documents/neuron_stim/figure_pdf/Fig8F_peak_pip_heatmap.pdf",height=4,width=5)
 pheatmap(res4,cluster_rows = F,cluster_cols = F, color = colorRampPalette(c("white","red"))(100))
+dev.off()
 ```
 
 
