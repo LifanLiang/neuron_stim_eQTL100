@@ -470,4 +470,4 @@ dev.off()
 
 ![Fig S.Same comparison as above but PIP threshold changed to 50%.](assets/update_screenshot/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.png)
 
-![Fig 8H. Examples of caQTL overlapping with eQTL of MAD1L1.](assets/update_screenshot/Fig8H_MAD1L1_caqtl.png.png)
+![Fig 8H. Examples of caQTL overlapping with eQTL of MAD1L1.](assets/update_screenshot/Fig8H_MAD1L1_caqtl.png)
