@@ -81,7 +81,7 @@ text(x = p, y = egenes + 2.5, labels = egenes)
 
 ## Results
 
-There are 45 \]egenes if the cutoff was set to PIP>0.5.
+There are 44 protein coding \]egenes if the cutoff was set to PIP>0.5.
 
 ```{r, echo=F}
 res <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
@@ -131,7 +131,7 @@ res4 <- merge(res4, maxzgene, by.x="genename", by.y="Group.1")
 colnames(res4)[ncol(res4)] <- "Zgene_Pval"
 
 GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
-GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
+GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[(x$susie_pip>0.5)&(x$cs_index!=0)]})
 gtex.union <- unique(unlist(GTEx.gene))
 GTEx.gene$Brain_union <- gtex.union
 shared <- sapply(GTEx.gene, function(x) {sum(x %in% res4$genename)})
@@ -164,13 +164,13 @@ p <- venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8]
              imagetype = "svg", filename = "docs/assets/GTEx_vs_SCZ.svg")
 library(grDevices)
 library(grid)
-p <- venn.diagram(list(GTEX_union=gtex.union,SCZ=res4$genename[res4$PIP_sum>0.8],
+p <- venn.diagram(list(GTEX_union=gtex.union,neuron_stim=res4$genename[res4$PIP_sum>0.8],
                   GTEX_prefrontal_cortex=GTEx.gene[["Brain_Frontal_Cortex_BA9"]]),
              lwd = 2, fill = myCol,
              cex = 2, fontface = "bold",fontfamily = "sans",
              filename = NULL)
 #pdf(file="../Documents/neuron_stim/figure_pdf/Fig6D.pdf")
-#    grid.draw(p)
+   grid.draw(p)
 #dev.off()
 
 ```
@@ -236,13 +236,14 @@ scz.gene <- res4$genename[res4$PIP_sum>0.8]
 gtex.gene <- gtex.union
 shared.gene <- scz.gene[scz.gene %in% gtex.gene]
 unique.gene <- scz.gene[!(scz.gene %in% gtex.gene)]
-shared.dynamic <- shared.gene[shared.gene %in% res4$genename[res4$PIP_diff<=0.5]]
+shared.dynamic <- shared.gene[shared.gene %in% res4$genename[res4$PIP_diff>0.5]]
+shared.static <- shared.gene[shared.gene %in% res4$genename[res4$PIP_diff<=0.5]]
 unique.static<- unique.gene[unique.gene %in% res4$genename[res4$PIP_diff<=0.5]]
 unique.dynamic<- unique.gene[!(unique.gene %in% res4$genename[res4$PIP_diff<=0.5])]
-dat <- data.frame(count=c(length(unique.dynamic),length(unique.static),0,length(shared.gene)),
+dat <- data.frame(count=c(length(unique.dynamic),length(unique.static),length(shared.dynamic),length(shared.static)),
            dynamic=c(T,F,T,F), shared_with_GTEx=c("unique","unique","shared","shared"))
 ggplot(dat,aes(y=count,x=shared_with_GTEx,fill=dynamic)) + geom_bar(stat="identity",position = "dodge") + geom_text(aes(label = count), vjust = -0.2, position = position_dodge(.9)) + theme_bw()
-#ggsave("../Documents/neuron_stim/figure_pdf/FigS15F_dynamic_shared_with_GTEx.pdf",height=4,width=2.5)
+ggsave("../Documents/neuron_stim/figure_pdf/shared_gene_with_GTEx_dynamic.pdf",height=4,width=2.5)
 ```
 
 

@@ -27,6 +27,15 @@ for(n in names(ress)) {
 }
 ```
 
+```{r, eval=F, echo=F}
+genes <- unique(do.call(c,sapply(ress, function(x){x$genename})))
+weights <- readRDS("data/combined_weights_eqtl_ctwas.RDS")
+w1 <- weights[weights$gene %in% genes,]
+w1$position <- sapply(strsplit(w1$varID,"_"),function(x){paste0(x[1],"_",x[2])})
+write.table(w1,"../Documents/neuron_stim/supp_table/TableS24_support_SNPs.txt",
+            quote=F,row.names = F, sep="\t")
+```
+
 
 ```{r,echo=F}
 fs1 <- c("joint_celltype","bipolar","Depression","neuroticisum","ADHD")

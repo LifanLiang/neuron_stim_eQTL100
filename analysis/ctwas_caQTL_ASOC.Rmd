@@ -106,7 +106,7 @@ hist(res3$PIP_sum[res3$PIP_sum>0.5], breaks=5:11/10, labels=T, ylim = c(0, 27),
 
 ### PIP distribution across conditions
 
-For these 19 peaks/ASOCs with PIP>0.8,
+For these 16 peaks/ASOCs with PIP>0.8,
 
 ```{r,echo=F}
 library(pheatmap)
@@ -214,9 +214,11 @@ grid.draw(p)
 #dev.off()
 ```
 
-Alternative with PIP threshold of 50%.
+Alternative with PIP threshold of 50%. (Fig S18xx)
 
 ```{r,echo=F,message=F}
+library(VennDiagram)
+library(RColorBrewer)
 eres5 <- eres3[eres3$PIP_sum>0.5,]
 eres5 <- eres5[eres5$genename!="DISP3",]
 res5 <- res3[res3$PIP_sum>0.5,]
@@ -254,9 +256,9 @@ peaks[ctwas.match$distance<5e5] <- ctwas.match$gene[ctwas.match$distance<5e5]
 venn.diagram(list(cPeaks=peaks,eQTL=eres4$genename),fill=myCol,alpha=0.8,
              filename="docs/assets/ctwas_peaks_vs_gene.png",
              imagetype = "png",lty="blank",cex=3.5)
-pdf(file="../Documents/neuron_stim/figure_pdf/FigS_venn_ctwas_caqtl_vs_eqtl_pip5.pdf",height = 3,width=3)
+pdf(file="../Documents/neuron_stim/figure_pdf/FigS18xx_venn_ctwas_caqtl_vs_eqtl_pip5.pdf",height = 2,width=2)
 p <- venn.diagram(list(cPeaks=peaks,eQTL=eres5$genename),fill=myCol,alpha=0.8,
-             filename=NULL,lty="blank",cex=3.5,cat.pos=c(0,0))
+             filename=NULL,lty="blank",cex=1.5,cat.pos=c(0,0))
 grid.newpage()
 grid.draw(p)
 dev.off()

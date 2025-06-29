@@ -92,6 +92,17 @@ text(x =p, y = dat + 5, labels = dat)
 ```
 
 ```{r, eval=F, echo=F}
+genes <- unique(unlist(lapply(ress, function(x){x$genename[x$PIP_sum>0.5]})))
+weights <- readRDS("data/combined_weights_caqtl_ctwas.RDS")
+w1 <- weights[weights$gene %in% genes,]
+w1$position <- sapply(strsplit(w1$varID,"_"), function(x){paste0(x[1],"_",x[2])})
+write.table(w1,"../Documents/neuron_stim/supp_table/TableS31_support_SNP.tsv",
+            quote=F,sep="\t",row.names = F)
+```
+
+
+
+```{r, eval=F, echo=F}
 for(n in names(ress)) {
   write.table(ress[[n]],paste0("/Users/lifanliang/Documents/neuron_stim/supp_table/TableS31_caqtl_asoc_ctwas_results_",n,".txt"),quote=F)
 }

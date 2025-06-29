@@ -329,12 +329,15 @@ for(i in seq_along(fs1)) {
 dat <- data.frame(h2g=c(sapply(params.e, function(x){sum(x$attributable_pve[-1])}),
                     sapply(params.c, function(x){sum(x$attributable_pve[-1])})),
                   trait=c(names(params.e),names(params.c)),
-                  type=rep(c("eQTL","caQTL & ASoC"),each=5))
+                  type=rep(c("eQTL","caQTL"),each=5))
+dat <- dat[dat$trait!="ADHD",]
 ggplot(dat, aes(x=trait,y=h2g,fill=type)) + 
   geom_bar(stat="identity",position="dodge") + theme_bw() +
-  geom_text(aes(label=scales::percent(h2g, accuracy = 0.1)),position = position_dodge(width=0.5),vjust=-0.5) + ylab("Percent of h2g") +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1), legend.position = "top")
-ggsave("../Documents/neuron_stim/figure_pdf/Fig8D_h2g_ctwas.pdf", height=5.2,width=3.5,units="in")
+  geom_text(aes(label=scales::percent(h2g, accuracy = 1)),position = position_dodge(width=0.95),vjust=-0.3) + ylab("Percent of h2g") + theme_classic() +ylim(c(0,0.36)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        axis.title.x = element_blank(), legend.position = "top")
+  
+ggsave("../Documents/neuron_stim/ToXin/h2g_ctwas.pdf", height=4,width=2.8,units="in")
 ```
 
 ```{r,echo=F,fig.cap="FigS. % of h2g of caQTL cTWAS with and without controlling for eQTL"}
@@ -449,7 +452,7 @@ right <- as.integer(sapply(strsplit(temp,"_"),function(x){x[4]}))
 mid <- (left+right)/2
 temp1 <- temp
 for(i in seq_along(mid)) {
-  temp1[i] <- paste0(c(strsplit(temp1[3],"_")[[1]][1:2],mid[i]),collapse="_")
+  temp1[i] <- paste0(c(strsplit(temp1[i],"_")[[1]][1:2],mid[i]),collapse="_")
 }
 rownames(res4)[startsWith(rownames(res4),"cPeak")] <- temp1
 target$tgene <- target$tss.gene

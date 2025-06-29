@@ -1,0 +1,207 @@
+---
+title: "revision"
+author: "Lifan Liang"
+date: "2025-06-19"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## rb estimate
+
+rb is essentially estimating pairwise correlation of genetic effect between two conditions after correcting residual correlation. We implemented the procedure following the description by Qi, et al (PMID: 29891976). 
+
+### eQTL correlation within our gene expression
+
+
+```{r, echo=F}
+library(pheatmap)
+
+est <- read.table("data/rb_est/neuron_stim_rb_ref_cortex.txt")
+se <- read.table("data/rb_est/neuron_stim_rb_se_ref_cortex.txt")
+est1 <- est
+est1[] <- lapply(est, sprintf, fmt="%.3f")
+se1 <- se
+se1[] <- lapply(se, sprintf, fmt="%.3f")
+values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
+idx <- c(1,4,7,2,5,8,3,6,9)
+est1 <- est[idx,idx]
+pheatmap(est1, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
+```
+
+
+### eQTL correlation with GTEx brain tissues
+
+```{r, echo=F}
+est <- readRDS("data/rb_est/rb_ns_vs_gtex.rds")
+idx <- order(colMeans(est$rb),decreasing = T)
+row_idx <- c(1,4,7,2,5,8,3,6,9)
+est1 <- as.data.frame(est$rb[row_idx,idx])
+est1[] <- lapply(est1, sprintf, fmt="%.3f")
+se1 <- as.data.frame(est$rb.se[row_idx,idx])
+se1[] <- lapply(se1, sprintf, fmt="%.3f")
+values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
+pheatmap(est$rb[row_idx,idx], cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
+```
+
+
+### eQTL correlation with psychENCODE2 prenatal brain
+
+```{r, echo=F}
+est <- readRDS("data/rb_est/rb_ns_vs_pec2.RDS")
+est1 <- as.data.frame(est$rb)
+est1[] <- lapply(est1, sprintf, fmt="%.3f")
+se1 <- as.data.frame(est$se)
+se1[] <- lapply(se1, sprintf, fmt="%.3f")
+values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
+pheatmap(est$rb, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
+```
+
+
+### eQTL correlation with doparminergic neurons
+
+```{r,echo=F}
+est <- read.table("data/rb_est/neuron_stim_vs_jerber_dopar.txt")
+se <- read.table("data/rb_est/neuron_stim_vs_jerber_dopar_se.txt")
+est1 <- est
+est1[] <- lapply(est, sprintf, fmt="%.3f")
+se1 <- se
+se1[] <- lapply(se, sprintf, fmt="%.3f")
+values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
+idx <- c(1,4,7,2,5,8,3,6,9)
+pheatmap(est, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
+```
+
+
+## MASH results
+
+We extracted top QTLs for each molecular trait (i.e. gene or peak) with FDR < 20% for each condition and took a union. And then we did LD clumping with the union of eQTL within a molecular trait. QTLs are ranked by nominal P values in 6hr NPGlut for both caQTL and eQTL. $R^2$ cutoff is 0.1. After LD clumping, we have 75149 eQTLs for 14235 genes and 
+
+### eQTL results
+
+```{r,echo=F}
+library(mashr)
+
+res.e <- readRDS("../Documents/neuron_stim/eqtl_mash_results.rds")
+```
+
+#### Pairwise sharing
+
+We used the default method in MASH. For each pair of tissues, first identify the effects that are significant (by lfsr<lfsr_thresh) in at least one of the two tissues. Then compute what fraction of these have an estimated (posterior mean) effect size within a factor `factor` of one another. Given the sharing matrix, we perform hierarchical clustering with Ward criteria. 
+
+```{r}
+sharing.e <- get_pairwise_sharing(res.e)
+values <- as.data.frame(sharing.e)
+values[] <- lapply(values, sprintf, fmt="%.3f")
+pheatmap(sharing.e, display_numbers = values,
+         color=colorRampPalette(c("white", "red"))(100),
+         clustering_method = "ward.D2")
+```
+
+
+Most eQTLs are condition specific. eQTLs shared by two conditions and all conditions are the second highest.
+
+```{r, echo=F, caption="Histogram showing the number eQTLs with lfsr<5% across conditions"}
+library(ggplot2)
+
+freqs <- as.data.frame(table(rowSums(res.e$result$lfsr<0.05)))
+ggplot(freqs, aes(x=Var1, y=Freq)) + geom_bar(stat="identity") + theme_classic() + 
+  geom_text(aes(label = Freq), vjust = -0.5) + ylab("# of eQTL") + xlab("# of conditions")
+
+```
+
+The upset plot showed similar information. eQTLs are distributed into these catetegories in order: (1) Shared by all; (2) condition specific; (3) GABA-specific eQTL; (4) NPglut stimulation specific; (5) GABA stimulation specific; (6) Glut specific.
+
+```{r, echo=F}
+library(ComplexUpset)
+
+dat <- as.data.frame(res.e$result$lfsr < 0.05)
+upset(dat, colnames(dat), name="condition", width_ratio = 0.1, min_size=600)
+
+```
+
+We also obtained the mixture proportions of all covariance patterns. Below is a barplot showing all the patterns with proportion > 1%.
+
+```{r, echo=F}
+pi.e <- sort(get_estimated_pi(res.e),decreasing=F)
+pi.e <- pi.e[pi.e>0.01]
+barplot(pi.e, horiz = T, las=2)
+```
+
+The pattern that explains 22.5% of mixture was `PCA_1`. The covariance matrix was shown as below:
+
+```{r, echo=F}
+pheatmap(res.e$fitted_g$Ulist$PCA_1)
+```
+
+And the corresponding 1st eigen vector (52.7% PVE) is:
+
+```{r}
+eigen1 <- eigen(res.e$fitted_g$Ulist$PCA_1)$vectors[,1]
+names(eigen1) <- colnames(dat)
+barplot(abs(eigen1)[c(1,4,7,2,5,8,3,6,9)], las=2)
+```
+
+### caQTL results
+
+Pairwise sharing among conditions:
+
+```{r,echo=F}
+res.c <- readRDS("../Documents/neuron_stim/caqtl_mash_results.rds")
+
+sharing.c <- get_pairwise_sharing(res.c)
+values <- as.data.frame(sharing.c)
+values[] <- lapply(values, sprintf, fmt="%.3f")
+pheatmap(sharing.c, display_numbers = values,
+         color=colorRampPalette(c("white", "red"))(100),
+         clustering_method = "ward.D2")
+```
+
+Distribution of caQTL across the number of conditions they are significant in. The distribution is similar to the one in eQTL.
+
+```{r, echo=F}
+freqs <- as.data.frame(table(rowSums(res.e$result$lfsr<0.05)))
+ggplot(freqs, aes(x=Var1, y=Freq)) + geom_bar(stat="identity") + theme_classic() + 
+  geom_text(aes(label = Freq), vjust = -0.5) + ylab("# of eQTL") + xlab("# of conditions")
+```
+
+Distribution of caQTLs across different intersections, consisting of condition-specific caQTLs, shared by all, and cell type-specifc caQTLs.
+
+```{r, echo=F}
+library(ComplexUpset)
+
+dat <- as.data.frame(res.c$result$lfsr < 0.05)
+upset(dat, colnames(dat), name="condition", width_ratio = 0.1, min_size=500)
+
+```
+
+
+```{r, echo=F}
+pi.c <- sort(get_estimated_pi(res.c),decreasing=F)
+pi.c <- pi.c[pi.c>0.01]
+barplot(pi.c, horiz = T, las=2)
+```
+
+`tPCA` covariance matrix has the highest mixture proportion (16.8%).
+
+```{r, echo=F}
+pheatmap(res.c$fitted_g$Ulist$tPCA)
+```
+
+The eigen vector for this covariance matrix (72.5% PVE).
+
+```{r, echo=F}
+eigen.c <- eigen(res.c$fitted_g$Ulist$tPCA)$vectors[,1]
+names(eigen.c) <- colnames(dat)
+barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
+```
+
+
+```{r, echo=F}
+eigen.c <- eigen(res.c$fitted_g$Ulist$PCA_1)$vectors[,1]
+names(eigen.c) <- colnames(dat)
+barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
+```
+
+
+

@@ -15,6 +15,11 @@ $$
 y = G\beta + G\gamma + W\psi + \mu + \epsilon
 $$
 
+$$
+y = \sum_j{\beta_j \tilde{X}} + \sum_m{\theta_m G_m} + \epsilon
+$$
+
+
 where $y$ is gene expression jointly normalized across 9 conditions, $G$ is genotype, $W$ are covariates, $\mu$ is individual random effect, $\epsilon$ is iid error, and $\beta$ and $\psi$ are corresponding fixed effects. The focus of the model is $\gamma$, the random slope for genotypes.
 
 $$
