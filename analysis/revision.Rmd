@@ -9,7 +9,7 @@ editor_options:
 
 ## rb estimate
 
-rb is essentially estimating pairwise correlation of genetic effect between two conditions after correcting residual correlation. We implemented the procedure following the description by Qi, et al (PMID: 29891976). 
+rb is essentially estimating pairwise correlation of genetic effect between two conditions after correcting residual correlation. We implemented the procedure following the description by Qi, et al (PMID: 29891976). Number in the bracket is standard error.
 
 ### eQTL correlation within our gene expression
 
