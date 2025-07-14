@@ -208,17 +208,17 @@ barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
 
 ### Nominal P values for highlighted dynamic eQTL
 
-* NPglut: ADAM10 | rs6494026 4.139992e-13
-* GABA: CROT | rs13233308 0.295749
-* NMglut: CPT1C | rs12104272 0.2200463
+* NPglut: ADAM10 | rs6494026    P value: 4.139992e-13
+* GABA: CROT | rs13233308       P value: 0.295749
+* NMglut: CPT1C | rs12104272    P value: 0.2200463
 
 P values for CROT and CPT1C (nominated by cTWAS) do not have significant P values. But there is a SNP in weak LD that is significant for nominal values for GABA CROT (rs6946379) and CPT1C
 
 ### Dynamic eQTL expanded to FDR<20% in marginal association testing
 
-We expanded the scope of eQTL testing to FDR<20% with LD pruning ($R^2<0.1$). So that multiple testing burden is reduced. P values of eQTLs within a gene were corrected with Bonferroni FWER. Benjamini Hochberg FDR was applied across genes. Overall, we found 630, 953, and 1110 dynamic eQTLs in nmglut, GABA, and npglut respectively. Dynamic eQTLs are less enriched at TSS compared to non-significant eQTLs.
+We expanded the scope of eQTL testing to FDR<20% with LD pruning ($R^2<0.1$). So that multiple testing burden is reduced. P values of eQTLs within a gene were corrected with Bonferroni FWER. Benjamini Hochberg FDR was applied across genes. Overall, we found 630, 953, and 1110 dynamic eQTLs in nmglut, GABA, and npglut respectively. Dynamic eQTLs are less enriched at TSS compared to eQTLs not significant for dynamic testing.
 
-```{r}
+```{r, echo=F}
 nmglut <- readRDS("data/nmglut_crm_fdr_loc.rds")
 ggplot(nmglut[nmglut$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
   geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
@@ -226,14 +226,14 @@ ggplot(nmglut[nmglut$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) +
 ```
 
 
-```{r}
+```{r, echo=F}
 npglut <- readRDS("data/npglut_crm_fdr_loc.rds")
 ggplot(npglut[npglut$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
   geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
   xlab("Distance to TSS") + ggtitle("dynamic eQTL in npglut")
 ```
 
-```{r}
+```{r, echo=F}
 GABA <- readRDS("data/GABA_crm_fdr_loc.rds")
 ggplot(GABA[GABA$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
   geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
@@ -264,7 +264,7 @@ Moreover, distribution of h2g across conditions changed a lot compared to origin
 
 #### Enrichment of cTWAS results without thinning
 
-```{r}
+```{r, echo=F}
 ## Relied on params read from previous block
 params <- readRDS(paste0(param.store,"NS.thin","1",".SCZ.parameters.RDS"))
 enr <- exp(params$log_enrichment)
@@ -272,7 +272,7 @@ names(enr) <- sapply(strsplit(names(enr),"\\|"), function(x){x[1]})
 barplot(enr, las=2, col=rep(1:3,each=3), main="new cTWAS results without thinning")
 ```
 
-```{r}
+```{r, echo=F}
 ## Relied on params read from previous block
 params <- readRDS(paste0(param.store,"NS.thin","01",".SCZ.parameters.RDS"))
 enr <- exp(params$log_enrichment)
@@ -281,7 +281,7 @@ barplot(enr, las=2, col=rep(1:3,each=3), main="new cTWAS results with 10% sampli
 ```
 
 
-```{r}
+```{r, echo=F}
 ctwas.params <- readRDS("data/joint_celltype_cTWAS_params.rds")
 barplot(ctwas.params$enrichment[c(1,4,7,2,5,8,3,6,9)], las=2, main="Enrichment of old cTWAS results",
         col=rep(1:3,each=3))
@@ -291,7 +291,9 @@ barplot(ctwas.params$enrichment[c(1,4,7,2,5,8,3,6,9)], las=2, main="Enrichment o
 
 #### Putative risk genes from different thinning
 
-```{r}
+For the gene with PIP > 50% in previous results, we compared their PIP in the updated results.
+
+```{r, echo=F}
 library(pheatmap)
 
 pip <- readRDS("data/new_ctwas/new_ctwas_aggr_pip.rds")
@@ -319,6 +321,56 @@ dat[inters,1:4] <- pip[inters,]
 dat[,5] <- res3$PIP_sum[res3$PIP_sum>0.5]
 pheatmap(dat[order(dat[,5]),], cluster_cols = F, cluster_rows = F, color = colorRampPalette(c("white", "red"))(100))
 
+```
+
+Below is the heatmap of 28 putative risk gene with PIP>50% in updated cTWAS results without thinning. Highlighted genes such as CPT1C, CROT, and NAGA are still there. NGEF nominated in NMglut in previous results have PIP<50%.
+
+```{r, echo=F}
+library(ctwas)
+library(pheatmap)
+
+mapping_table <- readRDS("data/gene_mapping.RDS")
+res <- readRDS("../Downloads/SCZ.finemap_regions_res.RDS")
+finemap_res <- res$susie_alpha_res
+finemap_res <- anno_susie_alpha_res(finemap_res,
+                                      mapping_table = mapping_table,
+                                      map_by = "molecular_id",
+                                      drop_unmapped = TRUE)
+  
+total_pip <- combine_gene_pips(finemap_res,
+                                    group_by = "gene_name",
+                                    by = "context",
+                                    method = "combine_cs",
+                                    filter_cs = FALSE,
+                                    include_cs_id = FALSE)
+
+total_pip[is.na(total_pip)] <- 0
+pip1 <- total_pip[total_pip$combined_pip>0.5,]
+rownames(pip1) <- pip1$gene_name
+idx <- expand.grid(paste0(c(0,1,6),"hr"), c("GABA", "npglut", "nmglut"))
+idx <- paste(idx$Var1, idx$Var2, "pip", sep="_")
+pheatmap(pip1[,idx], cluster_cols = F, cluster_rows = F, color = colorRampPalette(c("white", "red"))(100), angle_col = 315)
+```
+
+
+The updated results shared 3 genes with Cerebellar (i.e. SERPINI1, FOXN2, ZNF823). ZNF823 is the only gene shared by all GTEx brain tissues.
+
+```{r, echo=F}
+GTEx.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
+GTEx.gene <- lapply(GTEx.res, function(x){x$hgnc_symbol[(x$susie_pip>0.5)&(x$cs_index!=0)]})
+gtex.union <- unique(unlist(GTEx.gene))
+GTEx.gene$Brain_union <- gtex.union
+shared <- sapply(GTEx.gene, function(x) {sum(x %in% pip1$gene_name)})
+names(shared) <- substr(names(shared), 7, nchar(names(shared)))
+```
+
+```{r}
+library(VennDiagram)
+
+p1 <- venn.diagram(list(neuron_stim=pip1$gene_name, Cerebellar=GTEx.gene$Brain_Cerebellar_Hemisphere),
+            filename=NULL, cat.pos=c(-20,20), alpha=0.4, fill=c("red","blue"),fontface = "bold", cex=2)
+grid.newpage()
+grid.draw(p1)
 ```
 
 
