@@ -1,0 +1,25 @@
+INFO [2024-12-13 12:35:14] [[1]]
+INFO [2024-12-13 12:35:14] list(GTEX_union = gtex.union, SCZ = res4$genename[res4$PIP_sum > 
+INFO [2024-12-13 12:35:14]     0.8], GTEX_prefrontal_cortex = GTEx.gene[["Brain_Frontal_Cortex_BA9"]])
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $lwd
+INFO [2024-12-13 12:35:14] [1] 2
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $fill
+INFO [2024-12-13 12:35:14] myCol
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $cex
+INFO [2024-12-13 12:35:14] [1] 2
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $fontface
+INFO [2024-12-13 12:35:14] [1] "bold"
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $fontfamily
+INFO [2024-12-13 12:35:14] [1] "sans"
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $imagetype
+INFO [2024-12-13 12:35:14] [1] "svg"
+INFO [2024-12-13 12:35:14] 
+INFO [2024-12-13 12:35:14] $filename
+INFO [2024-12-13 12:35:14] [1] "docs/assets/GTEx_vs_SCZ.svg"
+INFO [2024-12-13 12:35:14] 

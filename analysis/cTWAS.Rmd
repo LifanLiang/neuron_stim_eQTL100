@@ -201,11 +201,9 @@ gene set enrichment analysis for each cell type and then a union.
 ```{r, echo=F}
 library(enrichR)
 websiteLive <- getOption("enrichR.live")
-dbs <- c("GO_Molecular_Function_2015", "GO_Cellular_Component_2015", "GO_Biological_Process_2015")
+dbs <- c("GO_Molecular_Function_2023", "GO_Cellular_Component_2023", "GO_Biological_Process_2023")
 if (websiteLive) {
     enriched <- enrichr(GABA.pip1$genename, dbs)
-}
-if (websiteLive) {
     plotEnrich(enriched[[3]], showTerms = 10, numChar = 40, y = "Count", orderBy = "P.value")
 }
 ```

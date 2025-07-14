@@ -204,4 +204,123 @@ barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
 ```
 
 
+## Dynamic eQTL testing
+
+### Nominal P values for highlighted dynamic eQTL
+
+* NPglut: ADAM10 | rs6494026 4.139992e-13
+* GABA: CROT | rs13233308 0.295749
+* NMglut: CPT1C | rs12104272 0.2200463
+
+P values for CROT and CPT1C (nominated by cTWAS) do not have significant P values. But there is a SNP in weak LD that is significant for nominal values for GABA CROT (rs6946379) and CPT1C
+
+### Dynamic eQTL expanded to FDR<20% in marginal association testing
+
+We expanded the scope of eQTL testing to FDR<20% with LD pruning ($R^2<0.1$). So that multiple testing burden is reduced. P values of eQTLs within a gene were corrected with Bonferroni FWER. Benjamini Hochberg FDR was applied across genes. Overall, we found 630, 953, and 1110 dynamic eQTLs in nmglut, GABA, and npglut respectively. Dynamic eQTLs are less enriched at TSS compared to non-significant eQTLs.
+
+```{r}
+nmglut <- readRDS("data/nmglut_crm_fdr_loc.rds")
+ggplot(nmglut[nmglut$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab("Distance to TSS") + ggtitle("dynamic eQTL in nmglut")
+```
+
+
+```{r}
+npglut <- readRDS("data/npglut_crm_fdr_loc.rds")
+ggplot(npglut[npglut$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab("Distance to TSS") + ggtitle("dynamic eQTL in npglut")
+```
+
+```{r}
+GABA <- readRDS("data/GABA_crm_fdr_loc.rds")
+ggplot(GABA[GABA$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab("Distance to TSS") + ggtitle("dynamic eQTL in GABA")
+```
+
+
+
+## Updated cTWAS results
+
+We tried to rerun the analysis with updated version of cTWAS. So that enrichment may have standard error. However, percentage of h2g decreased from 11% to 6%. Sheng reported that old results were inflated because of sampling 10% of GWAS SNPs to estimate prior parameters (`thin=0.1`). Updated results do not require sampling any more. We have tried different thinning parameters (i.e. 10%, 20%, 50%, 100%). Results show consistent decrease of h2g
+
+#### h2g decrease as sampling ratio of GWAS SNPs increased
+```{r, echo=F}
+pve <- numeric(4L)
+names(pve) <- c("01","02","05","1")
+param.store <- "data/new_ctwas/"
+for(i in c("01","02","05","1")) {
+  params <- readRDS(paste0(param.store,"NS.thin",i,".SCZ.parameters.RDS"))
+  pve[i] <- sum(params$group_pve[-10] / sum(params$group_pve))
+}
+
+plot(y=pve*100,x=c(10,20,50,100), xlab="% of GWAS SNPs sampled", ylab="% of h2g", pch=16, xlim=c(0,105))
+lines(y=pve*100,x=c(10,20,50,100))
+```
+
+Moreover, distribution of h2g across conditions changed a lot compared to original results. NMglut has much less heritability, and conditions of early response have higher h2g in general.
+
+#### Enrichment of cTWAS results without thinning
+
+```{r}
+## Relied on params read from previous block
+params <- readRDS(paste0(param.store,"NS.thin","1",".SCZ.parameters.RDS"))
+enr <- exp(params$log_enrichment)
+names(enr) <- sapply(strsplit(names(enr),"\\|"), function(x){x[1]})
+barplot(enr, las=2, col=rep(1:3,each=3), main="new cTWAS results without thinning")
+```
+
+```{r}
+## Relied on params read from previous block
+params <- readRDS(paste0(param.store,"NS.thin","01",".SCZ.parameters.RDS"))
+enr <- exp(params$log_enrichment)
+names(enr) <- sapply(strsplit(names(enr),"\\|"), function(x){x[1]})
+barplot(enr, las=2, col=rep(1:3,each=3), main="new cTWAS results with 10% sampling")
+```
+
+
+```{r}
+ctwas.params <- readRDS("data/joint_celltype_cTWAS_params.rds")
+barplot(ctwas.params$enrichment[c(1,4,7,2,5,8,3,6,9)], las=2, main="Enrichment of old cTWAS results",
+        col=rep(1:3,each=3))
+```
+
+
+
+#### Putative risk genes from different thinning
+
+```{r}
+library(pheatmap)
+
+pip <- readRDS("data/new_ctwas/new_ctwas_aggr_pip.rds")
+
+res <- readRDS("data/SCZ_cover8_noSNP_ctwas.RDS")
+res <- res[res$cs_index>0,]
+cond <- names(table(res$type))
+res$genename <- sapply(strsplit(res$id, "\\|"), function(x) {x[1]})
+res2 <- aggregate(res$susie_pip, list(res$genename), sum)
+res3 <- merge(res2, res[res$type==cond[1],c("genename","susie_pip")], 
+                 by.x="Group.1", by.y="genename",all.x = T)
+colnames(res3) <- c("genename","PIP_sum",paste0("PIP_",cond[1]))
+for(i in 2:length(cond)) {
+  res3 <- merge(res3, res[res$type==cond[i],c("genename","susie_pip")], 
+                    by="genename",all.x = T)
+  colnames(res3)[i+2] <- paste0("PIP_",cond[i])
+}
+res3[is.na(res3)] <- 0
+
+dat <- matrix(0, nrow=sum(res3$PIP_sum>0.5), ncol=5)
+rownames(dat) <- res3$genename[res3$PIP_sum>0.5]
+colnames(dat) <- c(colnames(pip),"old")
+inters <- intersect(rownames(dat), rownames(pip))
+dat[inters,1:4] <- pip[inters,]
+dat[,5] <- res3$PIP_sum[res3$PIP_sum>0.5]
+pheatmap(dat[order(dat[,5]),], cluster_cols = F, cluster_rows = F, color = colorRampPalette(c("white", "red"))(100))
+
+```
+
+
+
 

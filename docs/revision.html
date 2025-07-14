@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-06-28
+<strong>Last updated:</strong> 2025-07-13
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>neuron_stim_eQTL100/</code> <span
@@ -418,18 +418,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -520,15 +523,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree81ffbde0d68da376bd68f72f7906077018675eb2targetblank81ffbdea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebcec9455b663a80918225173ddf1b04aaca549c2targetblankbcec945a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/81ffbde0d68da376bd68f72f7906077018675eb2" target="_blank">81ffbde</a>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bcec9455b663a80918225173ddf1b04aaca549c2" target="_blank">bcec945</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100tree81ffbde0d68da376bd68f72f7906077018675eb2targetblank81ffbdea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomLifanLiangneuronstimeQTL100treebcec9455b663a80918225173ddf1b04aaca549c2targetblankbcec945a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -538,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/81ffbde0d68da376bd68f72f7906077018675eb2" target="_blank">81ffbde</a>.
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/tree/bcec9455b663a80918225173ddf1b04aaca549c2" target="_blank">bcec945</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -568,8 +571,16 @@ Untracked files:
     Untracked:  Rplot.png
     Untracked:  VennDiagram.2025-06-27_16-07-46.log
     Untracked:  VennDiagram.2025-06-28_19-58-17.log
+    Untracked:  data/GABA_crm_fdr_loc.rds
+    Untracked:  data/new_ctwas/
+    Untracked:  data/nmglut_crm_fdr_loc.rds
+    Untracked:  data/npglut_crm_fdr_loc.rds
     Untracked:  geneMapping.rds
     Untracked:  plot4pdf.R
+
+Unstaged changes:
+    Modified:   analysis/cTWAS.Rmd
+    Modified:   analysis/revision.Rmd
 
 </code></pre>
 <p>
@@ -617,6 +628,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/LifanLiang/neuron_stim_eQTL100/bcec9455b663a80918225173ddf1b04aaca549c2/docs/revision.html" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -649,21 +677,169 @@ implemented the procedure following the description by Qi, et al (PMID:
 class="section level3">
 <h3>eQTL correlation within our gene expression</h3>
 <p><img src="figure/revision.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-1-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="eqtl-correlation-with-gtex-brain-tissues"
 class="section level3">
 <h3>eQTL correlation with GTEx brain tissues</h3>
 <p><img src="figure/revision.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-2-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="eqtl-correlation-with-psychencode2-prenatal-brain"
 class="section level3">
 <h3>eQTL correlation with psychENCODE2 prenatal brain</h3>
 <p><img src="figure/revision.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-3-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="eqtl-correlation-with-doparminergic-neurons"
 class="section level3">
 <h3>eQTL correlation with doparminergic neurons</h3>
 <p><img src="figure/revision.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-4-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="mash-results" class="section level2">
@@ -692,45 +868,637 @@ pheatmap(sharing.e, display_numbers = values,
          color=colorRampPalette(c(&quot;white&quot;, &quot;red&quot;))(100),
          clustering_method = &quot;ward.D2&quot;)</code></pre>
 <p><img src="figure/revision.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-6-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Most eQTLs are condition specific. eQTLs shared by two conditions and
 all conditions are the second highest.</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-7-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The upset plot showed similar information. eQTLs are distributed into
 these catetegories in order: (1) Shared by all; (2) condition specific;
 (3) GABA-specific eQTL; (4) NPglut stimulation specific; (5) GABA
 stimulation specific; (6) Glut specific.</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-8-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>We also obtained the mixture proportions of all covariance patterns.
 Below is a barplot showing all the patterns with proportion &gt; 1%.</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-9-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The pattern that explains 22.5% of mixture was <code>PCA_1</code>.
 The covariance matrix was shown as below:</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-10-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>And the corresponding 1st eigen vector (52.7% PVE) is:</p>
 <pre class="r"><code>eigen1 &lt;- eigen(res.e$fitted_g$Ulist$PCA_1)$vectors[,1]
 names(eigen1) &lt;- colnames(dat)
 barplot(abs(eigen1)[c(1,4,7,2,5,8,3,6,9)], las=2)</code></pre>
 <p><img src="figure/revision.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-11-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="caqtl-results" class="section level3">
 <h3>caQTL results</h3>
 <p>Pairwise sharing among conditions:</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-12-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Distribution of caQTL across the number of conditions they are
 significant in. The distribution is similar to the one in eQTL.</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
+Past versions of unnamed-chunk-13-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-13-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-13-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Distribution of caQTLs across different intersections, consisting of
 condition-specific caQTLs, shared by all, and cell type-specifc
 caQTLs.</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-14-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/revision.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-15-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><code>tPCA</code> covariance matrix has the highest mixture
 proportion (16.8%).</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-16-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The eigen vector for this covariance matrix (72.5% PVE).</p>
 <p><img src="figure/revision.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-17-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/revision.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
+Past versions of unnamed-chunk-18-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-18-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/LifanLiang/neuron_stim_eQTL100/blob/bcec9455b663a80918225173ddf1b04aaca549c2/docs/figure/revision.Rmd/unnamed-chunk-18-1.png" target="_blank">bcec945</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2025-06-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="dynamic-eqtl-testing" class="section level2">
+<h2>Dynamic eQTL testing</h2>
+<div id="nominal-p-values-for-highlighted-dynamic-eqtl"
+class="section level3">
+<h3>Nominal P values for highlighted dynamic eQTL</h3>
+<ul>
+<li>NPglut: ADAM10 | rs6494026 4.139992e-13</li>
+<li>GABA: CROT | rs13233308 0.295749</li>
+<li>NMglut: CPT1C | rs12104272 0.2200463</li>
+</ul>
+<p>P values for CROT and CPT1C (nominated by cTWAS) do not have
+significant P values. But there is a SNP in weak LD that is significant
+for nominal values for GABA CROT (rs6946379) and CPT1C</p>
+</div>
+<div id="dynamic-eqtl-expanded-to-fdr20-in-marginal-association-testing"
+class="section level3">
+<h3>Dynamic eQTL expanded to FDR&lt;20% in marginal association
+testing</h3>
+<p>We expanded the scope of eQTL testing to FDR&lt;20% with LD pruning
+(<span class="math inline">\(R^2&lt;0.1\)</span>). So that multiple
+testing burden is reduced. P values of eQTLs within a gene were
+corrected with Bonferroni FWER. Benjamini Hochberg FDR was applied
+across genes. Overall, we found 630, 953, and 1110 dynamic eQTLs in
+nmglut, GABA, and npglut respectively. Dynamic eQTLs are less enriched
+at TSS compared to non-significant eQTLs.</p>
+<pre class="r"><code>nmglut &lt;- readRDS(&quot;data/nmglut_crm_fdr_loc.rds&quot;)
+ggplot(nmglut[nmglut$tss_dist&lt;2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab(&quot;Distance to TSS&quot;) + ggtitle(&quot;dynamic eQTL in nmglut&quot;)</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>npglut &lt;- readRDS(&quot;data/npglut_crm_fdr_loc.rds&quot;)
+ggplot(npglut[npglut$tss_dist&lt;2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab(&quot;Distance to TSS&quot;) + ggtitle(&quot;dynamic eQTL in npglut&quot;)</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>GABA &lt;- readRDS(&quot;data/GABA_crm_fdr_loc.rds&quot;)
+ggplot(GABA[GABA$tss_dist&lt;2.5e5,], aes(x=tss_dist, colour=significant)) + 
+  geom_density(lwd = 1.2, linetype = 1) + theme_classic() + 
+  xlab(&quot;Distance to TSS&quot;) + ggtitle(&quot;dynamic eQTL in GABA&quot;)</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="updated-ctwas-results" class="section level2">
+<h2>Updated cTWAS results</h2>
+<p>We tried to rerun the analysis with updated version of cTWAS. So that
+enrichment may have standard error. However, percentage of h2g decreased
+from 11% to 6%. Sheng reported that old results were inflated because of
+sampling 10% of GWAS SNPs to estimate prior parameters
+(<code>thin=0.1</code>). Updated results do not require sampling any
+more. We have tried different thinning parameters (i.e. 10%, 20%, 50%,
+100%). Results show consistent decrease of h2g</p>
+<div id="h2g-decrease-as-sampling-ratio-of-gwas-snps-increased"
+class="section level4">
+<h4>h2g decrease as sampling ratio of GWAS SNPs increased</h4>
+<p><img src="figure/revision.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Moreover, distribution of h2g across conditions changed a lot
+compared to original results. NMglut has much less heritability, and
+conditions of early response have higher h2g in general.</p>
+</div>
+<div id="enrichment-of-ctwas-results-without-thinning"
+class="section level4">
+<h4>Enrichment of cTWAS results without thinning</h4>
+<pre class="r"><code>## Relied on params read from previous block
+params &lt;- readRDS(paste0(param.store,&quot;NS.thin&quot;,&quot;1&quot;,&quot;.SCZ.parameters.RDS&quot;))
+enr &lt;- exp(params$log_enrichment)
+names(enr) &lt;- sapply(strsplit(names(enr),&quot;\\|&quot;), function(x){x[1]})
+barplot(enr, las=2, col=rep(1:3,each=3), main=&quot;new cTWAS results without thinning&quot;)</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>## Relied on params read from previous block
+params &lt;- readRDS(paste0(param.store,&quot;NS.thin&quot;,&quot;01&quot;,&quot;.SCZ.parameters.RDS&quot;))
+enr &lt;- exp(params$log_enrichment)
+names(enr) &lt;- sapply(strsplit(names(enr),&quot;\\|&quot;), function(x){x[1]})
+barplot(enr, las=2, col=rep(1:3,each=3), main=&quot;new cTWAS results with 10% sampling&quot;)</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ctwas.params &lt;- readRDS(&quot;data/joint_celltype_cTWAS_params.rds&quot;)
+barplot(ctwas.params$enrichment[c(1,4,7,2,5,8,3,6,9)], las=2, main=&quot;Enrichment of old cTWAS results&quot;,
+        col=rep(1:3,each=3))</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="putative-risk-genes-from-different-thinning"
+class="section level4">
+<h4>Putative risk genes from different thinning</h4>
+<pre class="r"><code>library(pheatmap)
+
+pip &lt;- readRDS(&quot;data/new_ctwas/new_ctwas_aggr_pip.rds&quot;)
+
+res &lt;- readRDS(&quot;data/SCZ_cover8_noSNP_ctwas.RDS&quot;)
+res &lt;- res[res$cs_index&gt;0,]
+cond &lt;- names(table(res$type))
+res$genename &lt;- sapply(strsplit(res$id, &quot;\\|&quot;), function(x) {x[1]})
+res2 &lt;- aggregate(res$susie_pip, list(res$genename), sum)
+res3 &lt;- merge(res2, res[res$type==cond[1],c(&quot;genename&quot;,&quot;susie_pip&quot;)], 
+                 by.x=&quot;Group.1&quot;, by.y=&quot;genename&quot;,all.x = T)
+colnames(res3) &lt;- c(&quot;genename&quot;,&quot;PIP_sum&quot;,paste0(&quot;PIP_&quot;,cond[1]))
+for(i in 2:length(cond)) {
+  res3 &lt;- merge(res3, res[res$type==cond[i],c(&quot;genename&quot;,&quot;susie_pip&quot;)], 
+                    by=&quot;genename&quot;,all.x = T)
+  colnames(res3)[i+2] &lt;- paste0(&quot;PIP_&quot;,cond[i])
+}
+res3[is.na(res3)] &lt;- 0
+
+dat &lt;- matrix(0, nrow=sum(res3$PIP_sum&gt;0.5), ncol=5)
+rownames(dat) &lt;- res3$genename[res3$PIP_sum&gt;0.5]
+colnames(dat) &lt;- c(colnames(pip),&quot;old&quot;)
+inters &lt;- intersect(rownames(dat), rownames(pip))
+dat[inters,1:4] &lt;- pip[inters,]
+dat[,5] &lt;- res3$PIP_sum[res3$PIP_sum&gt;0.5]
+pheatmap(dat[order(dat[,5]),], cluster_cols = F, cluster_rows = F, color = colorRampPalette(c(&quot;white&quot;, &quot;red&quot;))(100))</code></pre>
+<p><img src="figure/revision.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -773,10 +1541,11 @@ loaded via a namespace (and not attached):
 [45] jsonlite_1.7.3     gtable_0.3.0       lifecycle_1.0.4    git2r_0.29.0      
 [49] magrittr_2.0.2     scales_1.1.1       cli_3.6.5          stringi_1.7.6     
 [53] farver_2.1.0       fs_1.5.2           promises_1.2.0.1   bslib_0.3.1       
-[57] ellipsis_0.3.2     vctrs_0.6.5        generics_0.1.2     rmeta_3.0         
-[61] RColorBrewer_1.1-2 tools_4.1.2        glue_1.6.1         purrr_0.3.4       
-[65] processx_3.5.2     abind_1.4-5        fastmap_1.1.0      yaml_2.2.2        
-[69] colorspace_2.0-2   knitr_1.37         patchwork_1.1.1    sass_0.4.1        </code></pre>
+[57] ellipsis_0.3.2     vctrs_0.6.5        generics_0.1.2     cowplot_1.1.1     
+[61] rmeta_3.0          RColorBrewer_1.1-2 tools_4.1.2        glue_1.6.1        
+[65] purrr_0.3.4        processx_3.5.2     abind_1.4-5        fastmap_1.1.0     
+[69] yaml_2.2.2         colorspace_2.0-2   knitr_1.37         patchwork_1.1.1   
+[73] sass_0.4.1        </code></pre>
 </div>
 </div>
 </div>
