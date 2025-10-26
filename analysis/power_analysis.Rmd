@@ -46,7 +46,7 @@ Read count on two alleles was generated with a Binomial distribution. The synthe
 
 The samples size ranges from 90 to 150. The success probability takes a value in $\{0.3,0.35,0.4,0.45\}$. For each combination of sample size and effect size, we sampled 200 "loci" from the The distribution and run the Binomial test. The statistical power of the binomial test is calculated as the proportion of loci with P value < 0.001 in each setting.
 
-```{r}
+```{r, echo=T}
 ratio <- c(0.4,0.425,0.45,0.475)
 N_sample <- 9:15 * 10
 N_trial <- 200

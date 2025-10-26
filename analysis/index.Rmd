@@ -75,4 +75,6 @@ editor_options:
 \
 \
 [Revision results](revision.html)
-
+\
+\
+[Power analyssi for allele specific chromatin](power_analysis.html)
