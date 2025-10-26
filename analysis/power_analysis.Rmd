@@ -1,0 +1,86 @@
+---
+title: "Power analysis for ASoC"
+author: "Lifan Liang"
+date: "2025-10-25"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+Here, we investigate the power of allele-specific analysis with two-sided binomial tests on read counts between two alleles by pooling all the reads from the heterozygote individuals.
+
+```{r, echo=F}
+library(data.table)
+
+asoc.store <- ("/Users/lifanliang/Documents/neuron_stim/results_100_lines_22Dec2023/")
+
+asocfs <- list.files(asoc.store)
+asocs <- list()
+for(f in asocfs) {
+  n <- substr(f,1,nchar(asocfs)-18)
+  asocs[[n]] <- fread(paste0(asoc.store,f))
+}
+```
+
+### Median of reads per cell line
+
+From the previous analysis results on allele-specific open chromatin (ASoC), each sample added 10 reads to the total coverage on median. This is the same across all the context for ASoC results.
+
+```{r, echo=F}
+sapply(asocs, function(x){median(x$DP/x$NCALLED)})
+```
+
+### Distribution of reference ratio.
+
+The distribution of reference ratio at FDR<5% is bimodal, with the mode around 0.35 and 0.6.
+
+```{r,echo=F}
+hist(asocs[[1]]$REF_ratio[asocs[[1]]$FDR<0.05],breaks = 100,main = NA, xlab="Proportion of read counts on the reference allele")
+```
+
+## Simulation
+
+Read count on two alleles was generated with a Binomial distribution. The synthetic experiment only has two parameters. One is the number of trails. This represents the total coverage that increases with sample size ($N_{read}=N_{sample} \times 10$). The other is the success probability, which represents the allele-specific effect size.
+
+The samples size ranges from 90 to 150. The success probability takes a value in $\{0.3,0.35,0.4,0.45\}$. For each combination of sample size and effect size, we sampled 200 "loci" from the The distribution and run the Binomial test. The statistical power of the binomial test is calculated as the proportion of loci with P value < 0.001 in each setting.
+
+```{r}
+ratio <- c(0.4,0.425,0.45,0.475)
+N_sample <- 9:15 * 10
+N_trial <- 200
+power <- matrix(nrow=length(N_sample), ncol=length(ratio))
+colnames(power) <- ratio
+rownames(power) <- N_sample
+for(i in ratio) {
+  for(j in N_sample){
+    temp <- rep(0,N_trial)
+    x <- rbinom(N_trial,j*10,i)
+    for(k in 1:N_trial) {
+      temp[k] <- binom.test(x[k],j*10,0.5,"two.sided")$p.value<0.001
+    }
+    power[as.character(j),as.character(i)] <- mean(temp)
+  }
+}
+
+# Plot legend in first row
+layout(matrix(c(1, 2), nrow = 2), heights = c(1.2, 5))
+par(mar = c(0, 0, 0, 0))  # No margins
+plot.new()
+legend("center", legend = ratio, col = 1:5, lty = 1, lwd=3, horiz = T,
+       bty="n", title = "Probability of reads on the reference allele.")
+par(mar = c(5, 4, 0, 2))
+matplot(power, xaxt='n', xlab="sample size", type = "l", lty = 1, col = 1:5,
+        lwd=3, ylab="statistical power")
+axis(side=1, at=1:nrow(power), labels=rownames(power))
+```
+
+
+
+
+
+
+
+
+
