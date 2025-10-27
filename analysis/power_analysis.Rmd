@@ -40,6 +40,28 @@ The distribution of reference ratio at FDR<5% is bimodal, with the mode around 0
 hist(asocs[[1]]$REF_ratio[asocs[[1]]$FDR<0.05],breaks = 100,main = NA, xlab="Proportion of read counts on the reference allele")
 ```
 
+We "folded" the reference ratio so only $[0.5,1.0]$ is shown. And then we computed the 10% and 90% quantile of the distribution. The ratio varies from 0.55 to 0.75. This range of ratio will be used in simulation experiments.
+
+```{r,echo=F}
+quant.bias <- function(x) {
+  x[x<0.5] <- 1-x[x<0.5]
+  quantile(x,c(0.1,0.9))
+}
+quant.bias(asocs[[1]]$REF_ratio[asocs[[1]]$FDR<0.05])
+DT::datatable(t(sapply(asocs, function(x) {quant.bias(x$REF_ratio[x$FDR<0.05])})))
+```
+
+
+### The nominal P value cutoff for significant ASoC
+
+The table below shows the largest P values for significant ASoC with FDR<5% as cutoff. We will use P=0.001 as the significance threshold for the simulation.
+
+```{r, echo=F}
+sapply(asocs, function(x){max(x$pVal[x$FDR<0.05])})
+```
+
+
+
 ## Simulation
 
 Read count on two alleles was generated with a Binomial distribution. The synthetic experiment only has two parameters. One is the number of trails. This represents the total coverage that increases with sample size ($N_{read}=N_{sample} \times 10$). The other is the success probability, which represents the allele-specific effect size.
@@ -47,9 +69,9 @@ Read count on two alleles was generated with a Binomial distribution. The synthe
 The samples size ranges from 90 to 150. The success probability takes a value in $\{0.3,0.35,0.4,0.45\}$. For each combination of sample size and effect size, we sampled 200 "loci" from the The distribution and run the Binomial test. The statistical power of the binomial test is calculated as the proportion of loci with P value < 0.001 in each setting.
 
 ```{r, echo=T}
-ratio <- c(0.4,0.425,0.45,0.475)
-N_sample <- 9:15 * 10
-N_trial <- 200
+ratio <- 22:30 * 0.025
+N_sample <- c(100,140)
+N_trial <- 100
 power <- matrix(nrow=length(N_sample), ncol=length(ratio))
 colnames(power) <- ratio
 rownames(power) <- N_sample
@@ -68,12 +90,12 @@ for(i in ratio) {
 layout(matrix(c(1, 2), nrow = 2), heights = c(1.2, 5))
 par(mar = c(0, 0, 0, 0))  # No margins
 plot.new()
-legend("center", legend = ratio, col = 1:5, lty = 1, lwd=3, horiz = T,
-       bty="n", title = "Probability of reads on the reference allele.")
+legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
+       bty="n", title = "Sample size")
 par(mar = c(5, 4, 0, 2))
-matplot(power, xaxt='n', xlab="sample size", type = "l", lty = 1, col = 1:5,
+matplot(t(power), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
         lwd=3, ylab="statistical power")
-axis(side=1, at=1:nrow(power), labels=rownames(power))
+axis(side=1, at=1:ncol(power), labels=colnames(power))
 ```
 
 
