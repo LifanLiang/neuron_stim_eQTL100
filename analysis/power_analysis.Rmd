@@ -104,19 +104,20 @@ axis(side=1, at=1:ncol(power), labels=colnames(power))
 
 ### Comparing different total sample sizes with different minor allele frequence (MAF)
 
-Given the total sample size of 38 and 143 and the MAF, we sample the number of heterozygote individuals for each loci and then sampled the read counts given various allelic bias.
+Given the total sample size of 38 and 143 and the MAF, we sampled the number of heterozygote individuals for each loci and then sampled the read counts given various allelic bias.
 
 #### MAF=10%
-```{r, echo=F}
 
+```{r, echo=F}
+set.seed(12345)
 # Generate the data and 
 ratio <- 22:30 * 0.025
 N_total <- c(38,143) # Represents total samples here
 N_trial <- 100
 maf <- 0.1 # The minor allele frequency
-power <- matrix(nrow=length(N_sample), ncol=length(ratio))
-colnames(power) <- ratio
-rownames(power) <- N_sample
+power1 <- matrix(nrow=length(N_sample), ncol=length(ratio))
+colnames(power1) <- ratio
+rownames(power1) <- N_sample
 for(i in ratio) {
   for(j in N_total){
     temp <- rep(0,N_trial)
@@ -125,7 +126,7 @@ for(i in ratio) {
       x <- rbinom(1,N_het*10,i)  # Sample the reads from the loci second
       temp[k] <- binom.test(x,N_het*10,0.5,"two.sided")$p.value<0.001
     }
-    power[as.character(j),as.character(i)] <- mean(temp)
+    power1[as.character(j),as.character(i)] <- mean(temp)
   }
 }
 
@@ -136,7 +137,7 @@ plot.new()
 legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
        bty="n", title = "Sample size")
 par(mar = c(5, 4, 0, 2))
-matplot(t(power), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
+matplot(t(power1), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
         lwd=3, ylab="statistical power")
 axis(side=1, at=1:ncol(power), labels=colnames(power))
 ```
@@ -144,15 +145,15 @@ axis(side=1, at=1:ncol(power), labels=colnames(power))
 
 #### MAF=20%
 ```{r, echo=F}
-
+set.seed(12345)
 # Generate the data and 
 ratio <- 22:30 * 0.025
 N_total <- c(38,143) # Represents total samples here
 N_trial <- 100
 maf <- 0.2
-power <- matrix(nrow=length(N_sample), ncol=length(ratio))
-colnames(power) <- ratio
-rownames(power) <- N_sample
+power2 <- matrix(nrow=length(N_sample), ncol=length(ratio))
+colnames(power2) <- ratio
+rownames(power2) <- N_sample
 for(i in ratio) {
   for(j in N_total){
     temp <- rep(0,N_trial)
@@ -161,7 +162,7 @@ for(i in ratio) {
       x <- rbinom(1,N_het*10,i)  # Sample the reads from the loci second
       temp[k] <- binom.test(x,N_het*10,0.5,"two.sided")$p.value<0.001
     }
-    power[as.character(j),as.character(i)] <- mean(temp)
+    power2[as.character(j),as.character(i)] <- mean(temp)
   }
 }
 
@@ -172,22 +173,22 @@ plot.new()
 legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
        bty="n", title = "Sample size")
 par(mar = c(5, 4, 0, 2))
-matplot(t(power), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
+matplot(t(power2), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
         lwd=3, ylab="statistical power")
 axis(side=1, at=1:ncol(power), labels=colnames(power))
 ```
 
 #### MAF=30%
 ```{r, echo=F}
-
+set.seed(12345)
 # Generate the data and 
 ratio <- 22:30 * 0.025
 N_total <- c(38,143) # Represents total samples here
 N_trial <- 100
 maf <- 0.3
-power <- matrix(nrow=length(N_sample), ncol=length(ratio))
-colnames(power) <- ratio
-rownames(power) <- N_sample
+power3 <- matrix(nrow=length(N_sample), ncol=length(ratio))
+colnames(power3) <- ratio
+rownames(power3) <- N_sample
 for(i in ratio) {
   for(j in N_total){
     temp <- rep(0,N_trial)
@@ -196,7 +197,7 @@ for(i in ratio) {
       x <- rbinom(1,N_het*10,i)  # Sample the reads from the loci second
       temp[k] <- binom.test(x,N_het*10,0.5,"two.sided")$p.value<0.001
     }
-    power[as.character(j),as.character(i)] <- mean(temp)
+    power3[as.character(j),as.character(i)] <- mean(temp)
   }
 }
 
@@ -207,7 +208,82 @@ plot.new()
 legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
        bty="n", title = "Sample size")
 par(mar = c(5, 4, 0, 2))
-matplot(t(power), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
+matplot(t(power3), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
         lwd=3, ylab="statistical power")
 axis(side=1, at=1:ncol(power), labels=colnames(power))
 ```
+
+
+#### MAF=40%
+```{r, echo=F}
+set.seed(12345)
+# Generate the data and 
+ratio <- 22:30 * 0.025
+N_total <- c(38,143) # Represents total samples here
+N_trial <- 100
+maf <- 0.4 # The minor allele frequency
+power4 <- matrix(nrow=length(N_sample), ncol=length(ratio))
+colnames(power4) <- ratio
+rownames(power4) <- N_sample
+for(i in ratio) {
+  for(j in N_total){
+    temp <- rep(0,N_trial)
+    for(k in 1:N_trial) {
+      N_het <- sum(rbinom(j,2,maf)==1) # Sample the ffective samle size first
+      x <- rbinom(1,N_het*10,i)  # Sample the reads from the loci second
+      temp[k] <- binom.test(x,N_het*10,0.5,"two.sided")$p.value<0.001
+    }
+    power4[as.character(j),as.character(i)] <- mean(temp)
+  }
+}
+
+# Plot legend in first row
+layout(matrix(c(1, 2), nrow = 2), heights = c(1.2, 5))
+par(mar = c(0, 0, 0, 0))  # No margins
+plot.new()
+legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
+       bty="n", title = "Sample size")
+par(mar = c(5, 4, 0, 2))
+matplot(t(power4), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
+        lwd=3, ylab="statistical power")
+axis(side=1, at=1:ncol(power), labels=colnames(power))
+```
+
+
+#### Comparison across MAF by averaging power among allele bias
+
+```{r,echo=F}
+
+library(ggplot2)
+library(tidyr)
+
+
+power.af <- cbind(rowMeans(power1),rowMeans(power2),rowMeans(power3),rowMeans(power4))
+colnames(power.af) <- c("10%","20%","30%","40%")
+
+data_long <- pivot_longer(as.data.frame(t(power.af)), cols = c("38", "143"),
+                          names_to = "Sample_size", values_to = "Power")
+data_long$MAF <- rep(colnames(power.af),each=2)
+
+# Create grouped barplot
+
+ggplot(data_long, aes(x = MAF, y = Power, fill = Sample_size)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(x = "minor allele frequency", y = "statistical Power", fill = "sample size") +
+  scale_fill_manual(values = c("#1f77b4", "#ff7f0e")) +
+  theme_minimal() +
+  theme(legend.position = "top") + 
+  theme(
+    legend.position = "top",
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14),
+    axis.title = element_text(size = 16),
+    axis.text = element_text(size = 14)
+  )
+
+#ggsave("/Users/lifanliang/Documents/neuron_stim/asoc_power_comparison.pdf",width = 3.5,height = 3)
+
+```
+
+
+
