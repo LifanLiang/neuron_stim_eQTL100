@@ -102,10 +102,9 @@ matplot(t(power), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
 axis(side=1, at=1:ncol(power), labels=colnames(power))
 ```
 
-### Simulation with different minor allele frequence (MAF) from the total sample sizes
+### Comparing different total sample sizes with different minor allele frequence (MAF)
 
-Given the total cell line size of 38 and 143, we sample the number of heterozygote individuals with different MAF.
-
+Given the total sample size of 38 and 143 and the MAF, we sample the number of heterozygote individuals for each loci and then sampled the read counts given various allelic bias.
 
 #### MAF=10%
 ```{r, echo=F}
