@@ -145,6 +145,9 @@ axis(side=1, at=1:ncol(power), labels=colnames(power))
 
 #### MAF=20%
 ```{r, echo=F}
+library(ggplot2)
+library(scales)
+
 set.seed(12345)
 # Generate the data and 
 ratio <- 22:30 * 0.025
@@ -166,16 +169,26 @@ for(i in ratio) {
   }
 }
 
-# Plot legend in first row
-layout(matrix(c(1, 2), nrow = 2), heights = c(1.2, 5))
-par(mar = c(0, 0, 0, 0))  # No margins
-plot.new()
-legend("center", legend = N_sample, col = 1:2, lty = 1, lwd=3, horiz = T,
-       bty="n", title = "Sample size")
-par(mar = c(5, 4, 0, 2))
-matplot(t(power2), xaxt='n', xlab="allelic bias", type = "l", lty = 1, col = 1:2,
-        lwd=3, ylab="statistical power")
-axis(side=1, at=1:ncol(power), labels=colnames(power))
+## ggplot2 to make compare two sample sizes.
+df.power2 <- data.frame(power=c(power2[1,], power2[2,]),
+           sample_size=rep(rownames(power2), each=ncol(power2)),
+           bias=rep(as.numeric(colnames(power2)),2))
+ggplot(df.power2,aes(x=bias,y=power,color=sample_size,group=sample_size)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  #scale_x_continuous(breaks = sort(unique(df.power2$bias))) +
+  scale_x_continuous(breaks = breaks_pretty(n = 5)) +
+  labs(x = "Allelic bias", y = "Power", color = "Sample size") +
+  theme_classic(base_size = 16) +
+  theme(
+    legend.position = "top",        # <-- put legend on top
+    legend.direction = "horizontal" # <-- make it horizontal
+  ) +
+  guides(color = guide_legend(nrow = 1)) # <-- keep legend on one line
+ggsave("/Users/lifanliang/Documents/maf20_different_bias.pdf",width=3.5,height = 3.5)
+
+
+
 ```
 
 #### MAF=30%
@@ -286,4 +299,25 @@ ggplot(data_long, aes(x = MAF, y = Power, fill = Sample_size)) +
 ```
 
 
+```{r, eval=F}
+library(GenomicRanges)
+# Compute the number of significant ASoC in each context
+sapply(asocs, function(x){sum(x$FDR<0.05)})
+# Convert significant SNPs into GenomicRnages
+asoc.range <- lapply(asocs,function(x){temp<-makeGRangesFromDataFrame(x[x$FDR<0.05,], seqnames.field = "CHROM", start.field = "POS", end.field = "POS");start(temp)<-start(temp)-500;end(temp)<-end(temp)+500;temp})
+
+caqtl <- readRDS("/Users/lifanliang/Documents/neuron_stim/caQTLs_25kb_fdr0.05.rds")
+caqtl1 <- lapply(caqtl, function(x){unique(x$phenotype_id)})
+caqtl2 <- lapply(caqtl1, function(x){temp<-do.call(rbind,strsplit(x,"-")); colnames(temp)<-c("chr","start","end");temp})
+caqtl.range <- lapply(caqtl2, function(x){makeGRangesFromDataFrame(as.data.frame(x))})
+
+length(reduce(c(caqtl.range[[3]],asoc.range[[7]])))/length(reduce(asoc.range[[7]]))
+length(reduce(c(caqtl.range[[6]],asoc.range[[8]])))/length(reduce(asoc.range[[8]]))
+length(reduce(c(caqtl.range[[9]],asoc.range[[9]])))/length(reduce(asoc.range[[9]]))
+
+
+sum(!overlapsAny(caqtl.range[[3]], asoc.range[[7]])) / length(reduce(asoc.range[[7]]))
+sum(!overlapsAny(caqtl.range[[6]], asoc.range[[7]])) / length(reduce(asoc.range[[8]]))
+sum(!overlapsAny(caqtl.range[[9]], asoc.range[[7]])) / length(reduce(asoc.range[[9]]))
+```
 

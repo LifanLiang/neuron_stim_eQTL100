@@ -7,12 +7,35 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Power comparison between resting states and stimulating states
+
+We took 79 cell lines that have relatively high number of cells across all 9 contexts to rerun eQTL mapping (MatrixeQTL). Below is the count of eGenes for the three cell types in GABA.
+
+```{r,echo=F}
+# Optional: names for the bars
+values <- c(749, 776, 786)
+names <- c("0 hr", "1 hr", "6 hr")
+
+# Create the bar plot
+bar_positions <- barplot(values,
+        names.arg = names,
+        col = "skyblue",
+        main = "# of eGenes in GABA",
+        xlab = "Time points",
+        ylab = "# of eGenes",
+        ylim = c(0, max(values) * 1.1))
+
+# Add text labels on top of bars
+text(x = bar_positions, y = values, labels = values, pos = 3, cex = 1, font = 2)
+```
+
+
+
 ## rb estimate
 
 rb is essentially estimating pairwise correlation of genetic effect between two conditions after correcting residual correlation. We implemented the procedure following the description by Qi, et al (PMID: 29891976). Number in the bracket is standard error.
 
 ### eQTL correlation within our gene expression
-
 
 ```{r, echo=F}
 library(pheatmap)
@@ -71,6 +94,32 @@ values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
 idx <- c(1,4,7,2,5,8,3,6,9)
 pheatmap(est, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
 ```
+
+## rb estimate and Pi1 estimate with Bryois, et al.
+
+Bryois, et al has combined the Roche datasets and the ROSMAP dataset to map single cell eQTL for nine cell types.
+
+Pericytes has less than 30 cis-eQTLs and Endothelial cells only have 100 cis-eQTLs. rb estimate is probably not reliable. We removed these two cell types.
+
+```{r,echo=F}
+library(pheatmap)
+est <- read.table("data/rb_est_bryois.txt")
+est <- est[c(1,4,7,2,5,8,3,6,9),c(4,3,8,7,6,1,5)] # remove Peri and endo and sort according to mean rb
+est1 <- est
+est1[] <- lapply(est, sprintf, fmt="%.3f")
+pheatmap(est, cluster_rows = F, cluster_cols = F, angle_col = 315, display_numbers = est1)
+```
+
+We have ascertained the nominal P values of our eQTLs (FDR<5%) in Bryois eQTL for each cell type. The non-null proportion of the P values (Pi1) were shown as below. 
+
+```{r,echo=F}
+pi1 <- read.table("data/pi1_ns_bryois.txt")
+pi1 <- pi1[c(1,4,7,2,5,8,3,6,9),c(4,3,8,7,6,1,5)] # remove Peri and endo and sort according to mean rb
+pi2 <- pi1
+pi2[] <- lapply(pi1, sprintf, fmt="%.3f")
+pheatmap(pi1, cluster_rows = F, cluster_cols = F, angle_col = 315, display_numbers = pi2)
+```
+
 
 
 ## MASH results
@@ -136,11 +185,27 @@ pheatmap(res.e$fitted_g$Ulist$PCA_1)
 
 And the corresponding 1st eigen vector (52.7% PVE) is:
 
-```{r}
+```{r, echo=F}
 eigen1 <- eigen(res.e$fitted_g$Ulist$PCA_1)$vectors[,1]
 names(eigen1) <- colnames(dat)
 barplot(abs(eigen1)[c(1,4,7,2,5,8,3,6,9)], las=2)
 ```
+
+#### Number of eGenes from MASH
+
+```{r, echo=F}
+library(dplyr)
+lfsr <- as.data.frame(res.e$result$lfsr)
+lfsr$gene <- sapply(strsplit(rownames(lfsr),"\\|"), function(x){x[1]})
+
+result <- lfsr %>%
+  group_by(gene) %>%
+  summarise(across(starts_with(c("0hr", "1hr", "6hr")), ~ sum(.x < 0.05), .names = "count_{.col}"))
+
+barplot(colSums(result[c(2,5,8,3,6,9,4,7,10)]>0),las=2,col=rep(1:3,each=3))
+```
+
+
 
 ### caQTL results
 
@@ -203,10 +268,31 @@ names(eigen.c) <- colnames(dat)
 barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
 ```
 
+#### Number of cPeaks from MASH
+
+```{r, echo=F}
+library(dplyr)
+lfsr <- as.data.frame(res.c$result$lfsr)
+lfsr$gene <- sapply(strsplit(rownames(lfsr),"\\|"), function(x){x[1]})
+
+result <- lfsr %>%
+  group_by(gene) %>%
+  summarise(across(starts_with(c("0hr", "1hr", "6hr")), ~ sum(.x < 0.05), .names = "count_{.col}"))
+
+dat <- data.frame(count=colSums(result[c(2,5,8,3,6,9,4,7,10)]>0),
+                  celltype=rep(c("GABA","nmglut","npglut"),each=3),
+                  timepoint=rep(c("0hr","1hr","6hr"),3))
+ggplot(dat, aes(y=count,x=celltype, fill=timepoint)) + 
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme_classic() + ylab("Number of cPeaks")
+#barplot(dat$count,las=2,col=rep(1:3,each=3))
+```
+
 
 ## Dynamic eQTL testing
 
-### Nominal P values for highlighted dynamic eQTL
+### Dynamic eQTL testing by CellRegMap
+#### Nominal P values for highlighted dynamic eQTL
 
 * NPglut: ADAM10 | rs6494026    P value: 4.139992e-13
 * GABA: CROT | rs13233308       P value: 0.295749
@@ -214,7 +300,7 @@ barplot(abs(eigen.c)[c(1,4,7,2,5,8,3,6,9)], las=2)
 
 P values for CROT and CPT1C (nominated by cTWAS) do not have significant P values. But there is a SNP in weak LD that is significant for nominal values for GABA CROT (rs6946379) and CPT1C
 
-### Dynamic eQTL expanded to FDR<20% in marginal association testing
+#### Dynamic eQTL expanded to FDR<20% in marginal association testing
 
 We expanded the scope of eQTL testing to FDR<20% with LD pruning ($R^2<0.1$). So that multiple testing burden is reduced. P values of eQTLs within a gene were corrected with Bonferroni FWER. Benjamini Hochberg FDR was applied across genes. Overall, we found 630, 953, and 1110 dynamic eQTLs in nmglut, GABA, and npglut respectively. Dynamic eQTLs are less enriched at TSS compared to eQTLs not significant for dynamic testing.
 
@@ -240,6 +326,79 @@ ggplot(GABA[GABA$tss_dist<2.5e5,], aes(x=tss_dist, colour=significant)) +
   xlab("Distance to TSS") + ggtitle("dynamic eQTL in GABA")
 ```
 
+### Dynamic eQTL testing by interaction testing
+
+We simply used the fixed interaction effect model to test the interaction effect between genotypes and stimulation for each cell type separately:
+
+$$
+expression \sim age+sex+disease+\sum_i^5 genotypePC + \sum_j^{15}expressionPC +genotype + timepoint + genotype \times timepoint
+$$
+
+Please note that we tested early response (1hr) and late response (6hr) against the resting state separately.
+
+```{r,echo=F,eval=F}
+library(data.table)
+library(ACAT)
+
+
+fdr.control <- function(dat) {
+  geneP <- data.frame(gene=unique(dat$gene),geneP=1,geneFDR=1)
+  for(g in unique(dat$gene)) {
+    geneP[geneP$gene==g,"geneP"] <- ACAT(dat[dat$gene == g]$`p-value`)
+  }
+  geneP$geneFDR <- p.adjust(geneP$geneP, method="BH")
+  merge(dat, geneP,by="gene")
+}
+dymfs <- list.files("data/dynamic_eqtl/",full.names = T)
+dymres <- list()
+for(f in dymfs) {
+  n <- basename(f)
+  dymres[[n]] <- fread(f)
+}
+fdr.control(dat)
+
+```
+
+
+#### Enrichment with upregulated peaks in stimulating states.
+
+```{r,echo=T}
+library(ggplot2)
+res.tab <- read.table("data/pairwise_enrichment.txt",header=T)
+enrich.df <- res.tab
+enrich.df$log2OR <- log2(exp(res.tab$estimate))
+enrich.df$lower <- log2(exp(res.tab$low))
+enrich.df$upper <- log2(exp(res.tab$high))
+enrich.df$se <- (enrich.df$upper - enrich.df$lower)/2/qnorm(0.975)
+enrich.df$pval <- 2*(1-pnorm(enrich.df$log2OR/enrich.df$se))
+enrich.df$annot <- sapply(strsplit(enrich.df$term,"\\."), function(x){x[1]})
+enrich.df$annot <- gsub('_', ',', enrich.df$annot)
+
+ggplot(enrich.df, aes(x = log2OR, y = annot)) +
+  geom_errorbarh(aes(xmin = lower, xmax = upper), height = 0.2, color = "grey50") +
+  geom_point(size = 4) +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'black') +
+  
+  # Add p-values with larger font and more space
+  geom_text(aes(x = upper + 0.3, label = paste0("p=", signif(pval, 3))),
+            hjust = 0, size = 4) +
+  
+  theme_minimal() +
+  labs(x = 'log2 Odds Ratio', y = 'Annotation') +
+  theme(
+    legend.position = 'top',
+    legend.direction = 'horizontal',
+    legend.title = element_blank(),
+    axis.text.x = element_text(size = 10),  # Bigger x-axis tick labels
+    axis.text.y = element_text(size = 10)   # Bigger y-axis tick labels
+  ) +
+  # Expand x-axis to make room for labels
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.2))) +
+  coord_cartesian(clip = "off")
+
+
+
+```
 
 
 ## Updated cTWAS results
@@ -454,3 +613,19 @@ dat2 <- dat1[rowSums(dat1[,11:19])>0,]
 
 DT::datatable(dat2[,-1])
 ```
+
+
+### Number of risk genes discovered by cTWAS with different SCZ GWAS
+
+```{r,echo=F}
+pve.scz <- c(0,12,28)
+names(pve.scz) <- c(2011,2014,2022)
+x=1:3
+plot(x, pve.scz, type = "o", col = "blue",
+     main = "",
+     ylab = "# of risk genes with PIP>50%",xaxt = "n",
+     xlab="SCZ GWAS conducted in different years")  # suppress default x-axis
+axis(1, at = x, labels = names(pve.scz))
+```
+
+

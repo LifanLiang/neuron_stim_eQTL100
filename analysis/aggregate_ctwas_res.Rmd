@@ -199,6 +199,17 @@ head(enrich.res$GO_Biological_Process_2023[-c(5,6,8)],10) %>%
 #write.table(enrich.res$GO_Biological_Process_2023[-c(5,6,8)],"")
 ```
 
+### Three traits with PIP>0.8 and input eGene as background genes.
+
+```{r}
+background <- readRDS("data/background_gene_ctwas.rds")
+enrich.res <- enrichr(gene.univ, "GO_Biological_Process_2023",background = background)
+head(enrich.res$GO_Biological_Process_2023[-c(5,6,8)],10) %>%
+  DT::datatable() %>%
+  DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
+```
+
+
 ### Three traits with PIP>0.5
 ```{r, echo=F}
 library(enrichR)
@@ -225,6 +236,7 @@ head(enrich.res$GO_Biological_Process_2023[-(5:8)],10) %>%
   DT::datatable() %>%
   DT::formatRound(columns=c('P.value', 'Adjusted.P.value'), digits=3)
 ```
+
 
 ### Five traits with PIP>0.5
 ```{r, echo=F}
