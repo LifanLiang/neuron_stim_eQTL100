@@ -31,7 +31,7 @@ text(x = bar_positions, y = values, labels = values, pos = 3, cex = 1, font = 2)
 
 
 
-## rb estimate
+## Summary of eQTL correlation with other studies.
 
 rb is essentially estimating pairwise correlation of genetic effect between two conditions after correcting residual correlation. We implemented the procedure following the description by Qi, et al (PMID: 29891976). Number in the bracket is standard error.
 
@@ -55,6 +55,7 @@ pheatmap(est1, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorR
 
 ### eQTL correlation with GTEx brain tissues
 
+#### rb estimate
 ```{r, echo=F}
 est <- readRDS("data/rb_est/rb_ns_vs_gtex.rds")
 idx <- order(colMeans(est$rb),decreasing = T)
@@ -67,8 +68,17 @@ values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
 pheatmap(est$rb[row_idx,idx], cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
 ```
 
+#### Pi1 estimate
+
+```{r, echo=F}
+pi1.gtex <- read.table("data/pi1_with_gtex.txt")
+pheatmap(pi1.gtex[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F, angle_col = 315, display_numbers = values)
+```
+
 
 ### eQTL correlation with psychENCODE2 prenatal brain
+
+#### rb estimate
 
 ```{r, echo=F}
 est <- readRDS("data/rb_est/rb_ns_vs_pec2.RDS")
@@ -80,8 +90,16 @@ values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
 pheatmap(est$rb, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
 ```
 
+#### Pi1 estimate
+
+```{r,echo=F}
+
+```
+
 
 ### eQTL correlation with doparminergic neurons
+
+#### rb estimate
 
 ```{r,echo=F}
 est <- read.table("data/rb_est/neuron_stim_vs_jerber_dopar.txt")
@@ -94,6 +112,14 @@ values <- data.frame(mapply(paste0, est1, "\n (",se1, ")"))
 idx <- c(1,4,7,2,5,8,3,6,9)
 pheatmap(est, cluster_rows = F, cluster_cols = F, angle_col = 315, color=colorRampPalette(c("white", "red"))(100), display_numbers = values)
 ```
+
+### Pi1 estimate
+
+```{r,echo=F}
+pi1.da <- read.table("data/pi1_vs_jb_dopamin.txt")
+pheatmap(pi1.da[c(1,4,7,2,5,8,3,6,9),], cluster_rows = F, cluster_cols = F, angle_col = 315, display_numbers = values)
+```
+
 
 ## rb estimate and Pi1 estimate with Bryois, et al.
 
