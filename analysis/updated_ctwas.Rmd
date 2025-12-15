@@ -1,0 +1,234 @@
+---
+title: "updated_ctwas"
+author: "Lifan Liang"
+date: "2025-12-14"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+The manuscript Figure 4 should be replaced by figures generated here
+
+
+```{r,echo=F}
+res.store <- "/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/eQTL/"
+
+paramfs <- list.files(res.store,pattern="parameters",full.names = T)
+params <- list()
+for (f in paramfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-15)
+  params[[n]] <- readRDS(f)
+}
+```
+
+
+### Dotplot for enrichment
+
+```{r, echo=F}
+library(ggplot2)
+library(dplyr)
+
+params1 <- params[c("NS_2017","ADHD_2022","BIP_2024","MDD_2025","SCZ_2022")]
+names(params1) <- c("Neuroticism", "ADHD", "Bipolar", "MDD", "SCZ")
+log_enrich <- do.call(c,lapply(params1, function(x){x$log_enrichment}))
+enrich_p <- do.call(c,lapply(params1, function(x){x$enrichment_pval}))
+dat <- data.frame(log_enrich=log_enrich, pval=enrich_p, 
+           trait=rep(names(params1),each=9), 
+           context=rep(sapply(strsplit(names(params1[[1]]$enrichment_pval), "\\|"), function(x) {x[1]}), length(params1)))
+dat$log_enrich[dat$log_enrich<0] <- 0
+dat$enrichment <- exp(dat$log_enrich)
+dat$logP <- -log10(dat$pval)
+dat$context <- factor(dat$context, 
+                      levels = c(paste0(c(0,1,6),"hr_GABA"),
+                                 paste0(c(0,1,6),"hr_npglut"),
+                                 paste0(c(0,1,6),"hr_nmglut")))
+ggplot(dat, aes(x = context, y = trait)) +
+  geom_point(
+    aes(fill = enrichment, size = logP),
+    shape = 21,            # circle with fill and outline
+    color = "grey20",      # border color
+    stroke = 0.6,          # border thickness
+    alpha = 0.9
+  ) +
+  # Diverging fill scale for enrichment
+  scale_fill_gradient2(
+    low = "white", high = "#8B0000",
+    midpoint = 0, name = "Enrichment"
+  ) +
+  # Dot size scale
+  scale_size_continuous(range = c(1.5, 10), name = "-log10(p)") +
+  labs(
+    x = NULL, y = NULL
+  ) +
+  theme_minimal() +
+    theme_classic() +
+  theme(
+    panel.grid.major.x = element_line(color = "grey85", linewidth = 0.5),
+    panel.grid.major.y = element_line(color = "grey85", linewidth = 0.5),
+    panel.grid.minor   = element_blank()
+  ) + 
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size=12),
+    axis.text.y = element_text(size=12),
+    legend.box = "vertical",
+    legend.position = "right",
+    legend.title = element_text(size = 10, face = "bold")
+  ) +
+  coord_fixed()  # keeps dot aspect circular
+ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/ctwas_enrichment_all_traits.pdf",
+       width=6, height=4)
+
+```
+
+
+```{r,echo=F}
+resfs <- list.files(res.store,pattern="regions",full.names = T)
+ress <- list()
+for (f in resfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-24)
+  ress[[n]] <- readRDS(f)
+}
+```
+
+
+### Number of risk genes across traits
+
+```{r,echo=F}
+library(ctwas)
+ress1 <- ress[c("NS_2017","ADHD_2022","BIP_2024","MDD_2025","SCZ_2022")]
+names(ress1) <- c("Neuroticism", "ADHD", "Bipolar", "MDD", "SCZ")
+ress2 <- lapply(ress1, function(x) {x$susie_alpha_res[x$susie_alpha_res$type!="SNP",]})
+for(t in names(ress2)) {
+  ress2[[t]]$genename <- sapply(strsplit(ress2[[t]]$molecular_id, "\\."), 
+                                function(x) {x[2]})
+}
+ress3 <- lapply(ress2, combine_gene_pips, group_by = "genename",by = "context", filter_cs = F, method="combine_cs",include_cs_id = F)
+
+gene5 <- sapply(ress3, function(x) {sum(x$combined_pip>=0.5)})
+gene8 <- sapply(ress3, function(x) {sum(x$combined_pip>=0.8)})
+
+dat <- data.frame(N_gene=c(gene8,gene5-gene8),trait=rep(names(gene5),2),
+                  type=rep(c("High confidence","Plausible"),each=5))
+dat$trait <- factor(dat$trait, levels=c("SCZ","Bipolar","Neuroticism", "MDD", "ADHD"))
+
+type_colors <- c(
+  "High confidence" = "#2166AC",  # blue
+  "Plausible"       = "#B2182B"   # red
+)
+
+ggplot(dat, aes(x = trait, y = N_gene, fill = type)) +
+  geom_bar(stat = "identity", width = 0.8, color = "grey20") +   # color adds bar borders
+  scale_fill_manual(values = type_colors, name = "Evidence type") +
+  # Add stacked labels (optional)
+  geom_text(
+    aes(label = ifelse(N_gene > 0, N_gene, "")),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    size = 4
+  ) +
+  labs(
+    x = NULL,
+    y = "Number of genes"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x  = element_text(size = 13, angle = 45, hjust = 1),
+    axis.text.y  = element_text(size = 13),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    legend.title = element_blank(),  # bold smaller legend title
+    legend.text  = element_text(size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey85"),
+    legend.position = c(0.95, 0.95),      # place inside panel
+    legend.justification = c("right", "top"),
+    legend.background = element_rect(fill = alpha("white", 0.8), 
+                                   color = "grey60", 
+                                   size = 0.4)   # optional: boxed background
+
+  )
+
+ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/N_risk_genes.pdf",width=4,height=4)
+
+```
+
+```{r,echo=F,eval=F}
+geneloc <- read.table("/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/geneloc.txt.gz",header=T)
+SCZ <- ress[["SCZ_2022"]]$finemap_res
+SCZ$genename <- sapply(strsplit(SCZ$molecular_id, "\\."), function(x) {x[2]})
+SCZ1 <- combine_gene_pips(SCZ, group_by = "genename",by = "context", filter_cs = F, method="combine_cs",include_cs_id = F)
+SCZ2 <- merge(SCZ1, geneloc, by.x="genename", by.y="geneid", all.x=T, all.y=F)
+
+# Example: df has CHR, BP, METRIC, SNP (SNP optional)
+# df <- read.csv("your_file.csv")
+df <- data.frame(CHR=substr(SCZ2$chr,4,nchar(SCZ2$chr)),
+                 BP=SCZ2$s1,
+                 SNP=SCZ2$genename,
+                 METRIC=SCZ2$combined_pip)
+# Ensure CHR is ordered (1..22, then X,Y if present)
+chr_levels <- c(as.character(1:22), "X", "Y")
+df <- df %>%
+  mutate(
+    CHR = as.character(CHR),
+    CHR = factor(CHR, levels = intersect(chr_levels, unique(CHR)))
+  ) %>%
+  arrange(CHR, BP)
+
+# Compute cumulative base-pair positions to place chromosomes end-to-end
+chr_info <- df %>%
+  group_by(CHR) %>%
+  summarize(chr_len = max(BP, na.rm = TRUE), .groups = "drop") %>%
+  mutate(chr_start = cumsum(lag(chr_len, default = 0)),
+         chr_end   = chr_start + chr_len)
+
+df <- df %>%
+  left_join(chr_info %>% select(CHR, chr_start), by = "CHR") %>%
+  mutate(pos_cum = BP + chr_start)
+
+# Axis labels at chromosome centers
+axis_df <- chr_info %>%
+  mutate(center = (chr_start + chr_end) / 2)
+
+# Set threshold
+thr <- 0.8
+
+# Color palette: alternate by chromosome
+chrom_colors <- rep(c("#4D9221", "#2166AC"), length(levels(df$CHR)))
+
+ggplot(df, aes(x = pos_cum, y = METRIC, color = CHR)) +
+  geom_point(alpha = 0.7, size = 0.8) +
+  scale_color_manual(values = chrom_colors) +
+  # Threshold line at 0.8
+  geom_hline(yintercept = thr, color = "firebrick", linewidth = 0.8, linetype = "dashed") +
+  # Tidy axes
+  scale_x_continuous(
+    label  = axis_df$CHR,
+    breaks = axis_df$center,
+    expand = expansion(mult = c(0.01, 0.01))
+  ) +
+  scale_y_continuous(limits = c(0, 1), expand = expansion(mult = c(0, 0.02))) +
+  labs(
+    x = "Chromosome",
+    y = "Signal (custom metric)",
+    color = NULL,
+    title = "Manhattan plot (custom metric)",
+    subtitle = paste("Threshold =", thr)
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    legend.position    = "none",
+    axis.text.x        = element_text(size = 11)
+  )
+
+p
+
+
+
+```
+
+

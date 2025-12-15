@@ -429,6 +429,8 @@ ggplot(enrich.df, aes(x = log2OR, y = annot)) +
 
 ## Updated cTWAS results
 
+## Most recent cTWAS results on all the traits with eQTL, caQTL, and ASoC are [here](updated_ctwas.html).
+
 We tried to rerun the analysis with updated version of cTWAS. So that enrichment may have standard error. However, percentage of h2g decreased from 11% to 6%. Sheng reported that old results were inflated because of sampling 10% of GWAS SNPs to estimate prior parameters (`thin=0.1`). Updated results do not require sampling any more. We have tried different thinning parameters (i.e. 10%, 20%, 50%, 100%). Results show consistent decrease of h2g
 
 #### h2g decrease as sampling ratio of GWAS SNPs increased
