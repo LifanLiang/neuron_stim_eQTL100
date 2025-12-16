@@ -1,5 +1,5 @@
 ---
-title: "updated_ctwas"
+title: "Updated cTWAS results"
 author: "Lifan Liang"
 date: "2025-12-14"
 output: workflowr::wflow_html
@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Introduction
+## eQTL cTWAS results
 
 The manuscript Figure 4 should be replaced by figures generated here
 
@@ -155,80 +155,683 @@ ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/N_risk_genes.
 
 ```
 
-```{r,echo=F,eval=F}
-geneloc <- read.table("/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/geneloc.txt.gz",header=T)
-SCZ <- ress[["SCZ_2022"]]$finemap_res
-SCZ$genename <- sapply(strsplit(SCZ$molecular_id, "\\."), function(x) {x[2]})
-SCZ1 <- combine_gene_pips(SCZ, group_by = "genename",by = "context", filter_cs = F, method="combine_cs",include_cs_id = F)
-SCZ2 <- merge(SCZ1, geneloc, by.x="genename", by.y="geneid", all.x=T, all.y=F)
 
-# Example: df has CHR, BP, METRIC, SNP (SNP optional)
-# df <- read.csv("your_file.csv")
-df <- data.frame(CHR=substr(SCZ2$chr,4,nchar(SCZ2$chr)),
-                 BP=SCZ2$s1,
-                 SNP=SCZ2$genename,
-                 METRIC=SCZ2$combined_pip)
-# Ensure CHR is ordered (1..22, then X,Y if present)
-chr_levels <- c(as.character(1:22), "X", "Y")
-df <- df %>%
-  mutate(
-    CHR = as.character(CHR),
-    CHR = factor(CHR, levels = intersect(chr_levels, unique(CHR)))
-  ) %>%
-  arrange(CHR, BP)
+![Manhattan plot of eQTL cTWAS for Schizophrenia.](assets/manh_eqtl_ctwas_12152025.png)
 
-# Compute cumulative base-pair positions to place chromosomes end-to-end
-chr_info <- df %>%
-  group_by(CHR) %>%
-  summarize(chr_len = max(BP, na.rm = TRUE), .groups = "drop") %>%
-  mutate(chr_start = cumsum(lag(chr_len, default = 0)),
-         chr_end   = chr_start + chr_len)
 
-df <- df %>%
-  left_join(chr_info %>% select(CHR, chr_start), by = "CHR") %>%
-  mutate(pos_cum = BP + chr_start)
+### Heatmap for gene PIP across contexts for SCZ
 
-# Axis labels at chromosome centers
-axis_df <- chr_info %>%
-  mutate(center = (chr_start + chr_end) / 2)
+#### High confidence genes (PIP>80%)
 
-# Set threshold
-thr <- 0.8
+```{r, echo=F}
+library(pheatmap)
+scz <- ress3[["SCZ"]]
+scz1 <- scz[scz$combined_pip>0.8,]
+scz1[is.na(scz1)] <- 0
+pip.dynamic <- rowSums(scz1[,6:11])
+pip.static <- rowSums(scz1[,3:5])
+dynamic <- pip.dynamic - pip.static>0.5
+scz1$type <- dynamic
+rownames(scz1) <- scz1$genename
 
-# Color palette: alternate by chromosome
-chrom_colors <- rep(c("#4D9221", "#2166AC"), length(levels(df$CHR)))
+ann_col <- scz1[,12,drop=F]
+ann_col$type[ann_col$type] <- "dynamic"
+ann_col$type[ann_col$type==FALSE] <- "static"
+dat <- scz1[order(scz1$combined_pip, decreasing = T),3:11]
+ann_colors <- list(type=c("dynamic"="#008080","static"="#FF7F00"))
+ph <- pheatmap(t(dat), cluster_rows = F, cluster_cols = F, 
+         color = colorRampPalette(c("white", "red"))(100), 
+         annotation_col = ann_col, annotation_colors = ann_colors,
+         angle_col = 315, width = 6, height=3)
 
-ggplot(df, aes(x = pos_cum, y = METRIC, color = CHR)) +
-  geom_point(alpha = 0.7, size = 0.8) +
-  scale_color_manual(values = chrom_colors) +
-  # Threshold line at 0.8
-  geom_hline(yintercept = thr, color = "firebrick", linewidth = 0.8, linetype = "dashed") +
-  # Tidy axes
-  scale_x_continuous(
-    label  = axis_df$CHR,
-    breaks = axis_df$center,
-    expand = expansion(mult = c(0.01, 0.01))
-  ) +
-  scale_y_continuous(limits = c(0, 1), expand = expansion(mult = c(0, 0.02))) +
-  labs(
-    x = "Chromosome",
-    y = "Signal (custom metric)",
-    color = NULL,
-    title = "Manhattan plot (custom metric)",
-    subtitle = paste("Threshold =", thr)
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor   = element_blank(),
-    legend.position    = "none",
-    axis.text.x        = element_text(size = 11)
-  )
+ph
 
-p
 
+library(grid)
+pdf("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/SCZ_PIP8_heatmap.pdf", width = 6, height = 3)
+grid.draw(ph)
+dev.off()
 
 
 ```
+
+#### Plausible risk genes (PIP>50%)
+
+```{r, echo=F}
+scz1 <- scz[scz$combined_pip>0.5,]
+scz1[is.na(scz1)] <- 0
+pip.dynamic <- rowSums(scz1[,6:11])
+pip.static <- rowSums(scz1[,3:5])
+dynamic <- pip.dynamic - pip.static>0.5
+scz1$type <- dynamic
+rownames(scz1) <- scz1$genename
+
+ann_col <- scz1[,12,drop=F]
+ann_col$type[ann_col$type] <- "dynamic"
+ann_col$type[ann_col$type==FALSE] <- "static"
+dat <- scz1[order(scz1$combined_pip, decreasing = T),3:11]
+ann_colors <- list(type=c("dynamic"="#008080","static"="#FF7F00"))
+ph <- pheatmap(t(dat), cluster_rows = F, cluster_cols = F, 
+         color = colorRampPalette(c("white", "red"))(100), 
+         annotation_col = ann_col, annotation_colors = ann_colors,
+         angle_col = 315, width = 8, height=4)
+
+ph
+
+
+library(grid)
+pdf("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/SCZ_PIP5_heatmap.pdf", width = 7, height = 3)
+grid.draw(ph)
+dev.off()
+```
+
+
+### Comparison with GTEx brain tissues
+
+#### Cutoff at PIP>50% for both neuront stimulation and GTEx brain tissues
+
+```{r,echo=F}
+library(VennDiagram)
+
+gtex.res <- readRDS("data/SCZ_GTEx_brain_cTWAS_geneSymbol_res.rds")
+gtex5 <- lapply(gtex.res, function(x){x$hgnc_symbol[x$susie_pip>0.5]})
+gtex8 <- lapply(gtex.res, function(x){x$hgnc_symbol[x$susie_pip>0.8]})
+univ5 <- unique(do.call(c,gtex5))
+univ8 <- unique(do.call(c,gtex8))
+scz5 <- ress3[["SCZ"]]$genename[ress3[["SCZ"]]$combined_pip>0.5]
+scz8 <- ress3[["SCZ"]]$genename[ress3[["SCZ"]]$combined_pip>0.8]
+
+
+p1 <- venn.diagram(list(neuron_stim=scz5, 
+                  `GTEX_union`=univ5, 
+                  `GTEX_prefrontal_cortex`=gtex5[["Brain_Frontal_Cortex_BA9"]]),
+             filename = NULL)
+
+
+fill_cols <- c("#4DA3D9", "#90C27C", "#F4A259")  # blue, green, orange
+line_cols <- rep("#3A3A3A", 3)
+
+venn5 <- venn.diagram(
+  x = list(neuron_stim=scz5, 
+          `GTEX_union`=univ5, 
+          `GTEX_prefrontal_cortex`=gtex5[["Brain_Frontal_Cortex_BA9"]]),
+  filename = NULL,                 # return a grob so we can draw/save
+  # Fill + borders
+  fill = fill_cols,
+  alpha = 0.55,
+  lwd = 0.8,
+  lty = "solid",
+  col = line_cols,
+  # Main label styling (set names)
+  category.names = c("neuron stim", "GTEx Union", "GTEx prefrontal cortex"),
+  cex = 1.2,                       # intersection counts font size
+  fontface = "plain",
+  fontfamily = "sans",
+  # Set name label styling
+  cat.cex = 1.3,
+  cat.fontface = "bold",
+  cat.fontfamily = "sans",
+  cat.col = "#2B2B2B",
+  # Nudges to reduce overlap/clutter (tweak if needed)
+  cat.pos = c(-20, 20, 0),
+  cat.dist = c(0.06, 0.06, 0.06),
+  # Remove default shadows
+  rotation.degree = 0,
+  imagetype = "png",
+  # Turn off misc extras
+  scaled = FALSE                   # avoid distorted regions; use counts only
+)
+
+
+grid.newpage()
+grid.draw(venn5)
+
+
+pdf("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/SCZ_venn_ns_GTEx_pip5.pdf", width = 4, height = 4)
+grid.newpage()
+grid.draw(venn5)
+dev.off()
+```
+
+#### Cutoff at PIP>80% for both neuront stimulation and GTEx brain tissues
+
+```{r, echo=F}
+p2 <- venn.diagram(list(neuron_stim=scz8, 
+                  `GTEX_union`=univ8, 
+                  `GTEX_prefrontal_cortex`=gtex8[["Brain_Frontal_Cortex_BA9"]]),
+             filename = NULL)
+
+venn8 <- venn.diagram(
+  x = list(neuron_stim=scz8, 
+          `GTEX_union`=univ8, 
+          `GTEX_prefrontal_cortex`=gtex8[["Brain_Frontal_Cortex_BA9"]]),
+  filename = NULL,                 # return a grob so we can draw/save
+  # Fill + borders
+  fill = fill_cols,
+  alpha = 0.55,
+  lwd = 0.8,
+  lty = "solid",
+  col = line_cols,
+  # Main label styling (set names)
+  category.names = c("neuron stim", "GTEx Union", "GTEx prefrontal cortex"),
+  cex = 1.2,                       # intersection counts font size
+  fontface = "plain",
+  fontfamily = "sans",
+  # Set name label styling
+  cat.cex = 1.3,
+  cat.fontface = "bold",
+  cat.fontfamily = "sans",
+  cat.col = "#2B2B2B",
+  # Nudges to reduce overlap/clutter (tweak if needed)
+  cat.pos = c(-20, 20, 0),
+  cat.dist = c(0.06, 0.06, 0.06),
+  # Remove default shadows
+  rotation.degree = 0,
+  imagetype = "png",
+  # Turn off misc extras
+  scaled = FALSE                   # avoid distorted regions; use counts only
+)
+
+
+grid.newpage()
+grid.draw(venn8)
+
+pdf("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/SCZ_venn_ns_GTEx_pip8.pdf", width = 4, height = 4)
+grid.newpage()
+grid.draw(venn8)
+dev.off()
+
+```
+
+### Locus plot for CPT1C
+
+
+```{r,echo=F}
+
+library(tidyverse)
+library(scales)
+library(cowplot)
+library(ggrepel)
+
+# Helpers -------------------------------------------------------------
+parse_region <- function(region_id) {
+  parts <- strsplit(region_id, "_")[[1]]
+  tibble(
+    chrom = parts[1],
+    region_start = as.numeric(parts[2]),
+    region_end   = as.numeric(parts[3])
+  )
+}
+
+# Extract timepoint/celltype from `context`, e.g. "0hr_GABA" -> ("0hr","GABA")
+extract_context <- function(df) {
+  df %>%
+    mutate(
+      context = as.character(context),
+      timepoint_raw = if_else(!is.na(context), sub("_(.*)$", "", context), NA_character_),
+      celltype_raw  = if_else(!is.na(context), sub("^(.*)_", "", context), NA_character_)
+    )
+}
+
+# Main plot -----------------------------------------------------------
+locus_plot_no_genetrack <- function(
+  df, region_id,
+  colors_timepoint = c("0hr" = "#F5C04E", "1hr" = "#FF4D4F", "6hr" = "#8A57FF"),
+  shapes_celltype = c("GABA" = 17, "npglut" = 18, "nmglut" = 15),  # triangle, diamond, square
+  point_alpha = 0.9,
+  size_top = 1.6,
+  size_bottom = 1.9,
+  snp_color = "grey70",
+  snp_alpha = 0.30,
+  snp_shape = 16,  # filled circle
+  show_vlines = TRUE,
+  pip_label_threshold = 0.10,         # 10% threshold -> label points
+  label_column_priority = c("gene_name", "molecular_id", "id"),
+  label_size = 3.2,
+  label_boxpadding = 0.25,
+  label_pointpadding = 0.15,
+  label_max_overlaps = Inf,
+  label_only_bottom = TRUE,           # TRUE: label only cTWAS PIP panel
+  label_style = c("label", "text"),   # "label" = geom_label_repel, "text" = geom_text_repel
+  legend_side = c("right", "bottom")  # where to place the shared legend
+) {
+  label_style <- match.arg(label_style)
+  legend_side <- match.arg(legend_side)
+
+  reg <- parse_region(region_id)
+
+  df_reg <- df %>%
+    filter(region_id == !!region_id) %>%
+    extract_context() %>%
+    mutate(
+      # If you already have p-values, replace these two lines with your column
+      pval = 2 * pnorm(-abs(z)),
+      neglog10p = -log10(pval),
+      pos_mb = pos / 1e6,
+
+      # Define SNP rows. Adjust this if your dataset marks SNPs differently.
+      is_snp = tolower(type) == "snp",
+
+      # Normalize celltype to exactly the three categories you use
+      celltype = case_when(
+        !is.na(celltype_raw) & tolower(celltype_raw) == "gaba"   ~ "GABA",
+        !is.na(celltype_raw) & tolower(celltype_raw) == "npglut" ~ "npglut",
+        !is.na(celltype_raw) & tolower(celltype_raw) == "nmglut" ~ "nmglut",
+        TRUE ~ NA_character_
+      ),
+      # Keep only expected timepoint labels
+      timepoint = case_when(
+        !is.na(timepoint_raw) & timepoint_raw %in% c("0hr", "1hr", "6hr") ~ timepoint_raw,
+        TRUE ~ NA_character_
+      ),
+
+      # Valid non-SNP rows have both timepoint and celltype present
+      valid_non_snp = (!is_snp) & !is.na(timepoint) & !is.na(celltype),
+
+      # Grey layer includes SNPs + any non-SNPs without complete annotations
+      grey_layer = is_snp | (!valid_non_snp)
+    )
+
+  # ----- Build label data (PIP > threshold), use preferred name + "timepoint celltype"
+  label_df <- df_reg %>%
+    filter(susie_pip >= pip_label_threshold, !is_snp, !is.na(timepoint), !is.na(celltype)) %>%
+    mutate(
+      label_base = coalesce(!!!rlang::syms(label_column_priority)),
+      label_text = paste0(label_base, ", ", timepoint, " ", celltype)
+    ) %>%
+    group_by(label_base) %>%
+    slice_max(order_by = susie_pip, n = 1, with_ties = FALSE) %>%
+    ungroup()
+
+  # X-range in MB from region bounds
+  xlim_mb <- c(reg$region_start, reg$region_end) / 1e6
+
+  # --- Top panel: GWAS -log10(p)
+  g_top <- ggplot(df_reg, aes(x = pos_mb, y = neglog10p)) +
+    # Grey layer first (SNPs + incomplete non-SNPs)
+    geom_point(
+      data = df_reg %>% filter(grey_layer),
+      color = snp_color, shape = snp_shape, size = size_top, alpha = snp_alpha
+    ) +
+    # Colored layer (only fully annotated non-SNPs)
+    geom_point(
+      data = df_reg %>% filter(valid_non_snp),
+      aes(color = timepoint, shape = celltype),
+      alpha = point_alpha, size = size_top
+    ) +
+    {
+      if (!label_only_bottom && nrow(label_df) > 0) {
+        if (label_style == "label") {
+          list(
+            geom_label_repel(
+              data = label_df,
+              aes(x = pos_mb, y = neglog10p, label = label_text, fill = timepoint),
+              min.segment.length = 0, size = label_size,
+              box.padding = label_boxpadding, point.padding = label_pointpadding,
+              max.overlaps = label_max_overlaps, label.size = 0.25, color = "black"
+            ),
+            scale_fill_manual(values = colors_timepoint, guide = "none")
+          )
+        } else {
+          geom_text_repel(
+            data = label_df,
+            aes(x = pos_mb, y = neglog10p, label = label_text),
+            min.segment.length = 0, size = label_size,
+            box.padding = label_boxpadding, point.padding = label_pointpadding,
+            max.overlaps = label_max_overlaps
+          )
+        }
+      } else NULL
+    } +
+    # panel-local scales (legend suppressed later)
+    scale_color_manual(values = colors_timepoint, breaks = c("0hr", "1hr", "6hr"),
+                       labels = c("0hr genes", "1hr genes", "6hr genes"), name = NULL) +
+    scale_shape_manual(values = shapes_celltype, breaks = c("GABA", "npglut", "nmglut"),
+                       labels = c("GABA genes", "npglut genes", "nmglut genes"), name = NULL) +
+    labs(
+      y = "GWAS -log\u2081\u2080(p)", x = NULL,
+      title = paste0("chr", reg$chrom, " locus: ",
+                     comma(reg$region_start), "–", comma(reg$region_end), " bp")
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      legend.position = "none",           # <<< suppress legend here
+      plot.title = element_text(face = "bold"),
+      axis.title.x = element_blank()
+    ) +
+    coord_cartesian(xlim = xlim_mb)
+
+  if (show_vlines) {
+    g_top <- g_top +
+      geom_vline(xintercept = reg$region_start / 1e6, linetype = "dashed", color = "grey50") +
+      geom_vline(xintercept = reg$region_end   / 1e6, linetype = "dashed", color = "grey50")
+  }
+
+  # --- Bottom panel: cTWAS PIP
+  g_bottom <- ggplot(df_reg, aes(x = pos_mb, y = susie_pip)) +
+    geom_point(
+      data = df_reg %>% filter(grey_layer),
+      color = snp_color, shape = snp_shape, size = size_bottom, alpha = snp_alpha
+    ) +
+    geom_point(
+      data = df_reg %>% filter(valid_non_snp),
+      aes(color = timepoint, shape = celltype),
+      alpha = point_alpha, size = size_bottom
+    ) +
+    {
+      if (nrow(label_df) > 0) {
+        if (label_style == "label") {
+          list(
+            geom_label_repel(
+              data = label_df,
+              aes(x = pos_mb, y = susie_pip, label = label_text, fill = timepoint),
+              min.segment.length = 0, size = label_size,
+              box.padding = label_boxpadding, point.padding = label_pointpadding,
+              max.overlaps = label_max_overlaps, label.size = 0.25, color = "black"
+            ),
+            scale_fill_manual(values = colors_timepoint, guide = "none")
+          )
+        } else {
+          geom_text_repel(
+            data = label_df,
+            aes(x = pos_mb, y = susie_pip, label = label_text),
+            min.segment.length = 0, size = label_size,
+            box.padding = label_boxpadding, point.padding = label_pointpadding,
+            max.overlaps = label_max_overlaps
+          )
+        }
+      } else NULL
+    } +
+    # panel-local scales (legend suppressed later)
+    scale_color_manual(values = colors_timepoint, breaks = c("0hr", "1hr", "6hr"),
+                       labels = c("0hr genes", "1hr genes", "6hr genes"), name = NULL) +
+    scale_shape_manual(values = shapes_celltype, breaks = c("GABA", "npglut", "nmglut"),
+                       labels = c("GABA genes", "npglut genes", "nmglut genes"), name = NULL) +
+    labs(y = "cTWAS PIP", x = paste0("chr", reg$chrom, " (MB)")) +
+    theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      legend.position = "none"            # <<< suppress legend here
+    ) +
+    coord_cartesian(xlim = xlim_mb)
+
+  if (show_vlines) {
+    g_bottom <- g_bottom +
+      geom_vline(xintercept = reg$region_start / 1e6, linetype = "dashed", color = "grey50") +
+      geom_vline(xintercept = reg$region_end   / 1e6, linetype = "dashed", color = "grey50")
+  }
+
+  # ---- Build one combined legend (Genes: timepoints/colors + contexts/shapes + SNPs)
+  legend_df_genes <- df_reg %>% filter(valid_non_snp)
+  # Dummy row to force an SNP legend entry even if none in data:
+  legend_df_snp <- tibble(
+    pos_mb = min(xlim_mb), y = 0,
+    timepoint = "SNPs",    # will show under the color portion
+    celltype  = NA_character_
+  )
+
+  legend_plot <- ggplot(legend_df_genes, aes(x = pos_mb, y = 0)) +
+    # Timepoint/color legend for genes
+    geom_point(aes(color = timepoint), shape = 16, size = 3, alpha = 1, show.legend = TRUE) +
+    # Celltype/shape legend for genes
+    geom_point(aes(shape = celltype), color = "grey20", size = 3, alpha = 1, show.legend = TRUE) +
+    # SNP entry (only in the color legend; shape overridden to circle)
+    geom_point(
+      data = legend_df_snp,
+      aes(x = pos_mb, y = y, color = timepoint),
+      shape = snp_shape, size = 3, alpha = snp_alpha, show.legend = TRUE
+    ) +
+    scale_color_manual(
+      values = c(colors_timepoint, SNPs = snp_color),
+      breaks = c("0hr", "1hr", "6hr", "SNPs"),
+      labels = c("0hr genes", "1hr genes", "6hr genes", "SNPs"),
+      name   = "Time point (Color)"
+    ) +
+    scale_shape_manual(
+      values = shapes_celltype,
+      breaks = c("GABA", "npglut", "nmglut", "SNPs"),
+      labels = c("GABA genes", "npglut genes", "nmglut genes", "SNPs"),
+      name   = "Cell type (shape)"
+    ) +
+    guides(
+      color = guide_legend(order = 1, override.aes = list(shape = 16, alpha = 1)),
+      shape = guide_legend(order = 2)
+    ) +
+    theme_void() +
+    theme(legend.position = "right")
+
+  shared_legend <- cowplot::get_legend(legend_plot)
+
+  panels <- cowplot::plot_grid(
+    g_top, g_bottom, ncol = 1, align = "v", rel_heights = c(1.1, 0.9)
+  )
+
+  if (legend_side == "right") {
+    cowplot::plot_grid(panels, shared_legend, ncol = 2, rel_widths = c(1, 0.22))
+  } else { # bottom
+    cowplot::plot_grid(panels, shared_legend, ncol = 1, rel_heights = c(1, 0.18))
+  }
+}
+
+```
+
+```{r, echo=F}
+
+finemap_res_multi <- readRDS("/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/new_SCZ_finemap_res_multi.RDS")
+finemap_res_multi1 <- finemap_res_multi[finemap_res_multi$region_id=="19_48778970_51029311",]
+
+
+
+p <- locus_plot_no_genetrack(
+  finemap_res_multi1,
+  region_id = "19_48778970_51029311",
+  show_vlines = F
+)
+p
+ggsave2("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/CPT1C_locus_plot.pdf",width=8,height = 6)
+```
+
+
+## caQTL cTWAS results
+
+```{r,echo=F}
+res.store <- "/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/caQTL/"
+
+paramfs <- list.files(res.store,pattern="parameters",full.names = T)
+params <- list()
+for (f in paramfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-15)
+  params[[n]] <- readRDS(f)
+}
+```
+
+
+### Dotplot for enrichment
+
+```{r, echo=F}
+library(ggplot2)
+library(dplyr)
+
+params1 <- params[c("NS_2017","ADHD_2022","BIP_2024","MDD_2025","SCZ_2022")]
+names(params1) <- c("Neuroticism", "ADHD", "Bipolar", "MDD", "SCZ")
+log_enrich <- do.call(c,lapply(params1, function(x){x$log_enrichment}))
+enrich_p <- do.call(c,lapply(params1, function(x){x$enrichment_pval}))
+dat <- data.frame(log_enrich=log_enrich, pval=enrich_p, 
+           trait=rep(names(params1),each=9), 
+           context=rep(sapply(strsplit(names(params1[[1]]$enrichment_pval), "\\|"), function(x) {x[1]}), length(params1)))
+dat$log_enrich[dat$log_enrich<0] <- 0
+dat$enrichment <- exp(dat$log_enrich)
+dat$logP <- -log10(dat$pval)
+dat$context <- factor(dat$context, 
+                      levels = c(paste0(c(0,1,6),"hr_GABA"),
+                                 paste0(c(0,1,6),"hr_npglut"),
+                                 paste0(c(0,1,6),"hr_nmglut")))
+ggplot(dat, aes(x = context, y = trait)) +
+  geom_point(
+    aes(fill = enrichment, size = logP),
+    shape = 21,            # circle with fill and outline
+    color = "grey20",      # border color
+    stroke = 0.6,          # border thickness
+    alpha = 0.9
+  ) +
+  # Diverging fill scale for enrichment
+  scale_fill_gradient2(
+    low = "white", high = "#8B0000",
+    midpoint = 0, name = "Enrichment"
+  ) +
+  # Dot size scale
+  scale_size_continuous(range = c(1.5, 10), name = "-log10(p)") +
+  labs(
+    x = NULL, y = NULL
+  ) +
+  theme_minimal() +
+    theme_classic() +
+  theme(
+    panel.grid.major.x = element_line(color = "grey85", linewidth = 0.5),
+    panel.grid.major.y = element_line(color = "grey85", linewidth = 0.5),
+    panel.grid.minor   = element_blank()
+  ) + 
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size=12),
+    axis.text.y = element_text(size=12),
+    legend.box = "vertical",
+    legend.position = "right",
+    legend.title = element_text(size = 10, face = "bold")
+  ) +
+  coord_fixed()  # keeps dot aspect circular
+ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/ctwas_enrichment_all_traits_caQTL.pdf", width=6, height=4)
+
+```
+
+```{r,echo=F}
+resfs <- list.files(res.store,pattern="regions",full.names = T)
+ress <- list()
+for (f in resfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-24)
+  ress[[n]] <- readRDS(f)
+}
+```
+
+
+### Number of risk genes across traits
+
+```{r,echo=F}
+library(ctwas)
+ress1 <- ress[c("NS_2017","ADHD_2022","BIP_2024","MDD_2025","SCZ_2022")]
+names(ress1) <- c("Neuroticism", "ADHD", "Bipolar", "MDD", "SCZ")
+ress2 <- lapply(ress1, function(x) {x$susie_alpha_res[x$susie_alpha_res$type!="SNP",]})
+for(t in names(ress2)) {
+  ress2[[t]]$genename <- sapply(strsplit(ress2[[t]]$molecular_id, "\\."), 
+                                function(x) {x[2]})
+}
+ress3 <- lapply(ress2, combine_gene_pips, group_by = "genename",by = "context", filter_cs = F, method="combine_cs",include_cs_id = F)
+
+gene5 <- sapply(ress3, function(x) {sum(x$combined_pip>=0.5)})
+gene8 <- sapply(ress3, function(x) {sum(x$combined_pip>=0.8)})
+
+dat <- data.frame(N_gene=c(gene8,gene5-gene8),trait=rep(names(gene5),2),
+                  type=rep(c("High confidence","Plausible"),each=5))
+dat$trait <- factor(dat$trait, levels=c("SCZ","Bipolar","Neuroticism", "MDD", "ADHD"))
+
+type_colors <- c(
+  "High confidence" = "#2166AC",  # blue
+  "Plausible"       = "#B2182B"   # red
+)
+
+ggplot(dat, aes(x = trait, y = N_gene, fill = type)) +
+  geom_bar(stat = "identity", width = 0.8, color = "grey20") +   # color adds bar borders
+  scale_fill_manual(values = type_colors, name = "Evidence type") +
+  # Add stacked labels (optional)
+  geom_text(
+    aes(label = ifelse(N_gene > 0, N_gene, "")),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    size = 4
+  ) +
+  labs(
+    x = NULL,
+    y = "Number of genes"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x  = element_text(size = 13, angle = 45, hjust = 1),
+    axis.text.y  = element_text(size = 13),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    legend.title = element_blank(),  # bold smaller legend title
+    legend.text  = element_text(size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey85"),
+    legend.position = c(0.95, 0.95),      # place inside panel
+    legend.justification = c("right", "top"),
+    legend.background = element_rect(fill = alpha("white", 0.8), 
+                                   color = "grey60", 
+                                   size = 0.4)   # optional: boxed background
+
+  )
+
+ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/N_risk_genes_caQTL.pdf",width=4,height=4)
+
+```
+
+### Heritability of caQTL vs. eQTL
+
+```{r,echo=F}
+res.store <- "/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/caQTL/"
+paramfs <- list.files(res.store,pattern="parameters",full.names = T)
+params.c <- list()
+for (f in paramfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-15)
+  params.c[[n]] <- readRDS(f)
+}
+
+res.store <- "/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/eQTL/"
+paramfs <- list.files(res.store,pattern="parameters",full.names = T)
+params.e <- list()
+for (f in paramfs) {
+  n <- substr(basename(f), 1, nchar(basename(f))-15)
+  params.e[[n]] <- readRDS(f)
+}
+
+he <-sapply(params.e, function(x) {sum(x$prop_heritability[-10])})[c(1,3,4,5,7)]
+hc <-sapply(params.c, function(x) {sum(x$prop_heritability[-10])})[c(1,3,4,5,7)]
+
+names(he) <- c("ADHD","Bipolar","Depression","Neuroticism","SCZ")
+names(hc) <- names(he)
+
+dat <- data.frame(value=c(hc,he), trait=rep(names(he),2),
+                  type=rep(c("caQTL & ASoC","eQTL"),each=5))
+
+
+library(ggplot2)
+library(scales)
+
+pd <- position_dodge(width = 0.75)
+
+ggplot(dat, aes(x = trait, y = value, fill = type)) +
+  geom_col(position = pd, width = 0.7, color = "grey20") +
+  geom_text(
+    aes(label = percent(value, accuracy = 0.1)),
+    position = pd,
+    angle = 90,
+    vjust = 0.5,      # centered inside the bar
+    color = "black",
+    size = 3,
+    hjust=1.1
+  ) +
+  labs(x = "Trait", y = "Value (%)", fill = "QTL group") +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+    legend.position = "top"
+  )
+
+ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/h2g_caqtl_vs_eqtl.pdf",
+       width=3.5, height=6)
+```
+
+
 
 
