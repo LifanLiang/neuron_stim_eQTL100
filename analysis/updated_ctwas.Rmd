@@ -155,8 +155,35 @@ ggsave("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/N_risk_genes.
 
 ```
 
-
+<!---
 ![Manhattan plot of eQTL cTWAS for Schizophrenia.](assets/manh_eqtl_ctwas_12152025.png)
+-->
+
+```{r,echo=F}
+library(qqman)
+scz.gene.old <- readRDS("/Users/lifanliang/Documents/neuron_stim/ctwas_new_res/gene_PIP_for_SCZ_manh.RDS")
+dat <- scz.gene.old[,c("genename","chrom","pos","susie_pip")]
+
+scz <- ress3[["SCZ"]]
+
+### Remove the plausible genes not in the new results
+plaus <- dat$genename[dat$susie_pip>0.5]
+change.gene <- plaus[plaus %in% scz$genename]
+filter.gene <- plaus[!(plaus %in% scz$genename)]
+dat1 <- dat[!(dat$genename %in% filter.gene),]
+rownames(dat1) <- dat1$genename
+rownames(scz) <- scz$genename
+dat1[change.gene,"susie_pip"] <- scz[change.gene,"combined_pip"]
+
+pdf("/Users/lifanliang/Documents/neuron_stim/revision/ctwas_res/manhattan_eqtl_ctwas.pdf", height = 4, width=6.5)
+p1 <- manhattan(dat1, chr="chrom", bp="pos", snp="genename", p="susie_pip",logp = F,ylim=c(0,1.1),
+          genomewideline=0.8, highlight = dat1$genename[dat1$susie_pip>0.5], suggestiveline = 0.5,
+          annotatePval=0.8, annotateTop = F, ylab="cTWAS PIP", col=c("blue4", "orange3"))
+dev.off()
+
+
+```
+
 
 
 ### Heatmap for gene PIP across contexts for SCZ
